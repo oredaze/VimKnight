@@ -30,8 +30,7 @@
 
 A personal neovim config, written from scratch. It is kinda like a neovim distribution, but much simpler. Maybe more like [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
 - Neovim distributions are too overengineered. They split things amongst too many files with (imho) unnecessary cruft in the code. This is simple and easy to hack. It is also fully featured. You can jump straight into using it. Maybe familiarize yourself with the keybindings first and install a language server or two.
-- Tries to not override default keybindings much or do anything too crazy. Notable exceptions are `r` -> [subversive](https://github.com/svermeulen/vim-subversive)(use `s` instead) this should be built into vim tbh; `f` -> [Pounce](https://github.com/rlane/pounce.nvim); `t` -> [Trailblazer](https://github.com/LeonHeidelbach/trailblazer.nvim); `q` -> quit (macro is now `<C-q>`) because I jump in and out of files too much
-  If that is too much, comment them out in `hotkeys.lua`
+- Tries to not override default keybindings much or do anything too crazy. Notable exceptions are `r` -> [subversive](https://github.com/svermeulen/vim-subversive)(use `s` instead) this should be built into vim tbh; `f` -> [Pounce](https://github.com/rlane/pounce.nvim); `t` -> [Trailblazer](https://github.com/LeonHeidelbach/trailblazer.nvim); `q` -> quit (macro is now `<C-q>`) because I jump in and out of files too much. If that bothers you, comment them out in `hotkeys.lua`
 - The other plugins are almost all under `<space>`
 - Neatly ordered. 1 file per task: 1 for neovim settings, 1 for hotkeys, etc. and a directory for your plugin files
 - It comes with a few new colorschemes, one of which is for 16 colors.
