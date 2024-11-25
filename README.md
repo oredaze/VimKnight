@@ -16,11 +16,6 @@
   <p>
     <img src="misc/logo.png" align="center" alt="Logo" />
   </p>
-  <p>
-    A simple
-    <a href="https://github.com/neovim/neovim/">Neovim</a>
-    config
-  </p>
 </div>
 
 ## Showcase
