@@ -15,16 +15,16 @@
   </p>
   <p>
     A simple
-    <a href="https://github.com/neovim/neovim/">Neovim</a>.
+    <a href="https://github.com/neovim/neovim/">Neovim</a>
     config
   </p>
 </div>
 
 ## Showcase
 
-![example1]()
+<img src="misc/1.png" />
 
-![example2]()
+<img src="misc/2.png" />
 
 ## Info
 
