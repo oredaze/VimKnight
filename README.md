@@ -24,6 +24,8 @@
 
 <img src="misc/2.png" />
 
+<img src="misc/3.png" />
+
 ## Info
 
 A personal neovim config, written from scratch. It is kinda like a neovim distribution, but much simpler. Maybe more like [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
