@@ -3,7 +3,6 @@ return {
     -- UI
     require("plugins.dressing"),
     require("plugins.simpleindentguides"),
-    require("plugins.illuminate"),
     require("plugins.transparent"),
     require("plugins.heirline.init"),
     require("plugins.alpha"),
@@ -29,7 +28,7 @@ return {
     require("plugins.multiple-cursors"),
     require("plugins.neo-tree"),
     require("plugins.oil"),
-    require("plugins.neorg"),
+    require("plugins.mini-files"),
 
     -- Telescope
     require("plugins.telescope"),
@@ -44,6 +43,5 @@ return {
     require("plugins.treesj"),
 
     -- Smart code
-    require("plugins.treesitter"),
     require("plugins.lsp"),
 }

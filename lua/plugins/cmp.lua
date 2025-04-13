@@ -8,7 +8,7 @@ return {
             { "hrsh7th/cmp-nvim-lsp", lazy = true },
             { "hrsh7th/cmp-buffer", lazy = true },
             { "hrsh7th/cmp-path", lazy = true },
-            { "ray-x/cmp-treesitter", lazy = true },
+            -- { "ray-x/cmp-treesitter", lazy = true },
             { "hrsh7th/cmp-nvim-lsp-signature-help", lazy = true },
             {
                 "L3MON4D3/LuaSnip",
@@ -61,6 +61,7 @@ return {
             cmp.setup({
                 completion = {
                     keyword_length = 2, -- Length at which completion will activate
+                    -- autocomplete = false, -- auto or manual completion strategy
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<S-Up>"] = cmp.mapping.scroll_docs(-3),
@@ -72,25 +73,7 @@ return {
                     ["<C-c>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
                     ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-                    -- ["<Tab>"] = function(fallback)
-                    --    if not cmp.select_next_item() then
-                    --       if vim.bo.buftype ~= "prompt" and has_words_before() then
-                    --          cmp.complete()
-                    --       else
-                    --          fallback()
-                    --       end
-                    --    end
-                    -- end,
-                    -- ["<S-Tab>"] = function(fallback)
-                    --    if not cmp.select_prev_item() then
-                    --       if vim.bo.buftype ~= "prompt" and has_words_before() then
-                    --          cmp.complete()
-                    --       else
-                    --          fallback()
-                    --       end
-                    --    end
-                    -- end,
-                    ["<Tab>"] = function(fallback)
+                    ["<Tab>"] = function(fallback) -- for autocomplete
                         if cmp.visible() then
                             cmp.select_next_item()
                         -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
@@ -141,7 +124,7 @@ return {
                     { name = "nvim_lsp_signature_help" },
                     { name = "nvim_lua" },
                     { name = "path", option = { trailing_slash = true }, keyword_length = 0 },
-                    { name = "treesitter" },
+                    -- { name = "treesitter" },
                     { name = "luasnip" },
                     { name = "crates" },
                 }, {
@@ -189,7 +172,7 @@ return {
                             path = "(Path)",
                             luasnip = "(Snip)",
                             -- tmux = "(Tmux)",
-                            treesitter = "(TS)",
+                            -- treesitter = "(TS)",
                         })[entry.source.name]
                         vim_item.dup = ({
                             buffer = 1,
@@ -206,7 +189,7 @@ return {
                         hl_group = "CmpGhostText",
                     },
                 },
-                preselect = cmp.PreselectMode.None,
+                preselect = cmp.PreselectMode.Item, -- Item / None
                 sorting = defaults.sorting,
                 window = {
                     completion = {
@@ -221,6 +204,9 @@ return {
                         border = "none",
                         -- scrollbar = '▐'
                     },
+                },
+                performance = {
+                    max_view_entries = 12,
                 },
             })
 

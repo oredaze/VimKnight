@@ -1,22 +1,23 @@
+local map = vim.keymap.set
+
 return {
-    { "rust-lang/rust.vim", lazy = true, ft = "rust" },
+    -- { "rust-lang/rust.vim", lazy = true, ft = "rust" },
 
-    {
-        "simrat39/rust-tools.nvim",
-        dependencies = { { "neovim/nvim-lspconfig", lazy = true } },
-        lazy = true,
-        ft = "rust",
-    },
-
-    {
-        "saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        dependencies = { { "nvim-lua/plenary.nvim", lazy = true } },
-        tag = "stable",
-        config = function()
-            require("crates").setup()
-        end,
-    },
+    -- {
+    --     "simrat39/rust-tools.nvim",
+    --     dependencies = { { "neovim/nvim-lspconfig", lazy = true } },
+    --     lazy = true,
+    --     ft = "rust",
+    -- },
+    -- {
+    --     "saecki/crates.nvim",
+    --     event = { "BufRead Cargo.toml" },
+    --     dependencies = { { "nvim-lua/plenary.nvim", lazy = true } },
+    --     tag = "stable",
+    --     config = function()
+    --         require("crates").setup()
+    --     end,
+    -- },
 
     { "mfussenegger/nvim-dap", lazy = true },
 
@@ -45,7 +46,7 @@ return {
                     lint.try_lint()
                 end,
             })
-            vim.keymap.set("n", "<leader>ll", function()
+            map("n", "<leader>ll", function()
                 lint.try_lint()
             end, { silent = true, desc = "Lint" })
         end,
@@ -80,8 +81,8 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
-                    "rust_analyzer",
-                    -- "marksman",
+                    -- "rust_analyzer",
+                    "marksman",
                 },
                 automatic_installation = false,
             })
@@ -91,44 +92,44 @@ return {
             local opts = { noremap = true, silent = true }
             local on_attach = function(client, bufnr)
                 opts.buffer = bufnr
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                map("n", "K", vim.lsp.buf.hover, opts)
                 opts.desc = "Go to definitions"
-                vim.keymap.set("n", "gd", function()
+                map("n", "gd", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_definitions")
                 end, opts)
                 opts.desc = "Go to references"
-                vim.keymap.set("n", "gr", function()
+                map("n", "gr", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_references")
                 end, opts)
                 opts.desc = "Go to type definitions"
-                vim.keymap.set("n", "gt", function()
+                map("n", "gt", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_type_definitions")
                 end, opts)
                 opts.desc = "Go to doc symbols"
-                vim.keymap.set("n", "gs", function()
+                map("n", "gs", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_document_symbols")
                 end, opts)
                 opts.desc = "Go to declaration"
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                map("n", "gD", vim.lsp.buf.declaration, opts)
                 opts.desc = "Go to implementation"
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                map("n", "gi", vim.lsp.buf.implementation, opts)
                 opts.desc = "Rename buffer"
-                vim.keymap.set("n", "<leader>n", vim.lsp.buf.rename, opts)
+                map("n", "gR", vim.lsp.buf.rename, opts)
                 opts.desc = "Code actions"
-                vim.keymap.set({ "n", "v" }, "<leader>x", vim.lsp.buf.code_action, opts)
+                map({ "n", "v" }, "gA", vim.lsp.buf.code_action, opts)
             end
             opts.desc = "Diagnostic info"
-            vim.keymap.set("n", "<leader>i", vim.diagnostic.open_float, opts)
+            map("n", "ge", vim.diagnostic.open_float, opts)
             opts.desc = "Move to prev diagnostic"
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+            map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
             opts.desc = "Move to next diagnostic"
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+            map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
             opts.desc = "Format buffer"
-            vim.keymap.set("n", "<leader>lf", function()
+            map("n", "<leader>lf", function()
                 vim.lsp.buf.format({
                     filter = function(client)
                         return client.name == "null-ls"
@@ -176,82 +177,86 @@ return {
                 },
             })
 
-            local rt = require("rust-tools")
-            local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-            local codelldb_path = mason_path .. "bin/codelldb"
-            local liblldb_path = mason_path .. "packages/codelldb/extension/lldb/lib/liblldb.so"
-            local dap = require("dap")
-            rt.setup({
-                tools = {
-                    hover_actions = {
-                        border = "shadow",
-                    },
-                    on_initialized = function()
-                        vim.api.nvim_create_autocmd(
-                            { "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" },
-                            {
-                                pattern = { "*.rs" },
-                                callback = function()
-                                    local _, _ = pcall(vim.lsp.codelens.refresh)
-                                end,
-                            }
-                        )
-                    end,
-                },
-                dap = {
-                    adapter = require("rust-tools.dap").get_codelldb_adapter(
-                        codelldb_path,
-                        liblldb_path
-                    ),
-                },
-                server = {
-                    on_attach = on_attach,
-                    capabilities = capabilities,
-                    filetypes = { "rust" },
-                    settings = {
-                        ["rust-analyzer"] = {
-                            lens = {
-                                enable = true,
-                            },
-                            checkOnSave = {
-                                enable = true,
-                                command = "clippy",
-                            },
-                            cargo = {
-                                allfeatures = true,
-                            },
-                        },
-                    },
-                },
-            })
-            dap.adapters.codelldb = {
-                type = "server",
-                -- Manual start
-                host = "127.0.0.1",
-                port = "13000", -- 󰚌 Use the port printed out or specified with `--port`
-                -- Automatic start
-                -- port = "${port}",
-                -- executable = {
-                --    -- Absolute path to codelldb binary
-                --    command = codelldb_path,
-                --    args = {"--port", "${port}"},
-                -- }
-            }
-            dap.configurations.rust = {
-                {
-                    type = "codelldb",
-                    request = "launch",
-                    program = function()
-                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                    end,
-                    cwd = "${workspaceFolder}",
-                    terminal = "integrated",
-                    sourceLanguages = { "rust" },
-                },
-            }
-            vim.keymap.set("n", "<M-d>", "<cmd>RustOpenExternalDocs<Cr>", opts)
+            -- local rt = require("rust-tools")
+            -- local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+            -- local codelldb_path = mason_path .. "bin/codelldb"
+            -- local liblldb_path = mason_path .. "packages/codelldb/extension/lldb/lib/liblldb.so"
+            -- local dap = require("dap")
+            -- rt.setup({
+            --     tools = {
+            --         hover_actions = {
+            --             border = "shadow",
+            --         },
+            --         on_initialized = function()
+            --             vim.api.nvim_create_autocmd(
+            --                 { "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" },
+            --                 {
+            --                     pattern = { "*.rs" },
+            --                     callback = function()
+            --                         local _, _ = pcall(vim.lsp.codelens.refresh)
+            --                     end,
+            --                 }
+            --             )
+            --         end,
+            --     },
+            --     dap = {
+            --         adapter = require("rust-tools.dap").get_codelldb_adapter(
+            --             codelldb_path,
+            --             liblldb_path
+            --         ),
+            --     },
+            --     server = {
+            --         on_attach = on_attach,
+            --         capabilities = capabilities,
+            --         filetypes = { "rust" },
+            --         settings = {
+            --             ["rust-analyzer"] = {
+            --                 lens = {
+            --                     enable = true,
+            --                 },
+            --                 checkOnSave = {
+            --                     enable = true,
+            --                     command = "clippy",
+            --                 },
+            --                 cargo = {
+            --                     allfeatures = true,
+            --                 },
+            --             },
+            --         },
+            --     },
+            -- })
+            -- dap.adapters.codelldb = {
+            --     type = "server",
+            --     -- Manual start
+            --     host = "127.0.0.1",
+            --     port = "13000", -- 󰚌 Use the port printed out or specified with `--port`
+            --     -- Automatic start
+            --     -- port = "${port}",
+            --     -- executable = {
+            --     --    -- Absolute path to codelldb binary
+            --     --    command = codelldb_path,
+            --     --    args = {"--port", "${port}"},
+            --     -- }
+            -- }
+            -- dap.configurations.rust = {
+            --     {
+            --         type = "codelldb",
+            --         request = "launch",
+            --         program = function()
+            --             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            --         end,
+            --         cwd = "${workspaceFolder}",
+            --         terminal = "integrated",
+            --         sourceLanguages = { "rust" },
+            --     },
+            -- }
+            -- map("n", "<M-d>", "<cmd>RustOpenExternalDocs<Cr>", opts)
 
-            -- lspconfig.marksman.setup({})
+            lspconfig.marksman.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "markdown" },
+            })
 
             lspconfig.gdscript.setup({
                 capabilities = capabilities,

@@ -1,10 +1,11 @@
 local map = vim.keymap.set
+local cmap = vim.api.nvim_create_user_command
 
 ------------------------
 -- Neovim Hotkeys
 ------------------------
 vim.g.mapleader = " "
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = "|"
 
 -- Misc
 vim.cmd("cabbrev <expr> h (getcmdtype() == ':') ? 'tab help' : 'h'")
@@ -15,7 +16,7 @@ map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
 map("v", "y", "ygv<Esc>") -- Do not move cursor after visual yanking
 map("v", ".", ":norm.<CR>") -- Dot enhancement in visual mode
 map("n", "<Backspace>", ":noh<CR>", { silent = true })
-vim.cmd("cabbrev CD cd %:h")
+map("n", "cd", ":cd %:h<CR>", { silent = true, desc = "cd %:h" })
 
 -- Fix tab
 map("n", "<C-i>", "<C-i>")
@@ -50,6 +51,20 @@ map("n", "#", "", {
     end,
 })
 
+-- Open new spaced out lines
+vim.cmd([[
+    nnoremap <silent> go :call BigO()<CR>
+    function BigO ()
+        if getline('.')[col('.')-1] == ''
+            execute "normal! o\<cr>\<Up>"
+            star
+        else
+            execute "normal! o\<cr>\<cr>\<Up>"
+            star
+        endif
+    endfunction
+]])
+
 -- Cycle through colorschemes
 vim.cmd([[
     let g:colors = getcompletion('', 'color')
@@ -65,10 +80,9 @@ vim.cmd([[
     nnoremap <F10> :exe "colo " .. NextColors()<CR>
 ]])
 
-map("n", "g?", function()
-    local result = vim.treesitter.get_captures_at_cursor(0)
-    print(vim.inspect(result))
-end, { noremap = true, silent = true, desc = "Show treesitter syntax group" })
+map("n", "g?", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>",
+    { desc = "Echo syntax group" }
+)
 
 ------------------------
 -- Options
@@ -181,64 +195,17 @@ map("v", "<C-k>", ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
 map("v", "<C-h>", ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
 map("v", "<C-l>", ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
 
--- Neorg
-vim.api.nvim_create_autocmd("BufEnter", {
-    pattern = "*.norg",
-    callback = function()
-        ---@diagnostic disable-next-line
-        require("which-key").add({
-            { "<localleader>", buffer = 0, group = "Neorg" },
-            { "<localleader>i", buffer = 0, group = "Insert" },
-            { "<localleader>l", buffer = 0, group = "List" },
-            { "<localleader>m", buffer = 0, group = "Mode" },
-            { "<localleader>n", buffer = 0, group = "Note" },
-            { "<localleader>t", buffer = 0, group = "Task" },
-            { "<localleader>c", buffer = 0, group = "Code" },
-            { "<localleader>it", "o- ( ) ", desc = "Task", mode = "n" },
-            { "<localleader>h", ":Telescope neorg search_headings<CR>", desc = "Headings", mode = "n" },
-            { "<localleader>a", ":Telescope neorg find_linkable<CR>", desc = "All linkables", mode = "n" },
-            { "<localleader>f", ":Telescope neorg find_norg_files<CR>", desc = "Neorg files", mode = "n" },
-            { "ih", "<Plug>(neorg.text-objects.textobject.heading.inner)", desc = "Header", mode = { "o", "x" } },
-            { "ah", "<Plug>(neorg.text-objects.textobject.heading.outer)", desc = "Header", mode = { "o", "x" } },
-            { "it", "<Plug>(neorg.text-objects.textobject.tag.inner)", desc = "Tag", mode = { "o", "x" } },
-            { "at", "<Plug>(neorg.text-objects.textobject.tag.outer)", desc = "Tag", mode = { "o", "x" } },
-            { "il", "<Plug>(neorg.text-objects.textobject.list.outer)", desc = "List", mode = { "o", "x" } },
-            { "al", "<Plug>(neorg.text-objects.textobject.list.outer)", desc = "List", mode = { "o", "x" } },
-            map("n", "<localleader>,", function()
-                ---@diagnostic disable-next-line: undefined-field
-                if vim.opt.conceallevel._value == 2 then
-                    vim.opt.conceallevel = 0
-                    vim.cmd("Neorg toggle-concealer")
-                ---@diagnostic disable-next-line: undefined-field
-                elseif vim.opt.conceallevel._value == 0 then
-                    vim.opt.conceallevel = 2
-                    vim.cmd("Neorg toggle-concealer")
-                end
-            end, { desc = "Concealer toggle" }),
-        })
-    end,
-})
-
 -- Pounce
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 
--- Illuminate
-map("n", "<leader>oh", ":IlluminateToggle<CR>", { silent = true, desc = "Highlights" })
-map("n", "[[", function()
-    require("illuminate").goto_prev_reference(false)
-end, { desc = "Previous highlight" })
-map("n", "]]", function()
-    require("illuminate").goto_next_reference(false)
-end, { desc = "Next highlight" })
-
--- Explorers
-map("n", "-", "<cmd>execute 'Oil' getcwd()<CR>")
-map("n", "<leader>e", "<cmd>Neotree current<CR>", { desc = "Explorer" })
+-- File explorers
+map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
+map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 map("n", "<leader>t", "<cmd>Neotree toggle<CR>", { desc = "File tree" })
-vim.cmd("cabbrev E Neotree current")
-vim.cmd("cnoreabbrev S sp <BAR> Neotree current")
-vim.cmd("cnoreabbrev V vs <BAR> Neotree current")
-vim.cmd("cnoreabbrev T tabnew <BAR> Neotree current")
+cmap("E", "Neotree current", { nargs = "?" })
+cmap("S", "belowright split | Neotree current", { nargs = "?" })
+cmap("V", "rightbelow vsplit | Neotree current", { nargs = "?" })
+cmap("T", "tabedit % | Neotree current", { nargs = "?" })
 
 -- Telescope
 map("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
@@ -304,3 +271,4 @@ map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnosti
 -- ~/.config/nvim/lua/plugins/outline.lua
 -- ~/.config/nvim/lua/plugins/neo-tree.lua
 -- ~/.config/nvim/lua/plugins/oil.lua
+-- ~/.config/nvim/lua/plugins/mini-files.lua

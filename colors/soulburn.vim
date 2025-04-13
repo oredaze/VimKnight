@@ -6,7 +6,7 @@
 "      \/                     \/                  \/
 "
 " Name:         soulburn
-" Author:       bitraven <2drealm@tuta.io>
+" Author:       bitraven
 " Description:  inspired by Zenburn
 " License:      MIT
 

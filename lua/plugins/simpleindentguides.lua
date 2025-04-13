@@ -4,6 +4,10 @@ return {
         "lucastavaresa/simpleIndentGuides.nvim",
         config = function()
             require("simpleIndentGuides").setup("┆", " ") -- gui:┊┆╎ tty:
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = { "txt", "text" },
+                command = "setlocal nolist",
+            })
         end,
     },
 }

@@ -54,14 +54,6 @@ o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
 -- o.cmdheight = 0
 
--- For neorg
-o.conceallevel = 2
-o.concealcursor = "n"
-
--- Treesitter folding
--- vim.wo.foldmethod = 'expr' -- expr, indent
--- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-
 -- Indents
 o.tabstop = 4 -- default number of characters for indents
 o.shiftwidth = 0
@@ -90,3 +82,11 @@ vim.diagnostic.config({
         spacing = 1,
     },
 })
+
+-- Try this later when plugins and stuff chatch up:
+-- vim.diagnostic.config({
+--     signs = {
+--         --support diagnostic severity / diagnostic type name
+--         text = { [1] = 'e', ['ERROR'] = '󰨰', ['WARN'] = '', ['INFO'] = '', ['HINT'] = '󱩎' },
+--     },
+-- })

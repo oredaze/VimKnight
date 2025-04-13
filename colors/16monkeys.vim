@@ -1,7 +1,7 @@
 " Vim color file
 "
 " Name:    16monkeys
-" Author:  bitraven <2drealm@tuta.io>
+" Author:  bitraven
 
 hi clear
 if exists("syntax_on")

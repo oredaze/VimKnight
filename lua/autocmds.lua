@@ -85,8 +85,36 @@ autocmd({ "WinEnter", "BufWinEnter", "TermOpen" }, {
 
 -- Disable list characters
 autocmd("FileType", {
-    pattern = { "log", "markdown", "org", "txt", "norg" },
+    pattern = { "log", "markdown", "txt" },
     callback = function()
         vim.opt_local.list = false
     end,
+})
+
+-- Markdown fill --- line with virtual text
+local function add_virtual_dash_line()
+  -- Get the current buffer
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  -- Clear any existing extmarks in namespace
+  local ns_id = vim.api.nvim_create_namespace("dash_overlay")
+  vim.api.nvim_buf_clear_namespace(bufnr, ns_id, 0, -1)
+
+  -- Iterate through all lines in the buffer
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  for i, line in ipairs(lines) do
+    if line == "---" then
+      -- Add virtual text for a line of 80 '─' characters
+      vim.api.nvim_buf_set_extmark(bufnr, ns_id, i - 1, 0, {
+        virt_text = { { string.rep("─", 80), "Conceal" } },
+        virt_text_pos = "overlay",
+        hl_mode = "combine", -- Use combine to merge highlight with text
+      })
+    end
+  end
+end
+
+vim.api.nvim_create_autocmd({ "BufReadPost", "TextChanged", "TextChangedI" }, {
+  pattern = "*.md",
+  callback = add_virtual_dash_line,
 })

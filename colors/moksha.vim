@@ -11,7 +11,7 @@
 "  :      :     : :  :    :   :::  :: : :     :   : :   :   : :
 "
 " Name:         Moksha
-" Author:       bitraven <2drealm@tuta.io>
+" Author:       bitraven
 " Description:  A colorscheme for the ascended
 " License:      MIT
 
@@ -50,6 +50,7 @@ let s:palette = {
     \ 'fg_nc':        ['#8C8369',   '214',  'Gray'],
     \ 'cream':        ['#D5C095',   '223',  'White'],
     \ 'ash':          ['#8C8C8C',   '223',  'LightGrey'],
+    \ 'greenash':     ['#9FAD95',   '223',  'LightGrey'],
     \ 'red':          ['#D96257',   '167',  'Red'],
     \ 'light_red':    ['#F98080',   '167',  'Red'],
     \ 'brown':        ['#C49774',   '175',  'blue'],
@@ -268,13 +269,12 @@ call s:HL('markdownH3', s:palette.orange, s:palette.none, 'bold')
 call s:HL('markdownH4', s:palette.yellow, s:palette.none, 'bold')
 call s:HL('markdownH5', s:palette.yellow, s:palette.none, 'bold')
 call s:HL('markdownH6', s:palette.yellow, s:palette.none, 'bold')
-call s:HL('markdownUrl', s:palette.blue, s:palette.none, 'underline')
-call s:HL('markdownItalic', s:palette.none, s:palette.none, 'italic')
+call s:HL('markdownUrl', s:palette.grey, s:palette.none, 'underline')
+call s:HL('markdownItalic', s:palette.yellow, s:palette.none, 'none')
 call s:HL('markdownBold', s:palette.none, s:palette.none, 'bold')
-call s:HL('markdownItalicDelimiter', s:palette.grey, s:palette.none, 'italic')
+call s:HL('markdownItalicDelimiter', s:palette.grey, s:palette.none, 'none')
 call s:HL('markdownCodeDelimiter', s:palette.light_grey, s:palette.none)
-" hi! link markdownCodeBlock Green
-call s:HL('markdownCodeBlock', s:palette.none, s:palette.bg_code)
+call s:HL('markdownCodeBlock', s:palette.green, s:palette.none)
 call s:HL('markdownCode', s:palette.green, s:palette.none, 'italic')
 hi! link markdownBlockquote Grey
 hi! link markdownListMarker Pink
@@ -291,6 +291,7 @@ hi! link markdownIdDeclaration markdownLinkText
 hi! link markdownBoldDelimiter Grey
 hi! link markdownId Yellow
 " }}}
+hi! link markdownAutomaticLink Cyan
 " vim-markdown: https://github.com/gabrielelana/vim-markdown{{{
 call s:HL('mkdURL', s:palette.blue, s:palette.none, 'underline')
 call s:HL('mkdInlineURL', s:palette.blue, s:palette.none, 'underline')
@@ -1068,7 +1069,7 @@ hi! link CmpItemKindVariable      Identifier
 " }}}
 " Plugins: {{{
 " Neorg {{{
-call s:HL('@neorg.markup.verbatim', s:palette.ash, s:palette.none)
+call s:HL('@neorg.markup.verbatim', s:palette.greenash, s:palette.bg_dark)
 call s:HL('@neorg.markup.superscript', s:palette.pink, s:palette.none)
 hi! link @neorg.markup.subscript Structure
 call s:HL('@neorg.markup.inline_math', s:palette.green, s:palette.none)
@@ -1108,9 +1109,10 @@ hi! link @neorg.quotes.5.prefix Delimiter
 hi! link @neorg.quotes.6.content Blue
 hi! link @neorg.quotes.6.prefix Blue
 call s:HL('@neorg.todo_items.done', s:palette.green, s:palette.none)
-call s:HL('@neorg.todo_items.on_hold', s:palette.blue, s:palette.none)
+call s:HL('@neorg.todo_items.on_hold', s:palette.brown, s:palette.none)
 call s:HL('@neorg.todo_items.recurring', s:palette.cyan, s:palette.none)
 call s:HL('@neorg.todo_items.uncertain', s:palette.pink, s:palette.none)
+call s:HL('@neorg.todo_items.pending', s:palette.yellow, s:palette.none)
 call s:HL('@neorg.todo_items.urgent', s:palette.red, s:palette.none)
 hi! link @neorg.tags.ranged_verbatim.begin Comment
 hi! link @neorg.tags.ranged_verbatim.name.word Comment

@@ -89,4 +89,5 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 lsp_colors = {
     lua_ls = "#4B8BB2",
     rust_analyzer = "#B26F48",
+    marksman = "#B3CC8F",
 }

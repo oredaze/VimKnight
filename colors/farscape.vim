@@ -6,7 +6,7 @@
 "             \/           \/     \/     \/|__|        \/
 "
 " Name:         farscape
-" Author:       bitraven <2drealm@tuta.io>
+" Author:       bitraven
 " Description:  The default colorscheme at the leviathan
 " License:      MIT
 

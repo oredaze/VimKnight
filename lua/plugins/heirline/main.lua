@@ -319,7 +319,7 @@ do
                         if bo.modified then
                             return { fg = "modified" }
                         else
-                            return { fg = "statusline_fg", bold = false }
+                            return { fg = "miscgrey", bold = false }
                         end
                     end,
                 },
@@ -689,7 +689,7 @@ do
             end,
         },
         Space(2),
-        hl = { fg = "lspserver", bold = true },
+        hl = { fg = "lspserver", bold = false },
     }
     Lsp = {
         condition = conditions.lsp_attached,
@@ -709,9 +709,9 @@ do
                 end
             end
             if color then
-                return { fg = color, bold = true, force = true }
+                return { fg = color, bold = false, force = true }
             else
-                return { fg = "lspserver", bold = true }
+                return { fg = "lspserver", bold = false }
             end
         end,
         flexible = priority.Lsp,
