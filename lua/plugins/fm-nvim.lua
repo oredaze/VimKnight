@@ -54,7 +54,7 @@ return {
             },
 
             -- Path to broot config
-            broot_conf = "~/.config/broot/conf.hjson",
+            broot_conf = "~/.config/broot/vim_conf.hjson",
         },
     },
 }
