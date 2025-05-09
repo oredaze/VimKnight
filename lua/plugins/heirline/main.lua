@@ -579,7 +579,7 @@ local Diagnostics = {
         provider = function(self)
             -- 0 is just another output, we can decide to print it or not!
             if self.errors > 0 then
-                return table.concat({ self.error_icon, self.errors, " " })
+                return table.concat({ " ", self.error_icon, self.errors })
             end
         end,
         hl = { fg = "diagerror" },
@@ -587,7 +587,7 @@ local Diagnostics = {
     {
         provider = function(self)
             if self.warnings > 0 then
-                return table.concat({ self.warn_icon, self.warnings, " " })
+                return table.concat({ " ", self.warn_icon, self.warnings })
             end
         end,
         hl = { fg = "diagwarn" },
@@ -595,7 +595,7 @@ local Diagnostics = {
     {
         provider = function(self)
             if self.info > 0 then
-                return table.concat({ self.info_icon, self.info, " " })
+                return table.concat({ " ", self.info_icon, self.info })
             end
         end,
         hl = { fg = "diaginfo" },
@@ -603,7 +603,7 @@ local Diagnostics = {
     {
         provider = function(self)
             if self.hints > 0 then
-                return table.concat({ self.hint_icon, self.hints, " " })
+                return table.concat({ " ", self.hint_icon, self.hints })
             end
         end,
         hl = { fg = "diaghint" },
@@ -611,6 +611,7 @@ local Diagnostics = {
 }
 
 local Git = {
+    Space(2),
     condition = conditions.is_git_repo,
     init = function(self)
         self.status_dict = vim.b.gitsigns_status_dict
@@ -664,18 +665,18 @@ local Git = {
         condition = function(self)
             return self.has_changes
         end,
-        provider = ") ",
+        provider = ")",
     },
 }
 
 local Lsp
 do
     local LspIndicator = {
-        provider = icons.circle_small .. " ",
+        provider = "  " .. icons.circle_small,
         hl = { fg = "lspindicator" },
     }
     local LspServer = {
-        Space,
+        Space(2),
         {
             provider = function(self)
                 local names = self.lsp_names
@@ -688,7 +689,6 @@ do
                 return names
             end,
         },
-        Space(2),
         hl = { fg = "lspserver", bold = true },
     }
     Lsp = {
@@ -757,7 +757,7 @@ local ShowCmd = {
     --   condition = function()
     --   	 return vim.o.timeout == false
     --   end,
-    provider = "%(%S%) ",
+    provider = "%(%S%)",
     hl = { fg = "cmd" },
 }
 
@@ -824,6 +824,7 @@ local StatusLineFinal = {
         Git,
         Diagnostics,
         Lsp,
+        Space(2),
         Ruler,
         -- ScrollBar,
         ScrollPercentage,
