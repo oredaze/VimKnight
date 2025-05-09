@@ -76,7 +76,7 @@ return {
             },
 
             window = {
-                width = 24,
+                width = 22,
                 mappings = {
                     ["<2-LeftMouse>"] = "open_drop",
                     ["<cr>"] = "open_drop",
@@ -113,7 +113,7 @@ return {
                     ["?"] = "show_help",
                     ["<"] = "prev_source",
                     [">"] = "next_source",
-                    ["o"] = "system_open",
+                    ["o"] = "open",
                 },
             },
 

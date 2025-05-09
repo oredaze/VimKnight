@@ -187,34 +187,30 @@ map("n", "S", "c<plug>(matchup-i%)")
 -- Move
 map("n", "<C-j>", ":MoveLine(1)<CR>", { noremap = true, silent = true })
 map("n", "<C-k>", ":MoveLine(-1)<CR>", { noremap = true, silent = true })
-map("n", "<C-l>", ":MoveWord(1)<CR>", { noremap = true, silent = true })
-map("n", "<C-h>", ":MoveWord(-1)<CR>", { noremap = true, silent = true })
 
 map("v", "<C-j>", ":MoveBlock(1)<CR>", { noremap = true, silent = true })
 map("v", "<C-k>", ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
-map("v", "<C-h>", ":MoveHBlock(-1)<CR>", { noremap = true, silent = true })
-map("v", "<C-l>", ":MoveHBlock(1)<CR>", { noremap = true, silent = true })
 
 -- Pounce
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 
 -- File explorers
+map("n", "<C-l>", "<cmd>Lf<CR>")
+map("n", "<C-b>", "<cmd>Broot<CR>")
 map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
-map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
-map("n", "<leader>t", "<cmd>Neotree toggle<CR>", { desc = "File tree" })
+map("n", "<C-e>", "<cmd>lua MiniFiles.open()<CR>")
+map("n", "<C-t>", "<cmd>Neotree toggle<CR>", { desc = "File tree" })
 cmap("E", "Neotree current", { nargs = "?" })
 cmap("S", "belowright split | Neotree current", { nargs = "?" })
 cmap("V", "rightbelow vsplit | Neotree current", { nargs = "?" })
 cmap("T", "tabedit % | Neotree current", { nargs = "?" })
 
 -- Telescope
-map("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
-map("n", "<leader>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep CWD" })
-map("n", "<leader>r", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
-map("n", "<leader>w", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
-map("n", "<leader>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
-map("n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
-map("n", "<leader>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
+map("n", "<C-f>", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
+map("n", "<C-g>", "<cmd>Telescope live_grep<CR>", { desc = "Grep CWD" })
+map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
+map("n", "<C-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
+map("n", "<space>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
 map("n", "?", ":Telescope keymaps<CR>")
 -- More at:
 -- ~/.config/nvim/lua/plugins/telescope.lua
@@ -261,7 +257,7 @@ map("n", "J", ":TSJToggle<CR>")
 map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>q", ":Trouble quickfix toggle<CR>", { desc = "Quickfix" })
-map("n", "<leader>s", "<cmd>Outline<CR>", { desc = "Symbols" })
+map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
 map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics" })
 
 -- More at:

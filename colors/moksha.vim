@@ -17,7 +17,7 @@
 
 " Initialization: {{{
 if !(exists('g:colors_name') && g:colors_name ==# 'moksha')
-    highlight clear
+    hi clear
     if exists('syntax_on')
         syntax reset
     endif
@@ -50,28 +50,26 @@ let s:palette = {
     \ 'fg_nc':        ['#8C8369',   '214',  'Gray'],
     \ 'cream':        ['#D5C095',   '223',  'White'],
     \ 'ash':          ['#8C8C8C',   '223',  'LightGrey'],
-    \ 'greenash':     ['#9FAD95',   '223',  'LightGrey'],
-    \ 'red':          ['#D96257',   '167',  'Red'],
+    \ 'red':          ['#e05e52',   '167',  'Red'],
     \ 'light_red':    ['#F98080',   '167',  'Red'],
-    \ 'brown':        ['#C49774',   '175',  'blue'],
-    \ 'burned':       ['#DE7B62',   '208',  'Red'],
-    \ 'orange':       ['#E69363',   '175',  'blue'],
-    \ 'yellow':       ['#F2C180',   '214',  'Yellow'],
+    \ 'burned':       ['#C28765',   '208',  'Red'],
+    \ 'moss':         ['#BDA271',   '208',  'Red'],
+    \ 'orange':       ['#db7551',   '175',  'blue'],
+    \ 'yellow':       ['#F2BC7E',   '214',  'Yellow'],
     \ 'green':        ['#AAD188',   '108',  'Green'],
     \ 'cyan':         ['#99CCBB',   '108',  'Cyan'],
     \ 'cyan_dim':     ['#89B8A8',   '108',  'Cyan'],
     \ 'blue':         ['#96AED6',   '109',  'Blue'],
     \ 'pink':         ['#DBA2BF',   '175',  'blue'],
+    \ 'purple':       ['#AE99CC',   '175',  'blue'],
     \ 'light_blue':   ['#FFC9C9',   '175',  'brown'],
     \ 'light_grey':   ['#73655B',   '237',  'DarkGrey'],
     \ 'grey':         ['#544C46',   '245',  'Grey'],
     \ 'dark_grey':    ['#302E2D',   '245',  'LightGrey'],
     \ 'search':       ['#CCA974',   '245',  'LightGrey'],
-    \ 'select':       ['#382D2A',   '214',  'DarkGrey'],
-    \ 'illuminate':   ['#272A2E',   '214',  'Gray'],
-    \ 'focusindent':  ['#665043',   '214',  'Gray'],
+    \ 'select':       ['#354041',   '214',  'DarkGrey'],
     \ 'dred':         ['#A6524B',   '167',  'Red'],
-    \ 'dburned':      ['#A6765B',   '208',  'Red'],
+    \ 'dburned':      ['#997257',   '208',  'Red'],
     \ 'dblue':        ['#7890A6',   '109',  'Blue'],
     \ 'dgrey':        ['#808080',   '109',  'Blue'],
     \ 'none':         ['NONE',      'NONE', 'NONE']
@@ -86,7 +84,7 @@ call extend(s:palette, s:configuration.palette)
 if &term == 'linux'
     function! s:HL(group, fg, bg, ...)
         let hl_string = [
-                    \ 'highlight', a:group,
+                    \ 'hi', a:group,
                     \ 'ctermfg=' . a:fg[2],
                     \ 'ctermbg=' . a:bg[2],
                     \ ]
@@ -104,7 +102,7 @@ if &term == 'linux'
 else
     function! s:HL(group, fg, bg, ...)
         let hl_string = [
-                    \ 'highlight', a:group,
+                    \ 'hi', a:group,
                     \ 'guifg=' . a:fg[0],
                     \ 'guibg=' . a:bg[0],
                     \ ]
@@ -158,9 +156,9 @@ call s:HL('DiffAdd', s:palette.none, s:palette.bg_green)
 call s:HL('DiffDelete', s:palette.grey, s:palette.bg_darker)
 call s:HL('DiffChange', s:palette.none, s:palette.bg_blue)
 call s:HL('DiffText', s:palette.none, s:palette.bg_red)
-call s:HL('Directory', s:palette.cyan_dim, s:palette.none)
-call s:HL('ErrorMsg', s:palette.red, s:palette.bg_dark, 'bold')
-call s:HL('WarningMsg', s:palette.yellow, s:palette.bg_dark, 'bold')
+call s:HL('Directory', s:palette.cyan_dim, s:palette.none, 'bold')
+call s:HL('ErrorMsg', s:palette.red, s:palette.bg_dark)
+call s:HL('WarningMsg', s:palette.yellow, s:palette.bg_dark)
 call s:HL('ModeMsg', s:palette.pink, s:palette.none, 'bold')
 call s:HL('MoreMsg', s:palette.cyan, s:palette.none, 'bold')
 call s:HL('MsgArea', s:palette.none, s:palette.bg_darker)
@@ -184,11 +182,11 @@ call s:HL('SpellBad', s:palette.none, s:palette.none, 'undercurl', s:palette.red
 call s:HL('SpellCap', s:palette.none, s:palette.none, 'undercurl', s:palette.light_grey)
 call s:HL('SpellLocal', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
 call s:HL('SpellRare', s:palette.none, s:palette.none, 'undercurl', s:palette.pink)
-call s:HL('StatusLine', s:palette.fg_dim, s:palette.bg_dark, 'bold')
-call s:HL('StatusLineTerm', s:palette.fg_dim, s:palette.bg_dark, 'bold')
+call s:HL('StatusLine', s:palette.fg_dim, s:palette.bg_dark)
+call s:HL('StatusLineTerm', s:palette.fg_dim, s:palette.bg_dark)
 call s:HL('StatusLineNC', s:palette.fg_nc, s:palette.bg_dark)
 call s:HL('StatusLineTermNC', s:palette.fg_nc, s:palette.bg_dark)
-call s:HL('TabLineSel', s:palette.cream, s:palette.bg_base, 'bold')
+call s:HL('TabLineSel', s:palette.cream, s:palette.bg_base)
 call s:HL('TabLine', s:palette.light_grey, s:palette.bg_darker)
 call s:HL('TabLineFill', s:palette.light_grey, s:palette.bg_dark)
 call s:HL('WinBar', s:palette.none, s:palette.bg_darker)
@@ -209,39 +207,39 @@ call s:HL('Boolean', s:palette.blue, s:palette.none, 'italic')
 call s:HL('Number', s:palette.pink, s:palette.none)
 call s:HL('Float', s:palette.pink, s:palette.none)
 call s:HL('Function', s:palette.green, s:palette.none, 'italic')
-call s:HL('Type', s:palette.brown, s:palette.none, 'italic')
 call s:HL('PreProc', s:palette.yellow, s:palette.none)
 call s:HL('PreCondit', s:palette.yellow, s:palette.none)
 call s:HL('Include', s:palette.yellow, s:palette.none)
 call s:HL('Define', s:palette.yellow, s:palette.none)
-call s:HL('Conditional', s:palette.red, s:palette.none)
-call s:HL('Repeat', s:palette.red, s:palette.none)
-call s:HL('Keyword', s:palette.red, s:palette.none)
-call s:HL('Typedef', s:palette.brown, s:palette.none, 'bold')
+call s:HL('Conditional', s:palette.orange, s:palette.none)
+call s:HL('Repeat', s:palette.orange, s:palette.none)
+call s:HL('Keyword', s:palette.orange, s:palette.none)
 call s:HL('Exception', s:palette.red, s:palette.none, 'bold')
-call s:HL('Statement', s:palette.red, s:palette.none)
-call s:HL('StorageClass', s:palette.brown, s:palette.none, 'italic')
+call s:HL('Statement', s:palette.orange, s:palette.none)
+call s:HL('Type', s:palette.cyan, s:palette.none, 'italic')
+call s:HL('StorageClass', s:palette.cyan, s:palette.none, 'italic')
+call s:HL('Structure', s:palette.cyan, s:palette.none)
+call s:HL('Typedef', s:palette.cyan, s:palette.none, 'bold')
 call s:HL('Title', s:palette.orange, s:palette.none, 'bold')
-call s:HL('Character', s:palette.cyan, s:palette.none, 'bold')
-call s:HL('Macro', s:palette.orange, s:palette.none, 'bold')
-call s:HL('Error', s:palette.burned, s:palette.none)
-call s:HL('Tag', s:palette.orange, s:palette.none, 'bold')
-call s:HL('Label', s:palette.yellow, s:palette.none)
-call s:HL('Structure', s:palette.brown, s:palette.none)
+call s:HL('Character', s:palette.purple, s:palette.none, 'bold')
+call s:HL('Macro', s:palette.green, s:palette.none, 'bold,italic')
+call s:HL('Error', s:palette.red, s:palette.none)
+call s:HL('Tag', s:palette.burned, s:palette.none, 'bold')
+call s:HL('Label', s:palette.red, s:palette.none)
 call s:HL('Operator', s:palette.yellow, s:palette.none)
-call s:HL('Special', s:palette.burned, s:palette.none)
-call s:HL('SpecialChar', s:palette.blue, s:palette.none, 'bold')
+call s:HL('Special', s:palette.purple, s:palette.none)
+call s:HL('SpecialChar', s:palette.purple, s:palette.none, 'bold')
 call s:HL('Identifier', s:palette.fg, s:palette.none)
 call s:HL('SpecialKey', s:palette.blue, s:palette.none)
-call s:HL('String', s:palette.cyan, s:palette.none, 'italic')
+call s:HL('String', s:palette.moss, s:palette.none, 'italic')
 call s:HL('Comment', s:palette.light_grey, s:palette.none, 'italic')
 call s:HL('SpecialComment', s:palette.light_grey, s:palette.none, 'italic')
-call s:HL('Todo', s:palette.blue, s:palette.bg_gray, 'italic')
+call s:HL('Todo', s:palette.pink, s:palette.bg_gray, 'italic')
 call s:HL('Delimiter', s:palette.ash, s:palette.none)
 call s:HL('Ignore', s:palette.grey, s:palette.none)
 call s:HL('Underlined', s:palette.none, s:palette.none, 'underline', s:palette.cyan)
 " }}}
-" Predefined Highlight Groups: {{{
+" Predefined hi Groups: {{{
 call s:HL('Fg', s:palette.fg, s:palette.none)
 call s:HL('Grey', s:palette.grey, s:palette.none)
 call s:HL('Yellow', s:palette.yellow, s:palette.none)
@@ -252,6 +250,7 @@ call s:HL('blueItalic', s:palette.blue, s:palette.none, 'italic')
 call s:HL('Red', s:palette.red, s:palette.none)
 call s:HL('Pink', s:palette.pink, s:palette.none)
 call s:HL('Burned', s:palette.burned, s:palette.none)
+call s:HL('Moss', s:palette.moss, s:palette.none)
 call s:HL('Green', s:palette.green, s:palette.none)
 call s:HL('Cyan', s:palette.cyan, s:palette.none)
 call s:HL('RedSign', s:palette.red, s:palette.bg_darker)
@@ -263,12 +262,12 @@ call s:HL('BlueSign', s:palette.blue, s:palette.bg_darker)
 " }}}
 " Markdown: {{{
 " builtin: {{{
-call s:HL('markdownH1', s:palette.red, s:palette.none, 'bold')
-call s:HL('markdownH2', s:palette.burned, s:palette.none, 'bold')
-call s:HL('markdownH3', s:palette.orange, s:palette.none, 'bold')
-call s:HL('markdownH4', s:palette.yellow, s:palette.none, 'bold')
-call s:HL('markdownH5', s:palette.yellow, s:palette.none, 'bold')
-call s:HL('markdownH6', s:palette.yellow, s:palette.none, 'bold')
+call s:HL('markdownH1', s:palette.orange, s:palette.none, 'bold')
+call s:HL('markdownH2', s:palette.yellow, s:palette.none, 'bold')
+call s:HL('markdownH3', s:palette.burned, s:palette.none, 'bold')
+call s:HL('markdownH4', s:palette.burned, s:palette.none, 'bold')
+call s:HL('markdownH5', s:palette.burned, s:palette.none, 'bold')
+call s:HL('markdownH6', s:palette.burned, s:palette.none, 'bold')
 call s:HL('markdownUrl', s:palette.grey, s:palette.none, 'underline')
 call s:HL('markdownItalic', s:palette.yellow, s:palette.none, 'none')
 call s:HL('markdownBold', s:palette.none, s:palette.none, 'bold')
@@ -296,27 +295,27 @@ hi! link markdownAutomaticLink Cyan
 call s:HL('mkdURL', s:palette.blue, s:palette.none, 'underline')
 call s:HL('mkdInlineURL', s:palette.blue, s:palette.none, 'underline')
 call s:HL('mkdItalic', s:palette.grey, s:palette.none, 'italic')
-highlight! link mkdCodeDelimiter Green
-highlight! link mkdBold Grey
-highlight! link mkdLink Blue
-highlight! link mkdHeading Grey
-highlight! link mkdListItem Pink
-highlight! link mkdRule Grey
-highlight! link mkdDelimiter Grey
-highlight! link mkdId Yellow
+hi! link mkdCodeDelimiter Green
+hi! link mkdBold Grey
+hi! link mkdLink Blue
+hi! link mkdHeading Grey
+hi! link mkdListItem Pink
+hi! link mkdRule Grey
+hi! link mkdDelimiter Grey
+hi! link mkdId Yellow
 " }}}
 " }}}
 " LaTex: {{{
 " builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX{{{
-highlight! link texStatement Green
-highlight! link texOnlyMath Grey
-highlight! link texDefName Yellow
-highlight! link texNewCmd Burned
-highlight! link texCmdName Blue
-highlight! link texBeginEnd Red
-highlight! link texBeginEndName Blue
-highlight! link texDocType blue
-highlight! link texDocTypeArgs Burned
+hi! link texStatement Green
+hi! link texOnlyMath Grey
+hi! link texDefName Yellow
+hi! link texNewCmd Burned
+hi! link texCmdName Blue
+hi! link texBeginEnd Red
+hi! link texBeginEndName Blue
+hi! link texDocType blue
+hi! link texDocTypeArgs Burned
 " }}}
 " }}}
 " Html: {{{
@@ -327,7 +326,7 @@ call s:HL('htmlH3', s:palette.yellow, s:palette.none, 'bold')
 call s:HL('htmlH4', s:palette.green, s:palette.none, 'bold')
 call s:HL('htmlH5', s:palette.cyan, s:palette.none, 'bold')
 call s:HL('htmlH6', s:palette.blue, s:palette.none, 'bold')
-call s:HL('htmlLink', s:palette.brown, s:palette.none, 'underline')
+call s:HL('htmlLink', s:palette.burned, s:palette.none, 'underline')
 call s:HL('htmlBold', s:palette.none, s:palette.none, 'bold')
 call s:HL('htmlBoldUnderline', s:palette.none, s:palette.none, 'bold,underline')
 call s:HL('htmlBoldItalic', s:palette.none, s:palette.none, 'bold,italic')
@@ -337,516 +336,516 @@ call s:HL('htmlUnderlineItalic', s:palette.none, s:palette.none, 'underline,ital
 call s:HL('htmlItalic', s:palette.none, s:palette.none, 'italic')
 call s:HL('htmlTag', s:palette.light_grey, s:palette.none)
 call s:HL('htmlTagN', s:palette.pink, s:palette.none)
-highlight! link htmlEndTag Blue
+hi! link htmlEndTag Blue
 " call s:HL('htmlTagName', s:palette.green, s:palette.none)
-highlight! link htmlArg Cyan
-highlight! link htmlScriptTag blue
-highlight! link htmlSpecialTagName RedItalic
+hi! link htmlArg Cyan
+hi! link htmlScriptTag blue
+hi! link htmlSpecialTagName RedItalic
 " }}}
 " }}}
 " Xml: {{{
 " builtin: https://github.com/chrisbra/vim-xml-ftplugin{{{
-highlight! link xmlTag Green
-highlight! link xmlEndTag Blue
-highlight! link xmlTagName burnedItalic
-highlight! link xmlEqual Burned
-highlight! link xmlAttrib Cyan
-highlight! link xmlEntity Red
-highlight! link xmlEntityPunct Red
-highlight! link xmlDocTypeDecl Grey
-highlight! link xmlDocTypeKeyword blueItalic
-highlight! link xmlCdataStart Grey
-highlight! link xmlCdataCdata blue
+hi! link xmlTag Green
+hi! link xmlEndTag Blue
+hi! link xmlTagName burnedItalic
+hi! link xmlEqual Burned
+hi! link xmlAttrib Cyan
+hi! link xmlEntity Red
+hi! link xmlEntityPunct Red
+hi! link xmlDocTypeDecl Grey
+hi! link xmlDocTypeKeyword blueItalic
+hi! link xmlCdataStart Grey
+hi! link xmlCdataCdata blue
 " }}}
 " }}}
 " CSS: {{{
 " builtin: https://github.com/JulesWang/css.vim{{{
-highlight! link cssAttrComma Fg
-highlight! link cssBraces Fg
-highlight! link cssTagName blueItalic
-highlight! link cssClassNameDot Red
-highlight! link cssClassName RedItalic
-highlight! link cssFunctionName Yellow
-highlight! link cssAttr Burned
-highlight! link cssProp Cyan
-highlight! link cssCommonAttr Yellow
-highlight! link cssPseudoClassId Blue
-highlight! link cssPseudoClassFn Green
-highlight! link cssPseudoClass blue
-highlight! link cssImportant RedItalic
-highlight! link cssSelectorOp Burned
-highlight! link cssSelectorOp2 Burned
-highlight! link cssColor Green
-highlight! link cssAttributeSelector Cyan
-highlight! link cssUnitDecorators Burned
-highlight! link cssValueLength Green
-highlight! link cssValueInteger Green
-highlight! link cssValueNumber Green
-highlight! link cssValueAngle Green
-highlight! link cssValueTime Green
-highlight! link cssValueFrequency Green
-highlight! link cssVendor Grey
-highlight! link cssNoise Grey
+hi! link cssAttrComma Fg
+hi! link cssBraces Fg
+hi! link cssTagName blueItalic
+hi! link cssClassNameDot Red
+hi! link cssClassName RedItalic
+hi! link cssFunctionName Yellow
+hi! link cssAttr Burned
+hi! link cssProp Cyan
+hi! link cssCommonAttr Yellow
+hi! link cssPseudoClassId Blue
+hi! link cssPseudoClassFn Green
+hi! link cssPseudoClass blue
+hi! link cssImportant RedItalic
+hi! link cssSelectorOp Burned
+hi! link cssSelectorOp2 Burned
+hi! link cssColor Green
+hi! link cssAttributeSelector Cyan
+hi! link cssUnitDecorators Burned
+hi! link cssValueLength Green
+hi! link cssValueInteger Green
+hi! link cssValueNumber Green
+hi! link cssValueAngle Green
+hi! link cssValueTime Green
+hi! link cssValueFrequency Green
+hi! link cssVendor Grey
+hi! link cssNoise Grey
 " }}}
 " }}}
 " LESS: {{{
 " vim-less: https://github.com/groenewege/vim-less{{{
-highlight! link lessMixinChar Grey
-highlight! link lessClass RedItalic
-highlight! link lessVariable Blue
-highlight! link lessAmpersandChar Burned
-highlight! link lessFunction Yellow
+hi! link lessMixinChar Grey
+hi! link lessClass RedItalic
+hi! link lessVariable Blue
+hi! link lessAmpersandChar Burned
+hi! link lessFunction Yellow
 " }}}
 " }}}
 " JavaScript: {{{
 " builtin: http://www.fleiner.com/vim/syntax/javascript.vim{{{
-highlight! link javaScriptNull Cyan
-highlight! link javaScriptIdentifier Burned
-highlight! link javaScriptParens Fg
-highlight! link javaScriptBraces Fg
-highlight! link javaScriptGlobal blue
-highlight! link javaScriptMessage Yellow
-highlight! link javaScriptFunction RedItalic
-highlight! link javaScriptOperator Burned
-highlight! link javaScriptMember Cyan
+hi! link javaScriptNull Cyan
+hi! link javaScriptIdentifier Burned
+hi! link javaScriptParens Fg
+hi! link javaScriptBraces Fg
+hi! link javaScriptGlobal blue
+hi! link javaScriptMessage Yellow
+hi! link javaScriptFunction RedItalic
+hi! link javaScriptOperator Burned
+hi! link javaScriptMember Cyan
 " }}}
 " vim-javascript: https://github.com/pangloss/vim-javascript{{{
-highlight! link jsThis blue
-highlight! link jsUndefined Cyan
-highlight! link jsNull Cyan
-highlight! link jsNan Cyan
-highlight! link jsSuper blue
-highlight! link jsPrototype blue
-highlight! link jsFunction RedItalic
-highlight! link jsGlobalNodeObjects blueItalic
-highlight! link jsGlobalObjects Yellow
-highlight! link jsArrowFunction blue
-highlight! link jsArrowFuncArgs Blue
-highlight! link jsFuncArgs Blue
-highlight! link jsObjectProp Cyan
-highlight! link jsVariableDef Blue
-highlight! link jsObjectKey Cyan
-highlight! link jsParen Blue
-highlight! link jsParenIfElse Blue
-highlight! link jsParenRepeat Blue
-highlight! link jsParenSwitch Blue
-highlight! link jsParenCatch Blue
-highlight! link jsBracket Blue
-highlight! link jsBlockLabel Cyan
-highlight! link jsFunctionKey Green
-highlight! link jsClassDefinition Yellow
-highlight! link jsDot Grey
-highlight! link jsDestructuringBlock Blue
-highlight! link jsSpreadExpression blue
-highlight! link jsSpreadOperator Green
-highlight! link jsModuleKeyword Yellow
-highlight! link jsObjectValue Blue
-highlight! link jsbrownlateExpression LightGray
-highlight! link jsbrownlateBraces Yellow
-highlight! link jsClassMethodType Burned
+hi! link jsThis blue
+hi! link jsUndefined Cyan
+hi! link jsNull Cyan
+hi! link jsNan Cyan
+hi! link jsSuper blue
+hi! link jsPrototype blue
+hi! link jsFunction RedItalic
+hi! link jsGlobalNodeObjects blueItalic
+hi! link jsGlobalObjects Yellow
+hi! link jsArrowFunction blue
+hi! link jsArrowFuncArgs Blue
+hi! link jsFuncArgs Blue
+hi! link jsObjectProp Cyan
+hi! link jsVariableDef Blue
+hi! link jsObjectKey Cyan
+hi! link jsParen Blue
+hi! link jsParenIfElse Blue
+hi! link jsParenRepeat Blue
+hi! link jsParenSwitch Blue
+hi! link jsParenCatch Blue
+hi! link jsBracket Blue
+hi! link jsBlockLabel Cyan
+hi! link jsFunctionKey Green
+hi! link jsClassDefinition Yellow
+hi! link jsDot Grey
+hi! link jsDestructuringBlock Blue
+hi! link jsSpreadExpression blue
+hi! link jsSpreadOperator Green
+hi! link jsModuleKeyword Yellow
+hi! link jsObjectValue Blue
+hi! link jsbrownlateExpression LightGray
+hi! link jsbrownlateBraces Yellow
+hi! link jsClassMethodType Burned
 " }}}
 " yajs: https://github.com/othree/yajs.vim{{{
-highlight! link javascriptEndColons Fg
-highlight! link javascriptOpSymbol Burned
-highlight! link javascriptOpSymbols Burned
-highlight! link javascriptIdentifierName Blue
-highlight! link javascriptVariable Burned
-highlight! link javascriptObjectLabel Cyan
-highlight! link javascriptObjectLabelColon Grey
-highlight! link javascriptPropertyNameString Cyan
-highlight! link javascriptFuncArg Blue
-highlight! link javascriptIdentifier blue
-highlight! link javascriptArrowFunc blue
-highlight! link javascriptbrownlate Yellow
-highlight! link javascriptbrownlateSubstitution Yellow
-highlight! link javascriptbrownlateSB Yellow
-highlight! link javascriptNodeGlobal blueItalic
-highlight! link javascriptDocTags blueItalic
-highlight! link javascriptDocNotation blue
-highlight! link javascriptClassSuper blue
-highlight! link javascriptClassName Yellow
-highlight! link javascriptClassSuperName Yellow
-highlight! link javascriptBrackets Fg
-highlight! link javascriptBraces Fg
-highlight! link javascriptLabel blue
-highlight! link javascriptDotNotation Grey
-highlight! link javascriptGlobalArrayDot Grey
-highlight! link javascriptGlobalBigIntDot Grey
-highlight! link javascriptGlobalDateDot Grey
-highlight! link javascriptGlobalJSONDot Grey
-highlight! link javascriptGlobalMathDot Grey
-highlight! link javascriptGlobalNumberDot Grey
-highlight! link javascriptGlobalObjectDot Grey
-highlight! link javascriptGlobalPromiseDot Grey
-highlight! link javascriptGlobalRegExpDot Grey
-highlight! link javascriptGlobalStringDot Grey
-highlight! link javascriptGlobalSymbolDot Grey
-highlight! link javascriptGlobalURLDot Grey
-highlight! link javascriptMethod Green
-highlight! link javascriptMethodName Green
-highlight! link javascriptObjectMethodName Green
-highlight! link javascriptGlobalMethod Green
-highlight! link javascriptDOMStorageMethod Green
-highlight! link javascriptFileMethod Green
-highlight! link javascriptFileReaderMethod Green
-highlight! link javascriptFileListMethod Green
-highlight! link javascriptBlobMethod Green
-highlight! link javascriptURLStaticMethod Green
-highlight! link javascriptNumberStaticMethod Green
-highlight! link javascriptNumberMethod Green
-highlight! link javascriptDOMNodeMethod Green
-highlight! link javascriptES6BigIntStaticMethod Green
-highlight! link javascriptBOMWindowMethod Green
-highlight! link javascriptHeadersMethod Green
-highlight! link javascriptRequestMethod Green
-highlight! link javascriptResponseMethod Green
-highlight! link javascriptES6SetMethod Green
-highlight! link javascriptReflectMethod Green
-highlight! link javascriptPaymentMethod Green
-highlight! link javascriptPaymentResponseMethod Green
-highlight! link javascriptTypedArrayStaticMethod Green
-highlight! link javascriptGeolocationMethod Green
-highlight! link javascriptES6MapMethod Green
-highlight! link javascriptServiceWorkerMethod Green
-highlight! link javascriptCacheMethod Green
-highlight! link javascriptFunctionMethod Green
-highlight! link javascriptXHRMethod Green
-highlight! link javascriptBOMNavigatorMethod Green
-highlight! link javascriptServiceWorkerMethod Green
-highlight! link javascriptDOMEventTargetMethod Green
-highlight! link javascriptDOMEventMethod Green
-highlight! link javascriptIntlMethod Green
-highlight! link javascriptDOMDocMethod Green
-highlight! link javascriptStringStaticMethod Green
-highlight! link javascriptStringMethod Green
-highlight! link javascriptSymbolStaticMethod Green
-highlight! link javascriptRegExpMethod Green
-highlight! link javascriptObjectStaticMethod Green
-highlight! link javascriptObjectMethod Green
-highlight! link javascriptBOMLocationMethod Green
-highlight! link javascriptJSONStaticMethod Green
-highlight! link javascriptGeneratorMethod Green
-highlight! link javascriptEncodingMethod Green
-highlight! link javascriptPromiseStaticMethod Green
-highlight! link javascriptPromiseMethod Green
-highlight! link javascriptBOMHistoryMethod Green
-highlight! link javascriptDOMFormMethod Green
-highlight! link javascriptClipboardMethod Green
-highlight! link javascriptTypedArrayStaticMethod Green
-highlight! link javascriptBroadcastMethod Green
-highlight! link javascriptDateStaticMethod Green
-highlight! link javascriptDateMethod Green
-highlight! link javascriptConsoleMethod Green
-highlight! link javascriptArrayStaticMethod Green
-highlight! link javascriptArrayMethod Green
-highlight! link javascriptMathStaticMethod Green
-highlight! link javascriptSubtleCryptoMethod Green
-highlight! link javascriptCryptoMethod Green
-highlight! link javascriptProp Cyan
-highlight! link javascriptBOMWindowProp Cyan
-highlight! link javascriptDOMStorageProp Cyan
-highlight! link javascriptFileReaderProp Cyan
-highlight! link javascriptURLUtilsProp Cyan
-highlight! link javascriptNumberStaticProp Cyan
-highlight! link javascriptDOMNodeProp Cyan
-highlight! link javascriptRequestProp Cyan
-highlight! link javascriptResponseProp Cyan
-highlight! link javascriptES6SetProp Cyan
-highlight! link javascriptPaymentProp Cyan
-highlight! link javascriptPaymentResponseProp Cyan
-highlight! link javascriptPaymentAddressProp Cyan
-highlight! link javascriptPaymentShippingOptionProp Cyan
-highlight! link javascriptTypedArrayStaticProp Cyan
-highlight! link javascriptServiceWorkerProp Cyan
-highlight! link javascriptES6MapProp Cyan
-highlight! link javascriptRegExpStaticProp Cyan
-highlight! link javascriptRegExpProp Cyan
-highlight! link javascriptXHRProp Cyan
-highlight! link javascriptBOMNavigatorProp Green
-highlight! link javascriptDOMEventProp Cyan
-highlight! link javascriptBOMNetworkProp Cyan
-highlight! link javascriptDOMDocProp Cyan
-highlight! link javascriptSymbolStaticProp Cyan
-highlight! link javascriptSymbolProp Cyan
-highlight! link javascriptBOMLocationProp Cyan
-highlight! link javascriptEncodingProp Cyan
-highlight! link javascriptCryptoProp Cyan
-highlight! link javascriptBOMHistoryProp Cyan
-highlight! link javascriptDOMFormProp Cyan
-highlight! link javascriptDataViewProp Cyan
-highlight! link javascriptBroadcastProp Cyan
-highlight! link javascriptMathStaticProp Cyan
+hi! link javascriptEndColons Fg
+hi! link javascriptOpSymbol Burned
+hi! link javascriptOpSymbols Burned
+hi! link javascriptIdentifierName Blue
+hi! link javascriptVariable Burned
+hi! link javascriptObjectLabel Cyan
+hi! link javascriptObjectLabelColon Grey
+hi! link javascriptPropertyNameString Cyan
+hi! link javascriptFuncArg Blue
+hi! link javascriptIdentifier blue
+hi! link javascriptArrowFunc blue
+hi! link javascriptbrownlate Yellow
+hi! link javascriptbrownlateSubstitution Yellow
+hi! link javascriptbrownlateSB Yellow
+hi! link javascriptNodeGlobal blueItalic
+hi! link javascriptDocTags blueItalic
+hi! link javascriptDocNotation blue
+hi! link javascriptClassSuper blue
+hi! link javascriptClassName Yellow
+hi! link javascriptClassSuperName Yellow
+hi! link javascriptBrackets Fg
+hi! link javascriptBraces Fg
+hi! link javascriptLabel blue
+hi! link javascriptDotNotation Grey
+hi! link javascriptGlobalArrayDot Grey
+hi! link javascriptGlobalBigIntDot Grey
+hi! link javascriptGlobalDateDot Grey
+hi! link javascriptGlobalJSONDot Grey
+hi! link javascriptGlobalMathDot Grey
+hi! link javascriptGlobalNumberDot Grey
+hi! link javascriptGlobalObjectDot Grey
+hi! link javascriptGlobalPromiseDot Grey
+hi! link javascriptGlobalRegExpDot Grey
+hi! link javascriptGlobalStringDot Grey
+hi! link javascriptGlobalSymbolDot Grey
+hi! link javascriptGlobalURLDot Grey
+hi! link javascriptMethod Green
+hi! link javascriptMethodName Green
+hi! link javascriptObjectMethodName Green
+hi! link javascriptGlobalMethod Green
+hi! link javascriptDOMStorageMethod Green
+hi! link javascriptFileMethod Green
+hi! link javascriptFileReaderMethod Green
+hi! link javascriptFileListMethod Green
+hi! link javascriptBlobMethod Green
+hi! link javascriptURLStaticMethod Green
+hi! link javascriptNumberStaticMethod Green
+hi! link javascriptNumberMethod Green
+hi! link javascriptDOMNodeMethod Green
+hi! link javascriptES6BigIntStaticMethod Green
+hi! link javascriptBOMWindowMethod Green
+hi! link javascriptHeadersMethod Green
+hi! link javascriptRequestMethod Green
+hi! link javascriptResponseMethod Green
+hi! link javascriptES6SetMethod Green
+hi! link javascriptReflectMethod Green
+hi! link javascriptPaymentMethod Green
+hi! link javascriptPaymentResponseMethod Green
+hi! link javascriptTypedArrayStaticMethod Green
+hi! link javascriptGeolocationMethod Green
+hi! link javascriptES6MapMethod Green
+hi! link javascriptServiceWorkerMethod Green
+hi! link javascriptCacheMethod Green
+hi! link javascriptFunctionMethod Green
+hi! link javascriptXHRMethod Green
+hi! link javascriptBOMNavigatorMethod Green
+hi! link javascriptServiceWorkerMethod Green
+hi! link javascriptDOMEventTargetMethod Green
+hi! link javascriptDOMEventMethod Green
+hi! link javascriptIntlMethod Green
+hi! link javascriptDOMDocMethod Green
+hi! link javascriptStringStaticMethod Green
+hi! link javascriptStringMethod Green
+hi! link javascriptSymbolStaticMethod Green
+hi! link javascriptRegExpMethod Green
+hi! link javascriptObjectStaticMethod Green
+hi! link javascriptObjectMethod Green
+hi! link javascriptBOMLocationMethod Green
+hi! link javascriptJSONStaticMethod Green
+hi! link javascriptGeneratorMethod Green
+hi! link javascriptEncodingMethod Green
+hi! link javascriptPromiseStaticMethod Green
+hi! link javascriptPromiseMethod Green
+hi! link javascriptBOMHistoryMethod Green
+hi! link javascriptDOMFormMethod Green
+hi! link javascriptClipboardMethod Green
+hi! link javascriptTypedArrayStaticMethod Green
+hi! link javascriptBroadcastMethod Green
+hi! link javascriptDateStaticMethod Green
+hi! link javascriptDateMethod Green
+hi! link javascriptConsoleMethod Green
+hi! link javascriptArrayStaticMethod Green
+hi! link javascriptArrayMethod Green
+hi! link javascriptMathStaticMethod Green
+hi! link javascriptSubtleCryptoMethod Green
+hi! link javascriptCryptoMethod Green
+hi! link javascriptProp Cyan
+hi! link javascriptBOMWindowProp Cyan
+hi! link javascriptDOMStorageProp Cyan
+hi! link javascriptFileReaderProp Cyan
+hi! link javascriptURLUtilsProp Cyan
+hi! link javascriptNumberStaticProp Cyan
+hi! link javascriptDOMNodeProp Cyan
+hi! link javascriptRequestProp Cyan
+hi! link javascriptResponseProp Cyan
+hi! link javascriptES6SetProp Cyan
+hi! link javascriptPaymentProp Cyan
+hi! link javascriptPaymentResponseProp Cyan
+hi! link javascriptPaymentAddressProp Cyan
+hi! link javascriptPaymentShippingOptionProp Cyan
+hi! link javascriptTypedArrayStaticProp Cyan
+hi! link javascriptServiceWorkerProp Cyan
+hi! link javascriptES6MapProp Cyan
+hi! link javascriptRegExpStaticProp Cyan
+hi! link javascriptRegExpProp Cyan
+hi! link javascriptXHRProp Cyan
+hi! link javascriptBOMNavigatorProp Green
+hi! link javascriptDOMEventProp Cyan
+hi! link javascriptBOMNetworkProp Cyan
+hi! link javascriptDOMDocProp Cyan
+hi! link javascriptSymbolStaticProp Cyan
+hi! link javascriptSymbolProp Cyan
+hi! link javascriptBOMLocationProp Cyan
+hi! link javascriptEncodingProp Cyan
+hi! link javascriptCryptoProp Cyan
+hi! link javascriptBOMHistoryProp Cyan
+hi! link javascriptDOMFormProp Cyan
+hi! link javascriptDataViewProp Cyan
+hi! link javascriptBroadcastProp Cyan
+hi! link javascriptMathStaticProp Cyan
 " }}}
 " }}}
 " JavaScript React: {{{
 " vim-jsx-pretty: https://github.com/maxmellon/vim-jsx-pretty{{{
-highlight! link jsxTagName burnedItalic
-highlight! link jsxOpenPunct Green
-highlight! link jsxClosePunct Blue
-highlight! link jsxEscapeJs Blue
-highlight! link jsxAttrib Cyan
+hi! link jsxTagName burnedItalic
+hi! link jsxOpenPunct Green
+hi! link jsxClosePunct Blue
+hi! link jsxEscapeJs Blue
+hi! link jsxAttrib Cyan
 " }}}
 " }}}
 " TypeScript: {{{
 " vim-typescript: https://github.com/leafgarland/typescript-vim{{{
-highlight! link typescriptSource blueItalic
-highlight! link typescriptMessage Yellow
-highlight! link typescriptGlobalObjects Cyan
-highlight! link typescriptInterpolation Yellow
-highlight! link typescriptInterpolationDelimiter Yellow
-highlight! link typescriptBraces Fg
-highlight! link typescriptParens Fg
+hi! link typescriptSource blueItalic
+hi! link typescriptMessage Yellow
+hi! link typescriptGlobalObjects Cyan
+hi! link typescriptInterpolation Yellow
+hi! link typescriptInterpolationDelimiter Yellow
+hi! link typescriptBraces Fg
+hi! link typescriptParens Fg
 " }}}
 " yats: https:github.com/HerringtonDarkholme/yats.vim{{{
-highlight! link typescriptMethodAccessor burnedItalic
-highlight! link typescriptVariable Burned
-highlight! link typescriptVariableDeclaration Blue
-highlight! link typescriptTypeReference Yellow
-highlight! link typescriptBraces Fg
-highlight! link typescriptEnumKeyword RedItalic
-highlight! link typescriptEnum Yellow
-highlight! link typescriptIdentifierName Cyan
-highlight! link typescriptProp Cyan
-highlight! link typescriptCall Blue
-highlight! link typescriptInterfaceName Yellow
-highlight! link typescriptEndColons Fg
-highlight! link typescriptMember Cyan
-highlight! link typescriptMemberOptionality Burned
-highlight! link typescriptObjectLabel Cyan
-highlight! link typescriptArrowFunc blue
-highlight! link typescriptAbstract Burned
-highlight! link typescriptObjectColon Grey
-highlight! link typescriptTypeAnnotation Grey
-highlight! link typescriptAssign Burned
-highlight! link typescriptBinaryOp Burned
-highlight! link typescriptUnaryOp Burned
-highlight! link typescriptFuncComma Fg
-highlight! link typescriptClassName Yellow
-highlight! link typescriptClassHeritage Yellow
-highlight! link typescriptInterfaceHeritage Yellow
-highlight! link typescriptIdentifier blue
-highlight! link typescriptGlobal blue
-highlight! link typescriptOperator RedItalic
-highlight! link typescriptNodeGlobal blueItalic
-highlight! link typescriptExport blueItalic
-highlight! link typescriptDefaultParam Burned
-highlight! link typescriptImport blueItalic
-highlight! link typescriptTypeParameter Yellow
-highlight! link typescriptReadonlyModifier Burned
-highlight! link typescriptAccessibilityModifier Burned
-highlight! link typescriptAmbientDeclaration RedItalic
-highlight! link typescriptbrownlateSubstitution Yellow
-highlight! link typescriptbrownlateSB Yellow
-highlight! link typescriptExceptions RedItalic
-highlight! link typescriptCastKeyword RedItalic
-highlight! link typescriptOptionalMark Burned
-highlight! link typescriptNull Cyan
-highlight! link typescriptMappedIn RedItalic
-highlight! link typescriptFuncTypeArrow blue
-highlight! link typescriptTernaryOp Burned
-highlight! link typescriptParenExp Blue
-highlight! link typescriptIndexExpr Blue
-highlight! link typescriptDotNotation Grey
-highlight! link typescriptGlobalNumberDot Grey
-highlight! link typescriptGlobalStringDot Grey
-highlight! link typescriptGlobalArrayDot Grey
-highlight! link typescriptGlobalObjectDot Grey
-highlight! link typescriptGlobalSymbolDot Grey
-highlight! link typescriptGlobalMathDot Grey
-highlight! link typescriptGlobalDateDot Grey
-highlight! link typescriptGlobalJSONDot Grey
-highlight! link typescriptGlobalRegExpDot Grey
-highlight! link typescriptGlobalPromiseDot Grey
-highlight! link typescriptGlobalURLDot Grey
-highlight! link typescriptGlobalMethod Green
-highlight! link typescriptDOMStorageMethod Green
-highlight! link typescriptFileMethod Green
-highlight! link typescriptFileReaderMethod Green
-highlight! link typescriptFileListMethod Green
-highlight! link typescriptBlobMethod Green
-highlight! link typescriptURLStaticMethod Green
-highlight! link typescriptNumberStaticMethod Green
-highlight! link typescriptNumberMethod Green
-highlight! link typescriptDOMNodeMethod Green
-highlight! link typescriptPaymentMethod Green
-highlight! link typescriptPaymentResponseMethod Green
-highlight! link typescriptHeadersMethod Green
-highlight! link typescriptRequestMethod Green
-highlight! link typescriptResponseMethod Green
-highlight! link typescriptES6SetMethod Green
-highlight! link typescriptReflectMethod Green
-highlight! link typescriptBOMWindowMethod Green
-highlight! link typescriptGeolocationMethod Green
-highlight! link typescriptServiceWorkerMethod Green
-highlight! link typescriptCacheMethod Green
-highlight! link typescriptES6MapMethod Green
-highlight! link typescriptFunctionMethod Green
-highlight! link typescriptRegExpMethod Green
-highlight! link typescriptXHRMethod Green
-highlight! link typescriptBOMNavigatorMethod Green
-highlight! link typescriptServiceWorkerMethod Green
-highlight! link typescriptIntlMethod Green
-highlight! link typescriptDOMEventTargetMethod Green
-highlight! link typescriptDOMEventMethod Green
-highlight! link typescriptDOMDocMethod Green
-highlight! link typescriptStringStaticMethod Green
-highlight! link typescriptStringMethod Green
-highlight! link typescriptSymbolStaticMethod Green
-highlight! link typescriptObjectStaticMethod Green
-highlight! link typescriptObjectMethod Green
-highlight! link typescriptJSONStaticMethod Green
-highlight! link typescriptEncodingMethod Green
-highlight! link typescriptBOMLocationMethod Green
-highlight! link typescriptPromiseStaticMethod Green
-highlight! link typescriptPromiseMethod Green
-highlight! link typescriptSubtleCryptoMethod Green
-highlight! link typescriptCryptoMethod Green
-highlight! link typescriptBOMHistoryMethod Green
-highlight! link typescriptDOMFormMethod Green
-highlight! link typescriptConsoleMethod Green
-highlight! link typescriptDateStaticMethod Green
-highlight! link typescriptDateMethod Green
-highlight! link typescriptArrayStaticMethod Green
-highlight! link typescriptArrayMethod Green
-highlight! link typescriptMathStaticMethod Green
-highlight! link typescriptStringProperty Cyan
-highlight! link typescriptDOMStorageProp Cyan
-highlight! link typescriptFileReaderProp Cyan
-highlight! link typescriptURLUtilsProp Cyan
-highlight! link typescriptNumberStaticProp Cyan
-highlight! link typescriptDOMNodeProp Cyan
-highlight! link typescriptBOMWindowProp Cyan
-highlight! link typescriptRequestProp Cyan
-highlight! link typescriptResponseProp Cyan
-highlight! link typescriptPaymentProp Cyan
-highlight! link typescriptPaymentResponseProp Cyan
-highlight! link typescriptPaymentAddressProp Cyan
-highlight! link typescriptPaymentShippingOptionProp Cyan
-highlight! link typescriptES6SetProp Cyan
-highlight! link typescriptServiceWorkerProp Cyan
-highlight! link typescriptES6MapProp Cyan
-highlight! link typescriptRegExpStaticProp Cyan
-highlight! link typescriptRegExpProp Cyan
-highlight! link typescriptBOMNavigatorProp Green
-highlight! link typescriptXHRProp Cyan
-highlight! link typescriptDOMEventProp Cyan
-highlight! link typescriptDOMDocProp Cyan
-highlight! link typescriptBOMNetworkProp Cyan
-highlight! link typescriptSymbolStaticProp Cyan
-highlight! link typescriptEncodingProp Cyan
-highlight! link typescriptBOMLocationProp Cyan
-highlight! link typescriptCryptoProp Cyan
-highlight! link typescriptDOMFormProp Cyan
-highlight! link typescriptBOMHistoryProp Cyan
-highlight! link typescriptMathStaticProp Cyan
+hi! link typescriptMethodAccessor burnedItalic
+hi! link typescriptVariable Burned
+hi! link typescriptVariableDeclaration Blue
+hi! link typescriptTypeReference Yellow
+hi! link typescriptBraces Fg
+hi! link typescriptEnumKeyword RedItalic
+hi! link typescriptEnum Yellow
+hi! link typescriptIdentifierName Cyan
+hi! link typescriptProp Cyan
+hi! link typescriptCall Blue
+hi! link typescriptInterfaceName Yellow
+hi! link typescriptEndColons Fg
+hi! link typescriptMember Cyan
+hi! link typescriptMemberOptionality Burned
+hi! link typescriptObjectLabel Cyan
+hi! link typescriptArrowFunc blue
+hi! link typescriptAbstract Burned
+hi! link typescriptObjectColon Grey
+hi! link typescriptTypeAnnotation Grey
+hi! link typescriptAssign Burned
+hi! link typescriptBinaryOp Burned
+hi! link typescriptUnaryOp Burned
+hi! link typescriptFuncComma Fg
+hi! link typescriptClassName Yellow
+hi! link typescriptClassHeritage Yellow
+hi! link typescriptInterfaceHeritage Yellow
+hi! link typescriptIdentifier blue
+hi! link typescriptGlobal blue
+hi! link typescriptOperator RedItalic
+hi! link typescriptNodeGlobal blueItalic
+hi! link typescriptExport blueItalic
+hi! link typescriptDefaultParam Burned
+hi! link typescriptImport blueItalic
+hi! link typescriptTypeParameter Yellow
+hi! link typescriptReadonlyModifier Burned
+hi! link typescriptAccessibilityModifier Burned
+hi! link typescriptAmbientDeclaration RedItalic
+hi! link typescriptbrownlateSubstitution Yellow
+hi! link typescriptbrownlateSB Yellow
+hi! link typescriptExceptions RedItalic
+hi! link typescriptCastKeyword RedItalic
+hi! link typescriptOptionalMark Burned
+hi! link typescriptNull Cyan
+hi! link typescriptMappedIn RedItalic
+hi! link typescriptFuncTypeArrow blue
+hi! link typescriptTernaryOp Burned
+hi! link typescriptParenExp Blue
+hi! link typescriptIndexExpr Blue
+hi! link typescriptDotNotation Grey
+hi! link typescriptGlobalNumberDot Grey
+hi! link typescriptGlobalStringDot Grey
+hi! link typescriptGlobalArrayDot Grey
+hi! link typescriptGlobalObjectDot Grey
+hi! link typescriptGlobalSymbolDot Grey
+hi! link typescriptGlobalMathDot Grey
+hi! link typescriptGlobalDateDot Grey
+hi! link typescriptGlobalJSONDot Grey
+hi! link typescriptGlobalRegExpDot Grey
+hi! link typescriptGlobalPromiseDot Grey
+hi! link typescriptGlobalURLDot Grey
+hi! link typescriptGlobalMethod Green
+hi! link typescriptDOMStorageMethod Green
+hi! link typescriptFileMethod Green
+hi! link typescriptFileReaderMethod Green
+hi! link typescriptFileListMethod Green
+hi! link typescriptBlobMethod Green
+hi! link typescriptURLStaticMethod Green
+hi! link typescriptNumberStaticMethod Green
+hi! link typescriptNumberMethod Green
+hi! link typescriptDOMNodeMethod Green
+hi! link typescriptPaymentMethod Green
+hi! link typescriptPaymentResponseMethod Green
+hi! link typescriptHeadersMethod Green
+hi! link typescriptRequestMethod Green
+hi! link typescriptResponseMethod Green
+hi! link typescriptES6SetMethod Green
+hi! link typescriptReflectMethod Green
+hi! link typescriptBOMWindowMethod Green
+hi! link typescriptGeolocationMethod Green
+hi! link typescriptServiceWorkerMethod Green
+hi! link typescriptCacheMethod Green
+hi! link typescriptES6MapMethod Green
+hi! link typescriptFunctionMethod Green
+hi! link typescriptRegExpMethod Green
+hi! link typescriptXHRMethod Green
+hi! link typescriptBOMNavigatorMethod Green
+hi! link typescriptServiceWorkerMethod Green
+hi! link typescriptIntlMethod Green
+hi! link typescriptDOMEventTargetMethod Green
+hi! link typescriptDOMEventMethod Green
+hi! link typescriptDOMDocMethod Green
+hi! link typescriptStringStaticMethod Green
+hi! link typescriptStringMethod Green
+hi! link typescriptSymbolStaticMethod Green
+hi! link typescriptObjectStaticMethod Green
+hi! link typescriptObjectMethod Green
+hi! link typescriptJSONStaticMethod Green
+hi! link typescriptEncodingMethod Green
+hi! link typescriptBOMLocationMethod Green
+hi! link typescriptPromiseStaticMethod Green
+hi! link typescriptPromiseMethod Green
+hi! link typescriptSubtleCryptoMethod Green
+hi! link typescriptCryptoMethod Green
+hi! link typescriptBOMHistoryMethod Green
+hi! link typescriptDOMFormMethod Green
+hi! link typescriptConsoleMethod Green
+hi! link typescriptDateStaticMethod Green
+hi! link typescriptDateMethod Green
+hi! link typescriptArrayStaticMethod Green
+hi! link typescriptArrayMethod Green
+hi! link typescriptMathStaticMethod Green
+hi! link typescriptStringProperty Cyan
+hi! link typescriptDOMStorageProp Cyan
+hi! link typescriptFileReaderProp Cyan
+hi! link typescriptURLUtilsProp Cyan
+hi! link typescriptNumberStaticProp Cyan
+hi! link typescriptDOMNodeProp Cyan
+hi! link typescriptBOMWindowProp Cyan
+hi! link typescriptRequestProp Cyan
+hi! link typescriptResponseProp Cyan
+hi! link typescriptPaymentProp Cyan
+hi! link typescriptPaymentResponseProp Cyan
+hi! link typescriptPaymentAddressProp Cyan
+hi! link typescriptPaymentShippingOptionProp Cyan
+hi! link typescriptES6SetProp Cyan
+hi! link typescriptServiceWorkerProp Cyan
+hi! link typescriptES6MapProp Cyan
+hi! link typescriptRegExpStaticProp Cyan
+hi! link typescriptRegExpProp Cyan
+hi! link typescriptBOMNavigatorProp Green
+hi! link typescriptXHRProp Cyan
+hi! link typescriptDOMEventProp Cyan
+hi! link typescriptDOMDocProp Cyan
+hi! link typescriptBOMNetworkProp Cyan
+hi! link typescriptSymbolStaticProp Cyan
+hi! link typescriptEncodingProp Cyan
+hi! link typescriptBOMLocationProp Cyan
+hi! link typescriptCryptoProp Cyan
+hi! link typescriptDOMFormProp Cyan
+hi! link typescriptBOMHistoryProp Cyan
+hi! link typescriptMathStaticProp Cyan
 " }}}
 " }}}
 " C/C++: {{{
-" vim-cpp-enhanced-highlight: https://github.com/octol/vim-cpp-enhanced-highlight{{{
-highlight! link cppSTLnamespace blue
-highlight! link cppSTLtype Yellow
-highlight! link cppAccess blueItalic
-highlight! link cppStructure RedItalic
-highlight! link cppSTLios Cyan
-highlight! link cppSTLiterator blueItalic
-highlight! link cppSTLexception blue
+" vim-cpp-enhanced-hi: https://github.com/octol/vim-cpp-enhanced-hi{{{
+hi! link cppSTLnamespace blue
+hi! link cppSTLtype Yellow
+hi! link cppAccess blueItalic
+hi! link cppStructure RedItalic
+hi! link cppSTLios Cyan
+hi! link cppSTLiterator blueItalic
+hi! link cppSTLexception blue
 " }}}
 " vim-cpp-modern: https://github.com/bfrg/vim-cpp-modern{{{
-highlight! link cppSTLVariable Cyan
+hi! link cppSTLVariable Cyan
 " }}}
 " }}}
 " C#: {{{
 " builtin: https://github.com/nickspoons/vim-cs{{{
-highlight! link csUnspecifiedStatement blueItalic
-highlight! link csStorage RedItalic
-highlight! link csClass RedItalic
-highlight! link csNewType Cyan
-highlight! link csContextualStatement blueItalic
-highlight! link csInterpolationDelimiter Yellow
-highlight! link csInterpolation Yellow
-highlight! link csEndColon Fg
+hi! link csUnspecifiedStatement blueItalic
+hi! link csStorage RedItalic
+hi! link csClass RedItalic
+hi! link csNewType Cyan
+hi! link csContextualStatement blueItalic
+hi! link csInterpolationDelimiter Yellow
+hi! link csInterpolation Yellow
+hi! link csEndColon Fg
 " }}}
 " }}}
 " Python: {{{
 " builtin: {{{
-highlight! link pythonBuiltin Yellow
-highlight! link pythonExceptions blue
-highlight! link pythonDecoratorName Blue
+hi! link pythonBuiltin Yellow
+hi! link pythonExceptions blue
+hi! link pythonDecoratorName Blue
 " }}}
 " python-syntax: https://github.com/vim-python/python-syntax{{{
-highlight! link pythonExClass blue
-highlight! link pythonBuiltinType Yellow
-highlight! link pythonBuiltinObj Blue
-highlight! link pythonDottedName blueItalic
-highlight! link pythonBuiltinFunc Green
-highlight! link pythonFunction Cyan
-highlight! link pythonDecorator Burned
-highlight! link pythonInclude Include
-highlight! link pythonImport PreProc
-highlight! link pythonRun Blue
-highlight! link pythonCoding Grey
-highlight! link pythonOperator Burned
-highlight! link pythonConditional RedItalic
-highlight! link pythonRepeat RedItalic
-highlight! link pythonException RedItalic
-highlight! link pythonNone Cyan
-highlight! link pythonDot Grey
+hi! link pythonExClass blue
+hi! link pythonBuiltinType Yellow
+hi! link pythonBuiltinObj Blue
+hi! link pythonDottedName blueItalic
+hi! link pythonBuiltinFunc Green
+hi! link pythonFunction Cyan
+hi! link pythonDecorator Burned
+hi! link pythonInclude Include
+hi! link pythonImport PreProc
+hi! link pythonRun Blue
+hi! link pythonCoding Grey
+hi! link pythonOperator Burned
+hi! link pythonConditional RedItalic
+hi! link pythonRepeat RedItalic
+hi! link pythonException RedItalic
+hi! link pythonNone Cyan
+hi! link pythonDot Grey
 " }}}
 " }}}
 " Lua: {{{
 " builtin: {{{
-highlight! link luaFunc Green
-highlight! link luaFunction Green
-highlight! link luaTable Fg
-highlight! link luaIn RedItalic
+hi! link luaFunc Green
+hi! link luaFunction Green
+hi! link luaTable Fg
+hi! link luaIn RedItalic
 " }}}
 " vim-lua: https://github.com/tbastos/vim-lua{{{
-highlight! link luaFuncCall Green
-highlight! link luaLocal Burned
-highlight! link luaSpecialValue Green
-highlight! link luaBraces Fg
-highlight! link luaBuiltIn blue
-highlight! link luaNoise Grey
-highlight! link luaLabel blue
-highlight! link luaFuncTable Yellow
-highlight! link luaFuncArgName Blue
-highlight! link luaEllipsis Burned
-highlight! link luaDocTag Green
+hi! link luaFuncCall Green
+hi! link luaLocal Burned
+hi! link luaSpecialValue Green
+hi! link luaBraces Fg
+hi! link luaBuiltIn blue
+hi! link luaNoise Grey
+hi! link luaLabel blue
+hi! link luaFuncTable Yellow
+hi! link luaFuncArgName Blue
+hi! link luaEllipsis Burned
+hi! link luaDocTag Green
 " }}}
 " }}}
 " Moonscript: {{{
 " moonscript-vim: https://github.com/leafo/moonscript-vim{{{
-highlight! link moonInterpDelim Yellow
-highlight! link moonInterp Blue
-highlight! link moonFunction Green
-highlight! link moonLuaFunc Cyan
-highlight! link moonSpecialVar blue
-highlight! link moonObject Yellow
-highlight! link moonDotAccess Grey
+hi! link moonInterpDelim Yellow
+hi! link moonInterp Blue
+hi! link moonFunction Green
+hi! link moonLuaFunc Cyan
+hi! link moonSpecialVar blue
+hi! link moonObject Yellow
+hi! link moonDotAccess Grey
 " }}}
 " }}}
 " Kotlin: {{{
 " kotlin-vim: https://github.com/udalov/kotlin-vim{{{
-highlight! link ktSimpleInterpolation Yellow
-highlight! link ktComplexInterpolation Yellow
-highlight! link ktComplexInterpolationBrace Yellow
-highlight! link ktStructure RedItalic
-highlight! link ktKeyword Cyan
+hi! link ktSimpleInterpolation Yellow
+hi! link ktComplexInterpolation Yellow
+hi! link ktComplexInterpolationBrace Yellow
+hi! link ktStructure RedItalic
+hi! link ktKeyword Cyan
 " }}}
 " }}}
 " Go: {{{
 " builtin: https://github.com/google/vim-ft-go{{{
-highlight! link goDirective blueItalic
-highlight! link goConstants Cyan
-highlight! link goDeclType burnedItalic
+hi! link goDirective blueItalic
+hi! link goConstants Cyan
+hi! link goDeclType burnedItalic
 " }}}
 " polyglot: {{{
-highlight! link goPackage blueItalic
-highlight! link goImport blueItalic
-highlight! link goVarArgs Blue
-highlight! link goBuiltins Green
-highlight! link goPredefinedIdentifiers Cyan
-highlight! link goVar Burned
+hi! link goPackage blueItalic
+hi! link goImport blueItalic
+hi! link goVarArgs Blue
+hi! link goBuiltins Green
+hi! link goPredefinedIdentifiers Cyan
+hi! link goVar Burned
 " }}}
 " }}}
 " GDScript:: {{{
@@ -856,141 +855,158 @@ hi! link gdscriptNode Structure
 " }}}
 " PHP: {{{
 " builtin: https://jasonwoof.com/gitweb/?p=vim-syntax.git;a=blob;f=php.vim;hb=HEAD{{{
-highlight! link phpVarSelector Blue
-highlight! link phpDefine burnedItalic
-highlight! link phpStructure RedItalic
-highlight! link phpSpecialFunction Green
-highlight! link phpInterpSimpleCurly Yellow
-highlight! link phpComparison Burned
-highlight! link phpMethodsVar Cyan
-highlight! link phpMemberSelector Green
+hi! link phpVarSelector Blue
+hi! link phpDefine burnedItalic
+hi! link phpStructure RedItalic
+hi! link phpSpecialFunction Green
+hi! link phpInterpSimpleCurly Yellow
+hi! link phpComparison Burned
+hi! link phpMethodsVar Cyan
+hi! link phpMemberSelector Green
 " }}}
 " php.vim: https://github.com/StanAngeloff/php.vim{{{
-highlight! link phpParent Fg
-highlight! link phpNowDoc Green
-highlight! link phpFunction Green
-highlight! link phpMethod Green
-highlight! link phpClass Burned
-highlight! link phpSuperglobals blue
+hi! link phpParent Fg
+hi! link phpNowDoc Green
+hi! link phpFunction Green
+hi! link phpMethod Green
+hi! link phpClass Burned
+hi! link phpSuperglobals blue
 " }}}
 " }}}
 " Ruby: {{{
 " builtin: https://github.com/vim-ruby/vim-ruby{{{
-highlight! link rubyKeywordAsMethod Green
-highlight! link rubyInterpolation Yellow
-highlight! link rubyInterpolationDelimiter Yellow
-highlight! link rubyStringDelimiter Green
-highlight! link rubyBlockParameterList Blue
-highlight! link rubyDefine RedItalic
-highlight! link rubyModuleName blue
-highlight! link rubyAccess Burned
-highlight! link rubyAttribute Yellow
-highlight! link rubyMacro RedItalic
+hi! link rubyKeywordAsMethod Green
+hi! link rubyInterpolation Yellow
+hi! link rubyInterpolationDelimiter Yellow
+hi! link rubyStringDelimiter Green
+hi! link rubyBlockParameterList Blue
+hi! link rubyDefine RedItalic
+hi! link rubyModuleName blue
+hi! link rubyAccess Burned
+hi! link rubyAttribute Yellow
+hi! link rubyMacro RedItalic
+" }}}
+" }}}
+" Rust: {{{
+" builtin: https://github.com/rust-lang/rust.vim {{{
+hi! link rustModPath Identifier
+hi! link rustSelf Type
+hi! link rustSigil Exception
+hi! link rustMacroVariable Identifier
+hi! link rustPanic Red
 " }}}
 " }}}
 " Haskell: {{{
 " haskell-vim: https://github.com/neovimhaskell/haskell-vim{{{
-highlight! link haskellBrackets Blue
-highlight! link haskellIdentifier Yellow
-highlight! link haskellAssocType Cyan
-highlight! link haskellQuotedType Cyan
-highlight! link haskellType Cyan
-highlight! link haskellDeclKeyword RedItalic
-highlight! link haskellWhere RedItalic
-highlight! link haskellDeriving blueItalic
-highlight! link haskellForeignKeywords blueItalic
+hi! link haskellBrackets Blue
+hi! link haskellIdentifier Yellow
+hi! link haskellAssocType Cyan
+hi! link haskellQuotedType Cyan
+hi! link haskellType Cyan
+hi! link haskellDeclKeyword RedItalic
+hi! link haskellWhere RedItalic
+hi! link haskellDeriving blueItalic
+hi! link haskellForeignKeywords blueItalic
 " }}}
 " }}}
 " Perl: {{{
 " builtin: https://github.com/vim-perl/vim-perl{{{
-highlight! link perlStatementPackage blueItalic
-highlight! link perlStatementInclude blueItalic
-highlight! link perlStatementStorage Burned
-highlight! link perlStatementList Burned
-highlight! link perlMatchStartEnd Burned
-highlight! link perlVarSimpleMemberName Cyan
-highlight! link perlVarSimpleMember Fg
-highlight! link perlMethod Green
-highlight! link podVerbatimLine Green
-highlight! link podCmdText Yellow
+hi! link perlStatementPackage blueItalic
+hi! link perlStatementInclude blueItalic
+hi! link perlStatementStorage Burned
+hi! link perlStatementList Burned
+hi! link perlMatchStartEnd Burned
+hi! link perlVarSimpleMemberName Cyan
+hi! link perlVarSimpleMember Fg
+hi! link perlMethod Green
+hi! link podVerbatimLine Green
+hi! link podCmdText Yellow
 " }}}
 " }}}
 " Shell: {{{
 " builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_SH{{{
-highlight! link shRange Fg
-highlight! link shTestOpr Burned
-highlight! link shOption Cyan
-highlight! link bashStatement Burned
-highlight! link shOperator Burned
-highlight! link shQuote Green
-highlight! link shSet Burned
-highlight! link shSetList Blue
-highlight! link shSnglCase Burned
-highlight! link shVariable Blue
-highlight! link shVarAssign Burned
-highlight! link shCmdSubRegion Green
-highlight! link shCommandSub Burned
-highlight! link shFunctionOne Green
-highlight! link shFunctionKey RedItalic
+hi! link shRange Fg
+hi! link shTestOpr Burned
+hi! link shOption Cyan
+hi! link bashStatement Burned
+hi! link shOperator operator
+hi! link shQuote Moss
+hi! link shSet Burned
+hi! link shSetList Fg
+hi! link shSnglCase Burned
+hi! link shVariable Identifier
+hi! link shVarAssign Burned
+hi! link shCmdSubRegion Green
+hi! link shCommandSub Burned
+hi! link shFunctionOne Green
+hi! link shDerefSimple Fg
+hi! link shFunctionKey RedItalic
 " }}}
 " }}}
 " Zsh: {{{
 " builtin: https://github.com/chrisbra/vim-zsh{{{
-highlight! link zshOptStart blueItalic
-highlight! link zshOption Blue
-highlight! link zshSubst Yellow
-highlight! link zshFunction Green
-highlight! link zshDeref Blue
-highlight! link zshTypes Burned
-highlight! link zshVariableDef Blue
+hi! link zshOptStart blueItalic
+hi! link zshOption Blue
+hi! link zshSubst Yellow
+hi! link zshFunction Green
+hi! link zshDeref Blue
+hi! link zshTypes Burned
+hi! link zshVariableDef Blue
 " }}}
 " }}}
 " VimL: {{{
-highlight! link vimLet Burned
-highlight! link vimFunction Green
-highlight! link vimIsCommand Fg
-highlight! link vimUserFunc Green
-highlight! link vimFuncName Green
-highlight! link vimMap blueItalic
-highlight! link vimNotation Cyan
-highlight! link vimMapLhs Green
-highlight! link vimMapRhs Green
-highlight! link vimSetEqual Yellow
-highlight! link vimSetSep Fg
-highlight! link vimOption Cyan
-highlight! link vimUserAttrbKey Yellow
-highlight! link vimUserAttrb Green
-highlight! link vimAutoCmdSfxList Cyan
-highlight! link vimSynType Burned
-highlight! link vimHiBang Burned
-highlight! link vimSet Yellow
-highlight! link vimSetSep Grey
+hi! link vimLet Burned
+hi! link vimFunction Green
+hi! link vimIsCommand Fg
+hi! link vimUserFunc Green
+hi! link vimFuncName Green
+hi! link vimMap blueItalic
+hi! link vimNotation Cyan
+hi! link vimMapLhs Green
+hi! link vimMapRhs Green
+hi! link vimSetEqual Yellow
+hi! link vimSetSep Fg
+hi! link vimOption Cyan
+hi! link vimUserAttrbKey Yellow
+hi! link vimUserAttrb Green
+hi! link vimAutoCmdSfxList Cyan
+hi! link vimSynType Burned
+hi! link vimHiBang Burned
+hi! link vimSet Yellow
+hi! link vimSetSep Grey
 " }}}
 " Json: {{{
-highlight! link jsonKeyword Burned
-highlight! link jsonQuote Grey
-highlight! link jsonBraces Fg
+hi! link jsonKeyword Burned
+hi! link jsonQuote Grey
+hi! link jsonBraces Fg
+" }}}
+" Hjson: https://github.com/hjson/vim-hjson {{{
+hi! link hjsonString String
+hi! link hjsonQuote String
+hi! link hjsonStringUQ Fg
+hi! link hjsonKeyword Keyword
+hi! link hjsonBraces Fg
 " }}}
 " Yaml: {{{
-highlight! link yamlKey Burned
-highlight! link yamlConstant blue
+hi! link yamlKey Burned
+hi! link yamlConstant blue
 " }}}
 " Toml: https://github.com/cespare/vim-toml {{{
 call s:HL('tomlTable', s:palette.red, s:palette.none, 'bold')
-highlight! link tomlKey White
+hi! link tomlKey White
 call s:HL('tomlString', s:palette.cyan, s:palette.none, 'italic')
-highlight! link tomlBoolean Cyan
-highlight! link tomlTableArray tomlTable
+hi! link tomlBoolean Cyan
+hi! link tomlTableArray tomlTable
 " }}}
 " Diff: {{{
-highlight! link diffAdded Green
-highlight! link diffRemoved Red
-highlight! link diffChanged Pink
-highlight! link diffOldFile Yellow
-highlight! link diffNewFile Burned
-highlight! link diffFile Cyan
-highlight! link diffLine Grey
-highlight! link diffIndexLine Blue
+" hi! link diffAdded Green
+" hi! link diffRemoved Red
+" hi! link diffChanged Pink
+" hi! link diffOldFile Yellow
+" hi! link diffNewFile Burned
+" hi! link diffFile Cyan
+" hi! link diffLine Grey
+" hi! link diffIndexLine Blue
 " }}}
 " Help: {{{
 call s:HL('helpNote', s:palette.blue, s:palette.none, 'bold')
@@ -998,11 +1014,11 @@ call s:HL('helpHeadline', s:palette.red, s:palette.none, 'bold')
 call s:HL('helpHeader', s:palette.burned, s:palette.none, 'bold')
 call s:HL('helpURL', s:palette.green, s:palette.none, 'underline')
 call s:HL('helpHyperTextEntry', s:palette.yellow, s:palette.none, 'bold')
-highlight! link helpHyperTextJump Yellow
-highlight! link helpCommand Cyan
-highlight! link helpExample Green
-highlight! link helpSpecial Blue
-highlight! link helpSectionDelim Grey
+hi! link helpHyperTextJump Yellow
+hi! link helpCommand Cyan
+hi! link helpExample Green
+hi! link helpSpecial Blue
+hi! link helpSectionDelim Grey
 " }}}
 " Diagnostics: {{{
 call s:HL('DiagnosticError', s:palette.dred, s:palette.bg_darker, 'italic')
@@ -1023,18 +1039,17 @@ hi! link DiagnosticSignInfo DiagnosticInfo
 hi! link DiagnosticSignHint DiagnosticHint
 " }}}
 " Treesitter {{{
+hi! link @variable Identifier
 hi! link @attribute Constant
 hi! link @constant.builtin Constant
 hi! link @punctuation.delimiter Delimiter
+hi! link @punctuation.bracker Delimiter
 hi! link @punctuation.special Delimiter
 hi! link @function.builtin Function
 hi! link @string.regex SpecialChar
 hi! link @storageclass.lifetime Label
-call s:HL('@punctuation.bracket', s:palette.ash, s:palette.none)
-call s:HL('@keyword.return', s:palette.red, s:palette.none, 'bold')
-call s:HL('@variable.builtin', s:palette.fg, s:palette.none, 'italic')
-hi! link @constructor.lua @punctuation.bracket
-call s:HL('@lsp.type.lifetime.rust', s:palette.yellow, s:palette.none, 'bold')
+hi! link @keyword.return Exception
+hi! link @constructor.lua Delimiter
 " }}}
 " CPM {{{
 hi! link CmpItemAbbr              Identifier
@@ -1068,63 +1083,6 @@ hi! link CmpItemKindValue         String
 hi! link CmpItemKindVariable      Identifier
 " }}}
 " Plugins: {{{
-" Neorg {{{
-call s:HL('@neorg.markup.verbatim', s:palette.greenash, s:palette.bg_dark)
-call s:HL('@neorg.markup.superscript', s:palette.pink, s:palette.none)
-hi! link @neorg.markup.subscript Structure
-call s:HL('@neorg.markup.inline_math', s:palette.green, s:palette.none)
-call s:HL('@neorg.markup.variable', s:palette.green, s:palette.none)
-hi! link @neorg.headings.1.prefix markdownH1
-hi! link @neorg.headings.1.title markdownH1
-hi! link @neorg.headings.2.prefix markdownH2
-hi! link @neorg.headings.2.title markdownH2
-hi! link @neorg.headings.3.prefix markdownH3
-hi! link @neorg.headings.3.title markdownH3
-hi! link @neorg.headings.4.prefix markdownH4
-hi! link @neorg.headings.4.title markdownH4
-hi! link @neorg.headings.5.prefix markdownH5
-hi! link @neorg.headings.5.title markdownH5
-hi! link @neorg.headings.6.prefix markdownH6
-hi! link @neorg.headings.6.title markdownH6
-call s:HL('@neorg.anchors.declaration', s:palette.blue, s:palette.none, 'underline')
-call s:HL('@neorg.anchors.definition', s:palette.blue, s:palette.none, 'underline')
-hi! link @neorg.links.location.url @neorg.anchors.definition
-call s:HL('@neorg.links.location.external_file', s:palette.blue, s:palette.none, 'underline')
-hi! link @neorg.links.location.external_file.prefix @neorg.links.location.external_file
-call s:HL('@neorg.links.location.generic.prefix', s:palette.cyan, s:palette.none)
-call s:HL('@neorg.links.location.generic', s:palette.cyan, s:palette.none)
-call s:HL('@neorg.error', s:palette.red, s:palette.black)
-call s:HL('@neorg.delimiters.horizontal_line', s:palette.light_grey, s:palette.none)
-call s:HL('@neorg.delimiters.strong', s:palette.light_grey, s:palette.none)
-call s:HL('@neorg.delimiters.weak', s:palette.light_grey, s:palette.none)
-call s:HL('@neorg.lists.ordered.prefix', s:palette.pink, s:palette.none)
-call s:HL('@neorg.lists.unordered.prefix', s:palette.pink, s:palette.none)
-call s:HL('@neorg.modifiers.escape', s:palette.fg, s:palette.none, 'none')
-hi! link @neorg.quotes.3.content Delimiter
-hi! link @neorg.quotes.3.prefix Delimiter
-hi! link @neorg.quotes.4.content Blue
-hi! link @neorg.quotes.4.prefix Blue
-hi! link @neorg.quotes.5.content Delimiter
-hi! link @neorg.quotes.5.prefix Delimiter
-hi! link @neorg.quotes.6.content Blue
-hi! link @neorg.quotes.6.prefix Blue
-call s:HL('@neorg.todo_items.done', s:palette.green, s:palette.none)
-call s:HL('@neorg.todo_items.on_hold', s:palette.brown, s:palette.none)
-call s:HL('@neorg.todo_items.recurring', s:palette.cyan, s:palette.none)
-call s:HL('@neorg.todo_items.uncertain', s:palette.pink, s:palette.none)
-call s:HL('@neorg.todo_items.pending', s:palette.yellow, s:palette.none)
-call s:HL('@neorg.todo_items.urgent', s:palette.red, s:palette.none)
-hi! link @neorg.tags.ranged_verbatim.begin Comment
-hi! link @neorg.tags.ranged_verbatim.name.word Comment
-hi! link @neorg.tags.ranged_verbatim.end Comment
-hi! link @neorg.tags.ranged_verbatim.parameters Structure
-hi! link @neorg.tags.carryover.parameters @neorg.tags.ranged_verbatim.parameters
-hi! link @neorg.tags.carryover.begin @neorg.tags.ranged_verbatim.begin
-hi! link @neorg.tags.carryover.name.word @neorg.tags.ranged_verbatim.name.word
-call s:HL('@neorg.tags.comment.content', s:palette.light_grey, s:palette.none)
-call s:HL('@neorg.footnotes.title', s:palette.ash, s:palette.none, 'bold,italic')
-call s:HL('@neorg.footnotes.content', s:palette.ash, s:palette.none, 'italic')
-" }}}
 " Neo-tree {{{
 hi! link NeoTreeIndentMarker       Whitespace
 hi! link NeoTreeExpander           Grey
@@ -1132,7 +1090,7 @@ hi! link NeoTreeRootName           Tag
 hi! link NeoTreeDirectoryIcon      Directory
 hi! link NeoTreeDirectoryName      Directory
 hi! link NeoTreeSymbolicLinkTarget PreProc
-hi! link NeoTreeFileNameOpened     Label
+hi! link NeoTreeFileNameOpened     Yellow
 hi! link NeoTreeModified       Number
 hi! link NeoTreeBufferNumber   Constant
 hi! link NeoTreeCursorLine     CursorLine
@@ -1160,81 +1118,81 @@ hi! link TelescopeTitle FloatTitle
 call s:HL('TelescopePromptPrefix', s:palette.light_grey, s:palette.none, 'bold')
 call s:HL('TelescopeMatching', s:palette.cyan, s:palette.none)
 call s:HL('TelescopeSelection', s:palette.none, s:palette.select)
-call s:HL('TelescopeSelectionCaret', s:palette.red, s:palette.select, 'bold')
+call s:HL('TelescopeSelectionCaret', s:palette.red, s:palette.select)
 call s:HL('TelescopeMultiSelection', s:palette.blue, s:palette.none)
 call s:HL('TelescopeMultiIcon', s:palette.blue, s:palette.none)
 " }}}
 " junegunn/vim-plug{{{
 call s:HL('plug1', s:palette.burned, s:palette.none, 'bold')
 call s:HL('plugNumber', s:palette.yellow, s:palette.none, 'bold')
-highlight! link plug2 Green
-highlight! link plugBracket Grey
-highlight! link plugName Cyan
-highlight! link plugDash Burned
-highlight! link plugError Red
-highlight! link plugNotLoaded Grey
-highlight! link plugRelDate Grey
-highlight! link plugH2 Burned
-highlight! link plugMessage Burned
-highlight! link plugStar Red
-highlight! link plugUpdate Blue
-highlight! link plugDeleted Grey
-highlight! link plugEdge Yellow
-highlight! link plugSha Green
+hi! link plug2 Green
+hi! link plugBracket Grey
+hi! link plugName Cyan
+hi! link plugDash Burned
+hi! link plugError Red
+hi! link plugNotLoaded Grey
+hi! link plugRelDate Grey
+hi! link plugH2 Burned
+hi! link plugMessage Burned
+hi! link plugStar Red
+hi! link plugUpdate Blue
+hi! link plugDeleted Grey
+hi! link plugEdge Yellow
+hi! link plugSha Green
 " }}}
 " dense-analysis/ale{{{
 call s:HL('ALEError', s:palette.none, s:palette.none, 'undercurl', s:palette.red)
 call s:HL('ALEWarning', s:palette.none, s:palette.none, 'undercurl', s:palette.yellow)
 call s:HL('ALEInfo', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
-highlight! link ALEErrorSign RedSign
-highlight! link ALEWarningSign YellowSign
-highlight! link ALEInfoSign BlueSign
-highlight! link ALEVirtualTextError Grey
-highlight! link ALEVirtualTextWarning Grey
-highlight! link ALEVirtualTextInfo Grey
-highlight! link ALEVirtualTextStyleError Grey
-highlight! link ALEVirtualTextStyleWarning Grey
+hi! link ALEErrorSign RedSign
+hi! link ALEWarningSign YellowSign
+hi! link ALEInfoSign BlueSign
+hi! link ALEVirtualTextError Grey
+hi! link ALEVirtualTextWarning Grey
+hi! link ALEVirtualTextInfo Grey
+hi! link ALEVirtualTextStyleError Grey
+hi! link ALEVirtualTextStyleWarning Grey
 " }}}
 " neomake/neomake{{{
-highlight! link NeomakeError ALEError
-highlight! link NeomakeErrorSign RedSign
-highlight! link NeomakeWarning ALEWarning
-highlight! link NeomakeWarningSign YellowSign
-highlight! link NeomakeInfo ALEInfo
-highlight! link NeomakeInfoSign BlueSign
-highlight! link NeomakeMessage Cyan
-highlight! link NeomakeMessageSign CyanSign
-highlight! link NeomakeVirtualtextError Grey
-highlight! link NeomakeVirtualtextWarning Grey
-highlight! link NeomakeVirtualtextInfo Grey
-highlight! link NeomakeVirtualtextMessag Grey
+hi! link NeomakeError ALEError
+hi! link NeomakeErrorSign RedSign
+hi! link NeomakeWarning ALEWarning
+hi! link NeomakeWarningSign YellowSign
+hi! link NeomakeInfo ALEInfo
+hi! link NeomakeInfoSign BlueSign
+hi! link NeomakeMessage Cyan
+hi! link NeomakeMessageSign CyanSign
+hi! link NeomakeVirtualtextError Grey
+hi! link NeomakeVirtualtextWarning Grey
+hi! link NeomakeVirtualtextInfo Grey
+hi! link NeomakeVirtualtextMessag Grey
 " }}}
 " vim-syntastic/syntastic{{{
-highlight! link SyntasticError ALEError
-highlight! link SyntasticWarning ALEWarning
-highlight! link SyntasticErrorSign RedSign
-highlight! link SyntasticWarningSign YellowSign
+hi! link SyntasticError ALEError
+hi! link SyntasticWarning ALEWarning
+hi! link SyntasticErrorSign RedSign
+hi! link SyntasticWarningSign YellowSign
 " }}}
 " majutsushi/tagbar{{{
-highlight! link TagbarFoldIcon Green
-highlight! link TagbarSignature Green
-highlight! link TagbarKind Red
-highlight! link TagbarScope Burned
-highlight! link TagbarNestedKind Cyan
-highlight! link TagbarVisibilityPrivate Red
-highlight! link TagbarVisibilityPublic Blue
+hi! link TagbarFoldIcon Green
+hi! link TagbarSignature Green
+hi! link TagbarKind Red
+hi! link TagbarScope Burned
+hi! link TagbarNestedKind Cyan
+hi! link TagbarVisibilityPrivate Red
+hi! link TagbarVisibilityPublic Blue
 " }}}
 " airblade/vim-gitgutter{{{
-highlight! link GitGutterAdd GreenSign
-highlight! link GitGutterChange BlueSign
-highlight! link GitGutterDelete RedSign
-highlight! link GitGutterChangeDelete blueSign
+hi! link GitGutterAdd GreenSign
+hi! link GitGutterChange BlueSign
+hi! link GitGutterDelete RedSign
+hi! link GitGutterChangeDelete blueSign
 " }}}
 " mhinz/vim-signify{{{
-highlight! link SignifySignAdd GreenSign
-highlight! link SignifySignChange BlueSign
-highlight! link SignifySignDelete RedSign
-highlight! link SignifySignChangeDelete blueSign
+hi! link SignifySignAdd GreenSign
+hi! link SignifySignChange BlueSign
+hi! link SignifySignDelete RedSign
+hi! link SignifySignChangeDelete blueSign
 " }}}
 " andymass/vim-matchup{{{
 call s:HL('MatchParenCur', s:palette.none, s:palette.none, 'bold')
@@ -1242,9 +1200,9 @@ call s:HL('MatchWord', s:palette.none, s:palette.none, 'underline')
 call s:HL('MatchWordCur', s:palette.none, s:palette.none, 'underline')
 " }}}
 " justinmk/vim-sneak {{{
-highlight! link Sneak Cursor
-highlight! link SneakLabel Cursor
-highlight! link SneakScope DiffChange
+hi! link Sneak Cursor
+hi! link SneakLabel Cursor
+hi! link SneakScope DiffChange
 " }}}
 " lewis6991/gitsigns.nvim {{{
 call s:HL('GitSignsAdd', s:palette.green, s:palette.bg_darker)
@@ -1260,38 +1218,33 @@ call s:HL('GitSignsAddPreview', s:palette.green, s:palette.bg_darker)
 call s:HL('GitSignsDeletePreview', s:palette.red, s:palette.bg_darker)
 " }}}
 " ap/vim-buftabline{{{
-highlight! link BufTabLineCurrent TabLineSel
-highlight! link BufTabLineActive TabLine
-highlight! link BufTabLineHidden TabLineFill
-highlight! link BufTabLineFill TabLineFill
+hi! link BufTabLineCurrent TabLineSel
+hi! link BufTabLineActive TabLine
+hi! link BufTabLineHidden TabLineFill
+hi! link BufTabLineFill TabLineFill
 " }}}
 " mbbill/undotree{{{
 call s:HL('UndotreeSavedBig', s:palette.blue, s:palette.none, 'bold')
-highlight! link UndotreeNode Burned
-highlight! link UndotreeNodeCurrent Red
-highlight! link UndotreeSeq Green
-highlight! link UndotreeNext Blue
-highlight! link UndotreeTimeStamp Grey
-highlight! link UndotreeHead Yellow
-highlight! link UndotreeBranch Yellow
-highlight! link UndotreeCurrent Cyan
-highlight! link UndotreeSavedSmall blue
+hi! link UndotreeNode Burned
+hi! link UndotreeNodeCurrent Red
+hi! link UndotreeSeq Green
+hi! link UndotreeNext Blue
+hi! link UndotreeTimeStamp Grey
+hi! link UndotreeHead Yellow
+hi! link UndotreeBranch Yellow
+hi! link UndotreeCurrent Cyan
+hi! link UndotreeSavedSmall blue
 " }}}
 " unblevable/quick-scope {{{
 call s:HL('QuickScopePrimary', s:palette.cyan, s:palette.none, 'underline')
 call s:HL('QuickScopeSecondary', s:palette.blue, s:palette.none, 'underline')
 " }}}
 " APZelos/blamer.nvim {{{
-highlight! link Blamer Grey
+hi! link Blamer Grey
 " }}}
 " Indent blankline {{{
 call s:HL('IndentBlanklineContextChar', s:palette.light_grey, s:palette.none, 'nocombine')
 call s:HL('IndentBlanklineContextStart', s:palette.none, s:palette.none, 'underline', s:palette.light_grey)
-" }}}
-" Illuminate {{{
-call s:HL('IlluminatedWordText', s:palette.none, s:palette.illuminate, 'none')
-call s:HL('IlluminatedWordRead', s:palette.none, s:palette.illuminate, 'none')
-call s:HL('IlluminatedWordWrite', s:palette.none, s:palette.illuminate, 'none')
 " }}}
 " Marks {{{
 call s:HL('MarkSignHL', s:palette.burned, s:palette.bg_darker, 'bold')
@@ -1301,7 +1254,7 @@ hi! link MarkVirtTextHL DiagnosticHint
 " Pounce {{{
 call s:HL('PounceMatch', s:palette.light_blue, s:palette.none)
 call s:HL('PounceUnmatched', s:palette.light_grey, s:palette.none)
-call s:HL('PounceGap', s:palette.light_grey, s:palette.none, 'underline', s:palette.brown)
+call s:HL('PounceGap', s:palette.light_grey, s:palette.none, 'underline', s:palette.burned)
 call s:HL('PounceAccept', s:palette.bg_base, s:palette.light_red)
 call s:HL('PounceAcceptBest', s:palette.bg_base, s:palette.light_red)
 " }}}
@@ -1354,50 +1307,9 @@ hi! link TroubleIndentFoldOpen Comment
 " }}}
 call s:HL('InclineNormal', s:palette.fg, s:palette.bg_dark)
 call s:HL('InclineNormalNC', s:palette.light_grey, s:palette.bg_dark)
-call s:HL('MiniIndentscopeSymbol', s:palette.focusindent, s:palette.none)
 hi! link WhichKey Statement
 hi! link WhichKeyGroup Function
 hi! link WhichKeyTitle FloatBorder
-" }}}
-
-" Terminal: {{{
-if (has('termguicolors') && &termguicolors) || has('gui_running')
-    " Definition
-    let s:terminal = {
-        \ 'black':    s:palette.fg,
-        \ 'red':      s:palette.red,
-        \ 'yellow':   s:palette.yellow,
-        \ 'green':    s:palette.green,
-        \ 'cyan':     s:palette.blue,
-        \ 'blue':     s:palette.cyan,
-        \ 'pink':   s:palette.pink,
-        \ 'white':    s:palette.grey
-        \ }
-  " Implementation: {{{
-  if !has('nvim')
-      let g:terminal_ansi_colors = [s:terminal.black[0], s:terminal.red[0], s:terminal.green[0], s:terminal.yellow[0],
-                  \ s:terminal.blue[0], s:terminal.blue[0], s:terminal.cyan[0], s:terminal.white[0], s:terminal.black[0], s:terminal.red[0],
-                  \ s:terminal.green[0], s:terminal.yellow[0], s:terminal.blue[0], s:terminal.blue[0], s:terminal.cyan[0], s:terminal.white[0]]
-  else
-      let g:terminal_color_0 = s:terminal.black[0]
-      let g:terminal_color_1 = s:terminal.red[0]
-      let g:terminal_color_2 = s:terminal.green[0]
-      let g:terminal_color_3 = s:terminal.yellow[0]
-      let g:terminal_color_4 = s:terminal.blue[0]
-      let g:terminal_color_5 = s:terminal.blue[0]
-      let g:terminal_color_6 = s:terminal.cyan[0]
-      let g:terminal_color_7 = s:terminal.white[0]
-      let g:terminal_color_8 = s:terminal.black[0]
-      let g:terminal_color_9 = s:terminal.red[0]
-      let g:terminal_color_10 = s:terminal.green[0]
-      let g:terminal_color_11 = s:terminal.yellow[0]
-      let g:terminal_color_12 = s:terminal.blue[0]
-      let g:terminal_color_13 = s:terminal.blue[0]
-      let g:terminal_color_14 = s:terminal.cyan[0]
-      let g:terminal_color_15 = s:terminal.white[0]
-  endif
-  " }}}
-endif
 " }}}
 
 " vim: set sw=4 ts=4 sts=4 et tw=80 ft=vim fdm=marker fmr={{{,}}}:

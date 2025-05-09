@@ -3,7 +3,7 @@ return {
         "andymass/vim-matchup",
         init = function()
             vim.g.matchup_matchparen_deferred = 1
-            vim.g.matchup_matchparen_hi_surround_always = 0
+            vim.g.matchup_matchparen_hi_surround_always = 1
             vim.g.matchup_matchparen_offscreen = {}
             vim.g.matchup_matchparen_stopline = 60
             vim.g.matchup_matchparen_timeout = 20

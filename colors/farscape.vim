@@ -174,6 +174,14 @@ hi! link PopupNotification WarningMsg
 hi Whitespace guifg=#2B3540 guibg=NONE guisp=NONE blend=NONE gui=NONE
 hi lCursor guifg=#1A1C23 guibg=#4AA9B0 guisp=NONE blend=NONE gui=NONE
 
+" Hjson: https://github.com/hjson/vim-hjson {{{
+hi! link hjsonString String
+hi! link hjsonQuote String
+hi! link hjsonStringUQ Fg
+hi! link hjsonKeyword Keyword
+hi! link hjsonBraces Fg
+" }}}
+
 " Neo-tree {{{
 hi! link NeoTreeIndentMarker       Whitespace
 hi! link NeoTreeExpander           Comment

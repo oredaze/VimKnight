@@ -404,6 +404,13 @@ hi! link jsonKeyword Red
 hi! link jsonQuote Grey
 hi! link jsonBraces White
 " }}}
+" Hjson: https://github.com/hjson/vim-hjson {{{
+hi! link hjsonString String
+hi! link hjsonQuote String
+hi! link hjsonStringUQ Fg
+hi! link hjsonKeyword Keyword
+hi! link hjsonBraces Fg
+" }}}
 " Yaml: {{{
 hi! link yamlKey Red
 hi! link yamlConstant Purple

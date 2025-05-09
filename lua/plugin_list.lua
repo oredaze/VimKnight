@@ -14,7 +14,6 @@ return {
     require("plugins.guess-indent"),
     require("plugins.comment"),
     require("plugins.autopairs"),
-    require("plugins.commasemi"),
     require("plugins.matchup"),
     require("plugins.gx"),
     require("plugins.log-hl"),
@@ -29,6 +28,9 @@ return {
     require("plugins.neo-tree"),
     require("plugins.oil"),
     require("plugins.mini-files"),
+    require("plugins.fm-nvim"),
+    require("plugins.vim-godot"),
+    require("plugins.vim-hjson"),
 
     -- Telescope
     require("plugins.telescope"),

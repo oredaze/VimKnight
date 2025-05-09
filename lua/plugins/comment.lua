@@ -3,7 +3,6 @@ return {
     {
         "numToStr/Comment.nvim",
         event = "CursorHold",
-        -- event = "User FileOpened",
         opts = {
             padding = true,
             sticky = true,
@@ -13,13 +12,14 @@ return {
             -- @type string|fun():string
             ignore = "^$",
             toggler = {
-                line = "<leader><tab>",
+                line = "<leader>s",
             },
             opleader = {
-                line = "<leader>c",
+                line = "<leader>",
             },
-            mappings = {
-                extra = false,
+            extra = {
+                above = '<leader>O',
+                eol = '<leader>A',
             },
         },
     },

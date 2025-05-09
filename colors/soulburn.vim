@@ -110,7 +110,6 @@ hi IncSearch guifg=#D5D2C8 guibg=#202020 guisp=NONE blend=NONE gui=reverse
 hi! link CurSearch IncSearch
 hi Label guifg=#E69370 guibg=NONE guisp=NONE blend=NONE gui=NONE
 hi LineNr guifg=#616161 guibg=#2B2B2B guisp=NONE blend=NONE gui=NONE
-hi Terminal guifg=#D5D2C8 guibg=#2B2B2B guisp=NONE blend=NONE gui=NONE
 hi Macro guifg=#d38e8a guibg=NONE guisp=NONE blend=NONE gui=bold
 " Marks {{{
 hi MarkSignHL guifg=#CF6863 guibg=#2B2B2B gui=bold
@@ -239,6 +238,13 @@ hi @keyword.return guifg=#E69370 guibg=NONE guisp=NONE blend=NONE gui=NONE
 hi @punctuation.bracket guifg=#BBB6A5 guibg=NONE guisp=NONE blend=NONE gui=NONE
 hi @storageclass.lifetime guifg=#E69370 guibg=NONE guisp=NONE blend=NONE gui=NONE
 hi @variable.builtin guifg=#D5D2C8 guibg=NONE guisp=NONE blend=NONE gui=italic
+" Hjson: https://github.com/hjson/vim-hjson {{{
+hi! link hjsonString String
+hi! link hjsonQuote String
+hi! link hjsonStringUQ Fg
+hi! link hjsonKeyword Keyword
+hi! link hjsonBraces Fg
+" }}}
 " nvim-notify {{{
 hi! link NotifyERRORBorder FloatBorder
 hi! link NotifyWARNBorder FloatBorder

@@ -1,12 +1,13 @@
 local util = {}
 
 util.icons = {
-    left_end = "", -- ▌
-    right_end = "", -- ▐
-    left_surround = "", -- 
-    right_surround = "", -- 
-    left_mode_sur = "", -- 
-    right_mode_sur = "", -- 
+    -- ▐ ▌       ▒
+    left_end = "",
+    right_end = "",
+    left_surround = "",
+    right_surround = "",
+    left_mode_sur = "",
+    right_mode_sur = "",
     line_number = "",
     sbar = { "󰝦", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥" },
     -- sbar = { "󰋙", "󰫃", "󰫄", "󰫅", "󰫆", "󰫇", "󰫈" },
@@ -14,10 +15,10 @@ util.icons = {
     right_overflow = "",
     padlock = " 󰌾",
     circle = "󰌪", --   󰌪 
-    circle_small = " ", --  ◆
-    circle_o = " ", --  ◇
+    circle_small = "  ", --  ◆
+    circle_o = "  ", --  ◇
     modified = " 󰿶",
-    spellcheck = " ",
+    spellcheck = "  ",
     terminal = "  ",
     macro_rec = "󰻃 ",
     bug = "󰨰 ",

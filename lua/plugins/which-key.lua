@@ -7,6 +7,7 @@ return {
             local wk = require("which-key")
             wk.add({
                 { "t", group = "Trails" },
+                { "<leader>", group = "Plugins" },
                 { "<leader>l", group = "LSP" },
                 { "<leader>o", group = "Options" },
                 { "<leader>1", "1gt", hidden = true },
@@ -46,6 +47,10 @@ return {
                 keys = {
                     scroll_down = "<c-d>",
                     scroll_up = "<c-u>",
+                },
+                triggers = {
+                    { "<auto>", mode = "nixsotc" },
+                    { "t", mode = "n" },
                 },
             }
             wk.setup(setup)

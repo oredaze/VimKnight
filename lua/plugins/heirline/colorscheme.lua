@@ -3,7 +3,7 @@ local get_hl = utils.get_highlight
 
 local function setup_colors()
     return {
-        red_sigil = "#CC2929",
+        red_sigil = get_hl("Exception").fg,
         tabline_fg = get_hl("TabLine").fg,
         tablinesel_fg = get_hl("TabLineSel").fg,
         statusline_fg = get_hl("StatusLine").fg,
@@ -19,11 +19,11 @@ local function setup_colors()
         workdir = get_hl("Tag").fg,
         filetype = get_hl("Type").fg,
         currentpath = get_hl("Directory").fg,
-        macrorec = get_hl("Operator").fg,
+        macrorec = get_hl("Statement").fg,
         termin = get_hl("Function").fg,
         -- DapMessages = get_hl('Debug').fg,
 
-        git_branch = get_hl("Title").fg,
+        git_branch = get_hl("Define").fg,
         git_added = get_hl("GitSignsAdd").fg,
         git_deleted = get_hl("GitSignsDelete").fg,
         git_changed = get_hl("GitSignsChange").fg,

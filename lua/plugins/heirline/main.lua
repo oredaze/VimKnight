@@ -58,7 +58,7 @@ vim.keymap.set("n", "<leader>b", function()
     end
     buflist._show_picker = false
     vim.cmd.redrawtabline()
-end, { desc = "Buffer picker" })
+end, { desc = "Buffer line picker" })
 
 -- Some global components --------------------------------------------------- {{
 
@@ -317,7 +317,7 @@ do
                     provider = icons.circle,
                     hl = function()
                         if bo.modified then
-                            return { fg = "modified" }
+                            return { fg = "modified", bold = false }
                         else
                             return { fg = "miscgrey", bold = false }
                         end
@@ -394,7 +394,7 @@ local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { fg = "filetype", bold = true },
+    hl = { fg = "statusline_fg", bold = false },
 }
 
 local HelpFileName = {
@@ -416,7 +416,7 @@ do
                 return self.pwd
             end
         end,
-        hl = { fg = "workdir", bold = true },
+        hl = { fg = "workdir", bold = false },
         flexible = priority.WorkDir,
         {
             provider = function(self)
@@ -437,7 +437,7 @@ do
                 return self.current_path
             end
         end,
-        hl = { fg = "currentpath", bold = true },
+        hl = { fg = "currentpath", bold = false },
         flexible = priority.CurrentPath,
         {
             provider = function(self)
@@ -456,7 +456,7 @@ do
         provider = function(self)
             return self.filename
         end,
-        hl = { fg = "filename" },
+        hl = { fg = "filename", bold = false },
     }
 
     FileNameBlock = {
@@ -487,7 +487,7 @@ local PromptBlock = {
     provider = function()
         return "PROMPT"
     end,
-    hl = { fg = "filetype", bold = true },
+    hl = { fg = "filetype", bold = false },
 }
 
 local TerminalBlock = {
@@ -509,7 +509,7 @@ local FMBlock = {
     provider = function()
         return "FILES"
     end,
-    hl = { fg = "filetype", bold = true },
+    hl = { fg = "filetype", bold = false },
 }
 
 -- }}
@@ -627,7 +627,7 @@ local Git = {
         name = "heirline_git",
         update = false,
     },
-    hl = { fg = "git_branch", bold = true },
+    hl = { fg = "git_branch", bold = false },
     {
         provider = function(self)
             return icons.git_branch .. self.status_dict.head
@@ -644,21 +644,21 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = { fg = "git_added", bold = true },
+        hl = { fg = "git_added", bold = false },
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = { fg = "git_deleted", bold = true },
+        hl = { fg = "git_deleted", bold = false },
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = { fg = "git_changed", bold = true },
+        hl = { fg = "git_changed", bold = false },
     },
     {
         condition = function(self)
@@ -689,7 +689,7 @@ do
             end,
         },
         Space(2),
-        hl = { fg = "lspserver", bold = false },
+        hl = { fg = "lspserver", bold = true },
     }
     Lsp = {
         condition = conditions.lsp_attached,
@@ -709,9 +709,9 @@ do
                 end
             end
             if color then
-                return { fg = color, bold = false, force = true }
+                return { fg = color, bold = true, force = true }
             else
-                return { fg = "lspserver", bold = false }
+                return { fg = "lspserver", bold = true }
             end
         end,
         flexible = priority.Lsp,
@@ -719,53 +719,6 @@ do
         LspIndicator,
     }
 end
-
-local SearchResults = {
-    condition = function(self)
-        local lines = api.nvim_buf_line_count(0)
-        if lines > 50000 then
-            return
-        end
-
-        local query = fn.getreg("/")
-        if query == "" then
-            return
-        end
-
-        if query:find("@") then
-            return
-        end
-
-        local search_count = fn.searchcount({ recompute = 1, maxcount = -1 })
-        local active = false
-        if vim.v.hlsearch and vim.v.hlsearch == 1 and search_count.total > 0 then
-            active = true
-        end
-        if not active then
-            return
-        end
-
-        query = query:gsub([[^\V]], "")
-        query = query:gsub([[\<]], ""):gsub([[\>]], "")
-
-        self.query = query
-        self.count = search_count
-        return true
-    end,
-    {
-        provider = function(self)
-            return table.concat({
-                -- ' ', self.query, ' ', self.count.current, '/', self.count.total, ' '
-                icons.search,
-                self.count.current,
-                "/",
-                self.count.total,
-            })
-        end,
-        hl = { fg = "searchresults" },
-    },
-    Space,
-}
 
 local Ruler = {
     condition = function()
@@ -813,7 +766,7 @@ local Spell = {
         return vim.wo.spell
     end,
     provider = icons.spellcheck,
-    hl = { fg = "spellindicator", bold = true },
+    hl = { fg = "spellindicator", bold = false },
 }
 -- }}
 -- Combine Statusline ------------------------------------------------------- {{
@@ -867,7 +820,6 @@ local StatusLineFinal = {
         Align,
         ShowCmd,
         -- DapMessages,
-        SearchResults,
         Spell,
         Git,
         Diagnostics,
