@@ -84,7 +84,6 @@ return {
                     -- "rust_analyzer",
                     "marksman",
                 },
-                automatic_installation = false,
             })
 
             local lspconfig = require("lspconfig")
@@ -121,6 +120,10 @@ return {
                 map("n", "gR", vim.lsp.buf.rename, opts)
                 opts.desc = "Code actions"
                 map({ "n", "v" }, "gA", vim.lsp.buf.code_action, opts)
+                vim.keymap.del("n", "gra")
+                vim.keymap.del("n", "gri")
+                vim.keymap.del("n", "grn")
+                vim.keymap.del("n", "grr")
             end
             opts.desc = "Diagnostic info"
             map("n", "ge", vim.diagnostic.open_float, opts)
@@ -269,7 +272,6 @@ return {
                     -- Opt to list sources here, when available in mason.
                     "stylua",
                 },
-                automatic_installation = false,
                 handlers = {},
             })
 
