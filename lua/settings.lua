@@ -21,6 +21,7 @@ o.mouse = "a"
 o.mousescroll = "ver:10,hor:5"
 o.title = true
 o.titlestring = "%t [nVim]"
+o.titleold = "\27]0;\7"
 o.number = false
 o.relativenumber = false
 o.signcolumn = "yes" -- auto, number, yes, no
