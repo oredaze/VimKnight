@@ -193,8 +193,8 @@ return {
                 sorting = defaults.sorting,
                 window = {
                     completion = {
-                        -- border = "single", -- shadow, single, rounded
-                        border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                        border = "rounded", -- shadow, single, rounded
+                        -- border = { "+", "-", "+", "|", "+", "-", "+", "|" },
                         -- border = { "🭇", "▁", "🬼", "▏", "🭗", "▔", "🭢", "▕" },
                         -- border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
                         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",

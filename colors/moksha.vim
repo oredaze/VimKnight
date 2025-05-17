@@ -1305,6 +1305,10 @@ hi! link DashboardFooter Comment
 hi! link TroubleIndentFoldClosed Comment
 hi! link TroubleIndentFoldOpen Comment
 " }}}
+" Trouble {{{
+hi! link MiniFilesBorderModified Number
+hi! link MiniFilesTitleFocused Burned
+" }}}
 call s:HL('InclineNormal', s:palette.fg, s:palette.bg_dark)
 call s:HL('InclineNormalNC', s:palette.light_grey, s:palette.bg_dark)
 hi! link WhichKey Statement

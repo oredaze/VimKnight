@@ -91,7 +91,7 @@ return {
             local opts = { noremap = true, silent = true }
             local on_attach = function(client, bufnr)
                 opts.buffer = bufnr
-                map("n", "K", vim.lsp.buf.hover, opts)
+                map("n", "<leader>i", vim.lsp.buf.hover, opts)
 
                 opts.desc = "Go to definitions"
                 map("n", "gd", function()

@@ -34,18 +34,22 @@ return {
             use_default_keymaps = false,
             -- Configuration for the floating window in oil.open_float
             float = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                -- border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
             },
             -- Configuration for the actions floating preview window
             preview = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                -- border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
             },
             -- Configuration for the floating progress window
             progress = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                -- border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
             },
             keymaps_help = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                -- border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
             },
         },
     },

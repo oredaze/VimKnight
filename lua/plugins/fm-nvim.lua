@@ -17,11 +17,11 @@ return {
                 default = "float",
                 float = {
                     -- Floating window border (see ':h nvim_open_win')
+                    border = "rounded",
                     -- border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
-                    border = { "┌", "─" ,"┐", "│", "┘", "─", "└", "│" },
+                    -- border = { "┌", "─" ,"┐", "│", "┘", "─", "└", "│" },
                     -- border = { "┏", "━" ,"┓", "┃", "┛", "━", "┗", "┃" },
                     -- border = { "🭇", "▁", "🬼", "▏", "🭗", "▔", "🭢", "▕" },
-                    -- border = "rounded",
                     -- Highlight group for floating window/border (see ':h winhl')
                     float_hl = "Normal",
                     border_hl = "TelescopeBorder",

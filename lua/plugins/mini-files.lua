@@ -10,11 +10,14 @@ return {
                     close = '<ESC>',
                     go_in_plus = 'l',
                     go_out_plus = '<BS>',
-                    reset = 'w',
+                    reset = 'gw',
+                    reveal_cwd  = '@',
+                    synchronize = 'W',
                     show_help = '?',
                 },
                 options = {
                     use_as_default_explorer = false,
+                    permanent_delete = true,
                 },
                 windows = {
                     width_focus = 30,
@@ -49,6 +52,19 @@ return {
                     -- Add extra mappings from *MiniFiles-examples*
                 end,
             })
+
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'MiniFilesWindowOpen',
+                callback = function(args)
+                    local win_id = args.data.win_id
+                    -- Customize window-local settings
+                    local config = vim.api.nvim_win_get_config(win_id)
+                    config.border = 'rounded'
+                    -- config.border = { "+", "-", "+", "|", "+", "-", "+", "|" }
+                    vim.api.nvim_win_set_config(win_id, config)
+                end,
+            })
+
         end,
     },
 }
