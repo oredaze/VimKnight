@@ -184,13 +184,6 @@ map("x", "ab", "<plug>(matchup-a%)")
 map("o", "ab", "<plug>(matchup-a%)")
 map("n", "S", "c<plug>(matchup-i%)")
 
--- Move
-map("n", "<C-j>", ":MoveLine(1)<CR>", { noremap = true, silent = true })
-map("n", "<C-k>", ":MoveLine(-1)<CR>", { noremap = true, silent = true })
-
-map("v", "<C-j>", ":MoveBlock(1)<CR>", { noremap = true, silent = true })
-map("v", "<C-k>", ":MoveBlock(-1)<CR>", { noremap = true, silent = true })
-
 -- Pounce
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 
@@ -266,3 +259,4 @@ map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnosti
 -- ~/.config/nvim/lua/plugins/outline.lua
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
+-- ~/.config/nvim/lua/plugins/mini-move.lua

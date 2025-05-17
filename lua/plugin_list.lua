@@ -22,7 +22,7 @@ return {
     require("plugins.numb"),
     require("plugins.pounce"),
     require("plugins.undotree"),
-    require("plugins.move"),
+    require("plugins.mini-move"),
     require("plugins.multiple-cursors"),
     require("plugins.oil"),
     require("plugins.mini-files"),
