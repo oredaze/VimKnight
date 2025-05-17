@@ -2,9 +2,9 @@ return {
     -- File manager as an actual vim buffer
     {
         "stevearc/oil.nvim",
-        cmd = { "Oil" },
+        lazy = false,
         opts = {
-            default_file_explorer = false, -- hijack netrw
+            default_file_explorer = true, -- hijack netrw
             win_options = {
                 relativenumber = false,
                 number = false,

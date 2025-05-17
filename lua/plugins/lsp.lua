@@ -92,45 +92,58 @@ return {
             local on_attach = function(client, bufnr)
                 opts.buffer = bufnr
                 map("n", "K", vim.lsp.buf.hover, opts)
+
                 opts.desc = "Go to definitions"
                 map("n", "gd", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_definitions")
                 end, opts)
+
                 opts.desc = "Go to references"
                 map("n", "gr", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_references")
                 end, opts)
+
                 opts.desc = "Go to type definitions"
                 map("n", "gt", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_type_definitions")
                 end, opts)
+
                 opts.desc = "Go to doc symbols"
                 map("n", "gs", function()
                     ---@diagnostic disable-next-line
                     require("trouble").toggle("lsp_document_symbols")
                 end, opts)
+
                 opts.desc = "Go to declaration"
                 map("n", "gD", vim.lsp.buf.declaration, opts)
+
                 opts.desc = "Go to implementation"
                 map("n", "gi", vim.lsp.buf.implementation, opts)
+
                 opts.desc = "Rename buffer"
-                map("n", "gR", vim.lsp.buf.rename, opts)
+                map("n", "gn", vim.lsp.buf.rename, opts)
+
                 opts.desc = "Code actions"
                 map({ "n", "v" }, "gA", vim.lsp.buf.code_action, opts)
+
                 vim.keymap.del("n", "gra")
                 vim.keymap.del("n", "gri")
                 vim.keymap.del("n", "grn")
                 vim.keymap.del("n", "grr")
             end
+
             opts.desc = "Diagnostic info"
-            map("n", "ge", vim.diagnostic.open_float, opts)
+            map("n", "<leader>e", vim.diagnostic.open_float, opts)
+
             opts.desc = "Move to prev diagnostic"
             map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
+
             opts.desc = "Move to next diagnostic"
             map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
+
             opts.desc = "Format buffer"
             map("n", "<leader>lf", function()
                 vim.lsp.buf.format({

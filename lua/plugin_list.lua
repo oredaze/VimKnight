@@ -1,7 +1,6 @@
 ---@diagnostic disable
 return {
     -- UI
-    require("plugins.dressing"),
     require("plugins.simpleindentguides"),
     require("plugins.transparent"),
     require("plugins.heirline.init"),
@@ -25,7 +24,6 @@ return {
     require("plugins.undotree"),
     require("plugins.move"),
     require("plugins.multiple-cursors"),
-    require("plugins.neo-tree"),
     require("plugins.oil"),
     require("plugins.mini-files"),
     require("plugins.fm-nvim"),

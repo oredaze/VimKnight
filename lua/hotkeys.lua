@@ -199,11 +199,10 @@ map("n", "<C-l>", "<cmd>Lf<CR>")
 map("n", "<C-b>", "<cmd>Broot<CR>")
 map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
 map("n", "<C-e>", "<cmd>lua MiniFiles.open()<CR>")
-map("n", "<C-t>", "<cmd>Neotree toggle<CR>", { desc = "File tree" })
-cmap("E", "Neotree current", { nargs = "?" })
-cmap("S", "belowright split | Neotree current", { nargs = "?" })
-cmap("V", "rightbelow vsplit | Neotree current", { nargs = "?" })
-cmap("T", "tabedit % | Neotree current", { nargs = "?" })
+cmap("E", "Oil", { nargs = "?" })
+cmap("S", "belowright split | Oil", { nargs = "?" })
+cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
+cmap("T", "tabedit % | Oil", { nargs = "?" })
 
 -- Telescope
 map("n", "<C-f>", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
@@ -265,6 +264,5 @@ map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnosti
 -- ~/.config/nvim/lua/plugins/comment.lua
 -- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 53
 -- ~/.config/nvim/lua/plugins/outline.lua
--- ~/.config/nvim/lua/plugins/neo-tree.lua
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
