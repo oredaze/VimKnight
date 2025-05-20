@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+vim.lsp.set_log_level("OFF")
 
 return {
     -- { "rust-lang/rust.vim", lazy = true, ft = "rust" },
@@ -54,20 +55,6 @@ return {
 
     {
         "williamboman/mason.nvim",
-        event = { "BufReadPre", "BufNewFile" },
-        lazy = true,
-        cmd = {
-            "Mason",
-            "MasonUpdate",
-            "MasonInstall",
-            "MasonUninstall",
-            "MasonUninstallAll",
-            "MasonLog",
-        },
-        dependencies = {
-            { "williamboman/mason-lspconfig.nvim", lazy = true },
-            { "neovim/nvim-lspconfig", lazy = true },
-        },
         config = function()
             require("mason").setup({
                 ui = {
@@ -78,6 +65,18 @@ return {
                     },
                 },
             })
+        end,
+        build = function()
+            pcall(function()
+                require("mason-registry").refresh()
+            end)
+        end,
+    },
+
+    {
+        "mason-org/mason-lspconfig.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
@@ -85,88 +84,19 @@ return {
                     "marksman",
                 },
             })
+        end,
+    },
 
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local opts = { noremap = true, silent = true }
-            local on_attach = function(client, bufnr)
-                opts.buffer = bufnr
-                map("n", "<leader>i", vim.lsp.buf.hover, opts)
 
-                opts.desc = "Go to definitions"
-                map("n", "gd", function()
-                    ---@diagnostic disable-next-line
-                    require("trouble").toggle("lsp_definitions")
-                end, opts)
-
-                opts.desc = "Go to references"
-                map("n", "gr", function()
-                    ---@diagnostic disable-next-line
-                    require("trouble").toggle("lsp_references")
-                end, opts)
-
-                opts.desc = "Go to type definitions"
-                map("n", "gt", function()
-                    ---@diagnostic disable-next-line
-                    require("trouble").toggle("lsp_type_definitions")
-                end, opts)
-
-                opts.desc = "Go to doc symbols"
-                map("n", "gs", function()
-                    ---@diagnostic disable-next-line
-                    require("trouble").toggle("lsp_document_symbols")
-                end, opts)
-
-                opts.desc = "Go to declaration"
-                map("n", "gD", vim.lsp.buf.declaration, opts)
-
-                opts.desc = "Go to implementation"
-                map("n", "gi", vim.lsp.buf.implementation, opts)
-
-                opts.desc = "Rename buffer"
-                map("n", "gn", vim.lsp.buf.rename, opts)
-
-                opts.desc = "Code actions"
-                map({ "n", "v" }, "gA", vim.lsp.buf.code_action, opts)
-
-                vim.keymap.del("n", "gra")
-                vim.keymap.del("n", "gri")
-                vim.keymap.del("n", "grn")
-                vim.keymap.del("n", "grr")
-            end
-
-            opts.desc = "Diagnostic info"
-            map("n", "<leader>e", vim.diagnostic.open_float, opts)
-
-            opts.desc = "Move to prev diagnostic"
-            map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
-
-            opts.desc = "Move to next diagnostic"
-            map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
-
-            opts.desc = "Format buffer"
-            map("n", "<leader>lf", function()
-                vim.lsp.buf.format({
-                    filter = function(client)
-                        return client.name == "null-ls"
-                    end,
-                })
-            end, opts)
-
-            ---@diagnostic disable-next-line
-            local toggle_lsp_client = function()
-                local buf = vim.api.nvim_get_current_buf()
-                local clients = vim.lsp.get_clients({ bufnr = buf })
-                if not vim.tbl_isempty(clients) then
-                    vim.cmd("LspStop")
-                else
-                    vim.cmd("LspStart")
-                end
-            end
-
+            -- Configure language servers:
+            ------------------------------
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
-                on_attach = on_attach,
                 settings = {
                     Lua = {
                         runtime = {
@@ -191,6 +121,15 @@ return {
                     enable = true,
                     -- disable = {},
                 },
+            })
+
+            lspconfig.marksman.setup({
+                capabilities = capabilities,
+            })
+
+            lspconfig.gdscript.setup({
+                capabilities = capabilities,
+                filetypes = { "gdscript" },
             })
 
             -- local rt = require("rust-tools")
@@ -222,7 +161,6 @@ return {
             --         ),
             --     },
             --     server = {
-            --         on_attach = on_attach,
             --         capabilities = capabilities,
             --         filetypes = { "rust" },
             --         settings = {
@@ -268,18 +206,6 @@ return {
             -- }
             -- map("n", "<M-d>", "<cmd>RustOpenExternalDocs<Cr>", opts)
 
-            lspconfig.marksman.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-                filetypes = { "markdown" },
-            })
-
-            lspconfig.gdscript.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-                filetypes = { "gdscript" },
-            })
-
             require("mason-null-ls").setup({
                 ensure_installed = {
                     -- Opt to list sources here, when available in mason.
@@ -297,11 +223,100 @@ return {
                     -- null_ls.builtins.completion.spell,
                 },
             })
-        end,
-        build = function()
-            pcall(function()
-                require("mason-registry").refresh()
-            end)
+
+            -- Configure hotkeys:
+            ------------------------------
+            local opts = { noremap = true, silent = true }
+
+            opts.desc = "Diagnostic info"
+            map("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+            opts.desc = "Move to prev diagnostic"
+            map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
+
+            opts.desc = "Move to next diagnostic"
+            map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
+
+            ---@diagnostic disable-next-line
+            local toggle_lsp_client = function()
+                local buf = vim.api.nvim_get_current_buf()
+                local clients = vim.lsp.get_clients({ bufnr = buf })
+                if not vim.tbl_isempty(clients) then
+                    vim.cmd("LspStop")
+                else
+                    vim.cmd("LspStart")
+                end
+            end
+
+            -- Use LspAttach autocommand to only map the following keys
+            -- after the language server attaches to the current buffer
+            vim.api.nvim_create_autocmd('LspAttach', {
+                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                callback = function(ev)
+                    -- Enable completion triggered by <c-x><c-o>
+                    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+                    -- Buffer local mappings.
+                    -- See `:help vim.lsp.*` for documentation on any of the below functions
+                    local opts = { buffer = ev.buf, noremap = true, silent = true }
+                    map("n", "<leader>i", vim.lsp.buf.hover, opts)
+
+                    opts.desc = "Go to definitions"
+                    map("n", "gd", function()
+                        ---@diagnostic disable-next-line
+                        require("trouble").toggle("lsp_definitions")
+                    end, opts)
+
+                    opts.desc = "Go to references"
+                    map("n", "gr", function()
+                        ---@diagnostic disable-next-line
+                        require("trouble").toggle("lsp_references")
+                    end, opts)
+
+                    opts.desc = "Go to type definitions"
+                    map("n", "gt", function()
+                        ---@diagnostic disable-next-line
+                        require("trouble").toggle("lsp_type_definitions")
+                    end, opts)
+
+                    opts.desc = "Go to doc symbols"
+                    map("n", "gs", function()
+                        ---@diagnostic disable-next-line
+                        require("trouble").toggle("lsp_document_symbols")
+                    end, opts)
+
+                    opts.desc = "Go to declaration"
+                    map("n", "gD", vim.lsp.buf.declaration, opts)
+
+                    opts.desc = "Go to implementation"
+                    map("n", "gi", vim.lsp.buf.implementation, opts)
+
+                    opts.desc = "Rename buffer"
+                    map("n", "gn", vim.lsp.buf.rename, opts)
+
+                    opts.desc = "Code actions"
+                    map({ "n", "v" }, "gA", vim.lsp.buf.code_action, opts)
+
+                    opts.desc = "Signature Help"
+                    map('n', 'K', vim.lsp.buf.signature_help, opts)
+
+                    opts.desc = "Format Buffer"
+                    map('n', '<space>f', function()
+                        vim.lsp.buf.format({
+                            filter = function(client)
+                                return client.name == "null-ls"
+                            end,
+                            async = true
+                        })
+                    end, opts)
+                end,
+
+                vim.keymap.del("n", "gra"),
+                vim.keymap.del("n", "gri"),
+                vim.keymap.del("n", "grn"),
+                vim.keymap.del("n", "grr"),
+            })
+
         end,
     },
+
 }
