@@ -54,7 +54,7 @@ return {
     },
 
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         config = function()
             require("mason").setup({
                 ui = {
@@ -226,17 +226,6 @@ return {
 
             -- Configure hotkeys:
             ------------------------------
-            local opts = { noremap = true, silent = true }
-
-            opts.desc = "Diagnostic info"
-            map("n", "<leader>e", vim.diagnostic.open_float, opts)
-
-            opts.desc = "Move to prev diagnostic"
-            map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
-
-            opts.desc = "Move to next diagnostic"
-            map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
-
             ---@diagnostic disable-next-line
             local toggle_lsp_client = function()
                 local buf = vim.api.nvim_get_current_buf()
@@ -258,7 +247,18 @@ return {
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf, noremap = true, silent = true }
+
+                    opts.desc = "Diagnostic info"
+                    map("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+                    opts.desc = "Info"
                     map("n", "<leader>i", vim.lsp.buf.hover, opts)
+
+                    opts.desc = "Move to prev diagnostic"
+                    map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
+
+                    opts.desc = "Move to next diagnostic"
+                    map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
 
                     opts.desc = "Go to definitions"
                     map("n", "gd", function()
