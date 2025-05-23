@@ -5,7 +5,7 @@ return {
         event = "CursorHold",
         opts = {
             -- whether to map keybinds or not. default true
-            -- default_mappings = false,
+            default_mappings = false,
             -- which builtin marks to show. default {}
             -- builtin_marks = { ".", "<", ">", "^" },
             -- whether movements cycle back to the beginning/end of buffer. default true

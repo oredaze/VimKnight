@@ -23,9 +23,11 @@ map("n", "<C-i>", "<C-i>")
 
 -- Windows, tabs & buffers
 map("n", "<C-w>d", ":bd<CR>", { silent = true, desc = "Delete buffer" })
+map("n", "<C-w>o", "<C-w>p", { silent = true, desc = "Prev focused window" })
 map("n", "<C-w>,", "<CMD>bprev<CR>", { silent = true })
 map("n", "<C-w>.", "<CMD>bnext<CR>", { silent = true })
 map("n", "<C-w>t", ":tabnew<CR>", { silent = true, desc = "New tab" })
+map("n", "<A-w>", "<C-w>", { remap = true })
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
 
@@ -231,7 +233,7 @@ map("n", "tP", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" }
 map("n", "t[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
 map("n", "t]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
 map("n", "ts", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
-map("n", "tl", ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "List" })
+map("n", "<leader>t", ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "List" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/trailblazer.lua
 

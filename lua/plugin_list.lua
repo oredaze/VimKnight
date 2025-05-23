@@ -29,6 +29,7 @@ return {
     require("plugins.fm-nvim"),
     require("plugins.vim-godot"),
     require("plugins.vim-hjson"),
+    require("plugins.vim-ron"),
 
     -- Telescope
     require("plugins.telescope"),

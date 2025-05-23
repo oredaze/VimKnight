@@ -45,7 +45,7 @@ let s:palette = {
     \ 'bg_blue':      ['#213338',   '17',   'DarkBlue'],
     \ 'bg_gray':      ['#333333',   '17',   'DarkGrey'],
     \ 'bg_code':      ['#212121',   '17',   'DarkGrey'],
-    \ 'fg':           ['#e0d0b0',   '223',  'White'],
+    \ 'fg':           ['#d9c9aa',   '223',  'White'],
     \ 'fg_dim':       ['#B3A994',   '214',  'Gray'],
     \ 'fg_nc':        ['#8C8369',   '214',  'Gray'],
     \ 'cream':        ['#D5C095',   '223',  'White'],
