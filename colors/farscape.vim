@@ -222,6 +222,32 @@ hi! link @constructor.lua @punctuation.bracket
 hi @variable.builtin guifg=#B1B3B4 guibg=NONE guisp=NONE blend=NONE gui=italic
 " }}}
 
+" blink-cmp {{{
+hi! link BlinkCmpKind              Include
+hi! link BlinkCmpKindText          Identifier
+hi! link BlinkCmpKindFile          Identifier
+hi! link BlinkCmpKindField         Identifier
+hi! link BlinkCmpKindEnumMember    Identifier
+hi! link BlinkCmpKindProperty      Identifier
+hi! link BlinkCmpKindClass         Type
+hi! link BlinkCmpKindConstant      Constant
+hi! link BlinkCmpKindConstructor   Special
+hi! link BlinkCmpKindCopilot       Special
+hi! link BlinkCmpKindEnum          Type
+hi! link BlinkCmpKindFolder        Directory
+hi! link BlinkCmpKindFunction      Function
+hi! link BlinkCmpKindInterface     Type
+hi! link BlinkCmpKindKeyword       Keyword
+hi! link BlinkCmpKindMethod        Function
+hi! link BlinkCmpKindModule        Include
+hi! link BlinkCmpKindOperator      Operator
+hi! link BlinkCmpKindReference     String
+hi! link BlinkCmpKindSnippet       Special
+hi! link BlinkCmpKindStruct        Structure
+hi! link BlinkCmpKindTypeParameter Identifier
+hi! link BlinkCmpKindValue         String
+hi! link BlinkCmpKindVariable      Identifier
+" }}}
 " CPM {{{
 hi! link CmpItemAbbr              Identifier
 hi! link CmpItemKindText          Identifier

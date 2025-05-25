@@ -53,7 +53,6 @@ o.list = true
 o.ruler = false
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
--- o.cmdheight = 0
 
 -- Indents
 o.tabstop = 4 -- default number of characters for indents
@@ -84,10 +83,14 @@ vim.diagnostic.config({
     },
 })
 
--- Try this later when plugins and stuff chatch up:
+-- -- Try this later when plugins and stuff chatch up:
 -- vim.diagnostic.config({
 --     signs = {
 --         --support diagnostic severity / diagnostic type name
 --         text = { [1] = 'e', ['ERROR'] = '󰨰', ['WARN'] = '', ['INFO'] = '', ['HINT'] = '󱩎' },
+--     },
+--     virtual_text = {
+--         prefix = "",
+--         spacing = 1,
 --     },
 -- })

@@ -1051,38 +1051,34 @@ hi! link @storageclass.lifetime Label
 hi! link @keyword.return Exception
 hi! link @constructor.lua Delimiter
 " }}}
-" CPM {{{
-hi! link CmpItemAbbr              Identifier
-hi! link CmpItemKindText          Identifier
-hi! link CmpItemKindFile          Identifier
-hi! link CmpItemKindField         Identifier
-hi! link CmpItemKindEnumMember    Identifier
-hi! link CmpItemKindProperty      Identifier
-hi! link CmpItemMenu              Identifier
-hi! link CmpDocumentation         Identifier
-hi! link CmpDocumentationBorder   FloatBorder
-hi! link CmpItemAbbrMatch         Function
-hi! link CmpItemAbbrMatchFuzzy    CmpItemAbbrMatch
-hi! link CmpItemKindClass         Type
-hi! link CmpItemKindConstant      Constant
-hi! link CmpItemKindConstructor   Special
-hi! link CmpItemKindCopilot       Special
-hi! link CmpItemKindEnum          Type
-hi! link CmpItemKindFolder        Directory
-hi! link CmpItemKindFunction      Function
-hi! link CmpItemKindInterface     Type
-hi! link CmpItemKindKeyword       Keyword
-hi! link CmpItemKindMethod        Function
-hi! link CmpItemKindModule        Include
-hi! link CmpItemKindOperator      Operator
-hi! link CmpItemKindReference     String
-hi! link CmpItemKindSnippet       Special
-hi! link CmpItemKindStruct        Structure
-hi! link CmpItemKindTypeParameter Identifier
-hi! link CmpItemKindValue         String
-hi! link CmpItemKindVariable      Identifier
+" blink-cmp {{{
+hi! link BlinkCmpKind              Include
+hi! link BlinkCmpKindText          Identifier
+hi! link BlinkCmpKindFile          Identifier
+hi! link BlinkCmpKindField         Identifier
+hi! link BlinkCmpKindEnumMember    Identifier
+hi! link BlinkCmpKindProperty      Identifier
+hi! link BlinkCmpKindClass         Type
+hi! link BlinkCmpKindConstant      Constant
+hi! link BlinkCmpKindConstructor   Special
+hi! link BlinkCmpKindCopilot       Special
+hi! link BlinkCmpKindEnum          Type
+hi! link BlinkCmpKindFolder        Directory
+hi! link BlinkCmpKindFunction      Function
+hi! link BlinkCmpKindInterface     Type
+hi! link BlinkCmpKindKeyword       Keyword
+hi! link BlinkCmpKindMethod        Function
+hi! link BlinkCmpKindModule        Include
+hi! link BlinkCmpKindOperator      Operator
+hi! link BlinkCmpKindReference     String
+hi! link BlinkCmpKindSnippet       Special
+hi! link BlinkCmpKindStruct        Structure
+hi! link BlinkCmpKindTypeParameter Identifier
+hi! link BlinkCmpKindValue         String
+hi! link BlinkCmpKindVariable      Identifier
 " }}}
-" Plugins: {{{
+
+" Plugins
 " Neo-tree {{{
 hi! link NeoTreeIndentMarker       Whitespace
 hi! link NeoTreeExpander           Grey
@@ -1153,20 +1149,6 @@ hi! link ALEVirtualTextInfo Grey
 hi! link ALEVirtualTextStyleError Grey
 hi! link ALEVirtualTextStyleWarning Grey
 " }}}
-" neomake/neomake{{{
-hi! link NeomakeError ALEError
-hi! link NeomakeErrorSign RedSign
-hi! link NeomakeWarning ALEWarning
-hi! link NeomakeWarningSign YellowSign
-hi! link NeomakeInfo ALEInfo
-hi! link NeomakeInfoSign BlueSign
-hi! link NeomakeMessage Cyan
-hi! link NeomakeMessageSign CyanSign
-hi! link NeomakeVirtualtextError Grey
-hi! link NeomakeVirtualtextWarning Grey
-hi! link NeomakeVirtualtextInfo Grey
-hi! link NeomakeVirtualtextMessag Grey
-" }}}
 " vim-syntastic/syntastic{{{
 hi! link SyntasticError ALEError
 hi! link SyntasticWarning ALEWarning
@@ -1235,13 +1217,6 @@ hi! link UndotreeBranch Yellow
 hi! link UndotreeCurrent Cyan
 hi! link UndotreeSavedSmall blue
 " }}}
-" unblevable/quick-scope {{{
-call s:HL('QuickScopePrimary', s:palette.cyan, s:palette.none, 'underline')
-call s:HL('QuickScopeSecondary', s:palette.blue, s:palette.none, 'underline')
-" }}}
-" APZelos/blamer.nvim {{{
-hi! link Blamer Grey
-" }}}
 " Indent blankline {{{
 call s:HL('IndentBlanklineContextChar', s:palette.light_grey, s:palette.none, 'nocombine')
 call s:HL('IndentBlanklineContextStart', s:palette.none, s:palette.none, 'underline', s:palette.light_grey)
@@ -1258,43 +1233,6 @@ call s:HL('PounceGap', s:palette.light_grey, s:palette.none, 'underline', s:pale
 call s:HL('PounceAccept', s:palette.bg_base, s:palette.light_red)
 call s:HL('PounceAcceptBest', s:palette.bg_base, s:palette.light_red)
 " }}}
-" nvim-notify {{{
-hi! link NotifyERRORBorder FloatBorder
-hi! link NotifyWARNBorder FloatBorder
-hi! link NotifyINFOBorder FloatBorder
-hi! link NotifyDEBUGBorder FloatBorder
-hi! link NotifyTRACEBorder FloatBorder
-hi! link NotifyERRORIcon Exception
-hi! link NotifyWARNIcon Boolean
-hi! link NotifyINFOIcon Comment
-hi! link NotifyDEBUGIcon Statement
-hi! link NotifyTRACEIcon Function
-hi! link NotifyERRORTitle Exception
-hi! link NotifyWARNTitle Boolean
-hi! link NotifyINFOTitle Comment
-hi! link NotifyDEBUGTitle Statement
-hi! link NotifyTRACETitle Function
-hi! link NotifyERRORBody Normal
-hi! link NotifyWARNBody Normal
-hi! link NotifyINFOBody Normal
-hi! link NotifyDEBUGBody Normal
-hi! link NotifyTRACEBody Normal
-call s:HL('NotifyFix', s:palette.none, s:palette.bg_base)
-" }}}
-" Noice {{{
-call s:HL('NoiceMini', s:palette.fg, s:palette.bg_base)
-hi! link NoiceCmdlinePopup MsgArea
-hi! link NoiceConfirmBorder FloatBorder
-hi! link NoicePopupBorder FloatBorder
-hi! link NoicePopupmenuBorder FloatBorder
-hi! link NoiceCmdlinePopupBorder FloatBorder
-hi! link NoiceCmdlinePopupBorderSearch FloatBorder
-hi! link NoiceCmdlinePopupTitle FloatTitle
-call s:HL('NoiceCmdlineIcon', s:palette.green, s:palette.none)
-hi! link NoiceCmdlineIconLua Number
-hi! link NoiceCmdlinePrompt Statement
-call s:HL('NoiceVirtualText', s:palette.search, s:palette.none, 'italic')
-" }}}
 " Dashboard {{{
 call s:HL('DashboardProjectTitle', s:palette.orange, s:palette.none)
 call s:HL('DashboardMruTitle', s:palette.orange, s:palette.none)
@@ -1305,12 +1243,11 @@ hi! link DashboardFooter Comment
 hi! link TroubleIndentFoldClosed Comment
 hi! link TroubleIndentFoldOpen Comment
 " }}}
-" Trouble {{{
+" Mini.Files {{{
 hi! link MiniFilesBorderModified Number
 hi! link MiniFilesTitleFocused Burned
 " }}}
-call s:HL('InclineNormal', s:palette.fg, s:palette.bg_dark)
-call s:HL('InclineNormalNC', s:palette.light_grey, s:palette.bg_dark)
+" WhichKey {{{
 hi! link WhichKey Statement
 hi! link WhichKeyGroup Function
 hi! link WhichKeyTitle FloatBorder

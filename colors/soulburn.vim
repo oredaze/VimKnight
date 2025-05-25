@@ -22,37 +22,6 @@ let g:colors_name="soulburn"
 
 hi Normal guifg=#D5D2C8 guibg=#383838 guisp=NONE blend=NONE gui=NONE
 hi Character guifg=#B3B474 guibg=NONE guisp=NONE blend=NONE gui=bold
-" CPM {{{
-hi! link CmpItemAbbr              Identifier
-hi! link CmpItemKindText          Identifier
-hi! link CmpItemKindFile          Identifier
-hi! link CmpItemKindField         Identifier
-hi! link CmpItemKindEnumMember    Identifier
-hi! link CmpItemKindProperty      Identifier
-hi! link CmpItemMenu              Identifier
-hi! link CmpDocumentation         Identifier
-hi! link CmpDocumentationBorder   FloatBorder
-hi! link CmpItemAbbrMatch         Function
-hi! link CmpItemAbbrMatchFuzzy    CmpItemAbbrMatch
-hi! link CmpItemKindClass         Type
-hi! link CmpItemKindConstant      Constant
-hi! link CmpItemKindConstructor   Special
-hi! link CmpItemKindCopilot       Special
-hi! link CmpItemKindEnum          Type
-hi! link CmpItemKindFolder        Directory
-hi! link CmpItemKindFunction      Function
-hi! link CmpItemKindInterface     Type
-hi! link CmpItemKindKeyword       Keyword
-hi! link CmpItemKindMethod        Function
-hi! link CmpItemKindModule        Include
-hi! link CmpItemKindOperator      Operator
-hi! link CmpItemKindReference     String
-hi! link CmpItemKindSnippet       Special
-hi! link CmpItemKindStruct        Structure
-hi! link CmpItemKindTypeParameter Identifier
-hi! link CmpItemKindValue         String
-hi! link CmpItemKindVariable      Identifier
-" }}}
 hi ColorColumn guifg=NONE guibg=#533737 guisp=NONE blend=NONE gui=bold
 hi Comment guifg=#8A8A8A guibg=NONE guisp=NONE blend=NONE gui=italic
 hi! link SpecialComment Comment
@@ -267,6 +236,63 @@ hi! link NotifyINFOBody Normal
 hi! link NotifyDEBUGBody Normal
 hi! link NotifyTRACEBody Normal
 hi NotifyFix guifg=NONE guibg=#383838 gui=NONE
+" }}}
+" blink-cmp {{{
+hi! link BlinkCmpKind              Include
+hi! link BlinkCmpKindText          Identifier
+hi! link BlinkCmpKindFile          Identifier
+hi! link BlinkCmpKindField         Identifier
+hi! link BlinkCmpKindEnumMember    Identifier
+hi! link BlinkCmpKindProperty      Identifier
+hi! link BlinkCmpKindClass         Type
+hi! link BlinkCmpKindConstant      Constant
+hi! link BlinkCmpKindConstructor   Special
+hi! link BlinkCmpKindCopilot       Special
+hi! link BlinkCmpKindEnum          Type
+hi! link BlinkCmpKindFolder        Directory
+hi! link BlinkCmpKindFunction      Function
+hi! link BlinkCmpKindInterface     Type
+hi! link BlinkCmpKindKeyword       Keyword
+hi! link BlinkCmpKindMethod        Function
+hi! link BlinkCmpKindModule        Include
+hi! link BlinkCmpKindOperator      Operator
+hi! link BlinkCmpKindReference     String
+hi! link BlinkCmpKindSnippet       Special
+hi! link BlinkCmpKindStruct        Structure
+hi! link BlinkCmpKindTypeParameter Identifier
+hi! link BlinkCmpKindValue         String
+hi! link BlinkCmpKindVariable      Identifier
+" }}}
+" CPM {{{
+hi! link CmpItemAbbr              Identifier
+hi! link CmpItemKindText          Identifier
+hi! link CmpItemKindFile          Identifier
+hi! link CmpItemKindField         Identifier
+hi! link CmpItemKindEnumMember    Identifier
+hi! link CmpItemKindProperty      Identifier
+hi! link CmpItemMenu              Identifier
+hi! link CmpDocumentation         Identifier
+hi! link CmpDocumentationBorder   FloatBorder
+hi! link CmpItemAbbrMatch         Function
+hi! link CmpItemAbbrMatchFuzzy    CmpItemAbbrMatch
+hi! link CmpItemKindClass         Type
+hi! link CmpItemKindConstant      Constant
+hi! link CmpItemKindConstructor   Special
+hi! link CmpItemKindCopilot       Special
+hi! link CmpItemKindEnum          Type
+hi! link CmpItemKindFolder        Directory
+hi! link CmpItemKindFunction      Function
+hi! link CmpItemKindInterface     Type
+hi! link CmpItemKindKeyword       Keyword
+hi! link CmpItemKindMethod        Function
+hi! link CmpItemKindModule        Include
+hi! link CmpItemKindOperator      Operator
+hi! link CmpItemKindReference     String
+hi! link CmpItemKindSnippet       Special
+hi! link CmpItemKindStruct        Structure
+hi! link CmpItemKindTypeParameter Identifier
+hi! link CmpItemKindValue         String
+hi! link CmpItemKindVariable      Identifier
 " }}}
 " Noice {{{
 hi NoiceMini guifg=#D5D2C8 guibg=#383838

@@ -8,7 +8,6 @@ return {
 
     -- Basic functionality
     require("plugins.which-key"),
-    require("plugins.cmp"),
     require("plugins.subversive"),
     require("plugins.guess-indent"),
     require("plugins.comment"),
@@ -45,4 +44,5 @@ return {
 
     -- Smart code
     require("plugins.lsp"),
+    require("plugins.blink-cmp"),
 }

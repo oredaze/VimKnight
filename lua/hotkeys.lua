@@ -211,7 +211,7 @@ map("n", "?", ":Telescope keymaps<CR>")
 
 -- Marks
 map("n", "<leader>m", ":MarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Marks list" })
-map("n", "<leader>M", ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Number marks list" })
+map("n", "<leader>-", ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Number marks list" })
 map("n", "]'", "<Plug>(Marks-next)zz", { desc = "Next mark" })
 map("n", "['", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 map("n", "]`", "<Plug>(Marks-next)zz", { desc = "Next mark" })

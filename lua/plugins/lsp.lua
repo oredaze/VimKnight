@@ -91,12 +91,10 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             -- Configure language servers:
             ------------------------------
             lspconfig.lua_ls.setup({
-                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -124,11 +122,9 @@ return {
             })
 
             lspconfig.marksman.setup({
-                capabilities = capabilities,
             })
 
             lspconfig.gdscript.setup({
-                capabilities = capabilities,
                 filetypes = { "gdscript" },
             })
 
@@ -161,7 +157,6 @@ return {
             --         ),
             --     },
             --     server = {
-            --         capabilities = capabilities,
             --         filetypes = { "rust" },
             --         settings = {
             --             ["rust-analyzer"] = {
@@ -248,11 +243,11 @@ return {
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf, noremap = true, silent = true }
 
-                    opts.desc = "Diagnostic info"
-                    map("n", "<leader>e", vim.diagnostic.open_float, opts)
-
                     opts.desc = "Info"
                     map("n", "<leader>i", vim.lsp.buf.hover, opts)
+
+                    opts.desc = "Diagnostic info"
+                    map("n", "<leader>e", vim.diagnostic.open_float, opts)
 
                     opts.desc = "Move to prev diagnostic"
                     map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
@@ -294,10 +289,10 @@ return {
                     map("n", "gn", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
-                    map({ "n", "v" }, "gA", vim.lsp.buf.code_action, opts)
+                    map({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)
 
                     opts.desc = "Signature Help"
-                    map('n', 'K', vim.lsp.buf.signature_help, opts)
+                    map('n', '<space>h', vim.lsp.buf.signature_help, opts)
 
                     opts.desc = "Format Buffer"
                     map('n', '<space>f', function()
