@@ -12,11 +12,17 @@ vim.cmd("cabbrev <expr> h (getcmdtype() == ':') ? 'tab help' : 'h'")
 vim.cmd("cabbrev W w") -- For accidental W press
 map("n", "<C-q>", "q")
 map("n", "q", ":q<CR>")
+map("n", "x", '"_x')
+map("v", "p", '"_dP')
 map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
 map("v", "y", "ygv<Esc>") -- Do not move cursor after visual yanking
 map("v", ".", ":norm.<CR>") -- Dot enhancement in visual mode
 map("n", "<Backspace>", ":noh<CR>", { silent = true })
 map("n", "cd", ":cd %:h<CR>", { silent = true, desc = "cd %:h" })
+
+-- Helix-like
+map({"n", "v", "o"}, "gh", "0")
+map({"n", "v", "o"}, "gl", "$")
 
 -- Fix tab
 map("n", "<C-i>", "<C-i>")
@@ -30,10 +36,10 @@ map("n", "<C-w>t", ":tabnew<CR>", { silent = true, desc = "New tab" })
 map("n", "<A-w>", "<C-w>", { remap = true })
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
+map("n", "gp", "<CMD>bprev<CR>", { silent = true })
+map("n", "gn", "<CMD>bnext<CR>", { silent = true })
 
--- Copy, Cut & Paste from/to external clipboard
-map("v", "<C-c>", '"+y')
-map("v", "<C-x>", '"+x')
+-- External clipboard
 map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
 
 -- Insert and command mode
@@ -205,6 +211,11 @@ map("n", "<C-g>", "<cmd>Telescope live_grep<CR>", { desc = "Grep CWD" })
 map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
 map("n", "<C-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
 map("n", "<space>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
+map("n", "<space>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
+map("n", "<space>s", "<cmd>Telescope symbols<CR>", { desc = "Symbols" })
+map("n", "<space>;", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
+map("n", "<space>r", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
+map("n", "<space>'", "<cmd>Telescope registers<CR>", { desc = "Registers" })
 map("n", "?", ":Telescope keymaps<CR>")
 -- More at:
 -- ~/.config/nvim/lua/plugins/telescope.lua
@@ -233,7 +244,7 @@ map("n", "tP", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" }
 map("n", "t[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
 map("n", "t]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
 map("n", "ts", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
-map("n", "<leader>t", ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "List" })
+map("n", "<leader>t", ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Trails List" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/trailblazer.lua
 

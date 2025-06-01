@@ -286,7 +286,7 @@ return {
                     map("n", "gi", vim.lsp.buf.implementation, opts)
 
                     opts.desc = "Rename buffer"
-                    map("n", "gn", vim.lsp.buf.rename, opts)
+                    map("n", "g<C-r>", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
                     map({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)

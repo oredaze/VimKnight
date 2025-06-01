@@ -12,14 +12,15 @@ return {
             -- @type string|fun():string
             ignore = "^$",
             toggler = {
-                line = "<leader>s",
+                line = "<C-c>c",
             },
             opleader = {
-                line = "<leader>",
+                line = "<C-c>",
             },
             extra = {
-                above = '<leader>O',
-                eol = '<leader>A',
+                above = '<C-c>O',
+                below = '<C-c>o',
+                eol = '<C-c>A',
             },
         },
     },
