@@ -16,6 +16,7 @@ return {
             },
             opleader = {
                 line = "<C-c>",
+                block = "<space>C",
             },
             extra = {
                 above = '<C-c>O',

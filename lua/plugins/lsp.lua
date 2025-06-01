@@ -243,17 +243,20 @@ return {
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf, noremap = true, silent = true }
 
-                    opts.desc = "Info"
-                    map("n", "<leader>i", vim.lsp.buf.hover, opts)
+                    opts.desc = "Docs for item"
+                    map("n", "<leader>k", vim.lsp.buf.hover, opts)
+
+                    opts.desc = "Signature Help"
+                    map('n', '<space>h', vim.lsp.buf.signature_help, opts)
 
                     opts.desc = "Diagnostic info"
-                    map("n", "<leader>e", vim.diagnostic.open_float, opts)
+                    map("n", "<leader>i", vim.diagnostic.open_float, opts)
 
                     opts.desc = "Move to prev diagnostic"
-                    map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
+                    map("n", "[d", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
 
                     opts.desc = "Move to next diagnostic"
-                    map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
+                    map("n", "]d", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
 
                     opts.desc = "Go to definitions"
                     map("n", "gd", function()
@@ -286,16 +289,13 @@ return {
                     map("n", "gi", vim.lsp.buf.implementation, opts)
 
                     opts.desc = "Rename buffer"
-                    map("n", "g<C-r>", vim.lsp.buf.rename, opts)
+                    map("n", "<space>r", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
-                    map({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)
-
-                    opts.desc = "Signature Help"
-                    map('n', '<space>h', vim.lsp.buf.signature_help, opts)
+                    map({ "n", "v" }, "<space>a", vim.lsp.buf.code_action, opts)
 
                     opts.desc = "Format Buffer"
-                    map('n', '<space>f', function()
+                    map('n', '<F3>', function()
                         vim.lsp.buf.format({
                             filter = function(client)
                                 return client.name == "null-ls"

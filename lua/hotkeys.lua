@@ -206,17 +206,18 @@ cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
 cmap("T", "tabedit % | Oil", { nargs = "?" })
 
 -- Telescope
-map("n", "<C-f>", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
-map("n", "<C-g>", "<cmd>Telescope live_grep<CR>", { desc = "Grep CWD" })
+map("n", "<space>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
+map("n", "<space>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep cwd" })
 map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
-map("n", "<C-s>", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
+map("n", "<space>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
 map("n", "<space>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
 map("n", "<space>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
-map("n", "<space>s", "<cmd>Telescope symbols<CR>", { desc = "Symbols" })
+map("n", "<space>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Doc symbols" })
+map("n", "<space>S", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "WS symbols" })
+map("n", "<space>d", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
 map("n", "<space>;", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
-map("n", "<space>r", "<cmd>Telescope oldfiles<CR>", { desc = "Recent files" })
 map("n", "<space>'", "<cmd>Telescope registers<CR>", { desc = "Registers" })
-map("n", "?", ":Telescope keymaps<CR>")
+map("n", "?", ":Telescope keymaps<CR>", { desc = "Keymaps" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/telescope.lua
 
@@ -261,9 +262,9 @@ map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
 map("n", "J", ":TSJToggle<CR>")
 map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
-map("n", "<leader>q", ":Trouble quickfix toggle<CR>", { desc = "Quickfix" })
 map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
-map("n", "<leader>d", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics" })
+map("n", "<leader>q", ":Trouble quickfix toggle<CR>", { desc = "Quickfix" })
+map("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics qf" })
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/trouble.lua
