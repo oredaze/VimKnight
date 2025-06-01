@@ -85,14 +85,6 @@ return {
                     winhighlight = 'NormalFloat:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
                     scrolloff = 0,
                 },
-                draw = {
-                    padding = { 0, 1 }, -- padding only on right side
-                    components = {
-                        kind_icon = {
-                            text = function(ctx) return ' ' .. ctx.kind_icon .. ctx.icon_gap .. ' ' end
-                        }
-                    }
-                }
             },
 
             cmdline = {

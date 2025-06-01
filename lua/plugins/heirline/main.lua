@@ -248,13 +248,6 @@ local TablineBuffers = {
     end, { TablineFileNameBlock }),
 }
 
--- Add overflow sigils and finish
-local BufferLineBlock = utils.make_buflist(
-    TablineBuffers,
-    { provider = icons.left_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
-    { provider = icons.right_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } }
-)
-
 -- Now the tabs
 local Tabpages = {
     hl = { bg = "statusline_bg" }, -- surround icon bg
@@ -289,6 +282,50 @@ local TablineBlock = {
     end,
     utils.make_tablist(Tabpages),
 }
+
+-- this is the default function used to retrieve buffers
+local get_bufs = function()
+    return vim.tbl_filter(function(bufnr)
+        return vim.api.nvim_get_option_value("buflisted", { buf = bufnr })
+    end, vim.api.nvim_list_bufs())
+end
+
+-- initialize the buflist cache
+local buflist_cache = {}
+
+-- setup an autocmd that updates the buflist_cache every time that buffers are added/removed
+vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufAdd", "BufDelete" }, {
+    callback = function()
+        vim.schedule(function()
+            local buffers = get_bufs()
+            for i, v in ipairs(buffers) do
+                buflist_cache[i] = v
+            end
+            for i = #buffers + 1, #buflist_cache do
+                buflist_cache[i] = nil
+            end
+
+            -- check how many buffers we have and set showtabline accordingly
+            if #buflist_cache > 1 then
+                vim.o.showtabline = 2 -- always
+            elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+                vim.o.showtabline = 1 -- only when #tabpages > 1
+            end
+        end)
+    end,
+})
+
+local BufferLineBlock = utils.make_buflist(
+    TablineBuffers,
+    { provider = icons.left_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
+    { provider = icons.right_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
+    -- out buf_func simply returns the buflist_cache
+    function()
+        return buflist_cache
+    end,
+    -- no cache, as we're handling everything ourselves
+    false
+)
 
 -- Finish
 TabLineFinal = {
@@ -739,18 +776,18 @@ local ScrollPercentage = {
     -- hl = { fg = "statusline_fg" }
 }
 
--- local ScrollBar = {
---     static = {
---         sbar = icons.sbar,
---     },
---     provider = function(self)
---         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
---         local lines = vim.api.nvim_buf_line_count(0)
---         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
---         return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
---     end,
---     hl = { fg = "scrollbar" },
--- }
+local ScrollBar = {
+    static = {
+        sbar = icons.sbar,
+    },
+    provider = function(self)
+        local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+        local lines = vim.api.nvim_buf_line_count(0)
+        local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+        return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
+    end,
+    hl = { fg = "scrollbar" },
+}
 
 vim.opt.showcmdloc = "statusline"
 local ShowCmd = {
@@ -826,7 +863,7 @@ local StatusLineFinal = {
         Lsp,
         Space(2),
         Ruler,
-        -- ScrollBar,
+        ScrollBar,
         ScrollPercentage,
         RightCap,
     },

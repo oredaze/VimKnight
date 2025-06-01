@@ -50,9 +50,9 @@ do
     local mode_colors = {
         normal = get_hl("StatusLine").fg,
         insert = get_hl("Number").fg,
-        visual = get_hl("Type").fg,
-        visual_lines = get_hl("Type").fg,
-        visual_block = get_hl("Type").fg,
+        visual = get_hl("Include").fg,
+        visual_lines = get_hl("Include").fg,
+        visual_block = get_hl("Include").fg,
         replace = get_hl("Exception").fg,
         v_replace = get_hl("Exception").fg,
         none = get_hl("Exception").fg,

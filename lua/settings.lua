@@ -46,7 +46,7 @@ o.shada = "%,\"35,'10,f1,<32,:30,/10,h"
 o.fillchars = { vert = "│", diff = "╱", fold = "-" }
 o.completeopt = "menuone,noselect"
 o.showmode = false
-o.showtabline = 2
+o.showtabline = 0
 o.laststatus = 3
 o.showbreak = "└→"
 o.list = true
