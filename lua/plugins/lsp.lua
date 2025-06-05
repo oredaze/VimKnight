@@ -122,6 +122,7 @@ return {
             })
 
             lspconfig.marksman.setup({
+                filetypes = { "markdown" },
             })
 
             lspconfig.gdscript.setup({

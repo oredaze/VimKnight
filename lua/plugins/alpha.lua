@@ -1,4 +1,5 @@
 return {
+    -- Start page
     {
         "goolord/alpha-nvim",
         event = "VimEnter",

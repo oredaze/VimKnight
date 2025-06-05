@@ -8,7 +8,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "|"
 
 -- Misc
-vim.cmd("cabbrev <expr> h (getcmdtype() == ':') ? 'tab help' : 'h'")
 vim.cmd("cabbrev W w") -- For accidental W press
 map("n", "<C-q>", "q")
 map("n", "q", ":q<CR>")
@@ -19,10 +18,12 @@ map("v", "y", "ygv<Esc>") -- Do not move cursor after visual yanking
 map("v", ".", ":norm.<CR>") -- Dot enhancement in visual mode
 map("n", "<Backspace>", ":noh<CR>", { silent = true })
 map("n", "cd", ":cd %:h<CR>", { silent = true, desc = "cd %:h" })
+map("n", "[c", "g;", { desc = "Older changes" })
+map("n", "]c", "g,", { desc = "Newer changes" })
 
 -- Helix-like
-map({"n", "v", "o"}, "gh", "0")
-map({"n", "v", "o"}, "gl", "$")
+map({ "n", "v", "o" }, "gh", "0")
+map({ "n", "v", "o" }, "gl", "$")
 
 -- Fix tab
 map("n", "<C-i>", "<C-i>")
@@ -88,9 +89,13 @@ vim.cmd([[
     nnoremap <F10> :exe "colo " .. NextColors()<CR>
 ]])
 
-map("n", "g?", ":echo synIDattr(synID(line('.'), col('.'), 1), 'name')<CR>",
-    { desc = "Echo syntax group" }
-)
+-- Get syntax groups under cursor
+map("n", "g/", "<CMD>Inspect<CR>")
+-- For treesitter
+map("n", "g?", function()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    print(vim.inspect(result))
+end, { noremap = true, silent = false, desc = "Echo syntax group" })
 
 ------------------------
 -- Options
@@ -209,7 +214,12 @@ cmap("T", "tabedit % | Oil", { nargs = "?" })
 map("n", "<space>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
 map("n", "<space>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep cwd" })
 map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
-map("n", "<space>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Search current buffer" })
+map(
+    "n",
+    "<space>/",
+    "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+    { desc = "Search current buffer" }
+)
 map("n", "<space>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
 map("n", "<space>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
 map("n", "<space>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Doc symbols" })
@@ -222,8 +232,18 @@ map("n", "?", ":Telescope keymaps<CR>", { desc = "Keymaps" })
 -- ~/.config/nvim/lua/plugins/telescope.lua
 
 -- Marks
-map("n", "<leader>m", ":MarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Marks list" })
-map("n", "<leader>-", ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Number marks list" })
+map(
+    "n",
+    "<leader>m",
+    ":MarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
+    { desc = "Marks list" }
+)
+map(
+    "n",
+    "<leader>-",
+    ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
+    { desc = "Number marks list" }
+)
 map("n", "]'", "<Plug>(Marks-next)zz", { desc = "Next mark" })
 map("n", "['", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 map("n", "]`", "<Plug>(Marks-next)zz", { desc = "Next mark" })
@@ -245,7 +265,12 @@ map("n", "tP", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" }
 map("n", "t[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
 map("n", "t]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
 map("n", "ts", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
-map("n", "<leader>t", ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>", { desc = "Trails List" })
+map(
+    "n",
+    "<leader>t",
+    ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
+    { desc = "Trails List" }
+)
 -- More at:
 -- ~/.config/nvim/lua/plugins/trailblazer.lua
 
@@ -257,7 +282,12 @@ map("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Restart the LSP" })
 -- ~/.config/nvim/lua/plugins/lsp.lua
 
 -- Misc
-map({ "n", "x" }, "gx", "<cmd>Browse<CR>", { noremap = true, silent = true, desc = "Open link/file" })
+map(
+    { "n", "x" },
+    "gx",
+    "<cmd>Browse<CR>",
+    { noremap = true, silent = true, desc = "Open link/file" }
+)
 map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
 map("n", "J", ":TSJToggle<CR>")
 map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")

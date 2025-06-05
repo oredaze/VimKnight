@@ -1,0 +1,5 @@
+return {
+    {
+        "oredaze/moksha.nvim",
+    },
+}

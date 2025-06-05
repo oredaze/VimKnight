@@ -8,7 +8,7 @@ local has_words_before = function()
 end
 
 return {
-    -- Quickly toggle commented lines
+    -- Autocomplete menu
     {
         "Saghen/blink.cmp",
         event = { "InsertEnter", "CmdlineEnter" },
@@ -38,7 +38,21 @@ return {
                 ['<Up>'] = { 'select_prev', 'fallback' },
                 ['<Down>'] = { 'select_next', 'fallback' },
                 ['<CR>'] = { 'accept', 'fallback' },
-                ['<Esc>'] = { 'cancel', 'fallback' },
+                ['<Right>'] = { 'accept', 'fallback' },
+                ['<Esc>'] = {
+                    function(key)
+                        if key == esc then
+                            vim.schedule(function()
+                                local mode = vim.api.nvim_get_mode().mode
+                                if mode ~= 'i' then
+                                    self.last_char = ''
+                                    opts.on_insert_leave()
+                                end
+                            end)
+                        end
+                    end,
+                    'fallback',
+                },
                 ['<C-e>'] = { 'hide' },
                 ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
                 ['<S-Up>'] = { 'scroll_documentation_up', 'fallback' },
@@ -78,11 +92,13 @@ return {
             },
 
             completion = {
+                ghost_text = { enabled = true },
                 documentation = { auto_show = false },
                 menu = {
                     auto_show = false,
+                    max_height = 16,
                     border = 'rounded',
-                    winhighlight = 'NormalFloat:Normal,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+                    winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
                     scrolloff = 0,
                 },
             },

@@ -10,11 +10,11 @@ local function setup_colors()
         tabline_bg = get_hl("TabLine").bg,
         tablinesel_bg = get_hl("TabLineSel").bg,
         statusline_bg = get_hl("StatusLine").bg,
-        tablinefill = get_hl("TabLineFill").bg,
+        tablinefill = get_hl("StatusLine").bg,
         miscgrey = get_hl("Comment").fg,
         dimgrey = get_hl("StatusLineNC").fg,
         readonly = get_hl("ErrorMsg").fg,
-        filename = get_hl("TabLineSel").fg,
+        filename = get_hl("StatusLine").fg,
         modified = get_hl("Number").fg,
         workdir = get_hl("Tag").fg,
         filetype = get_hl("Type").fg,
@@ -23,7 +23,7 @@ local function setup_colors()
         termin = get_hl("Function").fg,
         -- DapMessages = get_hl('Debug').fg,
 
-        git_branch = get_hl("Define").fg,
+        git_branch = get_hl("PreProc").fg,
         git_added = get_hl("GitSignsAdd").fg,
         git_deleted = get_hl("GitSignsDelete").fg,
         git_changed = get_hl("GitSignsChange").fg,
@@ -39,7 +39,7 @@ local function setup_colors()
 
         scrollbar = get_hl("CursorLineNr").fg,
         overflowsigil_fg = get_hl("CursorLineNr").fg,
-        overflowsigil_bg = get_hl("TabLineFill").bg,
+        overflowsigil_bg = get_hl("StatusLine").bg,
         searchresults = get_hl("Search").bg,
         cmd = get_hl("Statement").fg,
     }

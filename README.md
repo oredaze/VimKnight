@@ -22,9 +22,7 @@
 
 <img src="misc/1.png" />
 
-<img src="misc/2.png" />
-
-<img src="misc/3.png" />
+<img src="https://github.com/oredaze/moksha.nvim/blob/main/screenshot.png" />
 
 ## Info
 
@@ -32,7 +30,7 @@ A personal neovim config, written from scratch. It is kinda like a neovim distri
 - Neovim distributions are too overengineered. They split things amongst too many files with (imho) unnecessary cruft in the code. This one is simple and easy to hack. It is also fully featured. You can jump straight into using it. Maybe familiarize yourself with the keybindings first and install a language server or two.
 - Tries not to override too many default keybindings or do anything too crazy. Notable exceptions are `r` -> [subversive](https://github.com/svermeulen/vim-subversive)(use `s <Esc>` instead of `r`) this should be built into vim tbh; `f` -> [Pounce](https://github.com/rlane/pounce.nvim) low mental overhead hopping plugin; `t` -> [Trailblazer](https://github.com/LeonHeidelbach/trailblazer.nvim) you can still use `dt<char>` or similar, it only rebinds normal mode; `q` -> quit (macro is now `<C-q>`) because I jump in and out of files too much. If something bothers you, comment it out in `hotkeys.lua`
 - Neatly ordered. 1 file per task: 1 for neovim settings, 1 for hotkeys, etc. and a directory for your plugin files
-- It comes with 4 new colorschemes, one of which is for 16 colors.
+- It comes with a new colorscheme [moksha](https://github.com/oredaze/moksha.nvim).
 - To disable a plugin, comment it out in `plugin_list.lua` (a few depend on each other though)
 - Don't bother keeping up with changes. This is best used as a basis for your own config, instead of starting from a clean neovim, which can be painful.
 

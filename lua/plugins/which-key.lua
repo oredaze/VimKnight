@@ -1,4 +1,5 @@
 return {
+    -- Hotkeys helper popup
     {
         "folke/which-key.nvim",
         cmd = "WhichKey",

@@ -267,9 +267,9 @@ local Tabpages = {
         end,
         provider = function(self)
             if self.is_active then
-                return icons.circle_small .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
+                return icons.circle_small .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
             else
-                return icons.circle_o .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
+                return icons.circle_o .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
             end
         end,
     }),

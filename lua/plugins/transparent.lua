@@ -5,8 +5,10 @@ return {
         opts = {
             extra_groups = {
                 "VertSplit",
+                "NormalFloat",
                 "FloatTitle",
                 "FloatBorder",
+                "EndOfBuffer",
                 "MsgArea",
                 "SignColumn",
                 "MarkSignHL",
