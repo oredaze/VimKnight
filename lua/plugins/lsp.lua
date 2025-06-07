@@ -254,10 +254,10 @@ return {
                     map("n", "<leader>i", vim.diagnostic.open_float, opts)
 
                     opts.desc = "Move to prev diagnostic"
-                    map("n", "[d", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
+                    map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
 
                     opts.desc = "Move to next diagnostic"
-                    map("n", "]d", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
+                    map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
 
                     opts.desc = "Go to definitions"
                     map("n", "gd", function()

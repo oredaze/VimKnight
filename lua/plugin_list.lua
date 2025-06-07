@@ -2,13 +2,8 @@
 return {
     -- Colorschemes
     require("plugins.colorschemes.moksha"),
-    require("plugins.colorschemes.gruvbox-material"),
     require("plugins.colorschemes.kanagawa"),
-    require("plugins.colorschemes.kanagawa-paper"),
     require("plugins.colorschemes.nordic"),
-    require("plugins.colorschemes.mellifluous"),
-    require("plugins.colorschemes.miasma"),
-    require("plugins.colorschemes.hybrid"),
 
     -- UI
     require("plugins.simpleindentguides"),

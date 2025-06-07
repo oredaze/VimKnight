@@ -18,6 +18,8 @@ map("v", "y", "ygv<Esc>") -- Do not move cursor after visual yanking
 map("v", ".", ":norm.<CR>") -- Dot enhancement in visual mode
 map("n", "<Backspace>", ":noh<CR>", { silent = true })
 map("n", "cd", ":cd %:h<CR>", { silent = true, desc = "cd %:h" })
+map("n", "[d", "[c", { desc = "Prev diff" })
+map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
 
