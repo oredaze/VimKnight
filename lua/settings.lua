@@ -54,6 +54,8 @@ o.ruler = false
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
 
+vim.fn.matchadd('ColorColumn', '\\%81v', 81)
+
 -- Indents
 o.tabstop = 4 -- default number of characters for indents
 o.shiftwidth = 0
