@@ -112,7 +112,7 @@ return {
                     -- Set true for 1 node, false for 0.
                     only = true,
                 },
-                markers = { "", "" },
+                markers = { "▶", "▽" },
             },
 
             preview_window = {

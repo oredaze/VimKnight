@@ -34,6 +34,7 @@ return {
                         BS = "◀",
                         Space = "␣",
                         Esc = "esc",
+                        Tab = "↹",
                     },
                 },
                 win = {

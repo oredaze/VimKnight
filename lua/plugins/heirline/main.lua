@@ -351,7 +351,7 @@ do
                 fallthrough = false,
                 ReadOnly,
                 {
-                    provider = icons.circle,
+                    provider = icons.sigil,
                     hl = function()
                         if bo.modified then
                             return { fg = "modified", bold = false }
@@ -761,11 +761,6 @@ local Ruler = {
     condition = function()
         return conditions.width_percent_below(4, 0.05)
     end,
-    -- %-2 : make item takes at least 2 cells and be left justified
-    -- %l : current line number
-    -- %L : number of lines in the buffer
-    -- %v : column number
-    -- provider = "%2(%v%) " .. icons.line_number .. " %-8(%l:%L%)",
     provider = "%l:%L ",
     hl = { bold = false },
 }

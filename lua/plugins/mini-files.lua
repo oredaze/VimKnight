@@ -22,6 +22,7 @@ return {
                 windows = {
                     width_focus = 30,
                 },
+                content = { prefix = function() end }
             }
             local go_in_plus = function()
                 for _ = 1, vim.v.count1 do

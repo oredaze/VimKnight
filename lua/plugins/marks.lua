@@ -27,39 +27,39 @@ return {
             -- default virt_text is "".
             signs = true,
             bookmark_1 = {
-                sign = "",
+                sign = "!",
                 annotate = false,
             },
             bookmark_2 = {
-                sign = "",
+                sign = "@",
                 annotate = false,
             },
             bookmark_3 = {
-                sign = "",
+                sign = "#",
                 annotate = false,
             },
             bookmark_4 = {
-                sign = "",
+                sign = "$",
                 annotate = false,
             },
             bookmark_5 = {
-                sign = "󰚀",
+                sign = "%",
                 annotate = false,
             },
             bookmark_6 = {
-                sign = "",
+                sign = "^",
                 annotate = false,
             },
             bookmark_7 = {
-                sign = "",
+                sign = "&",
                 annotate = false,
             },
             bookmark_8 = {
-                sign = "",
+                sign = "*",
                 annotate = false,
             },
             bookmark_9 = {
-                sign = "",
+                sign = "(",
                 annotate = false,
             },
             mappings = {
