@@ -5,7 +5,8 @@ return {
     },
     ockfile = vim.fn.stdpath("data") .. "/lazy/lazy-lock.json",
     ui = {
-        border = "rounded",
+        -- border = "rounded",
+        border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
     },
     checker = {
         enabled = false, -- automatically check for plugin updates

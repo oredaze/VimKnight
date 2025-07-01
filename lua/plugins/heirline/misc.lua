@@ -11,16 +11,16 @@ util.icons = {
     sbar = { '🭽', '🭶', '🭷', '🭸', '🭹', '🭺', '🭻', '🭼' },
     left_overflow = "<",
     right_overflow = ">",
-    padlock = " X",
-    sigil = ">>",
+    padlock = " ",
+    circle = ">>",
     circle_small = "◆",
     circle_o = "◇",
     modified = " +",
-    spellcheck = " Sp ",
+    spellcheck = " 󰓆 ",
     terminal = " $",
     macro_rec = "@ ",
     bug = "󰨰 ",
-    git_branch = "↪",
+    git_branch = " ",
 }
 
 util.mode = setmetatable({

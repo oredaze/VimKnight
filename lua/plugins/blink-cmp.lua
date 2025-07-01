@@ -97,7 +97,8 @@ return {
                 menu = {
                     auto_show = false,
                     max_height = 16,
-                    border = 'rounded',
+                    -- border = 'shadow',
+                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
                     scrolloff = 0,
                 },

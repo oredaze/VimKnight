@@ -34,12 +34,12 @@ return {
                         BS = "◀",
                         Space = "␣",
                         Esc = "esc",
-                        Tab = "↹",
+                        Tab = "󰌒",
                     },
                 },
                 win = {
-                    -- border = { "-", "-", "-", "", "", "", "", "" },
-                    border = { "─", "─", "─", "", "", "", "", "" },
+                    border = { "-", "-", "-", "", "", "", "", "" },
+                    -- border = { "─", "─", "─", "", "", "", "", "" },
                     height = { min = 4, max = 16 }, -- min and max height of the columns
                     row = math.huge,
                 },

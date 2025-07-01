@@ -38,7 +38,6 @@ A personal neovim config, written from scratch. It is kinda like a neovim distri
 
 - `tar`, `unzip`, `curl` and `git` for [Mason](https://github.com/williamboman/mason.nvim)
 - `make` for [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
-- [Nerd font](https://www.nerdfonts.com/font-downloads) icons are everywhere
 - [fd](https://github.com/sharkdp/fd) for telescope file search indexing
 - [ripgrep](https://github.com/BurntSushi/ripgrep) for text searching in your project
 - [zoxide](https://github.com/ajeetdsouza/zoxide) for fast directory switching

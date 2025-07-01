@@ -60,8 +60,8 @@ return {
                     local win_id = args.data.win_id
                     -- Customize window-local settings
                     local config = vim.api.nvim_win_get_config(win_id)
-                    config.border = 'rounded'
-                    -- config.border = { "+", "-", "+", "|", "+", "-", "+", "|" }
+                    -- config.border = 'rounded'
+                    config.border = { "+", "-", "+", "|", "+", "-", "+", "|" }
                     vim.api.nvim_win_set_config(win_id, config)
                 end,
             })

@@ -185,7 +185,7 @@ local TablineFileFlags = {
             return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
         end,
         provider = icons.modified,
-        hl = { fg = "modified" },
+        hl = { fg = "modified", bold = true },
     },
     {
         condition = function(self)
@@ -351,7 +351,7 @@ do
                 fallthrough = false,
                 ReadOnly,
                 {
-                    provider = icons.sigil,
+                    provider = icons.circle,
                     hl = function()
                         if bo.modified then
                             return { fg = "modified", bold = false }
@@ -857,8 +857,9 @@ local StatusLineFinal = {
         Diagnostics,
         Lsp,
         Space(2),
-        Ruler,
-        ScrollBar,
+        -- ScrollBar,
+        -- Space(1),
+        -- Ruler,
         ScrollPercentage,
         RightCap,
     },
