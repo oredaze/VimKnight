@@ -92,16 +92,17 @@ return {
             },
 
             completion = {
-                ghost_text = { enabled = true },
+                ghost_text = { enabled = false },
                 documentation = { auto_show = false },
                 menu = {
-                    auto_show = false,
-                    max_height = 16,
+                    auto_show = true,
+                    max_height = 10,
                     -- border = 'shadow',
                     border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
                     scrolloff = 0,
                 },
+                list = { selection = { preselect = false } },
             },
 
             cmdline = {
