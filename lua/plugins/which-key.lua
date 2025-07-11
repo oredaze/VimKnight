@@ -32,7 +32,7 @@ return {
                     mappings = false, -- devicons
                     keys = {
                         BS = "◀",
-                        Space = "␣",
+                        Space = "_",
                         Esc = "esc",
                         Tab = "󰌒",
                     },
