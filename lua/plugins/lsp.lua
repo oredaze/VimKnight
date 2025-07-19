@@ -47,7 +47,7 @@ return {
                     lint.try_lint()
                 end,
             })
-            map("n", "<leader>ll", function()
+            map("n", "<leader>Ll", function()
                 lint.try_lint()
             end, { silent = true, desc = "Lint" })
         end,

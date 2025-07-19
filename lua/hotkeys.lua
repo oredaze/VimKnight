@@ -203,10 +203,10 @@ map("n", "S", "c<plug>(matchup-i%)")
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 
 -- File explorers
-map("n", "<C-l>", "<cmd>Lf<CR>")
-map("n", "<C-b>", "<cmd>Broot<CR>")
+map("n", "<space>l", "<cmd>Lf<CR>")
+map("n", "<space>b", "<cmd>Broot<CR>")
 map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
-map("n", "<C-e>", "<cmd>lua MiniFiles.open()<CR>")
+map("n", "<space>e", "<cmd>lua MiniFiles.open()<CR>")
 cmap("E", "Oil", { nargs = "?" })
 cmap("S", "belowright split | Oil", { nargs = "?" })
 cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
@@ -277,9 +277,9 @@ map(
 -- ~/.config/nvim/lua/plugins/trailblazer.lua
 
 -- LSP
-map("n", "<leader>ld", "<cmd>LspStop<CR>", { desc = "Disable the LSP" })
-map("n", "<leader>le", "<cmd>LspStart<CR>", { desc = "Enable the LSP" })
-map("n", "<leader>lr", "<cmd>LspRestart<CR>", { desc = "Restart the LSP" })
+map("n", "<leader>Ld", "<cmd>LspStop<CR>", { desc = "Disable the LSP" })
+map("n", "<leader>Le", "<cmd>LspStart<CR>", { desc = "Enable the LSP" })
+map("n", "<leader>Lr", "<cmd>LspRestart<CR>", { desc = "Restart the LSP" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/lsp.lua
 

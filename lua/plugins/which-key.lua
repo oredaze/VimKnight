@@ -9,7 +9,7 @@ return {
             wk.add({
                 { "t", group = "Trails" },
                 { "<leader>", group = "Plugins" },
-                { "<leader>l", group = "LSP" },
+                { "<leader>L", group = "LSP" },
                 { "<leader>o", group = "Options" },
                 { "<leader>1", "1gt", hidden = true },
                 { "<leader>2", "2gt", hidden = true },

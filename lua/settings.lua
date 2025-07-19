@@ -51,6 +51,7 @@ o.laststatus = 3
 o.showbreak = "└→"
 o.list = true
 o.ruler = false
+o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
 

@@ -45,7 +45,7 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set("n", "<leader>b", function()
+vim.keymap.set("n", "<C-b>", function()
     local tabline = require("heirline").tabline
     local buflist = tabline._buflist[1]
     buflist._picker_labels = {}
@@ -134,7 +134,7 @@ local TabLineOffset = {
 local TablineBufnr = {
     provider = function(self)
         if self.is_active then
-            return tostring(self.bufnr) .. ": "
+            return "󰄾 " .. tostring(self.bufnr) .. ": "
         else
             return tostring(self.bufnr) .. ": "
         end
@@ -175,7 +175,7 @@ local TablineFileName = {
         return filename
     end,
     hl = function(self)
-        return { bold = self.is_active or self.is_visible, italic = true }
+        return { self.is_visible }
     end,
 }
 
