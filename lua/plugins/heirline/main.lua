@@ -134,7 +134,7 @@ local TabLineOffset = {
 local TablineBufnr = {
     provider = function(self)
         if self.is_active then
-            return "󰄾 " .. tostring(self.bufnr) .. ": "
+            return tostring(self.bufnr) .. ": "
         else
             return tostring(self.bufnr) .. ": "
         end

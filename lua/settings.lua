@@ -64,14 +64,25 @@ o.expandtab = true -- default indent type; true for spaces
 
 -- Splits
 o.fillchars:append({
-    horiz = "─",
-    horizup = "┴",
-    horizdown = "┬",
-    vert = "│",
-    vertleft = "┤",
-    vertright = "├",
-    verthoriz = "┼",
+    horiz = "-",
+    horizup = "+",
+    horizdown = "+",
+    vert = "|",
+    vertleft = "+",
+    vertright = "+",
+    verthoriz = "+",
 })
+
+-- -- Splits
+-- o.fillchars:append({
+--     horiz = "─",
+--     horizup = "┴",
+--     horizdown = "┬",
+--     vert = "│",
+--     vertleft = "┤",
+--     vertright = "├",
+--     verthoriz = "┼",
+-- })
 
 -- Diagnostics
 vim.fn.sign_define("DiagnosticSignError", { text = "󰨰 ", texthl = "DiagnosticError" })

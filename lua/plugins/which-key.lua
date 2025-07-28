@@ -23,21 +23,19 @@ return {
             })
             local setup = {
                 delay = function(ctx)
-                    return ctx.plugin and 0 or 400 -- WhichKey popup delay
+                    return ctx.plugin and 0 or 0 -- WhichKey popup delay
                 end,
                 icons = {
-                    breadcrumb = "+", -- symbol used in the command line area that shows your active key combo
+                    breadcrumb = ">", -- symbol used in the command line area that shows your active key combo
                     separator = "→", -- symbol used between a key and it's label
-                    group = "◆ ", -- symbol prepended to a group
+                    group = "+ ", -- symbol prepended to a group
                     mappings = false, -- devicons
                     keys = {
                         BS = "◀",
-                        Space = "_",
-                        Esc = "esc",
-                        Tab = "󰌒",
                     },
                 },
                 win = {
+                    no_overlap = false,
                     border = { "-", "-", "-", "", "", "", "", "" },
                     -- border = { "─", "─", "─", "", "", "", "", "" },
                     height = { min = 4, max = 16 }, -- min and max height of the columns

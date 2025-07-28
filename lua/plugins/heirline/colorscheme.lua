@@ -61,8 +61,8 @@ do
         shell = get_hl("Function").fg,
         term = get_hl("Function").fg,
         more = get_hl("Function").fg,
-        op = get_hl("Special").fg,
-        select = get_hl("Special").fg,
+        op = get_hl("Constant").fg,
+        select = get_hl("Constant").fg,
     }
     Mode = setmetatable({
         normal = { fg = "statusline_bg" },

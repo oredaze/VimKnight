@@ -10,6 +10,7 @@ return {
     require("plugins.transparent"),
     require("plugins.heirline.init"),
     require("plugins.alpha"),
+    require("plugins.colorful-winsep"),
 
     -- Basic functionality
     require("plugins.which-key"),
