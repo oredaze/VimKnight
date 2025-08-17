@@ -35,6 +35,7 @@ return {
     require("plugins.vim-godot"),
     require("plugins.vim-hjson"),
     require("plugins.vim-ron"),
+    require("plugins.toggleterm"),
 
     -- Telescope
     require("plugins.telescope"),

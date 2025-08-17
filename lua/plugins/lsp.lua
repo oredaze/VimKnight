@@ -84,6 +84,12 @@ return {
                     -- "rust_analyzer",
                     "marksman",
                 },
+                opts = {
+                    diagnostics = {
+                        virtual_text = false,
+                        signs = false,
+                    },
+                },
             })
         end,
     },

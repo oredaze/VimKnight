@@ -50,7 +50,7 @@ return {
                     scroll_up = "<c-u>",
                 },
                 triggers = {
-                    { "<auto>", mode = "nixsotc" },
+                    { "<auto>", mode = "niotc" },
                     { "t", mode = "n" },
                 },
             }
