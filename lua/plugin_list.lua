@@ -3,7 +3,7 @@ return {
     -- Colorschemes
     require("plugins.colorschemes.moksha"),
     require("plugins.colorschemes.kanagawa"),
-    require("plugins.colorschemes.nordic"),
+    require("plugins.colorschemes.oscura"),
 
     -- UI
     require("plugins.simpleindentguides"),

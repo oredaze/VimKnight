@@ -24,9 +24,9 @@ local function setup_colors()
         -- DapMessages = get_hl('Debug').fg,
 
         git_branch = get_hl("PreProc").fg,
-        git_added = get_hl("GitSignsAdd").fg,
-        git_deleted = get_hl("GitSignsDelete").fg,
-        git_changed = get_hl("GitSignsChange").fg,
+        git_added = get_hl("Added").fg,
+        git_deleted = get_hl("Removed").fg,
+        git_changed = get_hl("Changed").fg,
 
         spellindicator = get_hl("Function").fg,
         lspindicator = get_hl("SpecialKey").fg,
