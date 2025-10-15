@@ -300,7 +300,7 @@ return {
                     map("n", "<space>r", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
-                    map({ "n", "v" }, "<space>a", vim.lsp.buf.code_action, opts)
+                    map("n", "<space>A", vim.lsp.buf.code_action, opts)
 
                     opts.desc = "Format Buffer"
                     map('n', '<F3>', function()

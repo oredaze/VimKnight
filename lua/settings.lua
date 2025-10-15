@@ -9,7 +9,7 @@ local function smart_colors()
 
     if display or w_display then
         o.termguicolors = true
-        vim.cmd([[colorscheme oscura-vscode]])
+        vim.cmd([[colorscheme moksha]])
     else
         o.termguicolors = false
         vim.cmd([[colorscheme 16monkeys]])

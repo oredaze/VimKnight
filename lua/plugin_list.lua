@@ -16,7 +16,6 @@ return {
     require("plugins.which-key"),
     require("plugins.subversive"),
     require("plugins.guess-indent"),
-    require("plugins.comment"),
     require("plugins.autopairs"),
     require("plugins.matchup"),
     require("plugins.gx"),

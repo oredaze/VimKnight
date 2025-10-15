@@ -23,6 +23,11 @@ map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
 
+-- Commenting
+map("n", "<space>c", ":norm gcc<CR>", { desc = "Comment line", silent = true })
+map("n", "<space>ap", ":norm vipgc<CR>", { silent = true })
+map("v", "<space>", "gc", { silent = true, remap = true })
+
 -- Helix-like
 map({ "n", "v", "o" }, "gh", "0")
 map({ "n", "v", "o" }, "gl", "$")
@@ -54,6 +59,7 @@ map("n", "gn", "<CMD>bnext<CR>", { silent = true })
 
 -- External clipboard
 map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
+map("v", "<C-c>", '"+y')
 
 -- Insert and command mode
 map("!", "<C-a>", "<Home>")
@@ -311,7 +317,6 @@ map({"n", "i"}, "<a-cr>", "<cmd>ToggleTerm<CR>")
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/trouble.lua
--- ~/.config/nvim/lua/plugins/comment.lua
 -- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 53
 -- ~/.config/nvim/lua/plugins/outline.lua
 -- ~/.config/nvim/lua/plugins/oil.lua
