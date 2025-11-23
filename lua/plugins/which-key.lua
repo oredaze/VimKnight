@@ -32,6 +32,12 @@ return {
                     mappings = false, -- devicons
                     keys = {
                         BS = "◀",
+                        Tab = "⇥",
+                        Space = "˽",
+                        Esc = "✘",
+                        CR = "↵",
+                        C = "^",
+                        S = "⇑",
                     },
                 },
                 win = {

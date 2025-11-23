@@ -8,7 +8,7 @@ util.icons = {
     right_surround = "",
     left_mode_sur = "▐",
     right_mode_sur = "",
-    sbar = { '🭽', '🭶', '🭷', '🭸', '🭹', '🭺', '🭻', '🭼' },
+    -- sbar = { '🭽', '🭶', '🭷', '🭸', '🭹', '🭺', '🭻', '🭼' },
     left_overflow = "<",
     right_overflow = ">",
     padlock = " R",
@@ -16,10 +16,10 @@ util.icons = {
     circle_small = "◆",
     circle_o = "◇",
     modified = " +",
-    spellcheck = " 󰓆 ",
+    spellcheck = "  ",
     terminal = " $",
     macro_rec = "@ ",
-    bug = "󰨰 ",
+    bug = " ",
     git_branch = " ",
 }
 
