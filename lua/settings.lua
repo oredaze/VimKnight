@@ -20,7 +20,7 @@ smart_colors()
 o.mouse = "a"
 o.mousescroll = "ver:10,hor:5"
 o.title = true
-o.titlestring = "%t [nVim]"
+o.titlestring = "%t [Vim]"
 o.titleold = "\27]0;\7"
 o.number = true
 o.relativenumber = true
