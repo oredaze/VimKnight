@@ -6,8 +6,8 @@ return {
         opts = {
             default_file_explorer = true, -- hijack netrw
             win_options = {
-                relativenumber = false,
-                number = false,
+                relativenumber = true,
+                number = true,
             },
             constrain_cursor = "name",
             -- Set to `false` to remove a keymap

@@ -36,10 +36,13 @@ A personal neovim config, written from scratch. It is kinda like a neovim distri
 
 ## Dependencies
 
+Most of them are not required for a functional setup.
+
 - `tar`, `unzip`, `curl` and `git` for [Mason](https://github.com/williamboman/mason.nvim)
 - `make` for [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 - [fd](https://github.com/sharkdp/fd) for telescope file search indexing
 - [ripgrep](https://github.com/BurntSushi/ripgrep) for text searching in your project
 - [zoxide](https://github.com/ajeetdsouza/zoxide) for fast directory switching
 - [lf](https://github.com/gokcehan/lf) external file manager integration
+- [broot](https://github.com/Canop/broot) fuzzy search file manager
 - A terminal with fixed escape sequences (I use foot(wayland) or patched st(x11)) to use `<Tab>` independently of `<C-i>` (and any other overlapping key you decide to bind). Guis also work
