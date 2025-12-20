@@ -15,7 +15,7 @@ return {
             local opts = {
                 defaults = {
                     path_display = { "tail" },
-                    prompt_prefix = "> ",
+                    prompt_prefix = ": ",
                     multi_icon = "*",
                     borderchars = { "-", "|", "-", "|", "+", "+", "+", "+" },
                     -- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },

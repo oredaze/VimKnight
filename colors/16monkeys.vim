@@ -21,10 +21,12 @@ if &t_Co == 8
 	hi SpecialKey ctermfg=0 ctermbg=none cterm=bold
 	hi Conceal ctermfg=0 ctermbg=none cterm=bold
 	hi Folded ctermfg=0 ctermbg=0 cterm=bold
+	hi FoldColumn ctermfg=0 ctermbg=0 cterm=bold
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=bold
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
 	hi StatusLine ctermfg=7 ctermbg=0 cterm=none
 	hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
+	hi Whitespace ctermfg=0 ctermbg=0 cterm=bold
 	hi User1 ctermfg=0 ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
@@ -35,10 +37,12 @@ else
 	hi SpecialKey ctermfg=235 ctermbg=none cterm=none
 	hi Conceal ctermfg=8 ctermbg=none cterm=none
 	hi Folded ctermfg=8 ctermbg=0 cterm=none
+	hi FoldColumn ctermfg=8 ctermbg=0 cterm=none
 	hi TabLineFill ctermfg=8 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
 	hi StatusLine ctermfg=7 ctermbg=0 cterm=none
 	hi StatusLineNC ctermfg=8 ctermbg=0 cterm=none
+	hi Whitespace ctermfg=237 ctermbg=0 cterm=none
 	hi User1 ctermfg=8 ctermbg=0 cterm=none
 endif
 
@@ -83,7 +87,7 @@ hi Include ctermfg=6 ctermbg=none
 hi Define ctermfg=6 ctermbg=none
 hi Macro ctermfg=2 ctermbg=none cterm=bold
 hi PreCondit ctermfg=6 ctermbg=none
-hi! link Label Define
+hi Label ctermfg=6 ctermbg=none
 
 hi Type ctermfg=5 ctermbg=none cterm=none
 hi StorageClass ctermfg=5 ctermbg=none
@@ -106,6 +110,8 @@ hi Todo ctermfg=0 ctermbg=5 cterm=bold
 hi Underlined ctermfg=3 ctermbg=none cterm=underline
 hi Cursor ctermfg=0 ctermbg=7 cterm=bold
 hi lCursor ctermfg=0 ctermbg=4 cterm=bold
+hi vCursor ctermfg=0 ctermbg=3 cterm=bold
+hi iCursor ctermfg=0 ctermbg=7 cterm=bold
 hi CursorIM ctermfg=none ctermbg=7
 hi DiffAdd ctermfg=2 ctermbg=0
 hi DiffChange ctermfg=none ctermbg=0
@@ -115,9 +121,9 @@ hi Directory ctermfg=4 ctermbg=none
 hi MatchParen ctermfg=1 ctermbg=0 cterm=bold,underline
 hi Search ctermfg=0 ctermbg=7
 hi IncSearch ctermfg=3 ctermbg=0
-hi! link CurSearch IncSearch
+hi CurSearch ctermfg=3 ctermbg=0
 hi! link CursorLineFold Folded
-hi! link CursorLineSign SignColumn
+hi CursorLineSign ctermfg=7 ctermbg=none
 hi SpellBad ctermfg=none ctermbg=none cterm=undercurl
 hi SpellCap ctermfg=none ctermbg=none cterm=undercurl
 hi SpellLocal ctermfg=none ctermbg=none cterm=undercurl
@@ -125,6 +131,7 @@ hi SpellRare ctermfg=none ctermbg=none cterm=undercurl
 hi Visual ctermfg=0 ctermbg=7 cterm=none
 hi VisualNOS ctermfg=none ctermbg=0 cterm=underline
 hi ColorColumn ctermfg=none ctermbg=1 cterm=bold
+hi Substitute ctermfg=0 ctermbg=2 cterm=none
 " }}}
 " UI: {{{
 hi TabLineSel ctermfg=2 ctermbg=0 cterm=bold
@@ -136,19 +143,20 @@ hi CursorLineNr ctermfg=3 ctermbg=none cterm=bold
 hi CursorColumn ctermfg=none ctermbg=0
 hi SignColumn ctermfg=7 ctermbg=none
 hi FoldColumn ctermfg=7 ctermbg=0 cterm=none
+hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
 hi Pmenu ctermfg=7 ctermbg=0
 hi PmenuSel ctermfg=0 ctermbg=7
 hi PmenuThumb ctermfg=0 ctermbg=7
 hi PmenuSbar ctermfg=none ctermbg=none
-hi! link PmenuKind Pmenu
-hi! link PmenuKindSel PmenuSel
-hi! link PmenuExtra Pmenu
-hi! link PmenuExtraSel PmenuSel
-hi! link PopupSelected PmenuSel
-hi! link NormalFloat Pmenu
-hi! link FloatBorder VertSplit
-hi! link FloatTitle VertSplit
+hi PmenuKind ctermfg=7 ctermbg=0
+hi PmenuKindSel ctermfg=0 ctermbg=7
+hi PmenuExtra ctermfg=7 ctermbg=0
+hi PmenuExtraSel ctermfg=0 ctermbg=7
+hi PopupSelected ctermfg=0 ctermbg=7
+hi NormalFloat ctermfg=7 ctermbg=0
+hi FloatBorder ctermfg=0 ctermbg=0 cterm=bold
+hi FloatTitle ctermfg=0 ctermbg=0 cterm=bold
 hi EndOfBuffer ctermfg=4 ctermbg=none cterm=bold
 hi QuickFixLine ctermfg=none ctermbg=0
 hi! link StatusLineTerm StatusLine
@@ -156,13 +164,29 @@ hi! link StatusLineTermNC StatusLineNC
 hi WildMenu ctermfg=0 ctermbg=7
 hi ModeMsg ctermfg=2 ctermbg=none cterm=bold
 hi MoreMsg ctermfg=5 ctermbg=none cterm=bold
-hi Question ctermfg=3 ctermbg=none
-hi WarningMsg ctermfg=1 ctermbg=none cterm=bold
-hi! link MessageWindow WarningMsg
-hi! link PopupNotification WarningMsg
+hi Question ctermfg=4 ctermbg=none
+hi WarningMsg ctermfg=3 ctermbg=none cterm=bold
+hi MessageWindow ctermfg=3 ctermbg=none cterm=bold
+hi PopupNotification ctermfg=3 ctermbg=none cterm=bold
 hi ErrorMsg ctermfg=1 ctermbg=0 cterm=bold
 " hi MsgArea ctermfg=none ctermbg=0
 " }}}
+
+" Markdown: {{{
+hi DiagnosticError ctermfg=1 ctermbg=0
+hi DiagnosticWarn ctermfg=3 ctermbg=0
+hi DiagnosticInfo ctermfg=4 ctermbg=0
+hi DiagnosticHint ctermfg=0 ctermbg=none cterm=bold
+hi! link DiagnosticVirtualTextError Grey
+hi! link DiagnosticVirtualTextWarn Grey
+hi! link DiagnosticVirtualTextInfo Grey
+hi! link DiagnosticVirtualTextHint Grey
+hi DiagnosticUnderlineError ctermfg=none ctermbg=none cterm=underline
+hi DiagnosticUnderlineWarn ctermfg=none ctermbg=none cterm=none
+hi DiagnosticUnderlineInfo ctermfg=none ctermbg=none cterm=none
+hi DiagnosticUnderlineHint ctermfg=none ctermbg=none cterm=none
+" }}}
+
 " Markdown: {{{
 hi markdownH1 ctermfg=1 ctermbg=none cterm=bold
 hi markdownH2 ctermfg=3 ctermbg=none cterm=bold
@@ -172,24 +196,27 @@ hi markdownH5 ctermfg=2 ctermbg=none cterm=bold
 hi markdownH6 ctermfg=4 ctermbg=none cterm=bold
 hi markdownUrl ctermfg=4 ctermbg=none cterm=underline
 hi markdownBold ctermfg=none ctermbg=none cterm=bold
+hi! link markdownBoldDelimiter Grey
+hi markdownItalic ctermfg=3 cterm=none
+hi markdownItalicDelimiter ctermfg=0 ctermbg=none cterm=bold
 hi! link markdownCode Green
 hi! link markdownCodeBlock Green
 hi! link markdownCodeDelimiter Grey
 hi! link markdownBlockquote Grey
 hi! link markdownListMarker Purple
 hi! link markdownOrderedListMarker Purple
-hi! link markdownLinkText Cyan
 hi! link markdownRule Grey
 hi! link markdownHeadingRule Grey
 hi! link markdownUrlDelimiter Grey
+hi! link markdownLinkText Cyan
 hi! link markdownLinkDelimiter Grey
 hi! link markdownLinkTextDelimiter Grey
 hi! link markdownHeadingDelimiter Grey
 hi! link markdownUrlTitle Purple
 hi! link markdownUrlTitleDelimiter Yellow
 hi! link markdownIdDeclaration markdownLinkText
-hi! link markdownBoldDelimiter Grey
 hi! link markdownId Yellow
+hi markdownAutomaticLink ctermfg=6
 " }}}
 " Html: {{{
 " builtin: https://notabug.org/jorgesumle/vim-html-syntax
@@ -420,6 +447,13 @@ hi! link tomlBoolean Blue
 hi! link tomlTableArray tomlTable
 " }}}
 " Diff: {{{
+hi! link Added Green
+hi! link Removed Red
+hi! link Changed Blue
+hi! link diffAdd Green
+hi! link diffDelete Red
+hi! link diffDeleted Red
+hi! link diffChange Blue
 hi! link diffAdded Green
 hi! link diffRemoved Red
 hi! link diffChanged Blue
@@ -467,6 +501,20 @@ hi SignatureMarkerText ctermfg=5 ctermbg=none cterm=bold
 hi GitGutterAdd    ctermfg=2 ctermbg=none cterm=none
 hi GitGutterChange ctermfg=4 ctermbg=none cterm=none
 hi GitGutterDelete ctermfg=1 ctermbg=none cterm=none
+hi GitGutterChangeDelete ctermfg=4 ctermbg=none cterm=none
+" }}}
+" gitsigns {{{
+hi GitSignsAdd ctermfg=2 ctermbg=none
+hi GitSignsChange ctermfg=4 ctermbg=none
+hi GitSignsDelete ctermfg=1 ctermbg=none
+hi GitSignsTopdelete ctermfg=1 ctermbg=none
+hi GitSignsChangedelete ctermfg=1 ctermbg=none
+hi GitSignsUntracked ctermfg=6 ctermbg=none
+hi GitSignsAddInline ctermfg=none ctermbg=2
+hi GitSignsChangeLnInline ctermfg=none ctermbg=4
+hi GitSignsDeleteInline ctermfg=none ctermbg=1
+hi GitSignsAddPreview ctermfg=2 ctermbg=none
+hi GitSignsDeletePreview ctermfg=1 ctermbg=none
 " }}}
 " Statusline misc {{{
 " modified, etc. sigils
@@ -476,5 +524,133 @@ hi User3 ctermfg=2 ctermbg=0
 " CWD
 hi User4 ctermfg=6 ctermbg=0
 " }}}
+" matchup {{{
+hi MatchParenCur ctermfg=none ctermbg=none cterm=bold
+hi MatchWord ctermfg=none ctermbg=none cterm=underline
+hi MatchWordCur ctermfg=none ctermbg=none cterm=underline
+" }}}
+" marks {{{
+hi MarkSignHL ctermfg=0 ctermbg=0 cterm=bold
+hi! link MarkSignNumHL LineNr
+" }}}
+" pounce {{{
+hi PounceMatch ctermfg=4
+hi PounceUnmatched ctermfg=0 ctermbg=none cterm=bold
+hi PounceGap ctermfg=0 ctermbg=none cterm=bold,underline
+hi PounceAccept ctermfg=7 ctermbg=1
+hi PounceAcceptBest ctermfg=7 ctermbg=1
+" }}}
+" whichkey {{{
+hi WhichKey ctermfg=1 ctermbg=none
+hi WhichKeyGroup ctermfg=2 ctermbg=none
+hi WhichKeyTitle ctermfg=0 ctermbg=0 cterm=bold
+" }}}
+" telescope {{{
+hi! link TelescopeBorder FloatBorder
+hi TelescopeTitle ctermfg=0 ctermbg=0 cterm=bold
+hi TelescopePromptPrefix ctermfg=0 ctermbg=0 cterm=bold
+hi TelescopeMatching ctermfg=4 ctermbg=none
+hi TelescopeSelection ctermfg=0 ctermbg=7
+hi TelescopeSelectionCaret ctermfg=0 ctermbg=7
+hi TelescopeMultiSelection ctermfg=3
+hi TelescopeMultiIcon ctermfg=0 ctermbg=none cterm=bold
+" }}}
+" signify {{{
+hi SignifySignAdd ctermfg=2 ctermbg=none
+hi SignifySignChange ctermfg=4 ctermbg=none
+hi SignifySignDelete ctermfg=1 ctermbg=none
+hi SignifySignChangeDelete ctermfg=4 ctermbg=none
+" }}}
+" mini {{{
+hi! link MiniFilesBorder FloatBorder
+hi! link MiniFilesBorderModified Number
+hi MiniFilesCursorLine ctermfg=0 ctermbg=7
+hi! link MiniFilesDirectory Directory
+hi MiniFilesFile ctermfg=7
+hi MiniFilesNormal ctermfg=7 ctermbg=0
+hi MiniFilesTitle ctermfg=0 ctermbg=0 cterm=bold
+hi MiniFilesTitleFocused ctermfg=6 ctermbg=none
+" }}}
 hi Elevator ctermfg=0 ctermbg=0 cterm=bold,reverse
 hi EasyJump ctermfg=0 ctermbg=3 cterm=none
+
+hi! link @annotation Normal
+hi! link @attribute Constant
+hi! link @attribute.typescript Function
+hi! link @boolean Boolean
+hi! link @character Character
+hi! link @comment Comment
+hi! link @comment.todo Todo
+hi! link @comment.todo.unchecked Todo
+hi! link @comment.todo.checked Todo
+hi! link @constant Constant
+hi! link @constant.builtin Constant
+hi! link @constant.macro Constant
+hi @constructor ctermfg=7
+hi! link @diff.add DiffAdded
+hi! link @diff.delete DiffDeleted
+hi! link @diff.plus DiffAdded
+hi! link @diff.minus DiffDeleted
+hi! link @diff.delta DiffChanged
+hi! link @error Error
+hi! link @function Function
+hi! link @function.builtin Function
+hi! link @function.macro Macro
+hi! link @function.method Function
+hi! link @keyword Keyword
+hi! link @keyword.conditional Conditional
+hi! link @keyword.directive Keyword
+hi! link @keyword.exception Exception
+hi! link @keyword.function Keyword
+hi! link @keyword.import Include
+hi! link @keyword.operator Include
+hi! link @keyword.repeat Keyword
+hi! link @label Label
+hi! link @module Structure
+hi! link @none Normal
+hi! link @number Number
+hi! link @number.float Float
+hi! link @operator Operator
+hi! link @parameter.reference Identifier
+hi! link @property Identifier
+hi! link @punctuation.delimiter Delimiter
+hi @punctuation.bracket ctermfg=7
+hi! link @string String
+hi! link @string.regexp String
+hi! link @string.escape String
+hi! link @string.special.symbol SpecialChar
+hi! link @tag Tag
+hi! link @tag.attribute Tag
+hi! link @tag.delimiter Delimiter
+hi @text ctermfg=7
+hi @note ctermfg=7
+hi! link @warning WarningMsg
+hi! link @danger ErrorMsg
+hi! link @type Type
+hi! link @type.builtin Type
+hi! link @variable Identifier
+hi! link @variable.builtin Identifier
+hi! link @variable.member Identifier
+hi! link @variable.parameter Identifier
+hi! link @lsp.type.comment @comment
+hi! link @lsp.type.enumv @type
+hi! link @lsp.type.enumMember @constant.builtin
+hi! link @lsp.type.interface @type
+hi! link @lsp.type.typeParameter @type
+hi! link @lsp.type.keyword @keyword
+hi! link @lsp.type.namespace @module
+hi! link @lsp.type.parameter @variable.parameter
+hi! link @lsp.type.property @property
+hi! link @lsp.type.variable @variable
+hi! link @lsp.type.macro @function.macro
+hi! link @lsp.type.method @function.method
+hi! link @lsp.type.number @number
+hi! link @lsp.type.generic @text
+hi! link @lsp.type.builtinType @type.builtin
+hi! link @lsp.typemod.method.defaultLibrary @function
+hi! link @lsp.typemod.function.defaultLibrary @function
+hi! link @lsp.typemod.operator.injected @operator
+hi! link @lsp.typemod.string.injected @string
+hi! link @lsp.typemod.variable.defaultLibrary @variable.builtin
+hi! link @lsp.typemod.variable.injected @variable
+hi! link @lsp.typemod.variable.static @constant
