@@ -313,7 +313,6 @@ map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
 map("n", "<leader>q", ":Trouble quickfix toggle<CR>", { desc = "Quickfix" })
 map("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics qf" })
-map({"n", "i"}, "<a-cr>", "<cmd>ToggleTerm<CR>")
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/trouble.lua

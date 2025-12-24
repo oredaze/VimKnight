@@ -2,8 +2,6 @@
 return {
     -- Colorschemes
     require("plugins.colorschemes.moksha"),
-    require("plugins.colorschemes.kanagawa"),
-    require("plugins.colorschemes.oscura"),
 
     -- UI
     require("plugins.simpleindentguides"),
@@ -11,9 +9,9 @@ return {
     require("plugins.heirline.init"),
     require("plugins.alpha"),
     require("plugins.colorful-winsep"),
+    require("plugins.which-key"),
 
     -- Basic functionality
-    require("plugins.which-key"),
     require("plugins.subversive"),
     require("plugins.guess-indent"),
     require("plugins.autopairs"),
@@ -33,8 +31,6 @@ return {
     require("plugins.fm-nvim"),
     require("plugins.vim-godot"),
     require("plugins.vim-hjson"),
-    require("plugins.vim-ron"),
-    require("plugins.toggleterm"),
 
     -- Telescope
     require("plugins.telescope"),
