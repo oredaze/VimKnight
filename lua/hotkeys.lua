@@ -24,9 +24,9 @@ map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
 
 -- Commenting
-map("n", "<space>c", ":norm gcc<CR>", { desc = "Comment line", silent = true })
-map("n", "<space>ap", ":norm vipgc<CR>", { silent = true })
-map("v", "<space>", "gc", { silent = true, remap = true })
+map("n", "<leader>c", ":norm gcc<CR>", { desc = "Comment line", silent = true })
+map("n", "<leader>ap", ":norm vipgc<CR>", { silent = true })
+map("v", "<leader>", "gc", { silent = true, remap = true })
 
 -- Helix-like
 map({ "n", "v", "o" }, "gh", "0")
@@ -219,32 +219,32 @@ map("n", "S", "c<plug>(matchup-i%)")
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 
 -- File explorers
-map("n", "<space>l", "<cmd>Lf<CR>")
-map("n", "<space>b", "<cmd>Broot<CR>")
+map("n", "<leader>l", "<cmd>Lf<CR>")
+map("n", "<leader>b", "<cmd>Broot<CR>")
 map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
-map("n", "<space>e", "<cmd>lua MiniFiles.open()<CR>")
+map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 cmap("E", "Oil", { nargs = "?" })
 cmap("S", "belowright split | Oil", { nargs = "?" })
 cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
 cmap("T", "tabedit % | Oil", { nargs = "?" })
 
 -- Telescope
-map("n", "<space>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
-map("n", "<space>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep cwd" })
+map("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
+map("n", "<leader>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep cwd" })
 map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
 map(
     "n",
-    "<space>/",
+    "<leader>/",
     "<cmd>Telescope current_buffer_fuzzy_find<CR>",
     { desc = "Search current buffer" }
 )
-map("n", "<space>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
-map("n", "<space>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
-map("n", "<space>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Doc symbols" })
-map("n", "<space>S", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "WS symbols" })
-map("n", "<space>d", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
-map("n", "<space>;", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
-map("n", "<space>'", "<cmd>Telescope registers<CR>", { desc = "Registers" })
+map("n", "<leader>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
+map("n", "<leader>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
+map("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Doc symbols" })
+map("n", "<leader>S", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "WS symbols" })
+map("n", "<leader>d", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
+map("n", "<leader>;", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
+map("n", "<leader>'", "<cmd>Telescope registers<CR>", { desc = "Registers" })
 map("n", "?", ":Telescope keymaps<CR>", { desc = "Keymaps" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/telescope.lua

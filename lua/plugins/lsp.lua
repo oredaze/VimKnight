@@ -255,7 +255,7 @@ return {
                     map("n", "<leader>k", vim.lsp.buf.hover, opts)
 
                     opts.desc = "Signature Help"
-                    map('n', '<space>h', vim.lsp.buf.signature_help, opts)
+                    map('n', '<leader>h', vim.lsp.buf.signature_help, opts)
 
                     opts.desc = "Diagnostic info"
                     map("n", "<leader>i", vim.diagnostic.open_float, opts)
@@ -296,11 +296,11 @@ return {
                     opts.desc = "Go to implementation"
                     map("n", "gi", vim.lsp.buf.implementation, opts)
 
-                    opts.desc = "Rename buffer"
-                    map("n", "<space>r", vim.lsp.buf.rename, opts)
+                    opts.desc = "Rename symbol"
+                    map("n", "<leader>r", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
-                    map("n", "<space>A", vim.lsp.buf.code_action, opts)
+                    map("n", "<leader>A", vim.lsp.buf.code_action, opts)
 
                     opts.desc = "Format Buffer"
                     map('n', '<F3>', function()
