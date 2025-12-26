@@ -54,8 +54,8 @@ map("n", "<A-o>", "<C-w>p", { silent = true })
 map("n", "<A-=>", "<C-w>=", { silent = true })
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
-map("n", "gp", "<CMD>bprev<CR>", { silent = true })
-map("n", "gn", "<CMD>bnext<CR>", { silent = true })
+map("n", "gp", "<CMD>bprev<CR>", { silent = true, desc = "Go to prev buffer" })
+map("n", "gn", "<CMD>bnext<CR>", { silent = true, desc = "Go to next buffer" })
 
 -- External clipboard
 map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
@@ -233,9 +233,7 @@ map("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" }
 map("n", "<leader>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep cwd" })
 map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
 map(
-    "n",
-    "<leader>/",
-    "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+    "n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>",
     { desc = "Search current buffer" }
 )
 map("n", "<leader>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
@@ -251,15 +249,11 @@ map("n", "?", ":Telescope keymaps<CR>", { desc = "Keymaps" })
 
 -- Marks
 map(
-    "n",
-    "<leader>m",
-    ":MarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
+    "n", "<leader>m", ":MarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
     { desc = "Marks list" }
 )
 map(
-    "n",
-    "<leader>-",
-    ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
+    "n", "<leader>-", ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
     { desc = "Number marks list" }
 )
 map("n", "]'", "<Plug>(Marks-next)zz", { desc = "Next mark" })
@@ -284,8 +278,7 @@ map("n", "t[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "
 map("n", "t]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
 map("n", "ts", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
 map(
-    "n",
-    "<leader>t",
+    "n", "<leader>t",
     ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
     { desc = "Trails List" }
 )
@@ -301,9 +294,7 @@ map("n", "<leader>Lr", "<cmd>LspRestart<CR>", { desc = "Restart the LSP" })
 
 -- Misc
 map(
-    { "n", "x" },
-    "gx",
-    "<cmd>Browse<CR>",
+    { "n", "x" }, "gx", "<cmd>Browse<CR>",
     { noremap = true, silent = true, desc = "Open link/file" }
 )
 map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
