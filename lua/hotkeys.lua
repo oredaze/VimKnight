@@ -24,8 +24,8 @@ map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
 
 -- Commenting
-map("n", "<leader>c", ":norm gcc<CR>", { desc = "Comment line", silent = true })
-map("n", "<leader>ap", ":norm vipgc<CR>", { silent = true })
+map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })
+map("n", "<leader>ap", ":norm vipgc<CR>", { silent = true, desc = "Comment paragraph" })
 map("v", "<leader>", "gc", { silent = true, remap = true })
 
 -- Helix-like
