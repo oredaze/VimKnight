@@ -61,12 +61,11 @@ return {
                             "--color=never",
                             "--type",
                             "file",
-                            "-H",
                             "-d",
                             "8",
                             "--follow",
                             "--strip-cwd-prefix",
-                            "--exclude={.git,.local,.mozilla,.themes,.rustup,.icons,.cargo,.cache,.vst,.vst3,.u-he,.vim,.wine,.wine32,.steam,*.png,*.jpg,*.gif}",
+                            "--exclude={*.png,*.jpg,*.gif}",
                         },
                     },
                     jumplist = {
