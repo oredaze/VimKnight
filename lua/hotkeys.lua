@@ -241,7 +241,7 @@ map("n", "<leader>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
 map("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Doc symbols" })
 map("n", "<leader>S", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "WS symbols" })
 map("n", "<leader>d", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
-map("n", "<leader>;", "<cmd>Telescope command_history<CR>", { desc = "Command history" })
+map("n", "<leader>;", "<cmd>Telescope commands<CR>", { desc = "Commands" })
 map("n", "<leader>'", "<cmd>Telescope registers<CR>", { desc = "Registers" })
 map("n", "?", ":Telescope keymaps<CR>", { desc = "Keymaps" })
 -- More at:

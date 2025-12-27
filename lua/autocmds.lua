@@ -15,14 +15,6 @@ autocmd("BufWinEnter", {
     end,
 })
 
--- No autocomment
-autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = "*",
-    callback = function()
-        vim.opt_local.formatoptions = "jql"
-    end,
-})
-
 -- Open a file from its last left off position
 autocmd("BufReadPost", {
     callback = function()
@@ -103,7 +95,7 @@ autocmd("FileType", {
     end,
 })
 
--- Markdown fill --- line with virtual text
+-- Markdown fill "---" line with virtual text
 local function add_virtual_dash_line()
     -- Get the current buffer
     local bufnr = vim.api.nvim_get_current_buf()
