@@ -1,14 +1,11 @@
 return {
     {
         "nvim-zh/colorful-winsep.nvim",
-        config = true,
         event = { "WinLeave" },
         config = function()
             require("colorful-winsep").setup({
-                hi = {
-                    link = "StatusLine",
-                },
-                only_line_seq = false,
+                animate = { enabled = false },
+                indicator_for_2wins = { position = false },
             })
         end
     }

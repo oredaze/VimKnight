@@ -26,12 +26,11 @@ return {
             -- Set menu
             dashboard.section.buttons.val = {
                 dashboard.button("n", " ) New file", ":ene <BAR> startinsert <CR>"),
-                dashboard.button("r", " ) Recent files", ":Telescope oldfiles<CR>"),
-                dashboard.button("f", " ) Find file", ":Telescope find_files<CR>"),
+                dashboard.button("r", " ) Recent files", ":FzfLua oldfiles<CR>"),
+                dashboard.button("f", " ) Find file", ":FzfLua files<CR>"),
                 dashboard.button("l", " ) Lf", ":Lf<CR>"),
                 dashboard.button("b", " ) Broot", ":Broot<CR>"),
-                dashboard.button("g", " ) Grep project", ":Telescope live_grep<CR>"),
-                dashboard.button("z", " ) Zoxide", ":Telescope zoxide list<CR>"),
+                dashboard.button("g", " ) Grep project", ":FzfLua live_grep<CR>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do
                 button.opts.width = 18

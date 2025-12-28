@@ -45,7 +45,11 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set("n", "<C-b>", function()
+vim.keymap.set("n", "\\", function()
+    if vim.o.showtabline < 2 then
+        vim.cmd([[echo "Only 1 buffer"]])
+        return
+    end
     local tabline = require("heirline").tabline
     local buflist = tabline._buflist[1]
     buflist._picker_labels = {}
@@ -58,7 +62,7 @@ vim.keymap.set("n", "<C-b>", function()
     end
     buflist._show_picker = false
     vim.cmd.redrawtabline()
-end, { desc = "Buffer line picker" })
+end, { desc = "Bufferline picker" })
 
 -- Some global components --------------------------------------------------- {{
 
@@ -131,13 +135,19 @@ local TabLineOffset = {
     end,
 }
 
-local TablineBufnr = {
-    provider = function(self)
-        if self.is_active then
-            return tostring(self.bufnr) .. ": "
-        else
-            return tostring(self.bufnr) .. ": "
-        end
+-- local TablineBufnr = {
+--     provider = function(self)
+--         if self.is_active then
+--             return tostring(self.bufnr) .. ": "
+--         else
+--             return tostring(self.bufnr) .. ": "
+--         end
+--     end,
+-- }
+
+local TablineGlyph = {
+    provider = function()
+        return "| "
     end,
 }
 
@@ -230,7 +240,8 @@ local TablineFileNameBlock = {
         end,
         name = "heirline_tabline_buffer_callback",
     },
-    TablineBufnr,
+    -- TablineBufnr,
+    TablineGlyph,
     TablinePicker,
     TablineFileName,
     TablineFileFlags,
@@ -532,9 +543,7 @@ local TerminalBlock = {
         return conditions.buffer_matches({ buftype = { "terminal" } })
     end,
     provider = function()
-        -- local tname, _ = vim.api.nvim_buf_get_name(0):gsub(".*:", "")
-        local index = require("terminal").current_term_index()
-        return icons.terminal .. " TERMINAL " .. index
+        return icons.terminal .. " TERMINAL "
     end,
     hl = { fg = "termin" },
 }

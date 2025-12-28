@@ -12,7 +12,7 @@ return {
                     go_out_plus = '<BS>',
                     reset = 'gw',
                     reveal_cwd  = '@',
-                    synchronize = 'W',
+                    synchronize = '<C-s>',
                     show_help = '?',
                 },
                 options = {
@@ -20,7 +20,9 @@ return {
                     permanent_delete = true,
                 },
                 windows = {
-                    width_focus = 30,
+                    width_focus = 25,
+                    preview = false,
+                    width_preview = 75,
                 },
                 content = { prefix = function() end }
             }

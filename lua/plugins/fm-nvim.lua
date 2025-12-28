@@ -16,15 +16,14 @@ return {
                 -- Default UI (can be "split" or "float")
                 default = "float",
                 float = {
-                    -- Floating window border (see ':h nvim_open_win')
-                    border = "none",
+                    border = { " ", " " ," ", " ", " ", " ", " ", " " },
                     -- border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     -- border = { "┌", "─" ,"┐", "│", "┘", "─", "└", "│" },
                     -- border = { "┏", "━" ,"┓", "┃", "┛", "━", "┗", "┃" },
                     -- border = { "🭇", "▁", "🬼", "▏", "🭗", "▔", "🭢", "▕" },
                     -- Highlight group for floating window/border (see ':h winhl')
                     float_hl = "Normal",
-                    border_hl = "TelescopeBorder",
+                    border_hl = "FloatBorder",
                     -- Floating Window Transparency (see ':h winblend')
                     blend = 0,
                     -- Num from 0 - 1 for measurements

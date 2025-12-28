@@ -3,7 +3,7 @@ return {
     {
         "lucastavaresa/simpleIndentGuides.nvim",
         config = function()
-            require("simpleIndentGuides").setup("∙", " ") -- ∙┆
+            require("simpleIndentGuides").setup("╎", " ") -- ∙·┊┆╎
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = { "txt", "text" },
                 command = "setlocal nolist",

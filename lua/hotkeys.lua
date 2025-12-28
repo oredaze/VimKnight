@@ -9,6 +9,7 @@ vim.g.maplocalleader = "|"
 
 -- Misc
 vim.cmd("cabbrev W w") -- For accidental W press
+map("n", "<C-s>", ":w<CR>")
 map("n", "<C-q>", "q")
 map("n", "q", ":q<CR>")
 map("n", "x", '"_x')
@@ -22,10 +23,11 @@ map("n", "[d", "[c", { desc = "Prev diff" })
 map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
+map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
 
 -- Commenting
 map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })
-map("n", "<leader>ap", ":norm vipgc<CR>", { silent = true, desc = "Comment paragraph" })
+map("n", "<leader>C", ":norm vipgc<CR>", { silent = true, desc = "Comment paragraph" })
 map("v", "<leader>", "gc", { silent = true, remap = true })
 
 -- Helix-like
@@ -36,22 +38,8 @@ map({ "n", "v", "o" }, "gl", "$")
 map("n", "<C-i>", "<C-i>")
 
 -- Windows, tabs & buffers
-map("n", "<A-h>", "<C-w>h", { silent = true })
-map("n", "<A-j>", "<C-w>j", { silent = true })
-map("n", "<A-k>", "<C-w>k", { silent = true })
-map("n", "<A-l>", "<C-w>l", { silent = true })
-map("n", "<A-H>", "<C-w>H", { silent = true })
-map("n", "<A-J>", "<C-w>J", { silent = true })
-map("n", "<A-K>", "<C-w>K", { silent = true })
-map("n", "<A-L>", "<C-w>L", { silent = true })
-map("n", "<A-s>", "<C-w>s", { silent = true })
-map("n", "<A-v>", "<C-w>v", { silent = true })
-map("n", "<A-n>", "<C-w>n", { silent = true })
-map("n", "<A-q>", "<C-w>c", { silent = true })
-map("n", "<A-t>", ":tabnew<CR>", { silent = true })
-map("n", "<A-T>", "<C-w>T", { silent = true })
-map("n", "<A-o>", "<C-w>p", { silent = true })
-map("n", "<A-=>", "<C-w>=", { silent = true })
+map("n", "<C-w>t", ":tabnew<CR>", { silent = true })
+map("n", "<C-w>d", ":bd<CR>")
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
 map("n", "gp", "<CMD>bprev<CR>", { silent = true, desc = "Go to prev buffer" })
@@ -120,15 +108,15 @@ end, { noremap = true, silent = false, desc = "Echo syntax group" })
 ------------------------
 map("n", "<leader>os", "<Esc>:set spell!<CR>", { desc = "Spell checking" })
 
--- Toggle column highlight
-map("n", "<leader>oc", function()
+-- Toggle colorcolumn
+map("n", "<leader>ov", function()
     ---@diagnostic disable-next-line: undefined-field
     if vim.opt.cc._value == "" then
-        vim.opt.cc = "100"
+        vim.opt.cc = "81"
     else
         vim.opt.cc = ""
     end
-end, { desc = "Column highlight" })
+end, { desc = "Vertical guide" })
 
 -- Toggle numbers
 map("n", "<leader>on", function()
@@ -142,7 +130,7 @@ map("n", "<leader>on", function()
     end
 end, { desc = "Numbers" })
 
--- Toggle line/column highlights
+-- Toggle line highlights
 map("n", "<leader>ol", function()
     if
         ---@diagnostic disable-next-line: undefined-field
@@ -157,6 +145,36 @@ map("n", "<leader>ol", function()
         vim.opt.cursorlineopt = "number"
     end
 end, { desc = "Line hightlight" })
+
+-- Toggle column highlights
+map("n", "<leader>oc", function()
+    if
+        ---@diagnostic disable-next-line: undefined-field
+        vim.opt.cursorcolumn._value == false
+    then
+        vim.opt.cursorcolumn = true
+    else
+        vim.opt.cursorcolumn = false
+    end
+end, { desc = "Column hightlight" })
+
+-- Toggle both line & column highlights
+map("n", "<leader>ox", function()
+    if
+        ---@diagnostic disable-next-line: undefined-field
+        vim.opt.cursorline._value == false
+        ---@diagnostic disable-next-line: undefined-field
+        or vim.opt.cursorcolumn._value == false
+    then
+        vim.opt.cursorlineopt = "both"
+        vim.opt.cursorline = true
+        vim.opt.cursorcolumn = true
+    else
+        vim.opt.cursorcolumn = false
+        vim.opt.cursorline = false
+        vim.opt.cursorlineopt = "number"
+    end
+end, { desc = "Cross hightlights" })
 
 -- Toggle list
 map("n", "<leader>ow", function()
@@ -221,31 +239,28 @@ map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 -- File explorers
 map("n", "<leader>l", "<cmd>Lf<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
-map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
+map("n", "-", "<cmd>execute 'Oil' getcwd()<CR>")
 map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 cmap("E", "Oil", { nargs = "?" })
 cmap("S", "belowright split | Oil", { nargs = "?" })
 cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
 cmap("T", "tabedit % | Oil", { nargs = "?" })
 
--- Telescope
-map("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Files in cwd" })
-map("n", "<leader>g", "<cmd>Telescope live_grep<CR>", { desc = "Grep cwd" })
-map("n", "<leader><Tab>", "<cmd>Telescope buffers<CR>", { desc = "Buffer picker" })
-map(
-    "n", "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>",
-    { desc = "Search current buffer" }
-)
-map("n", "<leader>z", "<cmd>Telescope zoxide list<CR>", { desc = "Zoxide" })
-map("n", "<leader>j", "<cmd>Telescope jumplist<CR>", { desc = "Jumplist" })
-map("n", "<leader>s", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Doc symbols" })
-map("n", "<leader>S", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "WS symbols" })
-map("n", "<leader>d", "<cmd>Telescope diagnostics<CR>", { desc = "Diagnostics" })
-map("n", "<leader>;", "<cmd>Telescope commands<CR>", { desc = "Commands" })
-map("n", "<leader>'", "<cmd>Telescope registers<CR>", { desc = "Registers" })
-map("n", "?", ":Telescope keymaps<CR>", { desc = "Keymaps" })
--- More at:
--- ~/.config/nvim/lua/plugins/telescope.lua
+-- Fzf-lua
+map("n", "<leader>f", ":FzfLua files<CR>", { silent = true, desc = "Files" })
+map("n", "<leader>g", ":FzfLua live_grep<CR>", { silent = true, desc = "Grep" })
+map("n", "<leader><Tab>", ":FzfLua buffers<CR>", { silent = true, desc = "Buffers" })
+map("n", "<leader>j", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
+map("n", "<leader>s", ":FzfLua lsp_document_symbols<CR>", { silent = true, desc = "Symbols" })
+map("n", "<leader>S", ":FzfLua lsp_workspace_symbols<CR>", { silent = true, desc = "WS symbols" })
+map("n", "<leader>d", ":FzfLua diagnostics_document<CR>", { silent = true, desc = "Diagnostics" })
+map("n", "<leader>;", ":FzfLua commands<CR>", { silent = true, desc = "Commands" })
+map("n", "<leader>'", ":FzfLua registers<CR>", { silent = true, desc = "Registers" })
+map("n", "<leader>/", ":FzfLua lines<CR>", { silent = true, desc = "Search" })
+map("n", "<leader>a", ":FzfLua blines<CR>", { silent = true, desc = "Full search" })
+map("n", "?", ":FzfLua keymaps<CR>", { silent = true, desc = "Hotkeys" })
+-- -- More at:
+-- -- ~/.config/nvim/lua/plugins/fzf-lua.lua
 
 -- Marks
 map(
@@ -300,10 +315,12 @@ map(
 map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
 map("n", "J", ":TSJToggle<CR>")
 map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")
+map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
 map("n", "<leader>q", ":Trouble quickfix toggle<CR>", { desc = "Quickfix" })
 map("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics qf" })
+vim.cmd("cabbrev z Z") -- For accidental W press
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/trouble.lua
@@ -312,3 +329,4 @@ map("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnosti
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
 -- ~/.config/nvim/lua/plugins/mini-move.lua
+-- ~/.config/nvim/lua/plugins/zincoxide.lua

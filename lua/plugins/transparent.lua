@@ -21,6 +21,8 @@ return {
             },
             exclude_groups = {
                 "StatusLine",
+                "CursorLine",
+                "CursorColumn",
                 "markdownCodeBlock",
                 "GitSignsAddInline",
                 "GitSignsChangeLnInline",
