@@ -61,7 +61,7 @@ return {
                         separator = "FloatBorder",
                     },
                 },
-                previewer = {
+                previewers = {
                     builtin = {
                         syntax = true,
                         treesitter = {

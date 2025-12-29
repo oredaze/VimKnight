@@ -35,6 +35,15 @@ return {
                     'select_next',
                     'fallback',
                 },
+                ['<S-Tab>'] = {
+                    function(cmp)
+                        if has_words_before() then
+                            return cmp.show_and_insert()
+                        end
+                    end,
+                    'select_prev',
+                    'fallback',
+                },
                 ['<Up>'] = { 'select_prev', 'fallback' },
                 ['<Down>'] = { 'select_next', 'fallback' },
                 ['<CR>'] = { 'accept', 'fallback' },
@@ -53,7 +62,8 @@ return {
                     end,
                     'fallback',
                 },
-                ['<C-e>'] = { 'hide' },
+                ['<C-e>'] = { 'cancel' },
+                ['<C-c>'] = { 'cancel' },
                 ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
                 ['<S-Up>'] = { 'scroll_documentation_up', 'fallback' },
                 ['<S-Down>'] = { 'scroll_documentation_down', 'fallback' },

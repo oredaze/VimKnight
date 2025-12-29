@@ -13,25 +13,22 @@ return {
 
             -- UI Options
             ui = {
-                -- Default UI (can be "split" or "float")
                 default = "float",
                 float = {
-                    border = { " ", " " ," ", " ", " ", " ", " ", " " },
+                    border = "none",
+                    -- border = { " ", " " ," ", " ", " ", " ", " ", " " },
                     -- border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     -- border = { "┌", "─" ,"┐", "│", "┘", "─", "└", "│" },
-                    -- border = { "┏", "━" ,"┓", "┃", "┛", "━", "┗", "┃" },
-                    -- border = { "🭇", "▁", "🬼", "▏", "🭗", "▔", "🭢", "▕" },
-                    -- Highlight group for floating window/border (see ':h winhl')
                     float_hl = "Normal",
                     border_hl = "FloatBorder",
                     -- Floating Window Transparency (see ':h winblend')
                     blend = 0,
                     -- Num from 0 - 1 for measurements
-                    height = 1,
+                    height = 1.4, -- yes, that is supposed to be 100%
                     width = 1,
                     -- X and Y Axis of Window
-                    x = 0,
-                    y = 0,
+                    x = 0.5,
+                    y = 0.5,
                 },
             },
 

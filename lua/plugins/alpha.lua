@@ -28,9 +28,10 @@ return {
                 dashboard.button("n", " ) New file", ":ene <BAR> startinsert <CR>"),
                 dashboard.button("r", " ) Recent files", ":FzfLua oldfiles<CR>"),
                 dashboard.button("f", " ) Find file", ":FzfLua files<CR>"),
-                dashboard.button("l", " ) Lf", ":Lf<CR>"),
-                dashboard.button("b", " ) Broot", ":Broot<CR>"),
                 dashboard.button("g", " ) Grep project", ":FzfLua live_grep<CR>"),
+                dashboard.button("b", " ) Broot", ":Broot<CR>"),
+                dashboard.button("l", " ) Lf", ":Lf<CR>"),
+                dashboard.button("o", " ) Oil", ":Oil<CR>"),
             }
             for _, button in ipairs(dashboard.section.buttons.val) do
                 button.opts.width = 18
