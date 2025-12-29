@@ -4,7 +4,7 @@ return {
         "rlane/pounce.nvim",
         cmd = { "Pounce" },
         opts = {
-            accept_keys = "JKLHIONSADWFCEMXURPBZQ",
+            accept_keys = "JKLHIONSADWFCEMXURPBZQV",
         },
     },
 }

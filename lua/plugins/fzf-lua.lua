@@ -10,19 +10,24 @@ return {
                     row = 1,
                     border = { "-", "-", "-", " ", " ", " ", " ", " " },
                     title_pos = "left",
+                    treesitter = {
+                        enabled = false,
+                    },
                     preview = {
                         border = { "-", "-", "-", " ", " ", " ", " ", "|" },
                         wrap = false,
                         hidden = false,
-                        horizontal = "right:65%",
                         layout = "horizontal",
+                        horizontal = "right:60%",
+                        -- vertical = "down:60%",
+                        -- flip_columns = 100,
                         title = true,
                         title_pos = "left",
-                        scrollbar = "float",
-                        scrolloff = 0,
+                        scrollbar = false,
+                        -- scrolloff = 0,
                         delay = 20,
                         winopts = {
-                            number = true,
+                            number = false,
                             relativenumber = false,
                             cursorline = false,
                             cursorcolumn = false,
@@ -41,31 +46,26 @@ return {
                     header_text = "Normal",
                     path_linenr = "Comment",
                     path_colnr = "Comment",
-                    buf_name = "Constant",
-                    file_part = "Constant",
-                    buf_nr = "Normal",
+                    dir_part = "Directory",
+                    file_part = "Normal",
+                    buf_name = "Normal",
+                    buf_nr = "Comment",
                     buf_id = "Comment",
                     buf_linenr = "Comment",
-                    buf_flag_cur = "Function",
-                    buf_flag_alt = "Comment",
+                    buf_flag_cur = "Normal",
+                    buf_flag_alt = "Normal",
                     live_prompt = "Normal",
                     live_sym = "Statement",
+                    search = "Operator",
                     fzf = {
                         separator = "FloatBorder",
                     },
                 },
-                previewers = {
+                previewer = {
                     builtin = {
                         syntax = true,
                         treesitter = {
                             enabled = false,
-                        },
-                        -- preview extensions using a custom shell command:
-                        extensions = {
-                            ["png"] = { "chafa -f sixels --polite on -w 5" },
-                            ["jpg"] = { "chafa -f sixels --polite on -w 5" },
-                            ["gif"] = { "chafa -f sixels --polite on -w 5" },
-                            ["svg"] = { "chafa -f sixels --polite on -w 5" },
                         },
                         render_markdown = { enabled = false },
                         snacks_image = { enabled = false },
@@ -108,17 +108,52 @@ return {
                         ["ctrl-g"] = "first",
                     },
                 },
-                files = {
+                defaults = {
                     prompt = ': ',
                     file_icons = false,
+                },
+                files = {
+                    formatter = "path.filename_first",
                     cwd_prompt = false,
                     toggle_hidden_flag = "--hidden",
                     hidden = false,
                 },
-                git = {
-                    prompt = ': ',
-                    file_icons = false,
+                grep = {
+                    hidden = false,
+                    fzf_opts = {
+                        ["--delimiter"] = ":",
+                        ["--with-nth"] = "1,4..",
+                    },
                 },
+                buffers = {
+                    formatter = "path.filename_first",
+                    sort_lastused = false,
+                },
+                lines = {
+                    winopts = {
+                        preview = {
+                            hidden = true
+                        }
+                    },
+                },
+                blines = {
+                    winopts = {
+                        preview = {
+                            hidden = true
+                        }
+                    }
+                },
+                marks = {
+                    marks = "%a",
+                    fzf_opts = {
+                        ["--with-nth"] = "1,4..",
+                    },
+                },
+                jumps = {
+                    fzf_opts = {
+                        ["--with-nth"] = "2,4..",
+                    },
+                }
             })
         end
     }

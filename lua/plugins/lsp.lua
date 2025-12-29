@@ -122,10 +122,6 @@ return {
                         telemetry = { enable = false },
                     },
                 },
-                matchup = {
-                    enable = true,
-                    -- disable = {},
-                },
             })
 
             lspconfig.marksman.setup({
@@ -266,29 +262,17 @@ return {
                     opts.desc = "Move to next diagnostic"
                     map("n", "]e", function() vim.diagnostic.jump({count = 1, float = true}) end, opts)
 
-                    opts.desc = "Go to definitions"
-                    map("n", "gd", function()
-                        ---@diagnostic disable-next-line
-                        require("trouble").toggle("lsp_definitions")
-                    end, opts)
+                    opts.desc = "Go to definition"
+                    map("n", "gd", vim.lsp.buf.definition, opts)
+
+                    opts.desc = "Go to doc symbol"
+                    map("n", "gs", vim.lsp.buf.document_symbol, opts)
+
+                    opts.desc = "Go to type definition"
+                    map("n", "gt", vim.lsp.buf.type_definition, opts)
 
                     opts.desc = "Go to references"
-                    map("n", "gr", function()
-                        ---@diagnostic disable-next-line
-                        require("trouble").toggle("lsp_references")
-                    end, opts)
-
-                    opts.desc = "Go to type definitions"
-                    map("n", "gt", function()
-                        ---@diagnostic disable-next-line
-                        require("trouble").toggle("lsp_type_definitions")
-                    end, opts)
-
-                    opts.desc = "Go to doc symbols"
-                    map("n", "gs", function()
-                        ---@diagnostic disable-next-line
-                        require("trouble").toggle("lsp_document_symbols")
-                    end, opts)
+                    map("n", "gr", vim.lsp.buf.references, opts)
 
                     opts.desc = "Go to declaration"
                     map("n", "gD", vim.lsp.buf.declaration, opts)
@@ -297,7 +281,7 @@ return {
                     map("n", "gi", vim.lsp.buf.implementation, opts)
 
                     opts.desc = "Rename symbol"
-                    map("n", "<leader>r", vim.lsp.buf.rename, opts)
+                    map("n", "gR", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
                     map("n", "<leader>x", vim.lsp.buf.code_action, opts)

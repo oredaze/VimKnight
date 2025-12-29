@@ -7,10 +7,8 @@ return {
         opts = {
             filetype_exclude = {
                 "lazy",
-                "neo-tree",
                 "qf",
                 "Outline",
-                "Trouble",
             },
             buftype_exclude = {
                 "help",

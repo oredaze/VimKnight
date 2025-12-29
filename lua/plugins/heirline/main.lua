@@ -45,7 +45,7 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set("n", "\\", function()
+vim.keymap.set("n", "<leader><space>", function()
     if vim.o.showtabline < 2 then
         vim.cmd([[echo "Only 1 buffer"]])
         return
@@ -572,7 +572,6 @@ local AltBuf = {
             if
                 name == ""
                 or vim.bo.filetype == "qf"
-                or vim.bo.filetype == "Trouble"
                 or vim.bo.filetype == "Outline"
             then
                 return ""

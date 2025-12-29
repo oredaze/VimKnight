@@ -42,7 +42,7 @@ map("n", "<C-w>t", ":tabnew<CR>", { silent = true })
 map("n", "<C-w>d", ":bd<CR>")
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
-map("n", "gp", "<CMD>bprev<CR>", { silent = true, desc = "Go to prev buffer" })
+map("n", "gb", "<CMD>bprev<CR>", { silent = true, desc = "Go to prev buffer" })
 map("n", "gn", "<CMD>bnext<CR>", { silent = true, desc = "Go to next buffer" })
 
 -- External clipboard
@@ -226,20 +226,22 @@ map("n", "r*", "<Plug>(SubversiveSubstituteWordRange)")
 map("n", "r%", "ggVG<Plug>(SubversiveSubstitute)")
 map("v", "p", "<Plug>(SubversiveSubstitute)")
 
--- Matchup
-map("x", "ib", "<plug>(matchup-i%)")
-map("o", "ib", "<plug>(matchup-i%)")
-map("x", "ab", "<plug>(matchup-a%)")
-map("o", "ab", "<plug>(matchup-a%)")
-map("n", "S", "c<plug>(matchup-i%)")
-
 -- Pounce
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
+
+-- Mini.ai
+map('n', 'S', 'cib', { remap = true })
+map('n', 'g[', 'g[[', { remap = true })
+map('n', 'g]', 'g]]', { remap = true })
+map('n', 'g{', 'g[{', { remap = true })
+map('n', 'g}', 'g]}', { remap = true })
+map('n', 'g(', 'g[(', { remap = true })
+map('n', 'g)', 'g])', { remap = true })
 
 -- File explorers
 map("n", "<leader>l", "<cmd>Lf<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
-map("n", "-", "<cmd>execute 'Oil' getcwd()<CR>")
+map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
 map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 cmap("E", "Oil", { nargs = "?" })
 cmap("S", "belowright split | Oil", { nargs = "?" })
@@ -253,24 +255,20 @@ map("n", "<leader><Tab>", ":FzfLua buffers<CR>", { silent = true, desc = "Buffer
 map("n", "<leader>j", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
 map("n", "<leader>s", ":FzfLua lsp_document_symbols<CR>", { silent = true, desc = "Symbols" })
 map("n", "<leader>S", ":FzfLua lsp_workspace_symbols<CR>", { silent = true, desc = "WS symbols" })
-map("n", "<leader>d", ":FzfLua diagnostics_document<CR>", { silent = true, desc = "Diagnostics" })
+map("n", "<leader>d", ":FzfLua lsp_document_diagnostics<CR>", { silent = true, desc = "Diagnostics" })
+map("n", "<leader>D", ":FzfLua lsp_workspace_diagnostics<CR>", { silent = true, desc = "Diagnostics" })
 map("n", "<leader>;", ":FzfLua commands<CR>", { silent = true, desc = "Commands" })
 map("n", "<leader>'", ":FzfLua registers<CR>", { silent = true, desc = "Registers" })
-map("n", "<leader>/", ":FzfLua lines<CR>", { silent = true, desc = "Search" })
-map("n", "<leader>a", ":FzfLua blines<CR>", { silent = true, desc = "Full search" })
+map("n", "<leader>/", ":FzfLua blines<CR>", { silent = true, desc = "Search" })
+map("n", "<leader>a", ":FzfLua lines<CR>", { silent = true, desc = "Full search" })
+map("n", "<leader>m", ":FzfLua marks<CR>", { silent = true, desc = "Marks" })
+map("n", "<leader>r", ":FzfLua oldfiles<CR>", { silent = true, desc = "Recent" })
 map("n", "?", ":FzfLua keymaps<CR>", { silent = true, desc = "Hotkeys" })
 -- -- More at:
 -- -- ~/.config/nvim/lua/plugins/fzf-lua.lua
 
 -- Marks
-map(
-    "n", "<leader>m", ":MarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
-    { desc = "Marks list" }
-)
-map(
-    "n", "<leader>-", ":BookmarksQFListAll<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
-    { desc = "Number marks list" }
-)
+map("n", "-", ":BookmarksQFListAll<CR>", { desc = "Number marks list" })
 map("n", "]'", "<Plug>(Marks-next)zz", { desc = "Next mark" })
 map("n", "['", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 map("n", "]`", "<Plug>(Marks-next)zz", { desc = "Next mark" })
@@ -292,11 +290,7 @@ map("n", "tP", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" }
 map("n", "t[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
 map("n", "t]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
 map("n", "ts", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
-map(
-    "n", "<leader>t",
-    ":TrailBlazerOpenTrailMarkList<CR>:cclose<CR>:Trouble quickfix toggle<CR>",
-    { desc = "Trails List" }
-)
+map("n", "tl", ":TrailBlazerOpenTrailMarkList<CR>", { desc = "Trails List" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/trailblazer.lua
 
@@ -315,18 +309,14 @@ map(
 map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
 map("n", "J", ":TSJToggle<CR>")
 map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")
-map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
+map("n", "<leader>L", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
-map("n", "<leader>q", ":Trouble quickfix toggle<CR>", { desc = "Quickfix" })
-map("n", "<leader>D", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics qf" })
-vim.cmd("cabbrev z Z") -- For accidental W press
+vim.cmd("cabbrev z Z")
 
 -- More at:
--- ~/.config/nvim/lua/plugins/trouble.lua
 -- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 53
 -- ~/.config/nvim/lua/plugins/outline.lua
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
 -- ~/.config/nvim/lua/plugins/mini-move.lua
--- ~/.config/nvim/lua/plugins/zincoxide.lua

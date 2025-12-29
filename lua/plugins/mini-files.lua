@@ -28,6 +28,7 @@ return {
             }
             local go_in_plus = function()
                 for _ = 1, vim.v.count1 do
+                --- @diagnostic disable-next-line
                     MiniFiles.go_in({ close_on_file = true })
                 end
             end
@@ -40,6 +41,7 @@ return {
             local toggle_dotfiles = function()
                 show_dotfiles = not show_dotfiles
                 local new_filter = show_dotfiles and filter_show or filter_hide
+                --- @diagnostic disable-next-line
                 MiniFiles.refresh({ content = { filter = new_filter } })
             end
 
@@ -50,6 +52,7 @@ return {
                     local buf_id = args.data.buf_id
                     map_buf('<CR>', go_in_plus)
                     map_buf('<Right>', go_in_plus)
+                --- @diagnostic disable-next-line
                     map_buf('<Left>', MiniFiles.go_out)
                     vim.keymap.set('n', '.', toggle_dotfiles, { buffer = buf_id })
                     -- Add extra mappings from *MiniFiles-examples*
@@ -65,6 +68,23 @@ return {
                     -- config.border = 'rounded'
                     config.border = { "+", "-", "+", "|", "+", "-", "+", "|" }
                     vim.api.nvim_win_set_config(win_id, config)
+                end,
+            })
+
+            -- Hack to synchronize on save :w
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'MiniFilesBufferCreate',
+                callback = function(ev)
+                    vim.schedule(function()
+                        vim.api.nvim_set_option_value('buftype', 'acwrite', { buf = 0 })
+                        vim.api.nvim_buf_set_name(0, tostring(vim.api.nvim_get_current_win()))
+                        vim.api.nvim_create_autocmd('BufWriteCmd', {
+                            buffer = ev.data.buf_id,
+                            callback = function()
+                                require('mini.files').synchronize()
+                            end,
+                        })
+                    end)
                 end,
             })
 
