@@ -11,6 +11,7 @@ return {
     require("plugins.colorful-winsep"),
     require("plugins.virt-column"),
     require("plugins.transparent"),
+    require("plugins.fix-auto-scroll"),
 
     -- Basic functionality
     require("plugins.subversive"),

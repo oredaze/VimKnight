@@ -1,4 +1,5 @@
 return {
+    -- Extended textobjects
     {
         'echasnovski/mini.ai',
         version = false,

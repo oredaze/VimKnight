@@ -24,7 +24,7 @@ return {
                     -- Floating Window Transparency (see ':h winblend')
                     blend = 0,
                     -- Num from 0 - 1 for measurements
-                    height = 1.4, -- yes, that is supposed to be 100%
+                    height = 1.06, -- this is a bug
                     width = 1,
                     -- X and Y Axis of Window
                     x = 0.5,

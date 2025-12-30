@@ -28,6 +28,7 @@ return {
         lazy = true,
         dependencies = {
             "williamboman/mason.nvim",
+            "nvim-lua/plenary.nvim",
             { "nvimtools/none-ls.nvim", lazy = true },
         },
     },

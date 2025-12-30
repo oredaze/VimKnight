@@ -4,10 +4,6 @@ return {
         "xiyaowong/transparent.nvim",
         opts = {
             extra_groups = {
-                -- "VertSplit",
-                -- "NormalFloat",
-                -- "FloatTitle",
-                -- "FloatBorder",
                 "EndOfBuffer",
                 "MsgArea",
                 "SignColumn",

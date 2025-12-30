@@ -9,6 +9,7 @@ return {
                 "lazy",
                 "qf",
                 "Outline",
+                "Oil",
             },
             buftype_exclude = {
                 "help",

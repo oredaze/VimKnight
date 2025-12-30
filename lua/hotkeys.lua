@@ -42,8 +42,6 @@ map("n", "<C-w>t", ":tabnew<CR>", { silent = true })
 map("n", "<C-w>d", ":bd<CR>")
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
-map("n", "gb", "<CMD>bprev<CR>", { silent = true, desc = "Go to prev buffer" })
-map("n", "gn", "<CMD>bnext<CR>", { silent = true, desc = "Go to next buffer" })
 
 -- External clipboard
 map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
@@ -277,20 +275,20 @@ map("n", "[`", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 -- ~/.config/nvim/lua/plugins/marks.lua
 
 -- Trailblazer
-map("n", ",,", ":TrailBlazerNewTrailMark<CR>", { desc = "Leave new trail" })
-map("n", ",b", ":TrailBlazerTrackBack<CR>", { desc = "Blaze back the trail" })
-map("n", ",n", ":TrailBlazerMoveToNearest<CR>", { desc = "Nearest trail" })
-map("n", ",k", ":TrailBlazerPeekMovePreviousUp<CR>", { desc = "Move up the stack" })
-map("n", ",j", ":TrailBlazerPeekMoveNextDown<CR>", { desc = "Move down the stack" })
-map("n", ",a", ":TrailBlazerAddTrailMarkStack<CR>", { desc = "Add stack" })
-map("n", ",d", ":TrailBlazerDeleteTrailMarkStack<CR>", { desc = "Delete stack" })
-map("n", ",D", ":TrailBlazerDeleteAllTrailMarks<CR>", { desc = "Delete all stacks" })
-map("n", ",p", ":TrailBlazerPasteAtLastTrailMark<CR>", { desc = "Paste at trail" })
-map("n", ",P", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" })
-map("n", ",[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
-map("n", ",]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
-map("n", ",s", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
-map("n", ",l", ":TrailBlazerOpenTrailMarkList<CR>", { desc = "Trails List" })
+map("n", ";;", ":TrailBlazerNewTrailMark<CR>", { desc = "Leave new trail" })
+map("n", ";b", ":TrailBlazerTrackBack<CR>", { desc = "Blaze back the trail" })
+map("n", ";n", ":TrailBlazerMoveToNearest<CR>", { desc = "Nearest trail" })
+map("n", ";k", ":TrailBlazerPeekMovePreviousUp<CR>", { desc = "Move up the stack" })
+map("n", ";j", ":TrailBlazerPeekMoveNextDown<CR>", { desc = "Move down the stack" })
+map("n", ";a", ":TrailBlazerAddTrailMarkStack<CR>", { desc = "Add stack" })
+map("n", ";d", ":TrailBlazerDeleteTrailMarkStack<CR>", { desc = "Delete stack" })
+map("n", ";D", ":TrailBlazerDeleteAllTrailMarks<CR>", { desc = "Delete all stacks" })
+map("n", ";p", ":TrailBlazerPasteAtLastTrailMark<CR>", { desc = "Paste at trail" })
+map("n", ";P", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" })
+map("n", ";[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
+map("n", ";]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
+map("n", ";s", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
+map("n", ";l", ":TrailBlazerOpenTrailMarkList<CR>", { desc = "Trails List" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/trailblazer.lua
 
@@ -312,9 +310,6 @@ map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
-map("n", "<leader>t", function()
-    require("treesitter-context").go_to_context(vim.v.count1)
-end, { silent = true, desc = "Go to top of context" })
 vim.cmd("cabbrev z Z")
 
 -- More at:

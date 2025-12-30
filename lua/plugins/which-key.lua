@@ -7,7 +7,7 @@ return {
         config = function()
             local wk = require("which-key")
             wk.add({
-                { "t", group = "Trails" },
+                { ";", group = "Trails" },
                 { "<leader>", group = "Plugins" },
                 { "<leader>L", group = "LSP" },
                 { "<leader>o", group = "Options" },
@@ -57,7 +57,7 @@ return {
                 },
                 triggers = {
                     { "<auto>", mode = "niotc" },
-                    { "t", mode = "n" },
+                    { ";", mode = "n" },
                 },
             }
             wk.setup(setup)

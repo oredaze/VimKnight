@@ -62,7 +62,6 @@ return {
                     end,
                     'fallback',
                 },
-                ['<C-e>'] = { 'cancel' },
                 ['<C-c>'] = { 'cancel' },
                 ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
                 ['<S-Up>'] = { 'scroll_documentation_up', 'fallback' },

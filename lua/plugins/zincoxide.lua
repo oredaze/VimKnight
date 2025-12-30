@@ -1,4 +1,5 @@
 return {
+    -- Fast directory switching
     {
         "thunder-coding/zincoxide",
         opts = {

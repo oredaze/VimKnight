@@ -1,4 +1,5 @@
 return {
+    -- Preview the opening context on top of window
     {
         "nvim-treesitter/nvim-treesitter-context",
         config = function()

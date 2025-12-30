@@ -1,4 +1,5 @@
 return {
+    -- Tmux-like split guides
     {
         "nvim-zh/colorful-winsep.nvim",
         event = { "WinLeave" },

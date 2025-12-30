@@ -12,6 +12,7 @@ util.icons = {
     left_overflow = "<",
     right_overflow = ">",
     padlock = " r",
+    buffers_icon = "",
     circle = "",
     circle_small = "◆",
     circle_o = "◇",

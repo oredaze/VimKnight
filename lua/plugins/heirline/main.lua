@@ -45,7 +45,7 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set("n", "<leader><space>", function()
+vim.keymap.set("n", ",", function()
     if vim.o.showtabline < 2 then
         vim.cmd([[echo "Only 1 buffer"]])
         return
@@ -146,9 +146,10 @@ local TabLineOffset = {
 -- }
 
 local TablineGlyph = {
-    provider = function()
-        return "| "
-    end,
+    provider = icons.buffers_icon,
+    -- provider = function()
+    --     return "| "
+    -- end,
 }
 
 local TablinePicker = {
@@ -573,6 +574,8 @@ local AltBuf = {
                 name == ""
                 or vim.bo.filetype == "qf"
                 or vim.bo.filetype == "Outline"
+                or vim.bo.filetype == "Oil"
+                or vim.bo.filetype == "minifiles"
             then
                 return ""
             elseif string.match(vim.bo.filetype, "^neo") then
