@@ -239,6 +239,7 @@ map('n', 'g)', 'g])', { remap = true })
 -- File explorers
 map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 map("n", "<leader>l", "<cmd>Lf<CR>")
+map("n", "<leader>v", "<cmd>Vifm<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
 map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
 cmap("E", "Oil", { nargs = "?" })

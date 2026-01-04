@@ -40,17 +40,19 @@ return {
                         S = "⇑",
                     },
                 },
+                preset = "helix",
                 win = {
                     no_overlap = false,
-                    border = { "-", "-", "-", "", "", "", "", "" },
-                    -- border = { "─", "─", "─", "", "", "", "", "" },
-                    height = { min = 4, max = 16 }, -- min and max height of the columns
-                    row = math.huge,
+                    border = { "+", "-", "+", "|", "+", "-", "+", "|" },
+                    -- border = { "-", "-", "-", "", "", "", "", "" },
+                    -- height = { min = 4, max = 16 },
+                    width = { min = 30, max = 40 },
+                    -- row = math.huge,
                 },
-                layout = {
-                    width = { min = 20, max = 50 }, -- min and max width of the columns
-                    spacing = 1, -- spacing between columns
-                },
+                -- layout = {
+                    -- width = { min = 20, max = 50 },
+                    -- spacing = 1, -- spacing between columns
+                -- },
                 keys = {
                     scroll_down = "<c-d>",
                     scroll_up = "<c-u>",

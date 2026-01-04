@@ -2,7 +2,7 @@ return {
     -- Integrate external file managers into vim
     {
         "is0n/fm-nvim",
-        cmd = { "Lf", "Broot", "Lazygit", "Ranger" },
+        cmd = { "Vifm", "Lf", "Broot", "Lazygit", "Ranger" },
         opts = {
 
             -- (Vim) Command used to open files
@@ -34,6 +34,7 @@ return {
 
             -- Terminal commands used w/ file manager (have to be in your $PATH)
             cmds = {
+                vifm_cmd = "vifm",
                 lf_cmd = "lf", -- eg: lf_cmd = "lf -command 'set hidden'"
                 broot_cmd = "broot",
                 ranger_cmd = "ranger",

@@ -76,10 +76,11 @@ return {
                 pattern = 'MiniFilesBufferCreate',
                 callback = function(ev)
                     vim.schedule(function()
-                        vim.api.nvim_set_option_value('buftype', 'acwrite', { buf = 0 })
-                        vim.api.nvim_buf_set_name(0, tostring(vim.api.nvim_get_current_win()))
+                        local buf = ev.data.buf_id
+                        vim.api.nvim_set_option_value('buftype', 'acwrite', { buf = buf })
+                        vim.api.nvim_buf_set_name(buf, 'minifiles://' .. buf)
                         vim.api.nvim_create_autocmd('BufWriteCmd', {
-                            buffer = ev.data.buf_id,
+                            buffer = buf,
                             callback = function()
                                 require('mini.files').synchronize()
                             end,
