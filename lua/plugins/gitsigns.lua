@@ -4,14 +4,14 @@ return {
         event = "VeryLazy",
         config = function()
             require("gitsigns").setup({
-                signs = {
-                    add = { text = "▏" },
-                    change = { text = "▏" },
-                    delete = { text = "_" },
-                    topdelete = { text = "‾" },
-                    changedelete = { text = "~" },
-                    untracked = { text = "┆" },
-                },
+                -- signs = {
+                --     add = { text = "▏" },
+                --     change = { text = "▏" },
+                --     delete = { text = "_" },
+                --     topdelete = { text = "‾" },
+                --     changedelete = { text = "~" },
+                --     untracked = { text = "┆" },
+                -- },
                 -- signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
                 -- numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
                 -- linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -35,7 +35,6 @@ return {
                 -- status_formatter = nil, -- Use default
                 -- max_file_length = 40000, -- Disable if file is longer than this (in lines)
                 preview_config = {
-                    -- Options passed to nvim_open_win
                     border = { "+", "-", "+", "|", "+", "-", "+", "|" },
                     style = "minimal",
                     relative = "cursor",

@@ -10,14 +10,13 @@ return {
                 number = true,
             },
             constrain_cursor = "name",
-            -- Set to `false` to remove a keymap
             -- See :help oil-actions for a list of all available actions
             keymaps = {
                 ["?"] = "actions.show_help",
                 ["q"] = "actions.close",
-                -- ["<C-s>"] = "actions.select_split",
-                -- ["<C-v>"] = "actions.select_vsplit",
-                -- ["<C-t>"] = "actions.select_tab",
+                ["<C-s>"] = "actions.select_split",
+                ["<C-v>"] = "actions.select_vsplit",
+                ["<C-t>"] = "actions.select_tab",
                 ["<CR>"] = "actions.select",
                 ["<Backspace>"] = "actions.parent",
                 ["gu"] = "actions.parent",
@@ -34,22 +33,18 @@ return {
             use_default_keymaps = false,
             -- Configuration for the floating window in oil.open_float
             float = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
-                -- border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
             },
             -- Configuration for the actions floating preview window
             preview = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
-                -- border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
             },
             -- Configuration for the floating progress window
             progress = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
-                -- border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
             },
             keymaps_help = {
-                border = { "+", "-", "+", "|", "+", "-", "+", "|" },
-                -- border = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
             },
         },
     },

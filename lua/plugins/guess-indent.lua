@@ -8,7 +8,6 @@ return {
             filetype_exclude = {
                 "lazy",
                 "qf",
-                "Outline",
                 "Oil",
             },
             buftype_exclude = {

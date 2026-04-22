@@ -44,25 +44,25 @@ require("plugins.heirline.colorscheme")
 
 -- }}
 
--- Buffer pick hotkey
-vim.keymap.set("n", ",", function()
-    if vim.o.showtabline < 2 then
-        vim.cmd([[echo "Only 1 buffer"]])
-        return
-    end
-    local tabline = require("heirline").tabline
-    local buflist = tabline._buflist[1]
-    buflist._picker_labels = {}
-    buflist._show_picker = true
-    vim.cmd.redrawtabline()
-    local char = vim.fn.getcharstr()
-    local bufnr = buflist._picker_labels[char]
-    if bufnr then
-        vim.api.nvim_win_set_buf(0, bufnr)
-    end
-    buflist._show_picker = false
-    vim.cmd.redrawtabline()
-end, { desc = "Bufferline picker" })
+-- -- Buffer pick hotkey
+-- vim.keymap.set("n", ",", function()
+--     if vim.o.showtabline < 2 then
+--         vim.cmd([[echo "Only 1 buffer"]])
+--         return
+--     end
+--     local tabline = require("heirline").tabline
+--     local buflist = tabline._buflist[1]
+--     buflist._picker_labels = {}
+--     buflist._show_picker = true
+--     vim.cmd.redrawtabline()
+--     local char = vim.fn.getcharstr()
+--     local bufnr = buflist._picker_labels[char]
+--     if bufnr then
+--         vim.api.nvim_win_set_buf(0, bufnr)
+--     end
+--     buflist._show_picker = false
+--     vim.cmd.redrawtabline()
+-- end, { desc = "Bufferline picker" })
 
 -- Some global components --------------------------------------------------- {{
 
@@ -88,52 +88,49 @@ do
             return not bo.modifiable or bo.readonly
         end,
         provider = icons.padlock,
-        hl = { fg = "readonly" },
+        hl = { ctermfg = 1, bold = true },
     }
 end
 
 local LeftCap = {
     provider = icons.left_end,
-    hl = { fg = "dimgrey" },
+    hl = { ctermfg = 8 },
 }
 
 local RightCap = {
     provider = icons.right_end,
-    hl = { fg = "dimgrey" },
+    hl = { ctermfg = 8 },
 }
 
 -- }}
 -- Bufferline and Tabs ------------------------------------------------------ {{
 
-local TabLineOffset = {
-    condition = function(self)
-        local win = vim.api.nvim_tabpage_list_wins(0)[1]
-        local bufnr = vim.api.nvim_win_get_buf(win)
-        self.winid = win
-
-        if vim.bo[bufnr].filetype == "neo-tree" then
-            self.title = "Tree"
-            return true
-            -- elseif vim.bo[bufnr].filetype == "TagBar" then
-            --     ...
-        end
-    end,
-
-    provider = function(self)
-        local title = self.title
-        local width = vim.api.nvim_win_get_width(self.winid)
-        local pad = math.ceil((width - #title) / 2)
-        return string.rep(" ", pad) .. title .. string.rep(" ", pad)
-    end,
-
-    hl = function(self)
-        if vim.api.nvim_get_current_win() == self.winid then
-            return "TablineSel"
-        else
-            return "Tabline"
-        end
-    end,
-}
+-- local TabLineOffset = {
+--     condition = function(self)
+--         local win = vim.api.nvim_tabpage_list_wins(0)[1]
+--         local bufnr = vim.api.nvim_win_get_buf(win)
+--         self.winid = win
+--         if vim.bo[bufnr].filetype == "neo-tree" then
+--             self.title = "Tree"
+--             return true
+--             -- elseif vim.bo[bufnr].filetype == "TagBar" then
+--             --     ...
+--         end
+--     end,
+--     provider = function(self)
+--         local title = self.title
+--         local width = vim.api.nvim_win_get_width(self.winid)
+--         local pad = math.ceil((width - #title) / 2)
+--         return string.rep(" ", pad) .. title .. string.rep(" ", pad)
+--     end,
+--     hl = function(self)
+--         if vim.api.nvim_get_current_win() == self.winid then
+--             return "TablineSel"
+--         else
+--             return "Tabline"
+--         end
+--     end,
+-- }
 
 -- local TablineBufnr = {
 --     provider = function(self)
@@ -145,210 +142,209 @@ local TabLineOffset = {
 --     end,
 -- }
 
-local TablineGlyph = {
-    provider = icons.buffers_icon,
-    -- provider = function()
-    --     return "| "
-    -- end,
-}
+-- local TablineGlyph = {
+--     provider = icons.buffers_icon,
+--     -- provider = function()
+--     --     return "| "
+--     -- end,
+-- }
 
-local TablinePicker = {
-    condition = function(self)
-        return self._show_picker
-    end,
-    init = function(self)
-        local bufname = vim.api.nvim_buf_get_name(self.bufnr)
-        bufname = vim.fn.fnamemodify(bufname, ":t")
-        local label = bufname:sub(1, 1)
-        local i = 2
-        while self._picker_labels[label] do
-            if i > #bufname then
-                break
-            end
-            label = bufname:sub(i, i)
-            i = i + 1
-        end
-        self._picker_labels[label] = self.bufnr
-        self.label = label .. " "
-    end,
-    provider = function(self)
-        return self.label
-    end,
-    hl = { fg = "red_sigil", bold = true },
-}
+-- local TablinePicker = {
+--     condition = function(self)
+--         return self._show_picker
+--     end,
+--     init = function(self)
+--         local bufname = vim.api.nvim_buf_get_name(self.bufnr)
+--         bufname = vim.fn.fnamemodify(bufname, ":t")
+--         local label = bufname:sub(1, 1)
+--         local i = 2
+--         while self._picker_labels[label] do
+--             if i > #bufname then
+--                 break
+--             end
+--             label = bufname:sub(i, i)
+--             i = i + 1
+--         end
+--         self._picker_labels[label] = self.bufnr
+--         self.label = label .. " "
+--     end,
+--     provider = function(self)
+--         return self.label
+--     end,
+--     hl = { fg = "red_sigil", bold = true },
+-- }
 
--- we redefine the filename component, as we probably only want the tail and not the relative path
-local TablineFileName = {
-    provider = function(self)
-        -- self.filename will be defined later, just keep looking at the example!
-        local filename = self.filename
-        filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
-        return filename
-    end,
-    hl = function(self)
-        return { self.is_visible }
-    end,
-}
+-- -- we redefine the filename component, as we probably only want the tail and not the relative path
+-- local TablineFileName = {
+--     provider = function(self)
+--         -- self.filename will be defined later, just keep looking at the example!
+--         local filename = self.filename
+--         filename = filename == "" and "[No Name]" or vim.fn.fnamemodify(filename, ":t")
+--         return filename
+--     end,
+--     hl = function(self)
+--         return { self.is_visible }
+--     end,
+-- }
 
-local TablineFileFlags = {
-    {
-        condition = function(self)
-            return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
-        end,
-        provider = icons.modified,
-        hl = { fg = "modified", bold = true },
-    },
-    {
-        condition = function(self)
-            return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
-                or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
-        end,
-        provider = function(self)
-            if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
-                return icons.terminal
-            else
-                return icons.padlock
-            end
-        end,
-        hl = { fg = "readonly" },
-    },
-}
+-- local TablineFileFlags = {
+--     {
+--         condition = function(self)
+--             return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
+--         end,
+--         provider = icons.modified,
+--         hl = { fg = "modified", bold = true },
+--     },
+--     {
+--         condition = function(self)
+--             return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
+--                 or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
+--         end,
+--         provider = function(self)
+--             if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
+--                 return icons.terminal
+--             else
+--                 return icons.padlock
+--             end
+--         end,
+--         hl = { fg = "readonly" },
+--     },
+-- }
 
--- Here the filename block finally comes together
-local TablineFileNameBlock = {
-    init = function(self)
-        self.filename = vim.api.nvim_buf_get_name(self.bufnr)
-    end,
-    hl = function(self)
-        if self.is_active then
-            return "TabLineSel" -- active buffer fg
-        else
-            return "TabLine" -- inactive buffer fg
-        end
-    end,
-    on_click = {
-        callback = function(_, minwid, _, button)
-            if button == "m" then -- close on mouse middle click
-                vim.schedule(function()
-                    vim.api.nvim_buf_delete(minwid, { force = false })
-                end)
-            else
-                vim.api.nvim_win_set_buf(0, minwid)
-            end
-        end,
-        minwid = function(self)
-            return self.bufnr
-        end,
-        name = "heirline_tabline_buffer_callback",
-    },
-    -- TablineBufnr,
-    TablineGlyph,
-    TablinePicker,
-    TablineFileName,
-    TablineFileFlags,
-}
+-- -- Here the filename block finally comes together
+-- local TablineFileNameBlock = {
+--     init = function(self)
+--         self.filename = vim.api.nvim_buf_get_name(self.bufnr)
+--     end,
+--     hl = function(self)
+--         if self.is_active then
+--             return "TabLineSel" -- active buffer fg
+--         else
+--             return "TabLine" -- inactive buffer fg
+--         end
+--     end,
+--     on_click = {
+--         callback = function(_, minwid, _, button)
+--             if button == "m" then -- close on mouse middle click
+--                 vim.schedule(function()
+--                     vim.api.nvim_buf_delete(minwid, { force = false })
+--                 end)
+--             else
+--                 vim.api.nvim_win_set_buf(0, minwid)
+--             end
+--         end,
+--         minwid = function(self)
+--             return self.bufnr
+--         end,
+--         name = "heirline_tabline_buffer_callback",
+--     },
+--     -- TablineBufnr,
+--     TablineGlyph,
+--     TablinePicker,
+--     TablineFileName,
+--     TablineFileFlags,
+-- }
 
--- The final touches
-local TablineBuffers = {
-    hl = { bg = "statusline_bg" }, -- surround icon bg
-    utils.surround({ icons.left_surround, icons.right_surround }, function(self)
-        if self.is_active then
-            return "tablinesel_bg"
-        else
-            return "tabline_bg"
-        end
-    end, { TablineFileNameBlock }),
-}
+-- -- The final touches
+-- local TablineBuffers = {
+--     hl = { bg = "statusline_bg" }, -- surround icon bg
+--     utils.surround({ icons.left_surround, icons.right_surround }, function(self)
+--         if self.is_active then
+--             return "tablinesel_bg"
+--         else
+--             return "tabline_bg"
+--         end
+--     end, { TablineFileNameBlock }),
+-- }
 
--- Now the tabs
-local Tabpages = {
-    hl = { bg = "statusline_bg" }, -- surround icon bg
-    utils.surround({ icons.left_surround, icons.right_surround }, function(self)
-        if self.is_active then
-            return "tablinesel_bg"
-        else
-            return "tabline_bg"
-        end
-    end, {
-        hl = function(self)
-            if self.is_active then
-                return "TabLineSel" -- active tab fg
-            else
-                return "TabLine" -- inactive tab fg
-            end
-        end,
-        provider = function(self)
-            if self.is_active then
-                return icons.circle_small .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
-            else
-                return icons.circle_o .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
-            end
-        end,
-    }),
-}
+-- -- Now the tabs
+-- local Tabpages = {
+--     hl = { bg = "statusline_bg" }, -- surround icon bg
+--     utils.surround({ icons.left_surround, icons.right_surround }, function(self)
+--         if self.is_active then
+--             return "tablinesel_bg"
+--         else
+--             return "tabline_bg"
+--         end
+--     end, {
+--         hl = function(self)
+--             if self.is_active then
+--                 return "TabLineSel" -- active tab fg
+--             else
+--                 return "TabLine" -- inactive tab fg
+--             end
+--         end,
+--         provider = function(self)
+--             if self.is_active then
+--                 return icons.circle_small .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
+--             else
+--                 return icons.circle_o .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
+--             end
+--         end,
+--     }),
+-- }
 
-local TablineBlock = {
-    -- only show if there are 2 or more tabpages
-    condition = function()
-        return #vim.api.nvim_list_tabpages() >= 2
-    end,
-    utils.make_tablist(Tabpages),
-}
+-- local TablineBlock = {
+--     -- only show if there are 2 or more tabpages
+--     condition = function()
+--         return #vim.api.nvim_list_tabpages() >= 2
+--     end,
+--     utils.make_tablist(Tabpages),
+-- }
 
--- this is the default function used to retrieve buffers
-local get_bufs = function()
-    return vim.tbl_filter(function(bufnr)
-        return vim.api.nvim_get_option_value("buflisted", { buf = bufnr })
-    end, vim.api.nvim_list_bufs())
-end
+-- -- this is the default function used to retrieve buffers
+-- local get_bufs = function()
+--     return vim.tbl_filter(function(bufnr)
+--         return vim.api.nvim_get_option_value("buflisted", { buf = bufnr })
+--     end, vim.api.nvim_list_bufs())
+-- end
 
 -- initialize the buflist cache
-local buflist_cache = {}
+-- local buflist_cache = {}
 
--- setup an autocmd that updates the buflist_cache every time that buffers are added/removed
-vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufAdd", "BufDelete" }, {
-    callback = function()
-        vim.schedule(function()
-            local buffers = get_bufs()
-            for i, v in ipairs(buffers) do
-                buflist_cache[i] = v
-            end
-            for i = #buffers + 1, #buflist_cache do
-                buflist_cache[i] = nil
-            end
+-- -- setup an autocmd that updates the buflist_cache every time that buffers are added/removed
+-- vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufNew", "BufAdd", "BufDelete" }, {
+--     callback = function()
+--         vim.schedule(function()
+--             local buffers = get_bufs()
+--             for i, v in ipairs(buffers) do
+--                 buflist_cache[i] = v
+--             end
+--             for i = #buffers + 1, #buflist_cache do
+--                 buflist_cache[i] = nil
+--             end
+--             -- check how many buffers we have and set showtabline accordingly
+--             if #buflist_cache > 1 then
+--                 vim.o.showtabline = 2 -- always
+--             elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+--                 vim.o.showtabline = 1 -- only when #tabpages > 1
+--             end
+--         end)
+--     end,
+-- })
 
-            -- check how many buffers we have and set showtabline accordingly
-            if #buflist_cache > 1 then
-                vim.o.showtabline = 2 -- always
-            elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
-                vim.o.showtabline = 1 -- only when #tabpages > 1
-            end
-        end)
-    end,
-})
+-- local BufferLineBlock = utils.make_buflist(
+--     TablineBuffers,
+--     { provider = icons.left_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
+--     { provider = icons.right_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
+--     -- out buf_func simply returns the buflist_cache
+--     function()
+--         return buflist_cache
+--     end,
+--     -- no cache, as we're handling everything ourselves
+--     false
+-- )
 
-local BufferLineBlock = utils.make_buflist(
-    TablineBuffers,
-    { provider = icons.left_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
-    { provider = icons.right_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
-    -- out buf_func simply returns the buflist_cache
-    function()
-        return buflist_cache
-    end,
-    -- no cache, as we're handling everything ourselves
-    false
-)
-
--- Finish
-TabLineFinal = {
-    hl = { bg = "tablinefill" }, -- tabline bg (instead of tablinesel_bg)
-    LeftCap,
-    TabLineOffset,
-    BufferLineBlock,
-    Align,
-    TablineBlock,
-    RightCap,
-}
+-- -- Finish
+-- TabLineFinal = {
+--     hl = { bg = "tablinefill" }, -- tabline bg (instead of tablinesel_bg)
+--     LeftCap,
+--     TabLineOffset,
+--     BufferLineBlock,
+--     Align,
+--     TablineBlock,
+--     RightCap,
+-- }
 
 -- }}
 -- Left Statusline Elements ------------------------------------------------- {{
@@ -366,9 +362,9 @@ do
                     provider = icons.circle,
                     hl = function()
                         if bo.modified then
-                            return { fg = "modified", bold = false }
+                            return { ctermfg = 5, bold = false }
                         else
-                            return { fg = "miscgrey", bold = false }
+                            return { ctermfg = 8, bold = false }
                         end
                     end,
                 },
@@ -380,9 +376,10 @@ do
             condition = function(self)
                 return self.mode ~= "normal"
             end,
-            utils.surround({ icons.left_mode_sur, icons.right_mode_sur }, function(self) -- color
-                return Mode[self.mode].bg
-            end, {
+            hl = function(self) -- Glyph color
+                return { ctermfg = Mode[self.mode].ctermbg }
+            end,
+            utils.surround({ icons.left_mode_sur, icons.right_mode_sur }, nil, {
                 {
                     fallthrough = false,
                     ReadOnly,
@@ -426,12 +423,12 @@ local MacroRec = {
         return vim.fn.reg_recording() ~= "" -- and vim.o.cmdheight == 0
     end,
     provider = icons.macro_rec,
-    hl = { fg = "macrorec", bold = true },
+    hl = { ctermfg = 1, bold = true },
     utils.surround({ "[", "] " }, nil, {
         provider = function()
             return vim.fn.reg_recording()
         end,
-        hl = { fg = "lspindicator" },
+        hl = { ctermfg = 4 },
     }),
     update = {
         "RecordingEnter",
@@ -443,7 +440,7 @@ local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { fg = "statusline_fg", bold = false },
+    hl = { ctermfg = 7, bold = false },
 }
 
 local HelpFileName = {
@@ -454,7 +451,7 @@ local HelpFileName = {
         local filename = vim.api.nvim_buf_get_name(0)
         return vim.fn.fnamemodify(filename, ":t")
     end,
-    hl = { fg = "lspindicator" },
+    hl = { ctermfg = 4 },
 }
 
 local FileNameBlock, CurrentPath, FileName
@@ -465,7 +462,7 @@ do
                 return self.pwd
             end
         end,
-        hl = { fg = "workdir", bold = false },
+        hl = { ctermfg = 2, bold = false }, -- work directory
         flexible = priority.WorkDir,
         {
             provider = function(self)
@@ -486,7 +483,7 @@ do
                 return self.current_path
             end
         end,
-        hl = { fg = "currentpath", bold = false },
+        hl = { ctermfg = 4, bold = false },
         flexible = priority.CurrentPath,
         {
             provider = function(self)
@@ -505,7 +502,7 @@ do
         provider = function(self)
             return self.filename
         end,
-        hl = { fg = "filename", bold = false },
+        hl = { ctermfg = 7, bold = false },
     }
 
     FileNameBlock = {
@@ -527,26 +524,24 @@ local SpecialBlock = {
     HelpFileName,
 }
 
-local PromptBlock = {
-    condition = function()
-        return conditions.buffer_matches({
-            buftype = { "prompt", "noice" },
-        })
-    end,
-    provider = function()
-        return "PROMPT"
-    end,
-    hl = { fg = "filetype", bold = false },
-}
-
 local TerminalBlock = {
     condition = function()
         return conditions.buffer_matches({ buftype = { "terminal" } })
     end,
     provider = function()
-        return icons.terminal .. " TERMINAL "
+        return icons.terminal .. " TERM "
     end,
-    hl = { fg = "termin" },
+    hl = { ctermfg = 7 },
+}
+
+local FzfBlock = {
+    condition = function()
+        return conditions.buffer_matches({ filetype = { "fzf" } })
+    end,
+    provider = function()
+        return icons.fzf .. " FZF "
+    end,
+    hl = { ctermfg = 7 },
 }
 
 local FMBlock = {
@@ -554,9 +549,9 @@ local FMBlock = {
         return conditions.buffer_matches({ filetype = { "Fm" } })
     end,
     provider = function()
-        return "FILES"
+        return icons.files .. " FILES "
     end,
-    hl = { fg = "filetype", bold = false },
+    hl = { ctermfg = 7, bold = false },
 }
 
 -- }}
@@ -573,7 +568,6 @@ local AltBuf = {
             if
                 name == ""
                 or vim.bo.filetype == "qf"
-                or vim.bo.filetype == "Outline"
                 or vim.bo.filetype == "Oil"
                 or vim.bo.filetype == "minifiles"
             then
@@ -581,10 +575,11 @@ local AltBuf = {
             elseif string.match(vim.bo.filetype, "^neo") then
                 return ""
             else
-                return "#" .. name:match("[^/]*$") .. " "
+                -- return "#" .. name:match("[^/]*$") .. " "
+                return name:match("[^/]*$") .. " "
             end
         end,
-        hl = { fg = "miscgrey" },
+        hl = { ctermfg = 8 },
     },
 }
 
@@ -611,50 +606,38 @@ local AltBuf = {
 local Diagnostics = {
     Space,
     condition = conditions.has_diagnostics,
-    static = {
-        error_icon = fn.sign_getdefined("DiagnosticSignError")[1].text,
-        warn_icon = fn.sign_getdefined("DiagnosticSignWarn")[1].text,
-        info_icon = fn.sign_getdefined("DiagnosticSignInfo")[1].text,
-        hint_icon = fn.sign_getdefined("DiagnosticSignHint")[1].text,
-    },
+
     init = function(self)
         self.errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
         self.warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
         self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
         self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
     end,
+    update = { "DiagnosticChanged", "BufEnter" },
     {
         provider = function(self)
             -- 0 is just another output, we can decide to print it or not!
-            if self.errors > 0 then
-                return table.concat({ " ", self.error_icon, self.errors })
-            end
+            return self.errors > 0 and (" " .. self.errors .. " ")
         end,
-        hl = { fg = "diagerror" },
+        hl = { ctermfg = 1 },
     },
     {
         provider = function(self)
-            if self.warnings > 0 then
-                return table.concat({ " ", self.warn_icon, self.warnings })
-            end
+            return self.warnings > 0 and (" " .. self.warnings .. " ")
         end,
-        hl = { fg = "diagwarn" },
+        hl = { ctermfg = 1 },
     },
     {
         provider = function(self)
-            if self.info > 0 then
-                return table.concat({ " ", self.info_icon, self.info })
-            end
+            return self.info > 0 and (" " .. self.info .. " ")
         end,
-        hl = { fg = "diaginfo" },
+        hl = { ctermfg = 4 },
     },
     {
         provider = function(self)
-            if self.hints > 0 then
-                return table.concat({ " ", self.hint_icon, self.hints })
-            end
+            return self.hints > 0 and (" " .. self.hints)
         end,
-        hl = { fg = "diaghint" },
+        hl = { ctermfg = 8 },
     },
 }
 
@@ -676,7 +659,7 @@ local Git = {
         name = "heirline_git",
         update = false,
     },
-    hl = { fg = "git_branch", bold = false },
+    hl = { ctermfg = 6, bold = false },
     {
         provider = function(self)
             return icons.git_branch .. self.status_dict.head
@@ -693,21 +676,21 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = { fg = "git_added", bold = false },
+        hl = { ctermfg = 3, bold = false },
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = { fg = "git_deleted", bold = false },
+        hl = { ctermfg = 1, bold = false },
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = { fg = "git_changed", bold = false },
+        hl = { ctermfg = 5, bold = false },
     },
     {
         condition = function(self)
@@ -721,7 +704,7 @@ local Lsp
 do
     local LspIndicator = {
         provider = "  " .. icons.circle_small,
-        hl = { fg = "lspindicator" },
+        hl = { ctermfg = 4 },
     }
     local LspServer = {
         Space(2),
@@ -737,7 +720,7 @@ do
                 return names
             end,
         },
-        hl = { fg = "lspserver", bold = true },
+        hl = { ctermfg = 4, bold = true },
     }
     Lsp = {
         condition = conditions.lsp_attached,
@@ -749,18 +732,7 @@ do
             self.lsp_names = names
         end,
         hl = function(self)
-            local color
-            for _, name in ipairs(self.lsp_names) do
-                if lsp_colors[name] then
-                    color = lsp_colors[name]
-                    break
-                end
-            end
-            if color then
-                return { fg = color, bold = true, force = true }
-            else
-                return { fg = "lspserver", bold = true }
-            end
+            return { ctermfg = 6, bold = true }
         end,
         flexible = priority.Lsp,
         LspServer,
@@ -778,22 +750,22 @@ local Ruler = {
 
 local ScrollPercentage = {
     -- %P : percentage through file of displayed window
-    provider = "[%3(%P%)] ",
+    provider = "%3(%P%)",
     -- hl = { fg = "statusline_fg" }
 }
 
--- local ScrollBar = {
---     static = {
---         sbar = icons.sbar,
---     },
---     provider = function(self)
---         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
---         local lines = vim.api.nvim_buf_line_count(0)
---         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
---         return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
---     end,
---     hl = { fg = "scrollbar" },
--- }
+local ScrollBar = {
+    static = {
+        sbar = icons.sbar,
+    },
+    provider = function(self)
+        local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+        local lines = vim.api.nvim_buf_line_count(0)
+        local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+        return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
+    end,
+    hl = { ctermfg = 3 },
+}
 
 vim.opt.showcmdloc = "statusline"
 local ShowCmd = {
@@ -801,7 +773,7 @@ local ShowCmd = {
     --   	 return vim.o.timeout == false
     --   end,
     provider = "%(%S%)",
-    hl = { fg = "cmd" },
+    hl = { ctermfg = 1 },
 }
 
 local Spell = {
@@ -809,7 +781,7 @@ local Spell = {
         return vim.wo.spell
     end,
     provider = icons.spellcheck,
-    hl = { fg = "spellindicator", bold = false },
+    hl = { ctermfg = 5, bold = false },
 }
 -- }}
 -- Combine Statusline ------------------------------------------------------- {{
@@ -843,7 +815,7 @@ local StatusLineFinal = {
         self.current_path = current_path -- The opened file path relevant to pwd.
         self.filename = filename
     end,
-    hl = { fg = "statusline_fg", bg = "statusline_bg" },
+    hl = { ctermfg = 7, ctermbg = 0 },
     {
         LeftCap,
         Indicator,
@@ -851,9 +823,9 @@ local StatusLineFinal = {
         MacroRec,
         {
             fallthrough = false,
-            PromptBlock,
             SpecialBlock,
             FMBlock,
+            FzfBlock,
             TerminalBlock,
             FileNameBlock,
         },
@@ -868,10 +840,10 @@ local StatusLineFinal = {
         Diagnostics,
         Lsp,
         Space(2),
-        -- ScrollBar,
-        Space(1),
         Ruler,
+        ScrollBar,
         ScrollPercentage,
+        Space(1),
         RightCap,
     },
 }
@@ -882,7 +854,7 @@ local StatusLineFinal = {
 require("heirline").setup({
     statusline = StatusLineFinal,
     -- winbar = WinBars,
-    tabline = TabLineFinal,
+    -- tabline = TabLineFinal,
     -- statuscolumn = ...
 })
 

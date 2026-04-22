@@ -24,7 +24,12 @@ return {
                     preview = false,
                     width_preview = 75,
                 },
-                content = { prefix = function() end }
+                content = {
+                    prefix = function() end,
+                    filter = function(entry)
+                        return not vim.startswith(entry.name, ".")
+                    end,
+                }
             }
             local go_in_plus = function()
                 for _ = 1, vim.v.count1 do
@@ -33,7 +38,7 @@ return {
                 end
             end
 
-            local show_dotfiles = true
+            local show_dotfiles = false
             local filter_show = function(fs_entry) return true end
             local filter_hide = function(fs_entry)
                 return not vim.startswith(fs_entry.name, '.')
@@ -53,6 +58,8 @@ return {
                     local buf_id = args.data.buf_id
                     map_buf('<CR>', go_in_plus)
                     map_buf('<Right>', go_in_plus)
+                    map_buf('<2-LeftMouse>', go_in_plus)
+                    map_buf('<RightMouse>', go_in_plus)
                 --- @diagnostic disable-next-line
                     map_buf('<Left>', MiniFiles.go_out)
                     vim.keymap.set('n', '.', toggle_dotfiles, { buffer = buf_id })

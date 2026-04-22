@@ -9,7 +9,6 @@ vim.g.maplocalleader = "|"
 
 -- Misc
 vim.cmd("cabbrev W w") -- For accidental W press
-map("n", "<C-s>", ":w<CR>")
 map("n", "<C-q>", "q")
 map("n", "q", ":q<CR>")
 map("n", "x", '"_x')
@@ -250,7 +249,7 @@ cmap("T", "tabedit % | Oil", { nargs = "?" })
 -- Fzf-lua
 map("n", "<leader>f", ":FzfLua files<CR>", { silent = true, desc = "Files" })
 map("n", "<leader>g", ":FzfLua live_grep<CR>", { silent = true, desc = "Grep" })
-map("n", "<leader><Tab>", ":FzfLua buffers<CR>", { silent = true, desc = "Buffers" })
+map("n", "<leader>w", ":FzfLua buffers<CR>", { silent = true, desc = "Buffers" })
 map("n", "<leader>j", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
 map("n", "<leader>s", ":FzfLua lsp_document_symbols<CR>", { silent = true, desc = "Symbols" })
 map("n", "<leader>S", ":FzfLua lsp_workspace_symbols<CR>", { silent = true, desc = "WS symbols" })
@@ -262,7 +261,6 @@ map("n", "<leader>/", ":FzfLua blines<CR>", { silent = true, desc = "Search" })
 map("n", "<leader>a", ":FzfLua lines<CR>", { silent = true, desc = "Full search" })
 map("n", "<leader>m", ":FzfLua marks<CR>", { silent = true, desc = "Marks" })
 map("n", "<leader>r", ":FzfLua oldfiles<CR>", { silent = true, desc = "Recent" })
-map("n", "?", ":FzfLua keymaps<CR>", { silent = true, desc = "Hotkeys" })
 -- -- More at:
 -- -- ~/.config/nvim/lua/plugins/fzf-lua.lua
 
@@ -274,24 +272,6 @@ map("n", "]`", "<Plug>(Marks-next)zz", { desc = "Next mark" })
 map("n", "[`", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/marks.lua
-
--- Trailblazer
-map("n", ";;", ":TrailBlazerNewTrailMark<CR>", { desc = "Leave new trail" })
-map("n", ";b", ":TrailBlazerTrackBack<CR>", { desc = "Blaze back the trail" })
-map("n", ";n", ":TrailBlazerMoveToNearest<CR>", { desc = "Nearest trail" })
-map("n", ";k", ":TrailBlazerPeekMovePreviousUp<CR>", { desc = "Move up the stack" })
-map("n", ";j", ":TrailBlazerPeekMoveNextDown<CR>", { desc = "Move down the stack" })
-map("n", ";a", ":TrailBlazerAddTrailMarkStack<CR>", { desc = "Add stack" })
-map("n", ";d", ":TrailBlazerDeleteTrailMarkStack<CR>", { desc = "Delete stack" })
-map("n", ";D", ":TrailBlazerDeleteAllTrailMarks<CR>", { desc = "Delete all stacks" })
-map("n", ";p", ":TrailBlazerPasteAtLastTrailMark<CR>", { desc = "Paste at trail" })
-map("n", ";P", ":TrailBlazerPasteAtAllTrailMarks<CR>", { desc = "Paste at all" })
-map("n", ";[", ":TrailBlazerSwitch_to_previous_trail_mark_stack<CR>", { desc = "Prev stack" })
-map("n", ";]", ":TrailBlazerSwitch_to_next_trail_mark_stack<CR>", { desc = "Next stack" })
-map("n", ";s", ":TrailBlazerSet_trail_mark_stack_sort_mode<CR>", { desc = "Stack sort mode" })
-map("n", ";l", ":TrailBlazerOpenTrailMarkList<CR>", { desc = "Trails List" })
--- More at:
--- ~/.config/nvim/lua/plugins/trailblazer.lua
 
 -- LSP
 map("n", "<leader>Ld", "<cmd>LspStop<CR>", { desc = "Disable the LSP" })
@@ -306,16 +286,13 @@ map(
     { noremap = true, silent = true, desc = "Open link/file" }
 )
 map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
-map("n", "J", ":TSJToggle<CR>")
-map("n", "<leader>p", ":Gitsigns preview_hunk<CR>")
+map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
-map("n", "<leader>n", "<cmd>Outline<CR>", { desc = "Nodes" })
 vim.cmd("cabbrev z Z")
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 53
--- ~/.config/nvim/lua/plugins/outline.lua
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
 -- ~/.config/nvim/lua/plugins/mini-move.lua

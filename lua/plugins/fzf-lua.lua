@@ -6,21 +6,24 @@ return {
         config = function()
             require("fzf-lua").setup({
                 winopts = {
-                    height = 0.50,
-                    width = 1,
-                    row = 1,
-                    border = { "-", "-", "-", " ", " ", " ", " ", " " },
+                    height = 0.85,
+                    width = 0.6,
+                    row = 0.9,
+                    col = 0,
+                    fullscreen = true,
+                    -- border = vim.opt.winborder:get(),
+                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     title_pos = "left",
                     treesitter = {
                         enabled = false,
                     },
                     preview = {
-                        border = { "-", "-", "-", " ", " ", " ", " ", "|" },
+                        border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                         wrap = false,
                         hidden = false,
-                        layout = "horizontal",
-                        horizontal = "right:60%",
-                        -- vertical = "down:60%",
+                        layout = "vertical",
+                        -- horizontal = "right:60%",
+                        vertical = "up:60%",
                         -- flip_columns = 100,
                         title = true,
                         title_pos = "left",
@@ -57,7 +60,7 @@ return {
                     buf_flag_alt = "Normal",
                     live_prompt = "Normal",
                     live_sym = "Statement",
-                    search = "Operator",
+                    search = "Statement",
                     fzf = {
                         separator = "FloatBorder",
                     },
@@ -72,22 +75,28 @@ return {
                         snacks_image = { enabled = false },
                     },
                 },
+                fzf_opts = {
+                    -- ["--separator"] = "─",
+                    ["--layout"] = "default",
+                    ["--color"] = "fg+:underline",
+                    -- ["--unicode"] = true,
+                },
                 fzf_colors = {
-                    true, -- inherit fzf colors that aren't specified below from
+                    false, -- inherit fzf colors that aren't specified below from
                     -- the auto-generated theme similar to `fzf_colors=true`
                     ["fg"]      = { "fg", "Normal" },
                     ["bg"]      = { "bg", "Normal" },
-                    ["hl"]      = { "fg", "Operator" },
-                    ["fg+"]     = { "fg", "Normal" },
+                    ["hl"]      = { "fg", "Statement" },
+                    ["fg+"]     = { "fg", "StatusLine" },
                     ["bg+"]     = { "bg", "StatusLine" },
-                    ["hl+"]     = { "fg", "Operator" },
+                    ["hl+"]     = { "fg", "Statement" },
                     ["info"]    = { "fg", "Comment" },
                     ["prompt"]  = { "fg", "Comment" },
                     ["pointer"] = { "fg", "Exception" },
-                    ["marker"]  = { "fg", "Character" },
+                    ["marker"]  = { "fg", "Exception" },
                     ["spinner"] = { "fg", "Comment" },
                     ["header"]  = { "fg", "Comment" },
-                    ["gutter"]  = "-1",
+                    ["gutter"]  = { "bg", "Gutter" },
                 },
                 keymap = {
                     builtin = {
@@ -118,6 +127,7 @@ return {
                     cwd_prompt = false,
                     toggle_hidden_flag = "--hidden",
                     hidden = false,
+                    fd_opts = "-t file -E '*.png' -E '*.jpg' -E '*.gif' -E '*.svg' -E '*.wav'",
                 },
                 grep = {
                     hidden = false,
@@ -154,6 +164,39 @@ return {
                     fzf_opts = {
                         ["--with-nth"] = "2,4..",
                     },
+                },
+                lsp = {
+                    symbols = {
+                        symbol_style = 2,
+                                symbol_icons     = {
+                                    Array = "󱡠",
+                                    Boolean = "",
+                                    Class = "",
+                                    Constant = "󰏿",
+                                    Constructor = "",
+                                    Enum = "",
+                                    EnumMember = "",
+                                    Event = "",
+                                    Field = "",
+                                    File = "",
+                                    Function = "󰊕",
+                                    Interface = "",
+                                    Key = "",
+                                    Method = "󰊕",
+                                    Module = "",
+                                    Namespace = "",
+                                    Null = "󰟢",
+                                    Number = "󰎠",
+                                    Object = "",
+                                    Operator = "",
+                                    Package = "󰏖",
+                                    Property = "",
+                                    String = "󰉾",
+                                    Struct = "",
+                                    TypeParameter = "",
+                                    Variable = "",
+                                },
+                    }
                 }
             })
         end

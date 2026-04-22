@@ -1,25 +1,7 @@
 local map = vim.keymap.set
-vim.lsp.set_log_level("OFF")
+vim.lsp.log.set_level("OFF")
 
 return {
-    -- { "rust-lang/rust.vim", lazy = true, ft = "rust" },
-
-    -- {
-    --     "simrat39/rust-tools.nvim",
-    --     dependencies = { { "neovim/nvim-lspconfig", lazy = true } },
-    --     lazy = true,
-    --     ft = "rust",
-    -- },
-    -- {
-    --     "saecki/crates.nvim",
-    --     event = { "BufRead Cargo.toml" },
-    --     dependencies = { { "nvim-lua/plenary.nvim", lazy = true } },
-    --     tag = "stable",
-    --     config = function()
-    --         require("crates").setup()
-    --     end,
-    -- },
-
     { "mfussenegger/nvim-dap", lazy = true },
 
     {
@@ -59,7 +41,6 @@ return {
         config = function()
             require("mason").setup({
                 ui = {
-                    -- border = "rounded",
                     border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     icons = {
                         package_installed = "✔",
@@ -98,113 +79,62 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
+            vim.lsp.enable({'lua_ls', 'marksman', 'gdscript'})
 
-            -- Configure language servers:
-            ------------------------------
-            lspconfig.lua_ls.setup({
-                settings = {
-                    Lua = {
+            vim.lsp.config("lua_ls", {
+                on_init = function(client)
+                    if client.workspace_folders then
+                        local path = client.workspace_folders[1].name
+                        if
+                            path ~= vim.fn.stdpath('config')
+                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                        then
+                            return
+                        end
+                    end
+
+                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
                         runtime = {
-                            version = "LuaJIT",
+                            -- Tell the language server which version of Lua you're using (most
+                            -- likely LuaJIT in the case of Neovim)
+                            version = 'LuaJIT',
+                            -- Tell the language server how to find Lua modules same way as Neovim
+                            -- (see `:h lua-module-load`)
+                            path = {
+                                'lua/?.lua',
+                                'lua/?/init.lua',
+                            },
                         },
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
+                        -- Make the server aware of Neovim runtime files
                         workspace = {
                             checkThirdParty = false,
                             library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.stdpath("config") .. "/lua"] = true,
+                                vim.env.VIMRUNTIME,
+                                -- Depending on the usage, you might want to add additional paths
+                                -- here.
+                                -- '${3rd}/luv/library',
+                                -- '${3rd}/busted/library',
                             },
-                            maxPreload = 5000,
-                            preloadFileSize = 10000,
+                            -- Or pull in all of 'runtimepath'.
+                            -- NOTE: this is a lot slower and will cause issues when working on
+                            -- your own configuration.
+                            -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                            -- library = vim.api.nvim_get_runtime_file('', true),
                         },
-                        telemetry = { enable = false },
-                    },
+                    })
+                end,
+                settings = {
+                    Lua = {},
                 },
             })
 
-            lspconfig.marksman.setup({
-                filetypes = { "markdown" },
+            vim.lsp.config("marksman", {
+                root_markers = { ".marksman.toml" },
             })
 
-            lspconfig.gdscript.setup({
-                filetypes = { "gdscript" },
+            vim.lsp.config("gdscript", {
+                root_markers = { "project.godot" },
             })
-
-            -- local rt = require("rust-tools")
-            -- local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-            -- local codelldb_path = mason_path .. "bin/codelldb"
-            -- local liblldb_path = mason_path .. "packages/codelldb/extension/lldb/lib/liblldb.so"
-            -- local dap = require("dap")
-            -- rt.setup({
-            --     tools = {
-            --         hover_actions = {
-            --             border = "shadow",
-            --         },
-            --         on_initialized = function()
-            --             vim.api.nvim_create_autocmd(
-            --                 { "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" },
-            --                 {
-            --                     pattern = { "*.rs" },
-            --                     callback = function()
-            --                         local _, _ = pcall(vim.lsp.codelens.refresh)
-            --                     end,
-            --                 }
-            --             )
-            --         end,
-            --     },
-            --     dap = {
-            --         adapter = require("rust-tools.dap").get_codelldb_adapter(
-            --             codelldb_path,
-            --             liblldb_path
-            --         ),
-            --     },
-            --     server = {
-            --         filetypes = { "rust" },
-            --         settings = {
-            --             ["rust-analyzer"] = {
-            --                 lens = {
-            --                     enable = true,
-            --                 },
-            --                 checkOnSave = {
-            --                     enable = true,
-            --                     command = "clippy",
-            --                 },
-            --                 cargo = {
-            --                     allfeatures = true,
-            --                 },
-            --             },
-            --         },
-            --     },
-            -- })
-            -- dap.adapters.codelldb = {
-            --     type = "server",
-            --     -- Manual start
-            --     host = "127.0.0.1",
-            --     port = "13000", -- 󰚌 Use the port printed out or specified with `--port`
-            --     -- Automatic start
-            --     -- port = "${port}",
-            --     -- executable = {
-            --     --    -- Absolute path to codelldb binary
-            --     --    command = codelldb_path,
-            --     --    args = {"--port", "${port}"},
-            --     -- }
-            -- }
-            -- dap.configurations.rust = {
-            --     {
-            --         type = "codelldb",
-            --         request = "launch",
-            --         program = function()
-            --             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-            --         end,
-            --         cwd = "${workspaceFolder}",
-            --         terminal = "integrated",
-            --         sourceLanguages = { "rust" },
-            --     },
-            -- }
-            -- map("n", "<M-d>", "<cmd>RustOpenExternalDocs<Cr>", opts)
 
             require("mason-null-ls").setup({
                 ensure_installed = {
@@ -248,14 +178,16 @@ return {
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf, noremap = true, silent = true }
 
-                    opts.desc = "Docs for item"
-                    map("n", "<leader>k", vim.lsp.buf.hover, opts)
+                    map("n", "J", ":TSJToggle<CR>", opts)
+
+                    -- opts.desc = "Docs for item"
+                    -- map("n", "K", vim.lsp.buf.hover, opts)
 
                     opts.desc = "Signature Help"
-                    map('n', '<leader>h', vim.lsp.buf.signature_help, opts)
+                    map('n', '<C-h>', vim.lsp.buf.signature_help, opts)
 
                     opts.desc = "Diagnostic info"
-                    map("n", "<leader>i", vim.diagnostic.open_float, opts)
+                    map("n", "<C-e>", vim.diagnostic.open_float, opts)
 
                     opts.desc = "Move to prev diagnostic"
                     map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)

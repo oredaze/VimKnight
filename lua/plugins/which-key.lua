@@ -7,7 +7,6 @@ return {
         config = function()
             local wk = require("which-key")
             wk.add({
-                { ";", group = "Trails" },
                 { "<leader>", group = "Plugins" },
                 { "<leader>L", group = "LSP" },
                 { "<leader>o", group = "Options" },
@@ -23,43 +22,27 @@ return {
             })
             local setup = {
                 delay = function(ctx)
-                    return ctx.plugin and 0 or 0 -- WhichKey popup delay
+                    return ctx.plugin and 0 or 1000 -- WhichKey popup delay
                 end,
                 icons = {
                     breadcrumb = ">", -- symbol used in the command line area that shows your active key combo
                     separator = "→", -- symbol used between a key and it's label
                     group = "+ ", -- symbol prepended to a group
                     mappings = false, -- devicons
-                    keys = {
-                        BS = "◀",
-                        Tab = "⇥",
-                        Space = "˽",
-                        Esc = "✘",
-                        CR = "↵",
-                        C = "^",
-                        S = "⇑",
-                    },
                 },
+                show_help = false, -- show a help message in the command line for using WhichKey
                 preset = "helix",
                 win = {
+                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     no_overlap = false,
-                    border = { "+", "-", "+", "|", "+", "-", "+", "|" },
-                    -- border = { "-", "-", "-", "", "", "", "", "" },
-                    -- height = { min = 4, max = 16 },
                     width = { min = 30, max = 40 },
-                    -- row = math.huge,
                 },
-                -- layout = {
-                    -- width = { min = 20, max = 50 },
-                    -- spacing = 1, -- spacing between columns
-                -- },
                 keys = {
                     scroll_down = "<c-d>",
                     scroll_up = "<c-u>",
                 },
                 triggers = {
                     { "<auto>", mode = "niotc" },
-                    { ";", mode = "n" },
                 },
             }
             wk.setup(setup)

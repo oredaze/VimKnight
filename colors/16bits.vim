@@ -1,7 +1,7 @@
-" Vim color file
+" Neovim color file
 "
-" Name:    16monkeys
-" Author:  Bobby Veli <2drealm@gmail.com>
+" Name:    16bits
+" Author:  Bobby Veli <crowmail@posteo.com>
 
 hi clear
 if exists("syntax_on")
@@ -9,7 +9,7 @@ if exists("syntax_on")
 endif
 set background=dark
 
-let g:colors_name = "16monkeys"
+let g:colors_name = "16bits"
 
 " tty fix
 if &t_Co == 8
@@ -18,32 +18,24 @@ if &t_Co == 8
 	hi SpecialComment ctermfg=0 ctermbg=none cterm=bold
 	hi LineNr ctermfg=0 ctermbg=none cterm=bold
 	hi NonText ctermfg=0 ctermbg=none cterm=bold
-	hi SpecialKey ctermfg=0 ctermbg=none cterm=bold
+	hi Whitespace ctermfg=0 ctermbg=0 cterm=bold
 	hi Conceal ctermfg=0 ctermbg=none cterm=bold
 	hi Folded ctermfg=0 ctermbg=0 cterm=bold
 	hi FoldColumn ctermfg=0 ctermbg=0 cterm=bold
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=bold
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
-	hi StatusLine ctermfg=7 ctermbg=0 cterm=none
-	hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
-	hi Whitespace ctermfg=0 ctermbg=0 cterm=bold
-	hi User1 ctermfg=0 ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
 	hi Comment ctermfg=8 ctermbg=none cterm=none
 	hi SpecialComment ctermfg=8 ctermbg=none cterm=none
 	hi LineNr ctermfg=8 ctermbg=none cterm=none
 	hi NonText ctermfg=8 ctermbg=none cterm=none
-	hi SpecialKey ctermfg=235 ctermbg=none cterm=none
+	hi Whitespace ctermfg=8 ctermbg=none cterm=none
 	hi Conceal ctermfg=8 ctermbg=none cterm=none
 	hi Folded ctermfg=8 ctermbg=0 cterm=none
 	hi FoldColumn ctermfg=8 ctermbg=0 cterm=none
 	hi TabLineFill ctermfg=8 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
-	hi StatusLine ctermfg=7 ctermbg=0 cterm=none
-	hi StatusLineNC ctermfg=8 ctermbg=0 cterm=none
-	hi Whitespace ctermfg=237 ctermbg=0 cterm=none
-	hi User1 ctermfg=8 ctermbg=0 cterm=none
 endif
 
 " Predefined Highlight Groups: {{{
@@ -78,7 +70,7 @@ hi Function ctermfg=2 ctermbg=none cterm=none
 hi Statement ctermfg=1 ctermbg=none
 hi Conditional ctermfg=1 ctermbg=none
 hi Repeat ctermfg=1 ctermbg=none cterm=bold
-hi Operator ctermfg=6 ctermbg=none
+hi Operator ctermfg=7 ctermbg=none
 hi Keyword ctermfg=1 ctermbg=none
 hi Exception ctermfg=1 ctermbg=none cterm=bold
 
@@ -96,6 +88,7 @@ hi Typedef ctermfg=1 ctermbg=none
 
 hi Special ctermfg=4 ctermbg=none
 hi SpecialChar ctermfg=4 ctermbg=0 cterm=bold
+hi SpecialKey ctermfg=4 ctermbg=none cterm=none
 hi Tag ctermfg=1 ctermbg=none
 hi Delimiter ctermfg=7 ctermbg=none
 hi Debug ctermfg=1 ctermbg=0
@@ -107,7 +100,7 @@ hi Error ctermfg=0 ctermbg=1
 hi Todo ctermfg=0 ctermbg=5 cterm=bold
 " }}}
 " Around syntax {{{
-hi Underlined ctermfg=3 ctermbg=none cterm=underline
+hi Underlined ctermfg=4 ctermbg=none cterm=underline
 hi Cursor ctermfg=0 ctermbg=7 cterm=bold
 hi lCursor ctermfg=0 ctermbg=4 cterm=bold
 hi vCursor ctermfg=0 ctermbg=3 cterm=bold
@@ -117,12 +110,12 @@ hi DiffAdd ctermfg=2 ctermbg=0
 hi DiffChange ctermfg=none ctermbg=0
 hi DiffDelete ctermfg=0 ctermbg=0 cterm=bold
 hi DiffText ctermfg=5 ctermbg=0 cterm=underline
-hi Directory ctermfg=4 ctermbg=none
-hi MatchParen ctermfg=1 ctermbg=0 cterm=bold,underline
-hi Search ctermfg=0 ctermbg=7
-hi IncSearch ctermfg=3 ctermbg=0
-hi CurSearch ctermfg=3 ctermbg=0
-hi! link CursorLineFold Folded
+hi Directory ctermfg=4 ctermbg=none cterm=bold
+hi MatchParen ctermfg=1 ctermbg=0 cterm=bold
+hi Search ctermfg=0 ctermbg=3
+hi IncSearch ctermfg=1 ctermbg=0 cterm=none,reverse
+hi CurSearch ctermfg=0 ctermbg=1 cterm=none
+hi CursorLineFold ctermfg=3 ctermbg=none
 hi CursorLineSign ctermfg=7 ctermbg=none
 hi SpellBad ctermfg=none ctermbg=none cterm=undercurl
 hi SpellCap ctermfg=none ctermbg=none cterm=undercurl
@@ -130,7 +123,7 @@ hi SpellLocal ctermfg=none ctermbg=none cterm=undercurl
 hi SpellRare ctermfg=none ctermbg=none cterm=undercurl
 hi Visual ctermfg=0 ctermbg=7 cterm=none
 hi VisualNOS ctermfg=none ctermbg=0 cterm=underline
-hi ColorColumn ctermfg=none ctermbg=1 cterm=bold
+hi ColorColumn ctermfg=0 ctermbg=1 cterm=none
 hi Substitute ctermfg=0 ctermbg=2 cterm=none
 " }}}
 " UI: {{{
@@ -146,7 +139,7 @@ hi FoldColumn ctermfg=7 ctermbg=0 cterm=none
 hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
 hi Pmenu ctermfg=7 ctermbg=0
-hi PmenuSel ctermfg=0 ctermbg=7
+hi PmenuSel ctermfg=none ctermbg=0 cterm=bold,underline
 hi PmenuThumb ctermfg=0 ctermbg=7
 hi PmenuSbar ctermfg=none ctermbg=none
 hi PmenuKind ctermfg=7 ctermbg=0
@@ -157,19 +150,22 @@ hi PopupSelected ctermfg=0 ctermbg=7
 hi NormalFloat ctermfg=7 ctermbg=0
 hi FloatBorder ctermfg=0 ctermbg=0 cterm=bold
 hi FloatTitle ctermfg=0 ctermbg=0 cterm=bold
-hi EndOfBuffer ctermfg=4 ctermbg=none cterm=bold
+hi EndOfBuffer ctermfg=4 ctermbg=none cterm=none
 hi QuickFixLine ctermfg=none ctermbg=0
-hi! link StatusLineTerm StatusLine
-hi! link StatusLineTermNC StatusLineNC
 hi WildMenu ctermfg=0 ctermbg=7
 hi ModeMsg ctermfg=2 ctermbg=none cterm=bold
 hi MoreMsg ctermfg=5 ctermbg=none cterm=bold
 hi Question ctermfg=4 ctermbg=none
 hi WarningMsg ctermfg=3 ctermbg=none cterm=bold
-hi MessageWindow ctermfg=3 ctermbg=none cterm=bold
+hi MessageWindow ctermfg=1 ctermbg=none cterm=bold
 hi PopupNotification ctermfg=3 ctermbg=none cterm=bold
 hi ErrorMsg ctermfg=1 ctermbg=0 cterm=bold
 " hi MsgArea ctermfg=none ctermbg=0
+hi StatusLine ctermfg=7 ctermbg=0 cterm=none
+hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
+hi User1 ctermfg=0 ctermbg=0 cterm=bold
+hi! link StatusLineTerm StatusLine
+hi! link StatusLineTermNC StatusLineNC
 " }}}
 
 " Markdown: {{{
@@ -194,28 +190,28 @@ hi markdownH3 ctermfg=6 ctermbg=none cterm=bold
 hi markdownH4 ctermfg=5 ctermbg=none cterm=bold
 hi markdownH5 ctermfg=2 ctermbg=none cterm=bold
 hi markdownH6 ctermfg=4 ctermbg=none cterm=bold
-hi markdownUrl ctermfg=4 ctermbg=none cterm=underline
-hi markdownBold ctermfg=none ctermbg=none cterm=bold
-hi! link markdownBoldDelimiter Grey
+hi markdownUrl ctermfg=0 ctermbg=none cterm=bold,underline
 hi markdownItalic ctermfg=3 cterm=none
 hi markdownItalicDelimiter ctermfg=0 ctermbg=none cterm=bold
+hi markdownBold ctermfg=none ctermbg=none cterm=bold
+hi! link markdownBoldDelimiter Grey
 hi! link markdownCode Green
 hi! link markdownCodeBlock Green
 hi! link markdownCodeDelimiter Grey
 hi! link markdownBlockquote Grey
+hi! link markdownHeadingDelimiter Grey
+hi! link markdownHeadingRule Grey
 hi! link markdownListMarker Purple
+hi! link markdownId Yellow
+hi! link markdownIdDeclaration Cyan
 hi! link markdownOrderedListMarker Purple
 hi! link markdownRule Grey
-hi! link markdownHeadingRule Grey
 hi! link markdownUrlDelimiter Grey
 hi! link markdownLinkText Cyan
 hi! link markdownLinkDelimiter Grey
 hi! link markdownLinkTextDelimiter Grey
-hi! link markdownHeadingDelimiter Grey
 hi! link markdownUrlTitle Purple
 hi! link markdownUrlTitleDelimiter Yellow
-hi! link markdownIdDeclaration markdownLinkText
-hi! link markdownId Yellow
 hi markdownAutomaticLink ctermfg=6
 " }}}
 " Html: {{{
@@ -281,6 +277,14 @@ hi! link cssValueFrequency Green
 hi! link cssVendor Grey
 hi! link cssNoise Grey
 " }}}
+" Hjson: {{{
+hi! link hjsonString String
+hi! link hjsonQuote String
+hi! link hjsonKeyword Keyword
+hi! link hjsonStringUQ Fg
+hi! link hjsonBraces Fg
+
+" }}}
 " LESS: {{{
 " vim-less: https://github.com/groenewege/vim-less
 hi! link lessMixinChar Grey
@@ -301,9 +305,13 @@ hi! link csInterpolation Yellow
 hi! link csEndColon Fg
 " }}}
 " GDScript:: {{{
-hi! link gdscriptOperator Red
-hi! link gdscriptBlockStart BoldRed
-hi! link gdscriptNode Cyan
+hi! link gdscriptOperator Operator
+hi! link gdscriptBlockStart Statement
+hi! link gdscriptNode Structure
+hi! link gdResourceNumber Number
+hi! link gdResourceSectionName Type
+hi! link gdResourceSectionAttributeName Identifier
+hi! link gdResourceString String
 " }}}
 " Python: {{{
 " builtin:
@@ -367,21 +375,22 @@ hi! link rubyMacro Red
 hi! link rustKeyword Statement
 hi! link rustIdentifier Identifier
 hi! link rustModPath Identifier
-hi! link rustSelf Identifier
+hi! link rustSelf Type
 hi! link rustAttribute Fg
 hi! link rustDerive Define
+hi! link rustModPath Identifier
 hi! link rustModPathSep NonText
 hi! link rustOperator Operator
 hi! link rustQuestionMark Operator
-hi! link rustSigil Operator
+hi! link rustSigil Exception
 hi! link rustLifetime Operator
 hi! link rustStorage Type
 hi! link rustDeriveTrait Type
+hi! link rustMacroVariable Identifier
+hi! link rustPanic Red
 " hi! link rustEscape 
 " hi! link rustEnum 
 " hi! link rustEnumVariant 
-" hi! link rustMacroVariable 
-" hi! link rustPanic 
 " hi! link rustAssert 
 " hi! link rustPubScope 
 " hi! link rustPubScopeCrate 
@@ -432,18 +441,20 @@ hi! link makeTarget Blue
 hi! link makeCommands Red
 " }}}
 " Json: {{{
-hi! link jsonKeyword Red
+hi! link jsonKeyword Fg
 hi! link jsonQuote Grey
 hi! link jsonBraces Fg
+hi! link jsonNull Red
 " }}}
 " Yaml: {{{
 hi! link yamlKey Red
-hi! link yamlConstant Purple
+hi! link yamlConstant Constant
 " }}}
 " Toml: {{{
 hi tomlTable ctermfg=5 ctermbg=none cterm=bold
-hi! link tomlKey Red
-hi! link tomlBoolean Blue
+hi! link tomlKey Identifier
+hi! link tomlString String
+hi! link tomlBoolean Boolean
 hi! link tomlTableArray tomlTable
 " }}}
 " Diff: {{{
@@ -508,7 +519,7 @@ hi GitSignsAdd ctermfg=2 ctermbg=none
 hi GitSignsChange ctermfg=4 ctermbg=none
 hi GitSignsDelete ctermfg=1 ctermbg=none
 hi GitSignsTopdelete ctermfg=1 ctermbg=none
-hi GitSignsChangedelete ctermfg=1 ctermbg=none
+hi GitSignsChangedelete ctermfg=6 ctermbg=none
 hi GitSignsUntracked ctermfg=6 ctermbg=none
 hi GitSignsAddInline ctermfg=none ctermbg=2
 hi GitSignsChangeLnInline ctermfg=none ctermbg=4
@@ -532,6 +543,7 @@ hi MatchWordCur ctermfg=none ctermbg=none cterm=underline
 " marks {{{
 hi MarkSignHL ctermfg=0 ctermbg=0 cterm=bold
 hi! link MarkSignNumHL LineNr
+hi MarkVirtTextHL ctermfg=0 ctermbg=0 cterm=bold
 " }}}
 " pounce {{{
 hi PounceMatch ctermfg=4
@@ -555,24 +567,115 @@ hi TelescopeSelectionCaret ctermfg=0 ctermbg=7
 hi TelescopeMultiSelection ctermfg=3
 hi TelescopeMultiIcon ctermfg=0 ctermbg=none cterm=bold
 " }}}
+" blink {{{
+hi! link BlinkCmpLabel Fg
+hi BlinkCmpLabelDeprecated ctermfg=0 ctermbg=none cterm=bold,strikethrough
+hi! link BlinkCmpLabelMatch Cyan
+hi! link BlinkCmpDetail Grey
+hi! link BlinkCmpKind Include
+hi! link BlinkCmpKindText Identifier
+hi! link BlinkCmpKindFile Identifier
+hi! link BlinkCmpKindField Identifier
+hi! link BlinkCmpKindEnumMember Identifier
+hi! link BlinkCmpKindProperty Identifier
+hi! link BlinkCmpKindClass Type
+hi! link BlinkCmpKindConstant Constant
+hi! link BlinkCmpKindConstructor Special
+hi! link BlinkCmpKindCopilot Special
+hi! link BlinkCmpKindEnum Type
+hi! link BlinkCmpKindFolder Directory
+hi! link BlinkCmpKindFunction Function
+hi! link BlinkCmpKindInterface Type
+hi! link BlinkCmpKindKeyword Keyword
+hi! link BlinkCmpKindMethod Function
+hi! link BlinkCmpKindModule Include
+hi! link BlinkCmpKindOperator Operator
+hi! link BlinkCmpKindReference String
+hi! link BlinkCmpKindSnippet Special
+hi! link BlinkCmpKindStruct Structure
+hi! link BlinkCmpKindTypeParameter Identifier
+hi! link BlinkCmpKindValue String
+hi! link BlinkCmpKindVariable Identifier
+" }}}
 " signify {{{
 hi SignifySignAdd ctermfg=2 ctermbg=none
 hi SignifySignChange ctermfg=4 ctermbg=none
 hi SignifySignDelete ctermfg=1 ctermbg=none
 hi SignifySignChangeDelete ctermfg=4 ctermbg=none
 " }}}
+" Undotree {{{
+hi UndotreeSavedBig ctermfg=4 ctermbg=none cterm=bold
+hi! link UndotreeNode Cyan
+hi! link UndotreeNodeCurrent Red
+hi! link UndotreeSeq Green
+hi! link UndotreeNext Blue
+hi! link UndotreeTimeStamp Grey
+hi! link UndotreeHead Yellow
+hi! link UndotreeBranch Yellow
+hi! link UndotreeCurrent Cyan
+hi! link UndotreeSavedSmall Blue
+" }}}
 " mini {{{
 hi! link MiniFilesBorder FloatBorder
 hi! link MiniFilesBorderModified Number
-hi MiniFilesCursorLine ctermfg=0 ctermbg=7
+hi MiniFilesCursorLine ctermfg=none ctermbg=0 cterm=bold,underline
 hi! link MiniFilesDirectory Directory
-hi MiniFilesFile ctermfg=7
-hi MiniFilesNormal ctermfg=7 ctermbg=0
-hi MiniFilesTitle ctermfg=0 ctermbg=0 cterm=bold
+hi! link MiniFilesFile Fg
+hi! link MiniFilesNormal NormalFloat
+hi! link MiniFilesTitle FloatTitle
 hi MiniFilesTitleFocused ctermfg=6 ctermbg=none
 " }}}
 hi Elevator ctermfg=0 ctermbg=0 cterm=bold,reverse
 hi EasyJump ctermfg=0 ctermbg=3 cterm=none
+hi ColorfulWinSep ctermfg=2 ctermbg=0 cterm=bold
+
+" LSP {{{
+hi! link LspCxxHlGroupEnumConstant Cyan
+hi! link LspCxxHlGroupMemberVariable Cyan
+hi! link LspCxxHlGroupNamespace Blue
+hi! link LspCxxHlSkippedRegion Grey
+hi! link LspCxxHlSkippedRegionBeginEnd Red
+
+hi DiagnosticError ctermfg=1 ctermbg=0 cterm=italic
+hi DiagnosticWarn ctermfg=3 ctermbg=0 cterm=italic
+hi DiagnosticInfo ctermfg=4 ctermbg=0 cterm=italic
+hi DiagnosticHint ctermfg=0 ctermbg=0 cterm=bold,italic
+
+hi DiagnosticVirtualTextError ctermfg=1 ctermbg=0 cterm=italic
+hi DiagnosticVirtualTextWarn ctermfg=3 ctermbg=0 cterm=italic
+hi DiagnosticVirtualTextInfo ctermfg=4 ctermbg=0 cterm=italic
+hi DiagnosticVirtualTextHint ctermfg=0 ctermbg=0 cterm=bold,italic
+
+"hi DiagnosticUnderlineError ctermfg=none ctermbg=none cterm=none ctermsp=1
+"hi DiagnosticUnderlineWarn ctermfg=none ctermbg=none cterm=none ctermsp=3
+"hi DiagnosticUnderlineInfo ctermfg=none ctermbg=none cterm=none ctermsp=4
+"hi DiagnosticUnderlineHint ctermfg=none ctermbg=none cterm=none ctermsp=7
+
+"LspReferenceText = { bg = c.bg_light },
+"LspReferenceWrite = { bg = c.bg_light },
+"LspReferenceRead = { bg = c.bg_light },
+
+hi! link LspCodeLens Grey
+hi! link LspCodeLensSeparator Grey
+
+hi! link LspDiagnosticsDefaultError DiagnosticError
+hi! link LspDiagnosticsDefaultHint DiagnosticHint
+hi! link LspDiagnosticsDefaultInformation DiagnosticInfo
+hi! link LspDiagnosticsDefaultWarning DiagnosticWarn
+hi! link LspDiagnosticsVirtualTextError DiagnosticVirtualTextError
+hi! link LspDiagnosticsVirtualTextWarning DiagnosticVirtualTextWarn
+hi! link LspDiagnosticsVirtualTextInformation DiagnosticVirtualTextInfo
+hi! link LspDiagnosticsVirtualTextHint DiagnosticVirtualTextHint
+
+"hi! link LspDiagnosticsUnderlineError DiagnosticUnderlineError
+"hi! link LspDiagnosticsUnderlineHint DiagnosticUnderlineHint
+"hi! link LspDiagnosticsUnderlineInformation DiagnosticUnderlineInfo
+"hi! link LspDiagnosticsUnderlineWarning DiagnosticUnderlineWarn
+
+" }}}
+
+hi TreesitterContext ctermbg=none
+hi! link TreesitterContextSeparator Whitespace
 
 hi! link @annotation Normal
 hi! link @attribute Constant

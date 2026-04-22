@@ -20,7 +20,7 @@ return {
             -- default 10.
             sign_priority = { lower = 15, upper = 20, builtin = 8, bookmark = 10 },
             -- disables mark tracking for specific filetypes. default {}
-            excluded_filetypes = { "Outline", "Oil" },
+            excluded_filetypes = { "Oil" },
             -- marks.nvim allows you to configure up to 10 bookmark groups, each with its own
             -- sign/virttext. Bookmarks can be used to group together positions and quickly move
             -- across multiple buffers. default sign is '!@#$%^&*()' (from 0 to 9), and
@@ -68,7 +68,17 @@ return {
                 delete_line = "dm",
                 delete_buf = "dM",
                 delete_bookmark = "d-",
+                set_next = "m<space>",
                 annotate = "m;",
+                set_bookmark1 = "m1",
+                set_bookmark2 = "m2",
+                set_bookmark3 = "m3",
+                set_bookmark4 = "m4",
+                set_bookmark5 = "m5",
+                set_bookmark6 = "m6",
+                set_bookmark7 = "m7",
+                set_bookmark8 = "m8",
+                set_bookmark9 = "m9",
                 next_bookmark1 = "]1",
                 prev_bookmark1 = "[1",
                 next_bookmark2 = "]2",

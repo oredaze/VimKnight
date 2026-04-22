@@ -122,3 +122,11 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "TextChanged", "TextChangedI" }, {
     pattern = "*.md",
     callback = add_virtual_dash_line,
 })
+
+-- Stop treesitter completely in markdown
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.treesitter.stop()
+    end,
+})

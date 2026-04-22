@@ -3,19 +3,8 @@ local o = vim.opt
 ------------------------
 -- Neovim Basic Settings
 ------------------------
-local function smart_colors()
-    local display = os.getenv("DISPLAY")
-    local w_display = os.getenv("WAYLAND_DISPLAY")
-
-    if display or w_display then
-        o.termguicolors = true
-        vim.cmd([[colorscheme moksha]])
-    else
-        o.termguicolors = false
-        vim.cmd([[colorscheme 16monkeys]])
-    end
-end
-smart_colors()
+o.termguicolors = false
+vim.cmd([[colorscheme 16bits]])
 
 o.mouse = "a"
 o.mousescroll = "ver:10,hor:5"
@@ -45,7 +34,7 @@ o.shada = "%,\"35,'10,f1,<32,:30,/10,h"
 o.fillchars = { vert = "│", diff = "╱", fold = "-" }
 o.completeopt = "menuone,noselect"
 o.showmode = false
-o.showtabline = 1
+o.showtabline = 0
 o.laststatus = 3
 o.showbreak = "└→"
 o.list = true
@@ -53,7 +42,6 @@ o.ruler = false
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
-
 vim.fn.matchadd('ColorColumn', '\\%81v', 81)
 
 -- Indents
@@ -72,38 +60,12 @@ o.fillchars:append({
     verthoriz = "+",
 })
 
--- -- Splits
--- o.fillchars:append({
---     horiz = "─",
---     horizup = "┴",
---     horizdown = "┬",
---     vert = "│",
---     vertleft = "┤",
---     vertright = "├",
---     verthoriz = "┼",
--- })
-
--- Diagnostics
-vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticWarn" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticInfo" })
-vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticHint" })
 vim.diagnostic.config({
     signs = false,
     virtual_text = {
+        severity = "ERROR",
         prefix = "",
         spacing = 1,
     },
+    float = { border = { "+", "-" ,"+", "|", "+", "-", "+", "|" }, },
 })
-
--- -- Try this later when plugins and stuff chatch up:
--- vim.diagnostic.config({
---     signs = {
---         --support diagnostic severity / diagnostic type name
---         text = { [1] = 'e', ['ERROR'] = '󰨰', ['WARN'] = '', ['INFO'] = '', ['HINT'] = '󱩎' },
---     },
---     virtual_text = {
---         prefix = "",
---         spacing = 1,
---     },
--- })

@@ -4,10 +4,8 @@ return {
         "is0n/fm-nvim",
         cmd = { "Vifm", "Lf", "Broot", "Lazygit", "Ranger" },
         opts = {
-
             -- (Vim) Command used to open files
             edit_cmd = "edit",
-            -- See `Q&A` for more info
             on_close = {},
             on_open = {},
 
@@ -15,21 +13,21 @@ return {
             ui = {
                 default = "float",
                 float = {
-                    border = "none",
-                    -- border = { " ", " " ," ", " ", " ", " ", " ", " " },
-                    -- border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
-                    -- border = { "┌", "─" ,"┐", "│", "┘", "─", "└", "│" },
+                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
                     float_hl = "Normal",
                     border_hl = "FloatBorder",
-                    -- Floating Window Transparency (see ':h winblend')
                     blend = 0,
-                    -- Num from 0 - 1 for measurements
-                    height = 1.06, -- this is a bug
-                    width = 1,
-                    -- X and Y Axis of Window
-                    x = 0.5,
-                    y = 0.5,
+                    -- Num from 0 - 1
+                    height = 0.85,
+                    width = 0.5,
+                    -- window position
+                    x = 0,
+                    y = 0.75,
                 },
+                split = {
+                    direction = "topleft",
+                    size = 50
+                }
             },
 
             -- Terminal commands used w/ file manager (have to be in your $PATH)
