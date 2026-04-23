@@ -541,7 +541,7 @@ hi MatchWord ctermfg=none ctermbg=none cterm=underline
 hi MatchWordCur ctermfg=none ctermbg=none cterm=underline
 " }}}
 " marks {{{
-hi MarkSignHL ctermfg=0 ctermbg=0 cterm=bold
+hi MarkSignHL ctermfg=5 ctermbg=none cterm=bold
 hi! link MarkSignNumHL LineNr
 hi MarkVirtTextHL ctermfg=0 ctermbg=0 cterm=bold
 " }}}
