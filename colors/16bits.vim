@@ -617,13 +617,13 @@ hi! link UndotreeSavedSmall Blue
 " }}}
 " mini {{{
 hi! link MiniFilesBorder FloatBorder
-hi! link MiniFilesBorderModified Number
+hi MiniFilesBorderModified ctermfg=5 ctermbg=0 cterm=bold
 hi MiniFilesCursorLine ctermfg=none ctermbg=0 cterm=bold,underline
 hi! link MiniFilesDirectory Directory
 hi! link MiniFilesFile Fg
 hi! link MiniFilesNormal NormalFloat
 hi! link MiniFilesTitle FloatTitle
-hi MiniFilesTitleFocused ctermfg=6 ctermbg=none
+hi MiniFilesTitleFocused ctermfg=6 ctermbg=0
 " }}}
 hi Elevator ctermfg=0 ctermbg=0 cterm=bold,reverse
 hi EasyJump ctermfg=0 ctermbg=3 cterm=none

@@ -43,7 +43,7 @@ end
 do
     local mode_colors = {
         normal = 7,
-        insert = 4,
+        insert = 5,
         visual = 3,
         visual_lines = 3,
         visual_block = 3,
@@ -55,7 +55,7 @@ do
         shell = 2,
         term = 2,
         more = 2,
-        op = 5,
+        op = 4,
         select = 3,
     }
     Mode = setmetatable({

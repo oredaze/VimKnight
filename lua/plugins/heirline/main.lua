@@ -462,7 +462,7 @@ do
                 return self.pwd
             end
         end,
-        hl = { ctermfg = 2, bold = false }, -- work directory
+        hl = { ctermfg = 6, bold = false }, -- work directory
         flexible = priority.WorkDir,
         {
             provider = function(self)
@@ -754,18 +754,18 @@ local ScrollPercentage = {
     -- hl = { fg = "statusline_fg" }
 }
 
-local ScrollBar = {
-    static = {
-        sbar = icons.sbar,
-    },
-    provider = function(self)
-        local curr_line = vim.api.nvim_win_get_cursor(0)[1]
-        local lines = vim.api.nvim_buf_line_count(0)
-        local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
-        return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
-    end,
-    hl = { ctermfg = 3 },
-}
+-- local ScrollBar = {
+--     static = {
+--         sbar = icons.sbar,
+--     },
+--     provider = function(self)
+--         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+--         local lines = vim.api.nvim_buf_line_count(0)
+--         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
+--         return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
+--     end,
+--     hl = { ctermfg = 3 },
+-- }
 
 vim.opt.showcmdloc = "statusline"
 local ShowCmd = {
@@ -841,7 +841,7 @@ local StatusLineFinal = {
         Lsp,
         Space(2),
         Ruler,
-        ScrollBar,
+        -- ScrollBar,
         ScrollPercentage,
         Space(1),
         RightCap,

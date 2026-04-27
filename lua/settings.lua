@@ -63,7 +63,6 @@ o.fillchars:append({
 vim.diagnostic.config({
     signs = false,
     virtual_text = {
-        severity = "ERROR",
         prefix = "",
         spacing = 1,
     },

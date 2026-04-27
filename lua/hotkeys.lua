@@ -23,6 +23,8 @@ map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
 map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
+map("n", "yap", "yap}", { desc = "Yank a paragraph" })
+map("n", "yip", "yip}k", { desc = "Yank in paragraph" })
 
 -- Commenting
 map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })
