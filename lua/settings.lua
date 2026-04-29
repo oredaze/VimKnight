@@ -3,8 +3,21 @@ local o = vim.opt
 ------------------------
 -- Neovim Basic Settings
 ------------------------
-o.termguicolors = false
-vim.cmd([[colorscheme 16bits]])
+if vim.g.neovide then
+    o.termguicolors = true
+    vim.cmd([[colorscheme moksha]])
+    vim.o.guifont = "monospace:h11:#e-subpixelantialias:#h-slight"
+    vim.g.neovide_padding_top = 2
+    vim.g.neovide_padding_bottom = 2
+    vim.g.neovide_padding_right = 2
+    vim.g.neovide_padding_left = 2
+    vim.g.neovide_scroll_animation_length = 0.1
+    vim.g.neovide_cursor_animation_length = 0.1
+    vim.g.neovide_normal_opacity = 0.9
+else
+    o.termguicolors = false
+    vim.cmd([[colorscheme 16bits]])
+end
 
 o.mouse = "a"
 o.mousescroll = "ver:10,hor:5"
@@ -13,7 +26,7 @@ o.titlestring = "%t - nVim"
 o.titleold = "\27]0;\7"
 o.number = true
 o.relativenumber = true
-o.signcolumn = "yes" -- auto, number, yes, no
+o.signcolumn = "auto" -- auto, number, yes, no
 o.ignorecase = true
 o.smartcase = true
 o.timeout = false
@@ -42,7 +55,7 @@ o.ruler = false
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
-vim.fn.matchadd('ColorColumn', '\\%81v', 81)
+vim.fn.matchadd('ColorColumn', '\\%81v')
 
 -- Indents
 o.tabstop = 4 -- default number of characters for indents

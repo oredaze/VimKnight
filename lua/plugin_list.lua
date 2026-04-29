@@ -1,6 +1,7 @@
 ---@diagnostic disable
 return {
     -- UI
+    require("plugins.moksha"),
     require("plugins.heirline.init"),
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),

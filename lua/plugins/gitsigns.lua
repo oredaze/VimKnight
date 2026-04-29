@@ -4,14 +4,23 @@ return {
         event = "VeryLazy",
         config = function()
             require("gitsigns").setup({
-                -- signs = {
-                --     add = { text = "▏" },
-                --     change = { text = "▏" },
-                --     delete = { text = "_" },
-                --     topdelete = { text = "‾" },
-                --     changedelete = { text = "~" },
-                --     untracked = { text = "┆" },
-                -- },
+                signs = {
+                    add          = { text = '▏' },
+                    change       = { text = '▏' },
+                    delete       = { text = '_' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '~' },
+                    untracked    = { text = '┆' },
+                },
+                signs_staged = {
+                    add          = { text = '▏' },
+                    change       = { text = '▏' },
+                    delete       = { text = '_' },
+                    topdelete    = { text = '‾' },
+                    changedelete = { text = '~' },
+                    untracked    = { text = '┆' },
+                },
+                -- signs_staged_enable = true,
                 -- signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
                 -- numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
                 -- linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -28,8 +37,10 @@ return {
                 --    delay = 1000,
                 --    ignore_whitespace = false,
                 --    virt_text_priority = 100,
+                --    use_focus = true,
                 -- },
                 current_line_blame_formatter = "<summary> - <author>, <author_time:%Y-%m-%d>",
+                -- blame_formatter = nil, -- Use default
                 -- sign_priority = 6,
                 -- update_debounce = 100,
                 -- status_formatter = nil, -- Use default

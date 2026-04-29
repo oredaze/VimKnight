@@ -147,9 +147,9 @@ hi PmenuKindSel ctermfg=0 ctermbg=7
 hi PmenuExtra ctermfg=7 ctermbg=0
 hi PmenuExtraSel ctermfg=0 ctermbg=7
 hi PopupSelected ctermfg=0 ctermbg=7
-hi NormalFloat ctermfg=7 ctermbg=0
-hi FloatBorder ctermfg=0 ctermbg=0 cterm=bold
-hi FloatTitle ctermfg=0 ctermbg=0 cterm=bold
+hi NormalFloat ctermfg=7 ctermbg=none
+hi FloatBorder ctermfg=0 ctermbg=none cterm=bold
+hi FloatTitle ctermfg=0 ctermbg=none cterm=bold
 hi EndOfBuffer ctermfg=4 ctermbg=none cterm=none
 hi QuickFixLine ctermfg=none ctermbg=0
 hi WildMenu ctermfg=0 ctermbg=7
@@ -410,6 +410,7 @@ hi! link haskellForeignKeywords Purple
 " }}}
 " Shell: {{{
 " builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_SH
+hi! link shColon Statement
 hi! link shRange Fg
 hi! link shCmdSubRegion Fg
 hi! link shExprRegion Fg
@@ -623,11 +624,11 @@ hi! link MiniFilesDirectory Directory
 hi! link MiniFilesFile Fg
 hi! link MiniFilesNormal NormalFloat
 hi! link MiniFilesTitle FloatTitle
-hi MiniFilesTitleFocused ctermfg=6 ctermbg=0
+hi MiniFilesTitleFocused ctermfg=6 ctermbg=none
 " }}}
 hi Elevator ctermfg=0 ctermbg=0 cterm=bold,reverse
 hi EasyJump ctermfg=0 ctermbg=3 cterm=none
-hi ColorfulWinSep ctermfg=2 ctermbg=0 cterm=bold
+hi ColorfulWinSep ctermfg=6 ctermbg=0 cterm=bold
 
 " LSP {{{
 hi! link LspCxxHlGroupEnumConstant Cyan

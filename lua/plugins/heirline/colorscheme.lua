@@ -1,88 +1,83 @@
 local utils = require("heirline.utils")
 local get_hl = utils.get_highlight
 
-local function setup_colors()
-    return {
-        red_sigil = get_hl("Exception").fg,
-        tabline_fg = get_hl("TabLine").fg,
-        tablinesel_fg = get_hl("TabLineSel").fg,
-        statusline_fg = get_hl("StatusLine").fg,
-        tabline_bg = get_hl("TabLine").bg,
-        tablinesel_bg = get_hl("TabLineSel").bg,
-        statusline_bg = get_hl("StatusLine").bg,
-        tablinefill = get_hl("StatusLine").bg,
-        miscgrey = get_hl("Comment").fg,
-        dimgrey = get_hl("StatusLineNC").fg,
-        readonly = get_hl("ErrorMsg").fg,
-        filename = get_hl("StatusLine").fg,
-        modified = get_hl("Number").fg,
-        workdir = get_hl("Tag").fg,
-        currentpath = get_hl("Directory").fg,
-        macrorec = get_hl("Statement").fg,
-        -- DapMessages = get_hl('Debug').fg,
-        git_branch = get_hl("PreProc").fg,
-        git_added = get_hl("Added").fg,
-        git_deleted = get_hl("Removed").fg,
-        git_changed = get_hl("Changed").fg,
-        spellindicator = get_hl("Function").fg,
-        lspindicator = get_hl("SpecialKey").fg,
-        lspserver = get_hl("SpecialKey").fg,
-        diagerror = get_hl("DiagnosticError").fg,
-        diagwarn = get_hl("DiagnosticWarn").fg,
-        diaginfo = get_hl("DiagnosticInfo").fg,
-        diaghint = get_hl("DiagnosticHint").fg,
-        scrollbar = get_hl("CursorLineNr").fg,
-        overflowsigil_fg = get_hl("CursorLineNr").fg,
-        overflowsigil_bg = get_hl("StatusLine").bg,
-        searchresults = get_hl("Search").bg,
-        cmd = get_hl("Statement").fg,
-    }
+---@diagnostic disable-next-line: undefined-field
+if vim.opt.termguicolors._value == false then
+    heircolor_grey = { ctermfg = 8 }
+    heircolor_red = { ctermfg = 1 }
+    heircolor_green = { ctermfg = 2 }
+    heircolor_yellow = { ctermfg = 3 }
+    heircolor_blue = { ctermfg = 4 }
+    heircolor_magenta = { ctermfg = 5 }
+    heircolor_cyan = { ctermfg = 6 }
+    heircolor_white = { ctermfg = 7, ctermbg = 0 }
+    do
+        local mode_colors = {
+            normal = 7,
+            insert = 5,
+            visual = 3,
+            visual_lines = 3,
+            visual_block = 3,
+            replace = 1,
+            v_replace = 1,
+            none = 1,
+            enter = 2,
+            command = 2,
+            shell = 2,
+            term = 2,
+            more = 2,
+            op = 4,
+            select = 3,
+        }
+        Mode = setmetatable({
+            normal = { ctermfg = 0 },
+        }, {
+            __index = function(_, mode)
+                return {
+                    ctermfg = 0,
+                    ctermbg = mode_colors[mode],
+                    bold = true,
+                }
+            end,
+        })
+    end
+else
+    heircolor_grey = { fg = get_hl("Comment").fg }
+    heircolor_red = { fg = get_hl("Statement").fg }
+    heircolor_green = { fg = get_hl("Function").fg }
+    heircolor_yellow = { fg = get_hl("String").fg }
+    heircolor_blue = { fg = get_hl("Constant").fg }
+    heircolor_magenta = { fg = get_hl("Number").fg }
+    heircolor_cyan = { fg = get_hl("Tag").fg }
+    heircolor_white = { fg = get_hl("StatusLine").fg, bg = get_hl("StatusLine").bg }
+    do
+        local mode_colors = {
+            normal = get_hl("StatusLine").fg,
+            insert = get_hl("Number").fg,
+            visual = get_hl("Include").fg,
+            visual_lines = get_hl("Include").fg,
+            visual_block = get_hl("Include").fg,
+            replace = get_hl("Exception").fg,
+            v_replace = get_hl("Exception").fg,
+            none = get_hl("Exception").fg,
+            enter = get_hl("Function").fg,
+            command = get_hl("Function").fg,
+            shell = get_hl("Function").fg,
+            term = get_hl("Function").fg,
+            more = get_hl("Function").fg,
+            op = get_hl("Constant").fg,
+            select = get_hl("Constant").fg,
+        }
+        Mode = setmetatable({
+            normal = { fg = get_hl("StatusLine").bg },
+        }, {
+            __index = function(_, mode)
+                return {
+                    fg = get_hl("StatusLine").bg,
+                    bg = mode_colors[mode],
+                    bold = true,
+                }
+            end,
+        })
+    end
 end
-
--- Mode colors
-do
-    local mode_colors = {
-        normal = 7,
-        insert = 5,
-        visual = 3,
-        visual_lines = 3,
-        visual_block = 3,
-        replace = 1,
-        v_replace = 1,
-        none = 1,
-        enter = 2,
-        command = 2,
-        shell = 2,
-        term = 2,
-        more = 2,
-        op = 4,
-        select = 3,
-    }
-    Mode = setmetatable({
-        normal = { ctermfg = 0 },
-    }, {
-        __index = function(_, mode)
-            return {
-                ctermfg = 0,
-                ctermbg = mode_colors[mode],
-                bold = true,
-            }
-        end,
-    })
-end
-
-require("heirline").load_colors(setup_colors)
-vim.api.nvim_create_augroup("Heirline", { clear = true })
-vim.api.nvim_create_autocmd("ColorScheme", {
-    callback = function()
-        utils.on_colorscheme(setup_colors)
-    end,
-    group = "Heirline",
-})
-
--- --- @diagnostic disable-next-line
--- lsp_colors = {
---     lua_ls = "#4B8BB2",
---     rust_analyzer = "#B26F48",
---     marksman = "#B3CC8F",
--- }

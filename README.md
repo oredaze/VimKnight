@@ -29,7 +29,7 @@ My personal minimal neovim config, written from scratch. It is kinda like a neov
 - Tries not to override too many default keybindings or do anything too weird. Notable exceptions are: `r` -> [subversive](https://github.com/svermeulen/vim-subversive)(use `s <Esc>` instead of `r`) this should be built into vim tbh; `f` -> [Pounce](https://github.com/rlane/pounce.nvim) low mental overhead hopping plugin; `q` -> quit (macro is now `<C-q>`) because I jump in and out of files too much.
 - Neatly ordered. 1 file per task: 1 for neovim settings, 1 for hotkeys, etc. and a directory for your plugin files.
 - To disable a plugin, comment it out in `plugin_list.lua`.
-- The colorscheme uses your terminal colors, so you never have to worry about changing the theme.
+- If running in the terminal, adapts to your terminal colors. If running [neovide](https://github.com/neovide/neovide) uses guicolors.
 - Works in the tty without issue.
 - Autocomplete is manuan by default (`Tab`).
 - Don't bother keeping up with changes. This is best used as a basis for your own config, instead of starting from a clean neovim, which can be painful.

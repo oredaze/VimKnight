@@ -23,6 +23,13 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Early detection for heirline colors
+if vim.g.neovide then
+    vim.opt.termguicolors = true
+else
+    vim.opt.termguicolors = false
+end
+
 -- Load the plugins
 require("lazy").setup(require("plugin_list"), require("plugins.lazynvim"))
 

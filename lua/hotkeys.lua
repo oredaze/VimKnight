@@ -276,9 +276,9 @@ map("n", "[`", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 -- ~/.config/nvim/lua/plugins/marks.lua
 
 -- LSP
-map("n", "<leader>Ld", "<cmd>LspStop<CR>", { desc = "Disable the LSP" })
-map("n", "<leader>Le", "<cmd>LspStart<CR>", { desc = "Enable the LSP" })
-map("n", "<leader>Lr", "<cmd>LspRestart<CR>", { desc = "Restart the LSP" })
+map("n", "<leader>Ld", "<cmd>lsp disable<CR>", { desc = "Disable the LSP" })
+map("n", "<leader>Le", "<cmd>lsp enable<CR>", { desc = "Enable the LSP" })
+map("n", "<leader>Lr", "<cmd>lsp restart<CR>", { desc = "Restart the LSP" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/lsp.lua
 

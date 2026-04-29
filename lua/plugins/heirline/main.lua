@@ -88,18 +88,18 @@ do
             return not bo.modifiable or bo.readonly
         end,
         provider = icons.padlock,
-        hl = { ctermfg = 1, bold = true },
+        hl = heircolor_red,
     }
 end
 
 local LeftCap = {
     provider = icons.left_end,
-    hl = { ctermfg = 8 },
+    hl = heircolor_grey,
 }
 
 local RightCap = {
     provider = icons.right_end,
-    hl = { ctermfg = 8 },
+    hl = heircolor_grey,
 }
 
 -- }}
@@ -171,7 +171,7 @@ local RightCap = {
 --     provider = function(self)
 --         return self.label
 --     end,
---     hl = { fg = "red_sigil", bold = true },
+--     hl = heircolor_red,
 -- }
 
 -- -- we redefine the filename component, as we probably only want the tail and not the relative path
@@ -193,7 +193,7 @@ local RightCap = {
 --             return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
 --         end,
 --         provider = icons.modified,
---         hl = { fg = "modified", bold = true },
+--         hl = heircolor_magenta,
 --     },
 --     {
 --         condition = function(self)
@@ -207,7 +207,7 @@ local RightCap = {
 --                 return icons.padlock
 --             end
 --         end,
---         hl = { fg = "readonly" },
+--         hl = heircolor_red,
 --     },
 -- }
 
@@ -325,8 +325,8 @@ local RightCap = {
 
 -- local BufferLineBlock = utils.make_buflist(
 --     TablineBuffers,
---     { provider = icons.left_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
---     { provider = icons.right_overflow, hl = { fg = "overflowsigil_fg", bg = "overflowsigil_bg" } },
+--     { provider = icons.left_overflow, hl = heircolor_yellow },
+--     { provider = icons.right_overflow, hl = heircolor_yellow },
 --     -- out buf_func simply returns the buflist_cache
 --     function()
 --         return buflist_cache
@@ -362,9 +362,9 @@ do
                     provider = icons.circle,
                     hl = function()
                         if bo.modified then
-                            return { ctermfg = 5, bold = false }
+                            return heircolor_magenta
                         else
-                            return { ctermfg = 8, bold = false }
+                            return heircolor_grey
                         end
                     end,
                 },
@@ -377,7 +377,12 @@ do
                 return self.mode ~= "normal"
             end,
             hl = function(self) -- Glyph color
-                return { ctermfg = Mode[self.mode].ctermbg }
+                ---@diagnostic disable-next-line: undefined-field
+                if vim.opt.termguicolors._value == false then
+                    return { ctermfg = Mode[self.mode].ctermbg }
+                else
+                    return { fg = Mode[self.mode].bg }
+                end
             end,
             utils.surround({ icons.left_mode_sur, icons.right_mode_sur }, nil, {
                 {
@@ -423,12 +428,12 @@ local MacroRec = {
         return vim.fn.reg_recording() ~= "" -- and vim.o.cmdheight == 0
     end,
     provider = icons.macro_rec,
-    hl = { ctermfg = 1, bold = true },
+    hl = heircolor_red,
     utils.surround({ "[", "] " }, nil, {
         provider = function()
             return vim.fn.reg_recording()
         end,
-        hl = { ctermfg = 4 },
+        hl = heircolor_blue,
     }),
     update = {
         "RecordingEnter",
@@ -440,7 +445,7 @@ local FileType = {
     provider = function()
         return string.upper(vim.bo.filetype)
     end,
-    hl = { ctermfg = 7, bold = false },
+    hl = heircolor_white,
 }
 
 local HelpFileName = {
@@ -451,7 +456,7 @@ local HelpFileName = {
         local filename = vim.api.nvim_buf_get_name(0)
         return vim.fn.fnamemodify(filename, ":t")
     end,
-    hl = { ctermfg = 4 },
+    hl = heircolor_blue,
 }
 
 local FileNameBlock, CurrentPath, FileName
@@ -462,7 +467,7 @@ do
                 return self.pwd
             end
         end,
-        hl = { ctermfg = 6, bold = false }, -- work directory
+        hl = heircolor_cyan, -- work directory
         flexible = priority.WorkDir,
         {
             provider = function(self)
@@ -483,7 +488,7 @@ do
                 return self.current_path
             end
         end,
-        hl = { ctermfg = 4, bold = false },
+        hl = heircolor_blue,
         flexible = priority.CurrentPath,
         {
             provider = function(self)
@@ -502,7 +507,7 @@ do
         provider = function(self)
             return self.filename
         end,
-        hl = { ctermfg = 7, bold = false },
+        hl = heircolor_white,
     }
 
     FileNameBlock = {
@@ -531,7 +536,7 @@ local TerminalBlock = {
     provider = function()
         return icons.terminal .. " TERM "
     end,
-    hl = { ctermfg = 7 },
+    hl = heircolor_white,
 }
 
 local FzfBlock = {
@@ -541,7 +546,7 @@ local FzfBlock = {
     provider = function()
         return icons.fzf .. " FZF "
     end,
-    hl = { ctermfg = 7 },
+    hl = heircolor_white,
 }
 
 local FMBlock = {
@@ -551,7 +556,7 @@ local FMBlock = {
     provider = function()
         return icons.files .. " FILES "
     end,
-    hl = { ctermfg = 7, bold = false },
+    hl = heircolor_white,
 }
 
 -- }}
@@ -579,7 +584,7 @@ local AltBuf = {
                 return name:match("[^/]*$") .. " "
             end
         end,
-        hl = { ctermfg = 8 },
+        hl = heircolor_grey,
     },
 }
 
@@ -600,7 +605,7 @@ local AltBuf = {
 --     provider = function()
 --         return icons.bug .. dap.status() .. " "
 --     end,
---     hl = { fg = "???" },
+--     hl = heircolor_yellow,
 -- }
 
 local Diagnostics = {
@@ -619,25 +624,25 @@ local Diagnostics = {
             -- 0 is just another output, we can decide to print it or not!
             return self.errors > 0 and (" " .. self.errors .. " ")
         end,
-        hl = { ctermfg = 1 },
+        hl = heircolor_red,
     },
     {
         provider = function(self)
             return self.warnings > 0 and (" " .. self.warnings .. " ")
         end,
-        hl = { ctermfg = 1 },
+        hl = heircolor_yellow,
     },
     {
         provider = function(self)
             return self.info > 0 and (" " .. self.info .. " ")
         end,
-        hl = { ctermfg = 4 },
+        hl = heircolor_blue,
     },
     {
         provider = function(self)
             return self.hints > 0 and (" " .. self.hints)
         end,
-        hl = { ctermfg = 8 },
+        hl = heircolor_grey,
     },
 }
 
@@ -659,7 +664,7 @@ local Git = {
         name = "heirline_git",
         update = false,
     },
-    hl = { ctermfg = 6, bold = false },
+    hl = heircolor_cyan,
     {
         provider = function(self)
             return icons.git_branch .. self.status_dict.head
@@ -676,21 +681,21 @@ local Git = {
             local count = self.status_dict.added or 0
             return count > 0 and ("+" .. count)
         end,
-        hl = { ctermfg = 3, bold = false },
+        hl = heircolor_green,
     },
     {
         provider = function(self)
             local count = self.status_dict.removed or 0
             return count > 0 and ("-" .. count)
         end,
-        hl = { ctermfg = 1, bold = false },
+        hl = heircolor_red,
     },
     {
         provider = function(self)
             local count = self.status_dict.changed or 0
             return count > 0 and ("~" .. count)
         end,
-        hl = { ctermfg = 5, bold = false },
+        hl = heircolor_blue,
     },
     {
         condition = function(self)
@@ -704,7 +709,7 @@ local Lsp
 do
     local LspIndicator = {
         provider = "  " .. icons.circle_small,
-        hl = { ctermfg = 4 },
+        hl = heircolor_blue,
     }
     local LspServer = {
         Space(2),
@@ -720,7 +725,7 @@ do
                 return names
             end,
         },
-        hl = { ctermfg = 4, bold = true },
+        hl = heircolor_magenta,
     }
     Lsp = {
         condition = conditions.lsp_attached,
@@ -732,7 +737,7 @@ do
             self.lsp_names = names
         end,
         hl = function(self)
-            return { ctermfg = 6, bold = true }
+            return heircolor_cyan
         end,
         flexible = priority.Lsp,
         LspServer,
@@ -751,7 +756,7 @@ local Ruler = {
 local ScrollPercentage = {
     -- %P : percentage through file of displayed window
     provider = "%3(%P%)",
-    -- hl = { fg = "statusline_fg" }
+    -- hl = heircolor_white
 }
 
 -- local ScrollBar = {
@@ -764,7 +769,7 @@ local ScrollPercentage = {
 --         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
 --         return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
 --     end,
---     hl = { ctermfg = 3 },
+--     hl = heircolor_yellow,
 -- }
 
 vim.opt.showcmdloc = "statusline"
@@ -773,7 +778,7 @@ local ShowCmd = {
     --   	 return vim.o.timeout == false
     --   end,
     provider = "%(%S%)",
-    hl = { ctermfg = 1 },
+    hl = heircolor_red,
 }
 
 local Spell = {
@@ -781,7 +786,7 @@ local Spell = {
         return vim.wo.spell
     end,
     provider = icons.spellcheck,
-    hl = { ctermfg = 5, bold = false },
+    hl = heircolor_red,
 }
 -- }}
 -- Combine Statusline ------------------------------------------------------- {{
@@ -815,7 +820,7 @@ local StatusLineFinal = {
         self.current_path = current_path -- The opened file path relevant to pwd.
         self.filename = filename
     end,
-    hl = { ctermfg = 7, ctermbg = 0 },
+    hl = heircolor_white,
     {
         LeftCap,
         Indicator,
