@@ -219,6 +219,9 @@ return {
                     opts.desc = "Code actions"
                     map("n", "<leader>x", vim.lsp.buf.code_action, opts)
 
+                    opts.desc = "Code lens"
+                    map("n", "gL", vim.lsp.codelens.run, opts)
+
                     opts.desc = "Format Buffer"
                     map('n', '<F3>', function()
                         vim.lsp.buf.format({
@@ -234,6 +237,8 @@ return {
                 vim.keymap.del("n", "gri"),
                 vim.keymap.del("n", "grn"),
                 vim.keymap.del("n", "grr"),
+                vim.keymap.del("n", "grt"),
+                vim.keymap.del("n", "grx"),
             })
 
         end,

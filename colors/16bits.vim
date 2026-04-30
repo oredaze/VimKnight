@@ -22,8 +22,10 @@ if &t_Co == 8
 	hi Conceal ctermfg=0 ctermbg=none cterm=bold
 	hi Folded ctermfg=0 ctermbg=0 cterm=bold
 	hi FoldColumn ctermfg=0 ctermbg=0 cterm=bold
-	hi TabLineFill ctermfg=0 ctermbg=0 cterm=bold
+	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
+	hi TabLine ctermfg=0 ctermbg=none cterm=bold
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
+	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
 	hi Comment ctermfg=8 ctermbg=none cterm=none
@@ -34,8 +36,10 @@ else
 	hi Conceal ctermfg=8 ctermbg=none cterm=none
 	hi Folded ctermfg=8 ctermbg=0 cterm=none
 	hi FoldColumn ctermfg=8 ctermbg=0 cterm=none
-	hi TabLineFill ctermfg=8 ctermbg=0 cterm=none
+	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
+	hi TabLine ctermfg=8 ctermbg=none cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
+	hi PmenuSel ctermfg=none ctermbg=236 cterm=bold
 endif
 
 " Predefined Highlight Groups: {{{
@@ -89,7 +93,7 @@ hi Typedef ctermfg=1 ctermbg=none
 hi Special ctermfg=4 ctermbg=none
 hi SpecialChar ctermfg=4 ctermbg=0 cterm=bold
 hi SpecialKey ctermfg=4 ctermbg=none cterm=none
-hi Tag ctermfg=1 ctermbg=none
+hi Tag ctermfg=6 ctermbg=none
 hi Delimiter ctermfg=7 ctermbg=none
 hi Debug ctermfg=1 ctermbg=0
 hi DebugPC ctermfg=4 ctermbg=none
@@ -127,8 +131,7 @@ hi ColorColumn ctermfg=0 ctermbg=1 cterm=none
 hi Substitute ctermfg=0 ctermbg=2 cterm=none
 " }}}
 " UI: {{{
-hi TabLineSel ctermfg=2 ctermbg=0 cterm=bold
-hi TabLine ctermfg=7 ctermbg=0 cterm=none
+hi TabLineSel ctermfg=7 ctermbg=none cterm=bold
 hi ToolbarLine ctermfg=none ctermbg=0 cterm=bold
 hi Title ctermfg=6 ctermbg=0 cterm=none
 hi CursorLine ctermfg=none ctermbg=0 cterm=none
@@ -139,7 +142,6 @@ hi FoldColumn ctermfg=7 ctermbg=0 cterm=none
 hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
 hi Pmenu ctermfg=7 ctermbg=0
-hi PmenuSel ctermfg=none ctermbg=8 cterm=bold
 hi PmenuThumb ctermfg=0 ctermbg=7
 hi PmenuSbar ctermfg=none ctermbg=none
 hi PmenuKind ctermfg=7 ctermbg=0
@@ -315,16 +317,18 @@ hi! link gdResourceString String
 " }}}
 " Python: {{{
 " builtin:
-hi! link pythonBuiltin Yellow
+hi! link pythonBuiltin Macro
 hi! link pythonExceptions Purple
 hi! link pythonDecoratorName Blue
+hi! link pythonBoolean Boolean
+hi! link pythonDelimiter Delimiter
 " python-syntax: https://github.com/vim-python/python-syntax
 hi! link pythonExClass Purple
 hi! link pythonBuiltinType Yellow
 hi! link pythonBuiltinObj Blue
 hi! link pythonDottedName Purple
 hi! link pythonBuiltinFunc Green
-hi! link pythonFunction Cyan
+hi! link pythonFunction Green
 hi! link pythonDecorator Red
 hi! link pythonInclude Include
 hi! link pythonImport PreProc
@@ -383,7 +387,7 @@ hi! link rustModPathSep NonText
 hi! link rustOperator Operator
 hi! link rustQuestionMark Operator
 hi! link rustSigil Exception
-hi! link rustLifetime Operator
+hi rustLifetime ctermfg=4 cterm=bold
 hi! link rustStorage Type
 hi! link rustDeriveTrait Type
 hi! link rustMacroVariable Identifier
@@ -556,7 +560,7 @@ hi PounceAcceptBest ctermfg=7 ctermbg=1
 " whichkey {{{
 hi WhichKey ctermfg=1 ctermbg=none
 hi WhichKeyGroup ctermfg=2 ctermbg=none
-hi WhichKeyTitle ctermfg=0 ctermbg=0 cterm=bold
+hi! link WhichKeyTitle FloatTitle
 " }}}
 " telescope {{{
 hi! link TelescopeBorder FloatBorder
@@ -619,7 +623,7 @@ hi! link UndotreeSavedSmall Blue
 " mini {{{
 hi! link MiniFilesBorder FloatBorder
 hi MiniFilesBorderModified ctermfg=5 ctermbg=0 cterm=bold
-hi MiniFilesCursorLine ctermfg=none ctermbg=8 cterm=bold
+hi! link MiniFilesCursorLine PmenuSel
 hi! link MiniFilesDirectory Directory
 hi! link MiniFilesFile Fg
 hi! link MiniFilesNormal NormalFloat

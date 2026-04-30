@@ -67,7 +67,7 @@ map("n", "#", "", {
 
 -- Open new spaced out lines
 vim.cmd([[
-    nnoremap <silent> go :call BigO()<CR>
+    nnoremap <silent> zo :call BigO()<CR>
     function BigO ()
         if getline('.')[col('.')-1] == ''
             execute "normal! o\<cr>\<Up>"

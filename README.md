@@ -24,12 +24,12 @@
 
 ## Info
 
-My personal minimal neovim config, written from scratch. It is kinda like a neovim distribution, but much simpler. Maybe more like [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim).
-- Neovim distributions are too overengineered. They split things amongst too many files with (imho) unnecessary cruft in the code. This one is simple and easy to hack. It is also fully featured. You can jump straight into using it. Maybe familiarize yourself with the keybindings first and install a language server or two.
-- Tries not to override too many default keybindings or do anything too weird. Notable exceptions are: `r` -> [subversive](https://github.com/svermeulen/vim-subversive)(use `s <Esc>` instead of `r`) this should be built into vim tbh; `f` -> [Pounce](https://github.com/rlane/pounce.nvim) low mental overhead hopping plugin; `q` -> quit (macro is now `<C-q>`) because I jump in and out of files too much.
+My personal neovim config, written from scratch. It is kinda like a neovim distribution, but much simpler.
+- Neovim distributions are too overengineered. They split things amongst too many files with (imho) unnecessary cruft in the code. This one is simple and easy to hack. It is also fully featured. You can jump straight into using it. Maybe familiarize yourself with the keybindings first.
+- Tries not to override too many default keybindings or do anything too weird. Notable exceptions are: `r` -> [subversive](https://github.com/svermeulen/vim-subversive)(use `s <Esc>` instead) this should be built into vim tbh; `f` -> [Pounce](https://github.com/rlane/pounce.nvim) low mental overhead hopping plugin; `q` -> quit (macro is now `<C-q>`) because I jump in and out of files too much.
 - Neatly ordered. 1 file per task: 1 for neovim settings, 1 for hotkeys, etc. and a directory for your plugin files.
 - To disable a plugin, comment it out in `plugin_list.lua`.
-- If running in the terminal, adapts to your terminal colors. If running [neovide](https://github.com/neovide/neovide) uses guicolors.
+- If running in the terminal, adapts to your terminal colors. If running [neovide](https://github.com/neovide/neovide) uses truecolors.
 - Works in the tty without issue.
 - Autocomplete is manuan by default (`Tab`).
 - Don't bother keeping up with changes. This is best used as a basis for your own config, instead of starting from a clean neovim, which can be painful.
@@ -40,11 +40,12 @@ My personal minimal neovim config, written from scratch. It is kinda like a neov
 Most of them are optional, except the first one
 
 - `tar`, `unzip`, `curl` and `git` for [Mason](https://github.com/williamboman/mason.nvim)
+- [neovide](https://github.com/neovide/neovide) for the GUI option
 - [fzf](https://github.com/junegunn/fzf) for fuzzy searching
 - [fd](https://github.com/sharkdp/fd) for fzf file indexing
-- [ripgrep](https://github.com/BurntSushi/ripgrep) for searching in your project
+- [ripgrep](https://github.com/BurntSushi/ripgrep) for grepping in your project
 - [zoxide](https://github.com/ajeetdsouza/zoxide) for fast directory switching
 - [lf](https://github.com/gokcehan/lf) external file manager
 - [broot](https://github.com/Canop/broot) innovative file manager
-- A terminal with fixed/fixable escape sequences (like foot, alacritty, st, etc.) to use `<Tab>` independently of `<C-i>` (and any other overlapping key you decide to bind). Guis also work.
+- A terminal with fixed/fixable escape sequences (like foot, alacritty, st, etc.) to use `<Tab>` independently of `<C-i>` (and any other overlapping key you decide to bind). GUIs also work.
 - [nerd font](https://www.nerdfonts.com/#home) for the sparce glyphs that are present

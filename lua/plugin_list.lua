@@ -8,6 +8,7 @@ return {
     require("plugins.colorful-winsep"),
     require("plugins.transparent"),
     require("plugins.fix-auto-scroll"),
+    require("plugins.nvim-colorizer"),
 
     -- Functionality
     require("plugins.subversive"),

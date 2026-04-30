@@ -6,14 +6,20 @@ local o = vim.opt
 if vim.g.neovide then
     o.termguicolors = true
     vim.cmd([[colorscheme moksha]])
-    vim.o.guifont = "monospace:h11:#e-subpixelantialias:#h-slight"
+    -- Font rendering
+    vim.o.guifont = "monospace:h11:#e-subpixelantialias"
+    vim.g.neovide_pixel_geometry = "RGBH" -- Check your monitor
+    vim.g.neovide_text_gamma = 1.0
+    vim.g.neovide_text_contrast = 0.1
+    -- Other
+    vim.g.neovide_normal_opacity = 0.9
+    vim.g.neovide_remember_window_size = false
     vim.g.neovide_padding_top = 2
     vim.g.neovide_padding_bottom = 2
     vim.g.neovide_padding_right = 2
     vim.g.neovide_padding_left = 2
     vim.g.neovide_scroll_animation_length = 0.1
     vim.g.neovide_cursor_animation_length = 0.1
-    vim.g.neovide_normal_opacity = 0.9
 else
     o.termguicolors = false
     vim.cmd([[colorscheme 16bits]])
