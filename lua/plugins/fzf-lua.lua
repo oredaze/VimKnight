@@ -78,7 +78,6 @@ return {
                 fzf_opts = {
                     -- ["--separator"] = "─",
                     ["--layout"] = "default",
-                    ["--color"] = "fg+:underline",
                     -- ["--unicode"] = true,
                 },
                 fzf_colors = {
@@ -88,7 +87,7 @@ return {
                     ["bg"]      = { "bg", "Normal" },
                     ["hl"]      = { "fg", "Statement" },
                     ["fg+"]     = { "fg", "StatusLine" },
-                    ["bg+"]     = { "bg", "StatusLine" },
+                    -- ["bg+"]     = { "bg", "StatusLine" },
                     ["hl+"]     = { "fg", "Statement" },
                     ["info"]    = { "fg", "Comment" },
                     ["prompt"]  = { "fg", "Comment" },

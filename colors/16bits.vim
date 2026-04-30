@@ -619,7 +619,7 @@ hi! link UndotreeSavedSmall Blue
 " mini {{{
 hi! link MiniFilesBorder FloatBorder
 hi MiniFilesBorderModified ctermfg=5 ctermbg=0 cterm=bold
-hi MiniFilesCursorLine ctermfg=none ctermbg=0 cterm=bold,underline
+hi MiniFilesCursorLine ctermfg=none ctermbg=8 cterm=bold
 hi! link MiniFilesDirectory Directory
 hi! link MiniFilesFile Fg
 hi! link MiniFilesNormal NormalFloat
