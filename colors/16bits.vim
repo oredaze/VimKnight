@@ -61,13 +61,13 @@ hi Constant ctermfg=4 ctermbg=none cterm=none
 hi String ctermfg=3 ctermbg=none cterm=none
 hi Character ctermfg=4 ctermbg=none
 hi Number ctermfg=4 ctermbg=none cterm=bold
-hi Boolean ctermfg=4 ctermbg=none cterm=bold
+hi Boolean ctermfg=4 ctermbg=none cterm=none
 hi Float ctermfg=4 ctermbg=none cterm=bold
 
 hi Identifier ctermfg=7 ctermbg=none cterm=none
 hi Function ctermfg=2 ctermbg=none cterm=none
 
-hi Statement ctermfg=1 ctermbg=none
+hi Statement ctermfg=1 ctermbg=none cterm=none
 hi Conditional ctermfg=1 ctermbg=none
 hi Repeat ctermfg=1 ctermbg=none cterm=bold
 hi Operator ctermfg=7 ctermbg=none
@@ -139,7 +139,7 @@ hi FoldColumn ctermfg=7 ctermbg=0 cterm=none
 hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
 hi Pmenu ctermfg=7 ctermbg=0
-hi PmenuSel ctermfg=none ctermbg=0 cterm=bold,underline
+hi PmenuSel ctermfg=none ctermbg=8 cterm=bold
 hi PmenuThumb ctermfg=0 ctermbg=7
 hi PmenuSbar ctermfg=none ctermbg=none
 hi PmenuKind ctermfg=7 ctermbg=0
@@ -156,10 +156,10 @@ hi WildMenu ctermfg=0 ctermbg=7
 hi ModeMsg ctermfg=2 ctermbg=none cterm=bold
 hi MoreMsg ctermfg=5 ctermbg=none cterm=bold
 hi Question ctermfg=4 ctermbg=none
-hi WarningMsg ctermfg=3 ctermbg=none cterm=bold
-hi MessageWindow ctermfg=1 ctermbg=none cterm=bold
-hi PopupNotification ctermfg=3 ctermbg=none cterm=bold
-hi ErrorMsg ctermfg=1 ctermbg=0 cterm=bold
+hi WarningMsg ctermfg=3 ctermbg=none cterm=none
+hi MessageWindow ctermfg=1 ctermbg=none cterm=none
+hi PopupNotification ctermfg=3 ctermbg=none cterm=none
+hi ErrorMsg ctermfg=1 ctermbg=0 cterm=none
 " hi MsgArea ctermfg=none ctermbg=0
 hi StatusLine ctermfg=7 ctermbg=0 cterm=none
 hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
