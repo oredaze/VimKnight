@@ -92,42 +92,63 @@ do
     }
 end
 
-local LeftCap = {
-    provider = icons.left_end,
-    hl = heircolor_grey,
-}
+-- local LeftCap = {
+--     provider = icons.left_end,
+--     hl = heircolor_grey,
+-- }
 
-local RightCap = {
-    provider = icons.right_end,
-    hl = heircolor_grey,
-}
+-- local RightCap = {
+--     provider = icons.right_end,
+--     hl = heircolor_grey,
+-- }
 
 -- }}
 -- Bufferline and Tabs ------------------------------------------------------ {{
 
 -- Use this instead of the builtin function
-local function my_surround(delimiters, component)
+local function my_surround(delimiters, color, component)
     local function clone(block, with)
         return vim.tbl_deep_extend("force", block, with or {})
     end
     component = clone(component)
+    local surround_color = function(self)
+        if type(color) == "function" then
+            return color(self)
+        else
+            return color
+        end
+    end
+
     return {
         {
             provider = delimiters[1],
-            hl = function()
-                return heircolor_sigil
+            hl = function(self)
+                local s_color = surround_color(self)
+                if self.is_active and s_color then
+                    return heircolor_sigil
+                else
+                    return heircolor_sigil2
+                end
             end,
         },
         {
-            hl = function()
-                return heircolor_tabbg
+            hl = function(self)
+                local s_color = surround_color(self)
+                if s_color then
+                    return heircolor_tabbg
+                end
             end,
             component,
         },
         {
             provider = delimiters[2],
-            hl = function()
-                return heircolor_sigil
+            hl = function(self)
+                local s_color = surround_color(self)
+                if self.is_active and s_color then
+                    return heircolor_sigil
+                else
+                    return heircolor_sigil2
+                end
             end,
         },
     }
@@ -253,14 +274,24 @@ local TablineFileNameBlock = {
 
 -- Now the final touches
 local TablineBuffers = {
-    hl = heircolor_bg, -- surround icon bg
-    my_surround({ icons.left_surround, icons.right_surround }, { TablineFileNameBlock }),
+    my_surround({ icons.left_surround, icons.right_surround }, function(self)
+        if self.is_active then
+            return heircolor_tabbg
+        else
+            return heircolor_bg
+        end
+    end, { TablineFileNameBlock }),
 }
 
 -- Now the tabs
 local Tabpages = {
-    hl = heircolor_bg, -- surround icon bg
-    my_surround({ icons.left_surround, icons.right_surround }, {
+    my_surround({ icons.left_surround, icons.right_surround }, function(self)
+        if self.is_active then
+            return heircolor_tabbg
+        else
+            return heircolor_bg
+        end
+    end, {
         hl = function(self)
             if self.is_active then
                 return heircolor_white -- active tab fg
@@ -332,12 +363,12 @@ local BufferLineBlock = utils.make_buflist(
 -- Finish
 TabLineFinal = {
     hl = heircolor_bg, -- tabline bg (instead of tablinesel_bg)
-    LeftCap,
+    -- LeftCap,
     -- TabLineOffset,
     BufferLineBlock,
     Align,
     TablineBlock,
-    RightCap,
+    -- RightCap,
 }
 
 -- }}
@@ -753,19 +784,6 @@ local ScrollPercentage = {
     -- hl = heircolor_white
 }
 
--- local ScrollBar = {
---     static = {
---         sbar = icons.sbar,
---     },
---     provider = function(self)
---         local curr_line = vim.api.nvim_win_get_cursor(0)[1]
---         local lines = vim.api.nvim_buf_line_count(0)
---         local i = math.floor((curr_line - 1) / lines * #self.sbar) + 1
---         return string.rep(self.sbar[i], 1) -- width of the scrollbar (in characters)
---     end,
---     hl = heircolor_yellow,
--- }
-
 vim.opt.showcmdloc = "statusline"
 local ShowCmd = {
     --   condition = function()
@@ -816,7 +834,7 @@ local StatusLineFinal = {
     end,
     hl = heircolor_white,
     {
-        LeftCap,
+        -- LeftCap,
         Indicator,
         Space,
         MacroRec,
@@ -840,10 +858,9 @@ local StatusLineFinal = {
         Lsp,
         Space(2),
         Ruler,
-        -- ScrollBar,
         ScrollPercentage,
         Space(1),
-        RightCap,
+        -- RightCap,
     },
 }
 
