@@ -8,13 +8,14 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "|"
 
 -- Misc
-vim.cmd("cabbrev W w") -- For accidental W press
-map("n", "<C-q>", "q")
+map("n", "<C-q>", "q") -- Move macro to prepare q key
 map("n", "q", ":q<CR>")
 map("n", "x", '"_x')
 map("v", "p", '"_dP')
 map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
 map("v", "y", "ygv<Esc>") -- Do not move cursor after visual yanking
+map("n", "yap", "yap}", { desc = "Yank a paragraph" })
+map("n", "yip", "yip}k", { desc = "Yank in paragraph" })
 map("v", ".", ":norm.<CR>") -- Dot enhancement in visual mode
 map("n", "<Backspace>", ":noh<CR>", { silent = true })
 map("n", "cd", ":cd %:h<CR>", { silent = true, desc = "cd %:h" })
@@ -22,33 +23,63 @@ map("n", "[d", "[c", { desc = "Prev diff" })
 map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
-map("t", "<Esc>", "<C-\\><C-n>", { silent = true })
-map("n", "yap", "yap}", { desc = "Yank a paragraph" })
-map("n", "yip", "yip}k", { desc = "Yank in paragraph" })
 
 -- Commenting
 map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })
 map("n", "<leader>C", ":norm vipgc<CR>", { silent = true, desc = "Comment paragraph" })
 map("v", "<leader>", "gc", { silent = true, remap = true })
 
--- Helix-like
-map({ "n", "v", "o" }, "gh", "0")
-map({ "n", "v", "o" }, "gl", "$")
-
 -- Fix tab
 map("n", "<C-i>", "<C-i>")
 
--- Windows, tabs & buffers
-map("n", "<C-w>t", ":tabnew<CR>", { silent = true })
-map("n", "<C-w>d", ":bd<CR>")
+-- Window management
 map("n", "<Tab>", "<C-^>")
+map("n", "<C-w>t", ":tabnew<cr>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
+map({"n", "v", "i", "t"}, "<A-Tab>", "<C-\\><C-n><C-^>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-q>", "<C-\\><C-n><cmd>bd!<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-c>", "<C-\\><C-n><C-w>c", { silent = true })
+map({"n", "v", "i", "t"}, "<A-o>", "<C-\\><C-n><C-w>w", { silent = true })
+map({"n", "v", "i", "t"}, "<A-j>", "<C-\\><C-n><C-w>j", { silent = true })
+map({"n", "v", "i", "t"}, "<A-k>", "<C-\\><C-n><C-w>k", { silent = true })
+map({"n", "v", "i", "t"}, "<A-h>", "<C-\\><C-n><C-w>h", { silent = true })
+map({"n", "v", "i", "t"}, "<A-l>", "<C-\\><C-n><C-w>l", { silent = true })
+map({"n", "v", "i", "t"}, "<A-C-k>", "<C-\\><C-n>5<C-w>+", { silent = true })
+map({"n", "v", "i", "t"}, "<A-C-j>", "<C-\\><C-n>5<C-w>-", { silent = true })
+map({"n", "v", "i", "t"}, "<A-C-h>", "<C-\\><C-n>5<C-w><", { silent = true })
+map({"n", "v", "i", "t"}, "<A-C-l>", "<C-\\><C-n>5<C-w>>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-S-k>", "<C-\\><C-n><C-w>K", { silent = true })
+map({"n", "v", "i", "t"}, "<A-S-j>", "<C-\\><C-n><C-w>J", { silent = true })
+map({"n", "v", "i", "t"}, "<A-S-h>", "<C-\\><C-n><C-w>H", { silent = true })
+map({"n", "v", "i", "t"}, "<A-S-l>", "<C-\\><C-n><C-w>L", { silent = true })
+map({"n", "v", "i", "t"}, "<A-x>", "<C-\\><C-n><C-w>x", { silent = true })
+map({"n", "v", "i", "t"}, "<A-s>", "<C-\\><C-n><cmd>sp +term<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-v>", "<C-\\><C-n><cmd>vs +term<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-t>", "<C-\\><C-n><cmd>tabnew +term<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-cr>", "<C-\\><C-n><cmd>term<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-,>", "<C-\\><C-n><cmd>bprevious<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-.>", "<C-\\><C-n><cmd>bnext<CR>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-e>", "<C-\\><C-n><C-w>=", { silent = true })
+map({"n", "v", "i", "t"}, "<A-z>", "<C-\\><C-n><C-w>_<C-w>|", { silent = true })
+map({"n", "v", "i", "t"}, "<A-d>", "<C-\\><C-n><C-w>T", { silent = true })
+map({"n", "v", "i", "t"}, "<A-`>", "<C-\\><C-n>g<Tab>", { silent = true })
+map({"n", "v", "i", "t"}, "<A-1>", "<C-\\><C-n>1gt", { silent = true })
+map({"n", "v", "i", "t"}, "<A-2>", "<C-\\><C-n>2gt", { silent = true })
+map({"n", "v", "i", "t"}, "<A-3>", "<C-\\><C-n>3gt", { silent = true })
+map({"n", "v", "i", "t"}, "<A-4>", "<C-\\><C-n>4gt", { silent = true })
+map("t", "<A-esc>", "<C-\\><C-n>")
+vim.api.nvim_create_autocmd("TermOpen", {
+    command = 'tnoremap <esc> <C-\\><esc>',
+})
+-- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 48
 
 -- External clipboard
 map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
 map("v", "<C-c>", '"+y')
 
 -- Insert and command mode
+map("!", "<C-h>", "<C-Left>")
+map("!", "<C-l>", "<C-Right>")
 map("!", "<C-a>", "<Home>")
 map("!", "<C-e>", "<End>")
 
@@ -105,20 +136,38 @@ end, { noremap = true, silent = false, desc = "Echo syntax group" })
 ------------------------
 -- Options
 ------------------------
-map("n", "<leader>os", "<Esc>:set spell!<CR>", { desc = "Spell checking" })
+map("n", "zs", "<Esc>:set spell!<CR>", { desc = "Spell checking" })
 
 -- Toggle colorcolumn
-map("n", "<leader>ov", function()
+map("n", "z8", function()
     ---@diagnostic disable-next-line: undefined-field
     if vim.opt.cc._value == "" then
         vim.opt.cc = "81"
     else
         vim.opt.cc = ""
     end
-end, { desc = "Vertical guide" })
+end, { desc = "80 char guide" })
+
+map("n", "z9", function()
+    ---@diagnostic disable-next-line: undefined-field
+    if vim.opt.cc._value == "" then
+        vim.opt.cc = "91"
+    else
+        vim.opt.cc = ""
+    end
+end, { desc = "90 char guide" })
+
+map("n", "z0", function()
+    ---@diagnostic disable-next-line: undefined-field
+    if vim.opt.cc._value == "" then
+        vim.opt.cc = "101"
+    else
+        vim.opt.cc = ""
+    end
+end, { desc = "100 char guide" })
 
 -- Toggle numbers
-map("n", "<leader>on", function()
+map("n", "zn", function()
     ---@diagnostic disable-next-line: undefined-field
     if vim.opt.nu._value == true then
         vim.opt.rnu = false
@@ -130,7 +179,7 @@ map("n", "<leader>on", function()
 end, { desc = "Numbers" })
 
 -- Toggle line highlights
-map("n", "<leader>ol", function()
+map("n", "zl", function()
     if
         ---@diagnostic disable-next-line: undefined-field
         vim.opt.cursorline._value == false
@@ -146,7 +195,7 @@ map("n", "<leader>ol", function()
 end, { desc = "Line hightlight" })
 
 -- Toggle column highlights
-map("n", "<leader>oc", function()
+map("n", "zc", function()
     if
         ---@diagnostic disable-next-line: undefined-field
         vim.opt.cursorcolumn._value == false
@@ -158,7 +207,7 @@ map("n", "<leader>oc", function()
 end, { desc = "Column hightlight" })
 
 -- Toggle both line & column highlights
-map("n", "<leader>ox", function()
+map("n", "zx", function()
     if
         ---@diagnostic disable-next-line: undefined-field
         vim.opt.cursorline._value == false
@@ -176,7 +225,7 @@ map("n", "<leader>ox", function()
 end, { desc = "Cross hightlights" })
 
 -- Toggle list
-map("n", "<leader>ow", function()
+map("n", "z<Tab>", function()
     ---@diagnostic disable-next-line: undefined-field
     if vim.opt.list._value == true then
         vim.opt.list = false
@@ -186,7 +235,7 @@ map("n", "<leader>ow", function()
 end, { desc = "Whitespace chars" })
 
 -- Diff toggle
-map("n", "<leader>od", function()
+map("n", "zD", function()
     ---@diagnostic disable-next-line: undefined-field
     if vim.opt.diff._value == true then
         vim.opt.diff = false
@@ -201,16 +250,6 @@ map("n", "<leader>od", function()
         vim.cmd("wincmd w")
     end
 end, { desc = "Diff toggle" })
-
--- Colors toggle
-map("n", "<leader>og", function()
-    ---@diagnostic disable-next-line: undefined-field
-    if vim.opt.termguicolors._value == false then
-        vim.opt.termguicolors = true
-    else
-        vim.opt.termguicolors = false
-    end
-end, { desc = "Guicolors" })
 
 ------------------------
 -- Plugin Hotkeys
@@ -242,7 +281,7 @@ map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 map("n", "<leader>l", "<cmd>Lf<CR>")
 map("n", "<leader>v", "<cmd>Vifm<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
-map("n", "\\", "<cmd>execute 'Oil' getcwd()<CR>")
+map("n", "<leader>o", "<cmd>execute 'Oil' getcwd()<CR>", { desc = "Oil" })
 cmap("E", "Oil", { nargs = "?" })
 cmap("S", "belowright split | Oil", { nargs = "?" })
 cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
@@ -287,14 +326,12 @@ map(
     { "n", "x" }, "gx", "<cmd>Browse<CR>",
     { noremap = true, silent = true, desc = "Open link/file" }
 )
-map("n", "<leader>ot", "<cmd>TransparentToggle<CR>", { desc = "Transparency" })
 map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 vim.cmd("cabbrev z Z")
 
 -- More at:
--- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 53
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
 -- ~/.config/nvim/lua/plugins/mini-move.lua

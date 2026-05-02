@@ -45,10 +45,8 @@ return {
                 horz_split = "<C-s>",
                 tabedit = "<C-t>",
                 edit = "<C-e>",
-                ESC = "q",
+                -- ESC = ":q<CR>",
             },
-
-            -- Path to broot config
             broot_conf = "~/.config/broot/vim_conf.hjson",
         },
     },

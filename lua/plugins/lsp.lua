@@ -184,7 +184,7 @@ return {
                     -- map("n", "K", vim.lsp.buf.hover, opts)
 
                     opts.desc = "Signature Help"
-                    map('n', '<C-h>', vim.lsp.buf.signature_help, opts)
+                    map('n', '<C-s>', vim.lsp.buf.signature_help, opts)
 
                     opts.desc = "Diagnostic info"
                     map("n", "<C-e>", vim.diagnostic.open_float, opts)

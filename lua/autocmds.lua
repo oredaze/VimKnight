@@ -15,6 +15,17 @@ autocmd("BufWinEnter", {
     end,
 })
 
+-- Sync pwd with the builtin terminal
+vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
+    desc = 'cd to terminal cwd on enter',
+    pattern = 'term://*',
+    callback = function()
+        local cwd = vim.fn.resolve('/proc/' .. vim.b.terminal_job_pid .. '/cwd')
+        if vim.fn.isdirectory(cwd) == 0 then return end
+        vim.fn.chdir(cwd)
+    end,
+})
+
 -- Open a file from its last left off position
 autocmd("BufReadPost", {
     callback = function()

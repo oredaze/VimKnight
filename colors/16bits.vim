@@ -127,7 +127,7 @@ hi SpellLocal ctermfg=none ctermbg=none cterm=undercurl
 hi SpellRare ctermfg=none ctermbg=none cterm=undercurl
 hi Visual ctermfg=0 ctermbg=7 cterm=none
 hi VisualNOS ctermfg=none ctermbg=0 cterm=underline
-hi ColorColumn ctermfg=0 ctermbg=1 cterm=none
+hi ColorColumn ctermfg=0 ctermbg=8 cterm=none
 hi Substitute ctermfg=0 ctermbg=2 cterm=none
 " }}}
 " UI: {{{
@@ -526,9 +526,9 @@ hi GitSignsDelete ctermfg=1 ctermbg=none
 hi GitSignsTopdelete ctermfg=1 ctermbg=none
 hi GitSignsChangedelete ctermfg=6 ctermbg=none
 hi GitSignsUntracked ctermfg=6 ctermbg=none
-hi GitSignsAddInline ctermfg=none ctermbg=2
-hi GitSignsChangeLnInline ctermfg=none ctermbg=4
-hi GitSignsDeleteInline ctermfg=none ctermbg=1
+hi GitSignsAddInline ctermfg=none ctermbg=8
+hi GitSignsChangeLnInline ctermfg=none ctermbg=8
+hi GitSignsDeleteInline ctermfg=none ctermbg=8
 hi GitSignsAddPreview ctermfg=2 ctermbg=none
 hi GitSignsDeletePreview ctermfg=1 ctermbg=none
 " }}}

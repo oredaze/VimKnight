@@ -6,7 +6,6 @@ return {
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),
     require("plugins.colorful-winsep"),
-    require("plugins.transparent"),
     require("plugins.fix-auto-scroll"),
     require("plugins.nvim-colorizer"),
 

@@ -45,7 +45,7 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set("n", ",", function()
+vim.keymap.set({"n", "v", "i", "t"}, "<A-w>", function()
     if vim.o.showtabline < 2 then
         vim.cmd([[echo "Only 1 buffer"]])
         return
@@ -74,7 +74,7 @@ local priority = {
     Lsp = 10,
 }
 
-local Align, Space, Null, ReadOnly
+local Align, Space, Null--, ReadOnly
 do
     Null = { provider = "" }
     Align = { provider = "%=" }
@@ -83,13 +83,13 @@ do
             return { provider = string.rep(" ", n) }
         end,
     })
-    ReadOnly = {
-        condition = function()
-            return not bo.modifiable or bo.readonly
-        end,
-        provider = icons.padlock,
-        hl = heircolor_red,
-    }
+    -- ReadOnly = {
+    --     condition = function()
+    --         return not bo.modifiable or bo.readonly
+    --     end,
+    --     provider = icons.padlock,
+    --     hl = heircolor_red,
+    -- }
 end
 
 -- local LeftCap = {
@@ -225,18 +225,12 @@ local TablineFileFlags = {
         hl = heircolor_magenta,
     },
     {
-        condition = function(self)
-            return not vim.api.nvim_get_option_value("modifiable", { buf = self.bufnr })
-                or vim.api.nvim_get_option_value("readonly", { buf = self.bufnr })
-        end,
         provider = function(self)
             if vim.api.nvim_get_option_value("buftype", { buf = self.bufnr }) == "terminal" then
                 return icons.terminal
-            else
-                return icons.padlock
             end
         end,
-        hl = heircolor_red,
+        hl = heircolor_cyan,
     },
 }
 
@@ -382,7 +376,7 @@ do
             Space,
             {
                 fallthrough = false,
-                ReadOnly,
+                -- ReadOnly,
                 {
                     provider = icons.circle,
                     hl = function()
@@ -412,7 +406,7 @@ do
             utils.surround({ icons.left_mode_sur, icons.right_mode_sur }, nil, {
                 {
                     fallthrough = false,
-                    ReadOnly,
+                    -- ReadOnly,
                     { provider = icons.circle },
                 },
                 Space,
@@ -432,7 +426,7 @@ do
                 self.mode = mode[fn.mode(1)] -- :h mode()
             end,
             condition = function()
-                return bo.buftype == ""
+                return bo.buftype == "" or "terminal"
             end,
             {
                 fallthrough = false,
@@ -559,9 +553,9 @@ local TerminalBlock = {
         return conditions.buffer_matches({ buftype = { "terminal" } })
     end,
     provider = function()
-        return icons.terminal .. " TERM "
+        return icons.terminal
     end,
-    hl = heircolor_white,
+    hl = heircolor_grey,
 }
 
 local FzfBlock = {
@@ -569,9 +563,9 @@ local FzfBlock = {
         return conditions.buffer_matches({ filetype = { "fzf" } })
     end,
     provider = function()
-        return icons.fzf .. " FZF "
+        return icons.fzf .. " Fzf "
     end,
-    hl = heircolor_white,
+    hl = heircolor_yellow,
 }
 
 local FMBlock = {
@@ -579,9 +573,9 @@ local FMBlock = {
         return conditions.buffer_matches({ filetype = { "Fm" } })
     end,
     provider = function()
-        return icons.files .. " FILES "
+        return icons.files .. " Files "
     end,
-    hl = heircolor_white,
+    hl = heircolor_yellow,
 }
 
 -- }}

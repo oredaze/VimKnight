@@ -14,10 +14,6 @@ if vim.g.neovide then
     -- Other
     vim.g.neovide_normal_opacity = 0.9
     vim.g.neovide_remember_window_size = false
-    vim.g.neovide_padding_top = 2
-    vim.g.neovide_padding_bottom = 2
-    vim.g.neovide_padding_right = 2
-    vim.g.neovide_padding_left = 2
     vim.g.neovide_scroll_animation_length = 0.1
     vim.g.neovide_cursor_animation_length = 0.1
 else
@@ -61,7 +57,6 @@ o.ruler = false
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
-vim.fn.matchadd('ColorColumn', '\\%81v')
 
 -- Indents
 o.tabstop = 4 -- default number of characters for indents

@@ -7,9 +7,8 @@ return {
         config = function()
             local wk = require("which-key")
             wk.add({
-                { "<leader>", group = "Plugins" },
+                { "<leader>", group = "Misc" },
                 { "<leader>L", group = "LSP" },
-                { "<leader>o", group = "Options" },
                 { "<C-w>1", "1gt", hidden = true },
                 { "<C-w>2", "2gt", hidden = true },
                 { "<C-w>3", "3gt", hidden = true },
@@ -22,7 +21,7 @@ return {
             })
             local setup = {
                 delay = function(ctx)
-                    return ctx.plugin and 0 or 1000 -- WhichKey popup delay
+                    return ctx.plugin and 0 or 700 -- WhichKey popup delay
                 end,
                 icons = {
                     breadcrumb = ">", -- symbol used in the command line area that shows your active key combo
