@@ -22,8 +22,8 @@ if &t_Co == 8
 	hi Conceal ctermfg=0 ctermbg=none cterm=bold
 	hi Folded ctermfg=0 ctermbg=0 cterm=bold
 	hi FoldColumn ctermfg=0 ctermbg=0 cterm=bold
+	hi TabLine ctermfg=0 ctermbg=0 cterm=bold
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
-	hi TabLine ctermfg=0 ctermbg=none cterm=bold
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
 	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 else
@@ -36,8 +36,8 @@ else
 	hi Conceal ctermfg=8 ctermbg=none cterm=none
 	hi Folded ctermfg=8 ctermbg=0 cterm=none
 	hi FoldColumn ctermfg=8 ctermbg=0 cterm=none
+	hi TabLine ctermfg=8 ctermbg=0 cterm=none
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
-	hi TabLine ctermfg=8 ctermbg=none cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
 	hi PmenuSel ctermfg=none ctermbg=236 cterm=bold
 endif
@@ -131,7 +131,7 @@ hi ColorColumn ctermfg=0 ctermbg=8 cterm=none
 hi Substitute ctermfg=0 ctermbg=2 cterm=none
 " }}}
 " UI: {{{
-hi TabLineSel ctermfg=7 ctermbg=none cterm=bold
+hi TabLineSel ctermfg=7 ctermbg=none cterm=none
 hi ToolbarLine ctermfg=none ctermbg=0 cterm=bold
 hi Title ctermfg=6 ctermbg=0 cterm=none
 hi CursorLine ctermfg=none ctermbg=0 cterm=none
@@ -171,9 +171,9 @@ hi! link StatusLineTermNC StatusLineNC
 " }}}
 
 " Markdown: {{{
-hi DiagnosticError ctermfg=1 ctermbg=0
-hi DiagnosticWarn ctermfg=3 ctermbg=0
-hi DiagnosticInfo ctermfg=4 ctermbg=0
+hi DiagnosticError ctermfg=1 ctermbg=none
+hi DiagnosticWarn ctermfg=3 ctermbg=none
+hi DiagnosticInfo ctermfg=4 ctermbg=none
 hi DiagnosticHint ctermfg=0 ctermbg=none cterm=bold
 hi! link DiagnosticVirtualTextError Grey
 hi! link DiagnosticVirtualTextWarn Grey
@@ -552,7 +552,7 @@ hi MarkVirtTextHL ctermfg=0 ctermbg=0 cterm=bold
 " }}}
 " pounce {{{
 hi PounceMatch ctermfg=4
-hi PounceUnmatched ctermfg=0 ctermbg=none cterm=bold
+hi PounceUnmatched ctermfg=8 ctermbg=none cterm=none
 hi PounceGap ctermfg=0 ctermbg=none cterm=bold,underline
 hi PounceAccept ctermfg=7 ctermbg=1
 hi PounceAcceptBest ctermfg=7 ctermbg=1
@@ -641,10 +641,10 @@ hi! link LspCxxHlGroupNamespace Blue
 hi! link LspCxxHlSkippedRegion Grey
 hi! link LspCxxHlSkippedRegionBeginEnd Red
 
-hi DiagnosticError ctermfg=1 ctermbg=0 cterm=italic
-hi DiagnosticWarn ctermfg=3 ctermbg=0 cterm=italic
-hi DiagnosticInfo ctermfg=4 ctermbg=0 cterm=italic
-hi DiagnosticHint ctermfg=0 ctermbg=0 cterm=bold,italic
+hi DiagnosticError ctermfg=1 ctermbg=none cterm=italic
+hi DiagnosticWarn ctermfg=3 ctermbg=none cterm=italic
+hi DiagnosticInfo ctermfg=4 ctermbg=none cterm=italic
+hi DiagnosticHint ctermfg=0 ctermbg=none cterm=bold,italic
 
 hi DiagnosticVirtualTextError ctermfg=1 ctermbg=0 cterm=italic
 hi DiagnosticVirtualTextWarn ctermfg=3 ctermbg=0 cterm=italic

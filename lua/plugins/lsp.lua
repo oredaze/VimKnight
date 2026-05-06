@@ -41,7 +41,7 @@ return {
         config = function()
             require("mason").setup({
                 ui = {
-                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                    border = neovim_borders,
                     icons = {
                         package_installed = "✔",
                         package_uninstalled = "✘",

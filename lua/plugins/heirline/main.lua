@@ -45,7 +45,7 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set({"n", "v", "i", "t"}, "<A-w>", function()
+vim.keymap.set({"n", "v", "i", "t"}, "<C-f>", function()
     if vim.o.showtabline < 2 then
         vim.cmd([[echo "Only 1 buffer"]])
         return
@@ -92,15 +92,15 @@ do
     -- }
 end
 
--- local LeftCap = {
---     provider = icons.left_end,
---     hl = heircolor_grey,
--- }
+local LeftCap = {
+    provider = icons.left_end,
+    hl = heircolor_grey,
+}
 
--- local RightCap = {
---     provider = icons.right_end,
---     hl = heircolor_grey,
--- }
+local RightCap = {
+    provider = icons.right_end,
+    hl = heircolor_grey,
+}
 
 -- }}
 -- Bufferline and Tabs ------------------------------------------------------ {{
@@ -125,9 +125,9 @@ local function my_surround(delimiters, color, component)
             hl = function(self)
                 local s_color = surround_color(self)
                 if self.is_active and s_color then
-                    return heircolor_sigil
+                    return heircolor_tab_focus
                 else
-                    return heircolor_sigil2
+                    return heircolor_bg
                 end
             end,
         },
@@ -135,7 +135,7 @@ local function my_surround(delimiters, color, component)
             hl = function(self)
                 local s_color = surround_color(self)
                 if s_color then
-                    return heircolor_tabbg
+                    return heircolor_tab_focus
                 end
             end,
             component,
@@ -145,41 +145,41 @@ local function my_surround(delimiters, color, component)
             hl = function(self)
                 local s_color = surround_color(self)
                 if self.is_active and s_color then
-                    return heircolor_sigil
+                    return heircolor_tab_focus
                 else
-                    return heircolor_sigil2
+                    return heircolor_bg
                 end
             end,
         },
     }
 end
 
--- local TabLineOffset = {
---     condition = function(self)
---         local win = vim.api.nvim_tabpage_list_wins(0)[1]
---         local bufnr = vim.api.nvim_win_get_buf(win)
---         self.winid = win
---         if vim.bo[bufnr].filetype == "neo-tree" then
---             self.title = "Tree"
---             return true
---             -- elseif vim.bo[bufnr].filetype == "TagBar" then
---             --     ...
---         end
---     end,
---     provider = function(self)
---         local title = self.title
---         local width = vim.api.nvim_win_get_width(self.winid)
---         local pad = math.ceil((width - #title) / 2)
---         return string.rep(" ", pad) .. title .. string.rep(" ", pad)
---     end,
---     hl = function(self)
---         if vim.api.nvim_get_current_win() == self.winid then
---             return "??"
---         else
---             return "??"
---         end
---     end,
--- }
+local TabLineOffset = {
+    condition = function(self)
+        local win = vim.api.nvim_tabpage_list_wins(0)[1]
+        local bufnr = vim.api.nvim_win_get_buf(win)
+        self.winid = win
+        if vim.bo[bufnr].filetype == "neo-tree" then
+            self.title = "󱏒 File Tree"
+            return true
+            -- elseif vim.bo[bufnr].filetype == "TagBar" then
+            --     ...
+        end
+    end,
+    provider = function(self)
+        local title = self.title
+        local width = vim.api.nvim_win_get_width(self.winid)
+        local pad = math.ceil((width - #title) + 2)
+        return " " .. title .. string.rep(" ", pad)
+    end,
+    hl = function(self)
+        if vim.api.nvim_get_current_win() == self.winid then
+            return heircolor_tab_focus
+        else
+            return heircolor_tab
+        end
+    end,
+}
 
 local TablinePicker = {
     condition = function(self)
@@ -243,7 +243,7 @@ local TablineFileNameBlock = {
         if self.is_active then
             return heircolor_white -- active buffer fg
         else
-            return heircolor_grey -- inactive buffer fg
+            return heircolor_tab -- inactive buffer fg
         end
     end,
     on_click = {
@@ -268,9 +268,9 @@ local TablineFileNameBlock = {
 
 -- Now the final touches
 local TablineBuffers = {
-    my_surround({ icons.left_surround, icons.right_surround }, function(self)
+    my_surround({ " ", " " }, function(self)
         if self.is_active then
-            return heircolor_tabbg
+            return heircolor_tab_focus
         else
             return heircolor_bg
         end
@@ -279,9 +279,9 @@ local TablineBuffers = {
 
 -- Now the tabs
 local Tabpages = {
-    my_surround({ icons.left_surround, icons.right_surround }, function(self)
+    my_surround({ " ", " " }, function(self)
         if self.is_active then
-            return heircolor_tabbg
+            return heircolor_tab_focus
         else
             return heircolor_bg
         end
@@ -290,7 +290,7 @@ local Tabpages = {
             if self.is_active then
                 return heircolor_white -- active tab fg
             else
-                return heircolor_grey -- inactive tab fg
+                return heircolor_tab -- inactive tab fg
             end
         end,
         provider = function(self)
@@ -358,7 +358,7 @@ local BufferLineBlock = utils.make_buflist(
 TabLineFinal = {
     hl = heircolor_bg, -- tabline bg (instead of tablinesel_bg)
     -- LeftCap,
-    -- TabLineOffset,
+    TabLineOffset,
     BufferLineBlock,
     Align,
     TablineBlock,
@@ -778,14 +778,14 @@ local ScrollPercentage = {
     -- hl = heircolor_white
 }
 
-vim.opt.showcmdloc = "statusline"
-local ShowCmd = {
-    --   condition = function()
-    --   	 return vim.o.timeout == false
-    --   end,
-    provider = "%(%S%)",
-    hl = heircolor_red,
-}
+-- vim.opt.showcmdloc = "statusline"
+-- local ShowCmd = {
+--     --   condition = function()
+--     --   	 return vim.o.timeout == false
+--     --   end,
+--     provider = "%(%S%)",
+--     hl = heircolor_red,
+-- }
 
 local Spell = {
     condition = function()
@@ -828,7 +828,7 @@ local StatusLineFinal = {
     end,
     hl = heircolor_white,
     {
-        -- LeftCap,
+        LeftCap,
         Indicator,
         Space,
         MacroRec,
@@ -844,7 +844,7 @@ local StatusLineFinal = {
         AltBuf,
         -- GPS,
         Align,
-        ShowCmd,
+        -- ShowCmd,
         -- DapMessages,
         Spell,
         Git,
@@ -854,7 +854,7 @@ local StatusLineFinal = {
         Ruler,
         ScrollPercentage,
         Space(1),
-        -- RightCap,
+        RightCap,
     },
 }
 

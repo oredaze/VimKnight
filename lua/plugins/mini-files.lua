@@ -5,6 +5,13 @@ return {
         version = false,
         event = "VeryLazy",
         config = function()
+            vim.cmd([[
+                :hi link MiniFilesNormal Normal
+                :hi link MiniFilesBorder Whitespace
+                :hi link MiniFilesTitle Comment
+                :hi link MiniFilesTitleFocused Include
+                :hi link MiniFilesBorderModified Number
+            ]])
             require('mini.files').setup {
                 mappings = {
                     close = '<ESC>',
@@ -72,7 +79,7 @@ return {
                 callback = function(args)
                     local win_id = args.data.win_id
                     local config = vim.api.nvim_win_get_config(win_id)
-                    config.border = { "+", "-", "+", "|", "+", "-", "+", "|" }
+                    config.border = neovim_borders
                     vim.api.nvim_win_set_config(win_id, config)
                 end,
             })

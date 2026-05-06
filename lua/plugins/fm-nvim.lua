@@ -13,9 +13,9 @@ return {
             ui = {
                 default = "float",
                 float = {
-                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                    border = neovim_borders,
                     float_hl = "Normal",
-                    border_hl = "FloatBorder",
+                    border_hl = "Whitespace",
                     blend = 0,
                     -- Num from 0 - 1
                     height = 0.85,

@@ -5,6 +5,11 @@ return {
         cmd = "WhichKey",
         event = "VeryLazy",
         config = function()
+            vim.cmd([[
+                :hi link WhichKeyNormal Normal
+                :hi link WhichKeyTitle Comment
+                :hi link WhichKeyBorder Whitespace
+            ]])
             local wk = require("which-key")
             wk.add({
                 { "<leader>", group = "Misc" },
@@ -20,9 +25,10 @@ return {
                 { "<C-w>9", "9gt", hidden = true },
             })
             local setup = {
-                delay = function(ctx)
-                    return ctx.plugin and 0 or 700 -- WhichKey popup delay
-                end,
+                delay = 0,
+                -- delay = function(ctx)
+                --     return ctx.plugin and 0 or 700 -- WhichKey popup delay
+                -- end,
                 icons = {
                     breadcrumb = ">", -- symbol used in the command line area that shows your active key combo
                     separator = "→", -- symbol used between a key and it's label
@@ -32,7 +38,7 @@ return {
                 show_help = false, -- show a help message in the command line for using WhichKey
                 preset = "helix",
                 win = {
-                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                    border = neovim_borders,
                     no_overlap = false,
                     width = { min = 30, max = 40 },
                 },

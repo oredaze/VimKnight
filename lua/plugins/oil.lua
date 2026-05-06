@@ -4,7 +4,14 @@ return {
         "stevearc/oil.nvim",
         lazy = false,
         opts = {
-            default_file_explorer = true, -- hijack netrw
+            default_file_explorer = false, -- hijack netrw
+            skip_confirm_for_simple_edits = true,
+            columns = {
+                -- "icon",
+                { "permissions", highlight = "Normal" },
+                { "size", highlight = "Include" },
+                { "mtime", highlight = "Type" },
+            },
             win_options = {
                 relativenumber = true,
                 number = true,
@@ -21,7 +28,6 @@ return {
                 ["<Backspace>"] = "actions.parent",
                 ["gu"] = "actions.parent",
                 ["gw"] = "actions.open_cwd",
-                ["cw"] = "actions.cd",
                 ["cd"] = "actions.cd",
                 ["ct"] = "actions.tcd",
                 ["zs"] = "actions.change_sort",
@@ -33,18 +39,18 @@ return {
             use_default_keymaps = false,
             -- Configuration for the floating window in oil.open_float
             float = {
-                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                border = neovim_borders
             },
             -- Configuration for the actions floating preview window
             preview = {
-                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                border = neovim_borders
             },
             -- Configuration for the floating progress window
             progress = {
-                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                border = neovim_borders
             },
             keymaps_help = {
-                border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                border = neovim_borders
             },
         },
     },

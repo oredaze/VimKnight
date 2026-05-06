@@ -7,10 +7,10 @@ return {
             require("fzf-lua").setup({
                 hls = {
                     normal = "Normal",
-                    border = "FloatBorder",
-                    title = "FloatBorder",
-                    preview_border = "FloatBorder",
-                    preview_title = "FloatBorder",
+                    border = "Whitespace",
+                    title = "Comment",
+                    preview_border = "Whitespace",
+                    preview_title = "Comment",
                     header_text = "Normal",
                     path_linenr = "Comment",
                     path_colnr = "Comment",
@@ -28,7 +28,7 @@ return {
                     fzf = {
                         prompt = "Normal",
                         cursorline = "PmenuSel",
-                        separator = "FloatBorder",
+                        separator = "Whitespace",
                     },
                 },
                 winopts = {
@@ -38,14 +38,13 @@ return {
                     col = 0,
                     fullscreen = false,
                     backdrop = 100,
-                    -- border = vim.opt.winborder:get(),
-                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                    border = neovim_borders,
                     title_pos = "left",
                     treesitter = {
                         enabled = false,
                     },
                     preview = {
-                        border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
+                        border = neovim_borders,
                         wrap = false,
                         hidden = false,
                         layout = "vertical",
@@ -91,7 +90,7 @@ return {
                     ["bg"]      = { "bg", "Normal" },
                     ["hl"]      = { "fg", "Statement" },
                     ["fg+"]     = { "fg", "StatusLine" },
-                    ["bg+"]     = { "bg", "PmenuSel" },
+                    ["bg+"]     = { "bg", "CursorLine" },
                     ["hl+"]     = { "fg", "Statement" },
                     ["info"]    = { "fg", "Comment" },
                     ["prompt"]  = { "fg", "Comment" },
@@ -134,10 +133,11 @@ return {
                 },
                 grep = {
                     hidden = false,
-                    fzf_opts = {
-                        ["--delimiter"] = ":",
-                        ["--with-nth"] = "1,4..",
-                    },
+                    RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
+                    -- fzf_opts = {
+                        -- ["--delimiter"] = ":",
+                        -- ["--with-nth"] = "1,4..",
+                    -- },
                 },
                 buffers = {
                     formatter = "path.filename_first",

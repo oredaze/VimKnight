@@ -23,21 +23,23 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Early detection for heirline colors
-if vim.g.neovide then
-    vim.opt.termguicolors = true
-else
-    vim.opt.termguicolors = false
-end
+-- Basic neovim settings
+require("settings")
 
 -- Load the plugins
 require("lazy").setup(require("plugin_list"), require("plugins.lazynvim"))
-
--- Basic neovim settings
-require("settings")
 
 -- Hotkeys
 require("hotkeys")
 
 -- Autocmds
 require("autocmds")
+
+-- Colors early detection
+if vim.env.DISPLAY == nil then
+    vim.opt.termguicolors = false
+    vim.cmd([[colorscheme 16bits]])
+else
+    vim.opt.termguicolors = true
+    vim.cmd([[colorscheme muted_fire]])
+end

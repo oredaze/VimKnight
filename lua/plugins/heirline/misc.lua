@@ -2,10 +2,8 @@ local util = {}
 
 util.icons = {
     -- ▐ ▌        ▒
-    left_end = "",
-    right_end = "",
-    left_surround = "▌",
-    right_surround = "",
+    left_end = "▌",
+    right_end = "▐",
     left_mode_sur = "▐",
     right_mode_sur = "",
     left_overflow = "",

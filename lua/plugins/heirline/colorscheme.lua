@@ -4,7 +4,7 @@ local get_hl = utils.get_highlight
 ---@diagnostic disable
 if vim.opt.termguicolors._value == false then
     heircolor_key = { ctermfg = 1, bold = true }
-    heircolor_grey = { ctermfg = 8, ctermbg = 0 }
+    heircolor_grey = { ctermfg = 8 }
     heircolor_red = { ctermfg = 1 }
     heircolor_green = { ctermfg = 2 }
     heircolor_yellow = { ctermfg = 3 }
@@ -13,9 +13,8 @@ if vim.opt.termguicolors._value == false then
     heircolor_cyan = { ctermfg = 6 }
     heircolor_white = { ctermfg = 7 }
     heircolor_bg = { ctermbg = 0 }
-    heircolor_tabbg = { ctermbg = get_hl("Normal").bg }
-    heircolor_sigil = { ctermfg = 0, ctermbg = get_hl("Normal").bg }
-    heircolor_sigil2 = { ctermfg = 0, ctermbg = 0 }
+    heircolor_tab = { ctermfg = 8, ctermbg = 0 }
+    heircolor_tab_focus = { ctermfg = 7, ctermbg = get_hl("Normal").bg }
     do
         local mode_colors = {
             normal = 7,
@@ -48,7 +47,7 @@ if vim.opt.termguicolors._value == false then
     end
 else
     heircolor_key = { fg = get_hl("Exception").fg, bold = true }
-    heircolor_grey = { fg = get_hl("Comment").fg, bg = get_hl("StatusLine").bg }
+    heircolor_grey = { fg = get_hl("Comment").fg }
     heircolor_red = { fg = get_hl("Statement").fg }
     heircolor_green = { fg = get_hl("Function").fg }
     heircolor_yellow = { fg = get_hl("String").fg }
@@ -57,9 +56,8 @@ else
     heircolor_cyan = { fg = get_hl("Tag").fg }
     heircolor_white = { fg = get_hl("StatusLine").fg }
     heircolor_bg = { bg = get_hl("StatusLine").bg }
-    heircolor_tabbg = { bg = get_hl("Normal").bg }
-    heircolor_sigil = { fg = get_hl("StatusLine").bg, bg = get_hl("Normal").bg }
-    heircolor_sigil2 = { fg = get_hl("StatusLine").bg, bg = get_hl("StatusLine").bg }
+    heircolor_tab = { fg = get_hl("Comment").fg, bg = get_hl("StatusLine").bg }
+    heircolor_tab_focus = { fg = get_hl("StatusLine").fg, bg = get_hl("Normal").bg }
     do
         local mode_colors = {
             normal = get_hl("StatusLine").fg,

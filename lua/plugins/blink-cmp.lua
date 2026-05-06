@@ -86,7 +86,7 @@ return {
                     Folder = '',
                     Function = '󰊕',
                     Interface = '',
-                    Keyword = '󰻾',
+                    Keyword = '',
                     Method = '󰊕',
                     Module = '',
                     Operator = '',
@@ -94,7 +94,7 @@ return {
                     Reference = '',
                     Snippet = '',
                     Struct = '',
-                    Text = '󰉿',
+                    Text = '',
                     TypeParameter = '',
                     Unit = '',
                     Value = '',
@@ -104,13 +104,18 @@ return {
 
             completion = {
                 ghost_text = { enabled = false },
-                documentation = { auto_show = false },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 700,
+                    window = {
+                        border = "shadow",
+                    }
+                },
                 menu = {
-                    auto_show = false,
+                    auto_show = true,
                     max_height = 10,
-                    -- border = 'shadow',
-                    border = { "+", "-" ,"+", "|", "+", "-", "+", "|" },
-                    winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+                    border = neovim_borders,
+                    winhighlight = 'NormalFloat:Normal,FloatBorder:Whitespace,BlinkCmpKind:Comment,CursorLine:PmenuSel,Search:None',
                     scrolloff = 0,
                 },
                 list = { selection = { preselect = false } },
@@ -119,9 +124,16 @@ return {
             cmdline = {
                 keymap = {
                     preset = 'cmdline',
+                    ['<Tab>'] = {
+                        function(cmp)
+                            return cmp.show_and_insert_or_accept_single()
+                        end,
+                        'select_next',
+                        'fallback',
+                    },
                     ['<Up>'] = { 'select_prev', 'fallback' },
                     ['<Down>'] = { 'select_next', 'fallback' },
-                    ['<CR>'] = { 'accept_and_enter', 'fallback' },
+                    ['<CR>'] = { 'accept', 'fallback' },
                     ['<C-space>'] = { 'accept', 'fallback' },
                 },
             },

@@ -1,13 +1,26 @@
 ---@diagnostic disable
 return {
+    -- Colors
+    require("plugins.colors.moksha"),
+    require("plugins.colors.kanagawa"),
+    require("plugins.colors.rose-pine"),
+    require("plugins.colors.gruvbox"),
+    require("plugins.colors.evergarden"),
+    require("plugins.colors.nordic"),
+    require("plugins.colors.zorn"),
+    require("plugins.colors.bebop"),
+    require("plugins.colors.muted"),
+    require("plugins.colors.wheat-fox"),
+    require("plugins.colors.mellifluous"),
+    require("plugins.colors.parchment"),
     -- UI
-    require("plugins.moksha"),
     require("plugins.heirline.init"),
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),
     require("plugins.colorful-winsep"),
     require("plugins.fix-auto-scroll"),
     require("plugins.nvim-colorizer"),
+    require("plugins.zen-mode"),
 
     -- Functionality
     require("plugins.subversive"),
@@ -25,6 +38,7 @@ return {
     require("plugins.mini-ai"),
     require("plugins.mini-move"),
     require("plugins.mini-files"),
+    require("plugins.neo-tree"),
     require("plugins.oil"),
     require("plugins.fm-nvim"),
     require("plugins.fzf-lua"),
