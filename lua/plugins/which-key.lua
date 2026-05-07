@@ -13,7 +13,7 @@ return {
             local wk = require("which-key")
             wk.add({
                 { "<leader>", group = "Misc" },
-                { "<leader>L", group = "LSP" },
+                { "<leader>l", group = "LSP" },
                 { "<C-w>1", "1gt", hidden = true },
                 { "<C-w>2", "2gt", hidden = true },
                 { "<C-w>3", "3gt", hidden = true },
@@ -25,10 +25,9 @@ return {
                 { "<C-w>9", "9gt", hidden = true },
             })
             local setup = {
-                delay = 0,
-                -- delay = function(ctx)
-                --     return ctx.plugin and 0 or 700 -- WhichKey popup delay
-                -- end,
+                delay = function(ctx)
+                    return ctx.plugin and 0 or 700 -- WhichKey popup delay
+                end,
                 icons = {
                     breadcrumb = ">", -- symbol used in the command line area that shows your active key combo
                     separator = "→", -- symbol used between a key and it's label

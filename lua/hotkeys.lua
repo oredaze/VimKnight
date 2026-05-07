@@ -31,6 +31,14 @@ map("n", "dw", "diw", { desc = "Delete word" })
 map("n", "dW", "diW", { desc = "Delete WORD" })
 map("n", "cw", "ciw", { desc = "Change word" })
 map("n", "cW", "ciW", { desc = "Change WORD" })
+map("n", "cp", "cip", { desc = "Change paragraph" })
+map("n", "vw", "viw", { remap = true })
+map("n", "vW", "viW", { remap = true })
+map("n", "vp", "vip", { remap = true })
+
+-- Helix-like
+map({"n", "v" }, "gl", "$", { desc = "End of line" })
+map({"n", "v" }, "gh", "0", { desc = "Start of line" })
 
 -- Commenting
 map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })
@@ -43,21 +51,24 @@ map("n", "<C-i>", "<C-i>")
 -- Window management
 map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
-map({"n", "v", "t"}, "<C-w><Tab>", "<C-\\><C-n><C-^>", { silent = true })
-map({"n", "v", "t"}, "<C-w>q", "<C-\\><C-n><cmd>bd!<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w>s", "<C-\\><C-n><cmd>sp +term<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w>v", "<C-\\><C-n><cmd>vs +term<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w>t", "<C-\\><C-n><cmd>tabnew +term<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w><cr>", "<C-\\><C-n><cmd>term<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w>,", "<C-\\><C-n><cmd>bprevious<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w>.", "<C-\\><C-n><cmd>bnext<CR>", { silent = true })
-map({"n", "v", "t"}, "<C-w>z", "<C-\\><C-n><C-w>_<C-w>|", { silent = true })
-map({"n", "v", "t"}, "<C-w>d", "<C-\\><C-n><C-w>T", { silent = true })
-map({"n", "v", "t"}, "<C-w>`", "<C-\\><C-n>g<Tab>", { silent = true })
-map({"n", "v", "t"}, "<C-w>1", "<C-\\><C-n>1gt", { silent = true })
-map({"n", "v", "t"}, "<C-w>2", "<C-\\><C-n>2gt", { silent = true })
-map({"n", "v", "t"}, "<C-w>3", "<C-\\><C-n>3gt", { silent = true })
-map({"n", "v", "t"}, "<C-w>4", "<C-\\><C-n>4gt", { silent = true })
+map({"n", "v", "i", "t"}, "<C-h>", "<C-\\><C-n><C-w>h")
+map({"n", "v", "i", "t"}, "<C-j>", "<C-\\><C-n><C-w>j")
+map({"n", "v", "i", "t"}, "<C-k>", "<C-\\><C-n><C-w>k")
+map({"n", "v", "i", "t"}, "<C-l>", "<C-\\><C-n><C-w>l")
+map({"n", "v"}, "<C-w>q", "<cmd>bd!<CR>", { silent = true })
+map({"n", "v"}, "<C-w>s", "<cmd>sp +term<CR>", { silent = true })
+map({"n", "v"}, "<C-w>v", "<cmd>vs +term<CR>", { silent = true })
+map({"n", "v"}, "<C-w>t", "<cmd>tabnew +term<CR>", { silent = true })
+map({"n", "v"}, "<C-w><cr>", "<cmd>term<CR>", { silent = true })
+map({"n", "v"}, "<C-w>,", "<cmd>bprevious<CR>", { silent = true })
+map({"n", "v"}, "<C-w>.", "<cmd>bnext<CR>", { silent = true })
+map({"n", "v"}, "<C-w>z", "<C-w>_<C-w>|", { silent = true })
+map({"n", "v"}, "<C-w>d", "<C-w>T", { silent = true })
+map({"n", "v"}, "<C-w>`", "g<Tab>", { silent = true })
+map({"n", "v"}, "<C-w>1", "1gt", { silent = true })
+map({"n", "v"}, "<C-w>2", "2gt", { silent = true })
+map({"n", "v"}, "<C-w>3", "3gt", { silent = true })
+map({"n", "v"}, "<C-w>4", "4gt", { silent = true })
 map("t", "<C-esc>", "<C-\\><C-n>")
 vim.api.nvim_create_autocmd("TermOpen", {
     command = 'tnoremap <esc> <C-\\><esc>',
@@ -69,8 +80,6 @@ map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
 map("v", "<C-c>", '"+y')
 
 -- Insert and command mode
-map("!", "<C-h>", "<C-Left>")
-map("!", "<C-l>", "<C-Right>")
 map("!", "<C-a>", "<Home>")
 map("!", "<C-e>", "<End>")
 
@@ -259,18 +268,21 @@ map("v", "p", "<Plug>(SubversiveSubstitute)")
 map({ "n", "x", "o" }, "f", "<cmd>Pounce<cr>")
 
 -- Mini.ai
-map('n', 'S', 'cib', { remap = true })
 map('n', 'g[', 'g[[', { remap = true })
 map('n', 'g]', 'g]]', { remap = true })
 map('n', 'g{', 'g[{', { remap = true })
 map('n', 'g}', 'g]}', { remap = true })
 map('n', 'g(', 'g[(', { remap = true })
 map('n', 'g)', 'g])', { remap = true })
+map('n', 'S', 'cib', { remap = true })
+map("n", "cq", "ciq", { remap = true })
+map("n", "dq", "diq", { remap = true })
+map("n", "vq", "viq", { remap = true })
+map("n", "vb", "vib", { remap = true })
 
 -- File explorers
 map("n", "<leader>t", "<cmd>Neotree toggle<CR>")
 map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
-map("n", "<leader>l", "<cmd>Lf<CR>")
 map("n", "<leader>v", "<cmd>Vifm<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
 map("n", "<leader>o", "<cmd>execute 'Oil' getcwd()<CR>", { desc = "Oil" })
@@ -307,9 +319,9 @@ map("n", "[`", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 -- ~/.config/nvim/lua/plugins/marks.lua
 
 -- LSP
-map("n", "<leader>Ld", "<cmd>lsp disable<CR>", { desc = "Disable the LSP" })
-map("n", "<leader>Le", "<cmd>lsp enable<CR>", { desc = "Enable the LSP" })
-map("n", "<leader>Lr", "<cmd>lsp restart<CR>", { desc = "Restart the LSP" })
+map("n", "<leader>ld", "<cmd>lsp disable<CR>", { desc = "Disable the LSP" })
+map("n", "<leader>le", "<cmd>lsp enable<CR>", { desc = "Enable the LSP" })
+map("n", "<leader>lr", "<cmd>lsp restart<CR>", { desc = "Restart the LSP" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/lsp.lua
 
@@ -322,10 +334,9 @@ map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
-map({"n", "t"}, "<A-w>w", "<C-\\><C-n><cmd>Neotree toggle buffers position=current<CR>")
+map({"n", "v", "i", "t"}, "<C-b>", "<C-\\><C-n><cmd>Neotree toggle buffers position=current<CR>")
 vim.cmd("cabbrev z Z")
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua
--- ~/.config/nvim/lua/plugins/mini-move.lua

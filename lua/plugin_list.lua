@@ -36,7 +36,6 @@ return {
     require("plugins.undotree"),
     require("plugins.zincoxide"),
     require("plugins.mini-ai"),
-    require("plugins.mini-move"),
     require("plugins.mini-files"),
     require("plugins.neo-tree"),
     require("plugins.oil"),

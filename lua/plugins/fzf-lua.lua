@@ -134,10 +134,10 @@ return {
                 grep = {
                     hidden = false,
                     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
-                    -- fzf_opts = {
-                        -- ["--delimiter"] = ":",
-                        -- ["--with-nth"] = "1,4..",
-                    -- },
+                    fzf_opts = {
+                        ["--delimiter"] = ":",
+                        ["--with-nth"] = "1,2,4..",
+                    },
                 },
                 buffers = {
                     formatter = "path.filename_first",

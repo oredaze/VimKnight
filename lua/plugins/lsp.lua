@@ -180,8 +180,8 @@ return {
 
                     map("n", "J", ":TSJToggle<CR>", opts)
 
-                    -- opts.desc = "Docs for item"
-                    -- map("n", "K", vim.lsp.buf.hover, opts)
+                    opts.desc = "Docs for item"
+                    map("n", "<space>k", vim.lsp.buf.hover, opts)
 
                     opts.desc = "Signature Help"
                     map('n', '<C-s>', vim.lsp.buf.signature_help, opts)

@@ -43,7 +43,7 @@ Most of them are optional, except the first one
 - [fd](https://github.com/sharkdp/fd) for fzf file indexing
 - [ripgrep](https://github.com/BurntSushi/ripgrep) for grepping in your project
 - [zoxide](https://github.com/ajeetdsouza/zoxide) for fast directory switching
-- [lf](https://github.com/gokcehan/lf) external file manager
+- [vifm](https://github.com/vifm/vifm) external file manager
 - [broot](https://github.com/Canop/broot) innovative file manager
 - A terminal with fixed/fixable escape sequences (like foot, alacritty, st, etc.) to use `<Tab>` independently of `<C-i>` (and any other overlapping keys you decide to bind). GUIs also work
 - [nerd font](https://www.nerdfonts.com/#home) for the sparce glyphs that are present

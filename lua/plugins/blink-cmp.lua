@@ -22,7 +22,6 @@ return {
         -- build = 'nix run .#build-plugin',
 
         ---@module 'blink.cmp'
-        ---@type blink.cmp.Config
         opts = {
             keymap = {
                 preset = 'none',
@@ -65,7 +64,7 @@ return {
                     'fallback',
                 },
                 ['<C-c>'] = { 'cancel' },
-                ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
+                -- ['K'] = { 'show_documentation', 'hide_documentation', 'fallback' },
                 ['<S-Up>'] = { 'scroll_documentation_up', 'fallback' },
                 ['<S-Down>'] = { 'scroll_documentation_down', 'fallback' },
                 ['<C-h>'] = { 'show_signature', 'hide_signature', 'fallback' },
