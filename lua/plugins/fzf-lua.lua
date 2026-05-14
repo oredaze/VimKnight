@@ -98,6 +98,7 @@ return {
                     ["marker"]  = { "fg", "Exception" },
                     ["spinner"] = { "fg", "Comment" },
                     ["header"]  = { "fg", "Comment" },
+                    ["border"]  = { "bg", "CursorLine" },
                     ["gutter"]  = { "bg", "Gutter" },
                 },
                 keymap = {

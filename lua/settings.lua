@@ -10,7 +10,7 @@ o.titlestring = "%t - nVim"
 o.titleold = "\27]0;\7"
 o.number = true
 o.relativenumber = true
-o.signcolumn = "yes" -- auto, number, yes, no
+o.signcolumn = "number" -- auto, number, yes, no
 o.ignorecase = true
 o.smartcase = true
 o.timeout = false
@@ -62,7 +62,7 @@ vim.diagnostic.config({
 if vim.g.neovide then
     vim.keymap.set({ "n", "v" }, "<C-z>", "<cmd>echo 'Disabled in neovide'<cr>")
     -- Font rendering
-    vim.o.guifont = "monospace,NerdSymbola:h11:#e-subpixelantialias"
+    vim.o.guifont = "monospace,NerdSymbola:h12.6:#e-subpixelantialias"
     vim.g.neovide_pixel_geometry = "RGBH" -- Check your monitor
     vim.g.neovide_text_gamma = 1.0
     vim.g.neovide_text_contrast = 0.1

@@ -36,10 +36,10 @@ require("hotkeys")
 require("autocmds")
 
 -- Colors early detection
-if vim.env.DISPLAY == nil then
-    vim.opt.termguicolors = false
-    vim.cmd([[colorscheme 16bits]])
-else
+if vim.g.neovide then
     vim.opt.termguicolors = true
     vim.cmd([[colorscheme muted_fire]])
+else
+    vim.opt.termguicolors = false
+    vim.cmd([[colorscheme 16bits]])
 end
