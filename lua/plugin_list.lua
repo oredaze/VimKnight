@@ -1,19 +1,7 @@
 ---@diagnostic disable
 return {
-    -- Colors
-    require("plugins.colors.moksha"),
-    require("plugins.colors.kanagawa"),
-    require("plugins.colors.rose-pine"),
-    require("plugins.colors.gruvbox"),
-    require("plugins.colors.evergarden"),
-    require("plugins.colors.nordic"),
-    require("plugins.colors.zorn"),
-    require("plugins.colors.bebop"),
-    require("plugins.colors.muted"),
-    require("plugins.colors.wheat-fox"),
-    require("plugins.colors.mellifluous"),
-    require("plugins.colors.parchment"),
     -- UI
+    require("plugins.colors.moksha"),
     require("plugins.heirline.init"),
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),

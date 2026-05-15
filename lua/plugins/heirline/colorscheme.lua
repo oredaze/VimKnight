@@ -14,7 +14,7 @@ if vim.opt.termguicolors._value == false then
     heircolor_white = { ctermfg = 7 }
     heircolor_bg = { ctermbg = 0 }
     heircolor_tab = { ctermfg = 8, ctermbg = 0 }
-    heircolor_tab_focus = { ctermfg = 7, ctermbg = get_hl("Normal").bg }
+    heircolor_tab_focus = { ctermfg = 7, ctermbg = 236 }
     do
         local mode_colors = {
             normal = 7,
