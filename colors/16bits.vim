@@ -14,6 +14,7 @@ let g:colors_name = "16bits"
 " tty fix
 if &t_Co == 8
 	hi Grey ctermfg=0 ctermbg=none cterm=bold
+	hi GreyLine ctermfg=0 ctermbg=none cterm=bold
 	hi Comment ctermfg=0 ctermbg=none cterm=bold
 	hi SpecialComment ctermfg=0 ctermbg=none cterm=bold
 	hi LineNr ctermfg=0 ctermbg=none cterm=bold
@@ -28,6 +29,7 @@ if &t_Co == 8
 	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
+	hi GreyLine ctermfg=8 ctermbg=none cterm=none,underline
 	hi Comment ctermfg=8 ctermbg=none cterm=none
 	hi SpecialComment ctermfg=8 ctermbg=none cterm=none
 	hi LineNr ctermfg=8 ctermbg=none cterm=none
@@ -192,7 +194,7 @@ hi markdownH3 ctermfg=6 ctermbg=none cterm=bold
 hi markdownH4 ctermfg=5 ctermbg=none cterm=bold
 hi markdownH5 ctermfg=2 ctermbg=none cterm=bold
 hi markdownH6 ctermfg=4 ctermbg=none cterm=bold
-hi markdownUrl ctermfg=0 ctermbg=none cterm=bold,underline
+hi! link markdownUrl GreyLine
 hi markdownItalic ctermfg=3 cterm=none
 hi markdownItalicDelimiter ctermfg=0 ctermbg=none cterm=bold
 hi markdownBold ctermfg=none ctermbg=none cterm=bold
