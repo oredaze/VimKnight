@@ -36,7 +36,7 @@ return {
                     width = 0.75,
                     row = 0.9,
                     col = 0,
-                    fullscreen = false,
+                    fullscreen = true,
                     backdrop = 100,
                     border = neovim_borders,
                     title_pos = "left",
@@ -46,7 +46,7 @@ return {
                     preview = {
                         border = neovim_borders,
                         wrap = false,
-                        hidden = false,
+                        hidden = true,
                         layout = "vertical",
                         -- horizontal = "right:60%",
                         vertical = "up:60%",
@@ -98,7 +98,7 @@ return {
                     ["marker"]  = { "fg", "Exception" },
                     ["spinner"] = { "fg", "Comment" },
                     ["header"]  = { "fg", "Comment" },
-                    ["border"]  = { "bg", "CursorLine" },
+                    ["border"]  = { "fg", "Whitespace" },
                     ["gutter"]  = { "bg", "Gutter" },
                 },
                 keymap = {

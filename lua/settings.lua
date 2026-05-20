@@ -41,7 +41,7 @@ o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
 
 -- single, rounded, shadow, solid or a table
-neovim_borders = "single"
+neovim_borders = "rounded"
 -- neovim_borders = { "+", "-", "+", "|", "+", "-", "+", "|" }
 
 -- Indents
@@ -51,6 +51,12 @@ o.expandtab = true -- default indent type; true for spaces
 
 vim.diagnostic.config({
     -- signs = false,
+    signs = { text = {
+        [vim.diagnostic.severity.ERROR] = '󱇫',
+        [vim.diagnostic.severity.WARN] = '',
+        [vim.diagnostic.severity.INFO] = '',
+        [vim.diagnostic.severity.HINT] = '',
+    } },
     virtual_text = false,
     -- virtual_text = {
     --     prefix = "",
@@ -61,13 +67,13 @@ vim.diagnostic.config({
 
 if vim.g.neovide then
     vim.keymap.set({ "n", "v" }, "<C-z>", "<cmd>echo 'Disabled in neovide'<cr>")
-    -- Font rendering
-    vim.o.guifont = "monospace,NerdSymbola:h12.6:#e-subpixelantialias"
+    -- Font rendering, Hack: 12.6 - wayland, 11 - xorg
+    vim.o.guifont = "Fira Code,NerdSymbola:h13:#e-subpixelantialias"
     vim.g.neovide_pixel_geometry = "RGBH" -- Check your monitor
     vim.g.neovide_text_gamma = 1.0
     vim.g.neovide_text_contrast = 0.1
     -- Other
-    vim.g.neovide_normal_opacity = 0.98
+    -- vim.g.neovide_normal_opacity = 0.98
     vim.g.neovide_scroll_animation_length = 0.1
     vim.g.neovide_cursor_animation_length = 0.1
 end

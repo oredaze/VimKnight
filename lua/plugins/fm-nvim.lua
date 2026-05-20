@@ -18,11 +18,13 @@ return {
                     border_hl = "Whitespace",
                     blend = 0,
                     -- Num from 0 - 1
-                    height = 0.85,
-                    width = 0.5,
+                    height = 1.1,
+                    width = 1,
+                    -- height = 0.85,
+                    -- width = 0.5,
                     -- window position
                     x = 0,
-                    y = 0.75,
+                    y = 0,
                 },
                 split = {
                     direction = "topleft",

@@ -641,13 +641,13 @@ local Diagnostics = {
     {
         provider = function(self)
             -- 0 is just another output, we can decide to print it or not!
-            return self.errors > 0 and (" " .. self.errors .. " ")
+            return self.errors > 0 and ("󱇫 " .. self.errors .. " ")
         end,
         hl = heircolor_red,
     },
     {
         provider = function(self)
-            return self.warnings > 0 and (" " .. self.warnings .. " ")
+            return self.warnings > 0 and (" " .. self.warnings .. " ")
         end,
         hl = heircolor_yellow,
     },

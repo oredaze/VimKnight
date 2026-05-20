@@ -30,7 +30,7 @@ if &t_Co == 8
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
 	hi GreyLine ctermfg=8 ctermbg=none cterm=none,underline
-	hi Comment ctermfg=8 ctermbg=none cterm=none
+	hi Comment ctermfg=8 ctermbg=none cterm=italic
 	hi SpecialComment ctermfg=8 ctermbg=none cterm=none
 	hi LineNr ctermfg=8 ctermbg=none cterm=none
 	hi NonText ctermfg=8 ctermbg=none cterm=none
@@ -41,7 +41,7 @@ else
 	hi TabLine ctermfg=8 ctermbg=0 cterm=none
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
-	hi PmenuSel ctermfg=none ctermbg=236 cterm=bold
+	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 endif
 
 " Predefined Highlight Groups: {{{
@@ -144,7 +144,7 @@ hi FoldColumn ctermfg=7 ctermbg=0 cterm=none
 hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
 hi Pmenu ctermfg=7 ctermbg=0
-hi PmenuThumb ctermfg=0 ctermbg=7
+hi PmenuThumb ctermfg=0 ctermbg=8
 hi PmenuSbar ctermfg=none ctermbg=none
 hi PmenuKind ctermfg=7 ctermbg=0
 hi PmenuKindSel ctermfg=0 ctermbg=7
@@ -631,6 +631,16 @@ hi! link MiniFilesFile Fg
 hi! link MiniFilesNormal NormalFloat
 hi! link MiniFilesTitle FloatTitle
 hi MiniFilesTitleFocused ctermfg=6 ctermbg=none
+" }}}
+" neo-tree {{{
+hi! link NeoTreeBufferNumber Grey
+hi! link NeoTreeDotfile Comment
+hi! link NeoTreeFileNameOpened String
+hi! link NeoTreeExpander Grey
+hi! link NeoTreeStats Grey
+hi! link NeoTreeEndOfBuffer Grey
+hi! link NeoTreeRootName Tag
+hi! link NeoTreeDimText Grey
 " }}}
 hi Elevator ctermfg=0 ctermbg=0 cterm=bold,reverse
 hi EasyJump ctermfg=0 ctermbg=3 cterm=none

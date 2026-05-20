@@ -14,7 +14,7 @@ if vim.opt.termguicolors._value == false then
     heircolor_white = { ctermfg = 7 }
     heircolor_bg = { ctermbg = 0 }
     heircolor_tab = { ctermfg = 8, ctermbg = 0 }
-    heircolor_tab_focus = { ctermfg = 7, ctermbg = 236 }
+    heircolor_tab_focus = { ctermfg = 1, ctermbg = get_hl("Normal").bg }
     do
         local mode_colors = {
             normal = 7,
@@ -34,11 +34,11 @@ if vim.opt.termguicolors._value == false then
             select = 3,
         }
         Mode = setmetatable({
-            normal = { ctermfg = 0 },
+            normal = { ctermfg = 234 },
         }, {
             __index = function(_, mode)
                 return {
-                    ctermfg = 0,
+                    ctermfg = 234,
                     ctermbg = mode_colors[mode],
                     bold = true,
                 }

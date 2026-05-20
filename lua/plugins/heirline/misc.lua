@@ -5,7 +5,7 @@ util.icons = {
     left_end = "▌",
     right_end = "▐",
     left_mode_sur = "▐",
-    right_mode_sur = "",
+    right_mode_sur = "",
     left_overflow = "",
     right_overflow = "",
     padlock = " r",
@@ -19,7 +19,7 @@ util.icons = {
     files = " 󰝰 ",
     fzf = "  ",
     macro_rec = "@ ",
-    bug = " ",
+    bug = "󱇫 ",
     git_branch = " ",
 }
 
