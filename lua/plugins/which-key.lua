@@ -12,6 +12,7 @@ return {
             ]])
             local wk = require("which-key")
             wk.add({
+                { "<A-w>", group = "Window" },
                 { "<leader>", group = "Misc" },
                 { "<leader>l", group = "LSP" },
                 { "<C-w>1", "1gt", hidden = true },

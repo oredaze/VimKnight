@@ -38,7 +38,7 @@ return {
                     col = 0,
                     fullscreen = true,
                     backdrop = 100,
-                    border = neovim_borders,
+                    border = "none",
                     title_pos = "left",
                     treesitter = {
                         enabled = false,

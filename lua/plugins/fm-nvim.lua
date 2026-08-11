@@ -13,7 +13,7 @@ return {
             ui = {
                 default = "float",
                 float = {
-                    border = neovim_borders,
+                    border = "none",
                     float_hl = "Normal",
                     border_hl = "Whitespace",
                     blend = 0,

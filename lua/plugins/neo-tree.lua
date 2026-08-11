@@ -26,7 +26,7 @@ return {
                     expander_expanded = "⏷",
                 },
                 icon = {
-                    folder_closed = "",
+                    folder_closed = "󰉋",
                     folder_open = "",
                     folder_empty = "󰉖",
                     folder_empty_open = "󰷏",
@@ -121,6 +121,9 @@ return {
             },
 
             filesystem = {
+                filtered_items = {
+                    children_inherit_highlights = false,
+                },
                 window = {
                     mappings = {
                         ["s"] = { "show_help", nowait=false, config = {

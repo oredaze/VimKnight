@@ -92,15 +92,15 @@ do
     -- }
 end
 
-local LeftCap = {
-    provider = icons.left_end,
-    hl = heircolor_grey,
-}
+-- local LeftCap = {
+--     provider = icons.left_end,
+--     hl = heircolor_grey,
+-- }
 
-local RightCap = {
-    provider = icons.right_end,
-    hl = heircolor_grey,
-}
+-- local RightCap = {
+--     provider = icons.right_end,
+--     hl = heircolor_grey,
+-- }
 
 -- }}
 -- Bufferline and Tabs ------------------------------------------------------ {{
@@ -828,7 +828,7 @@ local StatusLineFinal = {
     end,
     hl = heircolor_white,
     {
-        LeftCap,
+        -- LeftCap,
         Indicator,
         Space,
         MacroRec,
@@ -854,7 +854,7 @@ local StatusLineFinal = {
         Ruler,
         ScrollPercentage,
         Space(1),
-        RightCap,
+        -- RightCap,
     },
 }
 

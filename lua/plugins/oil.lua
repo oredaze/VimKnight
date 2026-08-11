@@ -7,9 +7,9 @@ return {
             default_file_explorer = false, -- hijack netrw
             skip_confirm_for_simple_edits = true,
             columns = {
-                -- "icon",
-                { "permissions", highlight = "Normal" },
-                { "size", highlight = "Include" },
+            --     -- "icon",
+            --     { "permissions", highlight = "Normal" },
+            --     { "size", highlight = "Include" },
                 { "mtime", highlight = "Type" },
             },
             win_options = {

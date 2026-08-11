@@ -48,22 +48,13 @@ map("v", "<leader>", "gc", { silent = true, remap = true })
 map("n", "<C-i>", "<C-i>")
 
 -- Window management
-map("n", "<Tab>", "<C-^>")
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
-map({"n", "v", "i", "t"}, "<C-h>", "<C-\\><C-n><C-w>h")
-map({"n", "v", "i", "t"}, "<C-j>", "<C-\\><C-n><C-w>j")
-map({"n", "v", "i", "t"}, "<C-k>", "<C-\\><C-n><C-w>k")
-map({"n", "v", "i", "t"}, "<C-l>", "<C-\\><C-n><C-w>l")
-map({"n", "v", "i", "t"}, "<C-,>", "<C-\\><C-n><cmd>bprevious<CR>", { silent = true })
-map({"n", "v", "i", "t"}, "<C-.>", "<C-\\><C-n><cmd>bnext<CR>", { silent = true })
-map({"n", "v", "i", "t"}, "<C-Tab>", "<C-\\><C-n><C-^>", { silent = true })
+map({"n", "v"}, "<Tab>", "<C-^>")
+map({"n", "v", "i", "t"}, "<C-Tab>", "<C-\\><C-n><C-^>")
+map({"n", "v", "i", "t"}, "<C-w>", "<C-\\><C-n><C-w>")
 map({"n", "v"}, "<C-w>,", "<cmd>bprev<CR>", { silent = true })
 map({"n", "v"}, "<C-w>.", "<cmd>bnext<CR>", { silent = true })
 map({"n", "v"}, "<C-w>q", "<cmd>bd!<CR>", { silent = true })
-map({"n", "v"}, "<C-w>s", "<cmd>sp +term<CR>", { silent = true })
-map({"n", "v"}, "<C-w>v", "<cmd>vs +term<CR>", { silent = true })
-map({"n", "v"}, "<C-w>t", "<cmd>tabnew +term<CR>", { silent = true })
-map({"n", "v"}, "<C-w><cr>", "<cmd>term<CR>", { silent = true })
 map({"n", "v"}, "<C-w>z", "<C-w>_<C-w>|", { silent = true })
 map({"n", "v"}, "<C-w>d", "<C-w>T", { silent = true })
 map({"n", "v"}, "<C-w>`", "g<Tab>", { silent = true })
@@ -71,10 +62,19 @@ map({"n", "v"}, "<C-w>1", "1gt", { silent = true })
 map({"n", "v"}, "<C-w>2", "2gt", { silent = true })
 map({"n", "v"}, "<C-w>3", "3gt", { silent = true })
 map({"n", "v"}, "<C-w>4", "4gt", { silent = true })
+map({"n", "v"}, "<C-w>5", "5gt", { silent = true })
+-- Terminal stuff
+map({"n", "v"}, "<C-w>s", "<cmd>sp +term<CR>", { silent = true })
+map({"n", "v"}, "<C-w>v", "<cmd>vs +term<CR>", { silent = true })
+map({"n", "v"}, "<C-w>t", "<cmd>tabnew +term<CR>", { silent = true })
+map({"n", "v"}, "<C-w><cr>", "<cmd>term<CR>", { silent = true })
 map({"n", "v", "i", "t"}, "<C-[>", "<C-\\><C-n>")
 map({"n", "v", "i", "t"}, "<C-esc>", "<C-\\><C-n>")
 vim.api.nvim_create_autocmd("TermOpen", {
-    command = 'tnoremap <esc> <C-\\><esc>',
+    command = [[
+        tnoremap <C-backspace> <C-w>
+        tnoremap <esc> <esc>
+    ]],
 })
 -- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 48
 
@@ -83,6 +83,7 @@ map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
 map("v", "<C-c>", '"+y')
 
 -- Insert and command mode
+map("i", "<C-backspace>", "<C-o>db")
 map("!", "<C-a>", "<Home>")
 map("!", "<C-e>", "<End>")
 
@@ -285,7 +286,6 @@ map('n', 'g)', 'g])', { remap = true })
 map("n", "cq", "ciq", { remap = true, desc = "Change in quotes" })
 map('n', 'cb', 'cib', { remap = true, desc = "Change in brackets" })
 map("n", "dq", "diq", { remap = true, desc = "Delete in quotes" })
-map("n", "db", "dib", { remap = true, desc = "Delete in brackets" })
 map("n", "yq", "yiq", { remap = true, desc = "Yank in quotes" })
 map("n", "yb", "yib", { remap = true, desc = "Yank in brackets" })
 
@@ -295,10 +295,10 @@ map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
 map("n", "<leader>v", "<cmd>Vifm<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
 map("n", "<leader>o", "<cmd>execute 'Oil' getcwd()<CR>", { desc = "Oil" })
-cmap("E", "Oil", { nargs = "?" })
-cmap("S", "belowright split | Oil", { nargs = "?" })
-cmap("V", "rightbelow vsplit | Oil", { nargs = "?" })
-cmap("T", "tabedit % | Oil", { nargs = "?" })
+cmap("E", "Neotree current", { nargs = "?" })
+cmap("S", "belowright split | Neotree current", { nargs = "?" })
+cmap("V", "rightbelow vsplit | Neotree current", { nargs = "?" })
+cmap("T", "tabedit % | Neotree current", { nargs = "?" })
 
 -- Fzf-lua
 map("n", "<leader>f", ":FzfLua files<CR>", { silent = true, desc = "Files" })

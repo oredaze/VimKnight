@@ -640,7 +640,14 @@ hi! link NeoTreeExpander Grey
 hi! link NeoTreeStats Grey
 hi! link NeoTreeEndOfBuffer Grey
 hi! link NeoTreeRootName Tag
-hi! link NeoTreeDimText Grey
+hi! link NeoTreeDimText Comment
+hi! link NeoTreeFilterTerm Purple
+hi! link NeoTreeFloatBorder Grey
+hi NeoTreeFloatTitle ctermfg=6 ctermbg=none
+hi NeoTreeTitleBar ctermfg=6 ctermbg=none
+hi! link NeoTreeIgnored Comment
+hi! link NeoTreeWindowsHidden Comment
+hi! link NeoTreeHiddenByName Comment
 " }}}
 hi Elevator ctermfg=0 ctermbg=0 cterm=bold,reverse
 hi EasyJump ctermfg=0 ctermbg=3 cterm=none

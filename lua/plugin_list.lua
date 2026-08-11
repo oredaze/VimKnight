@@ -7,7 +7,6 @@ return {
     require("plugins.simpleindentguides"),
     require("plugins.colorful-winsep"),
     require("plugins.fix-auto-scroll"),
-    require("plugins.nvim-colorizer"),
     require("plugins.zen-mode"),
 
     -- Functionality
