@@ -63,22 +63,6 @@ return {
                 },
             },
 
-            event_handlers = {
-                -- NOTE: restore alternate file for files opened with neo-tree
-                {
-                    event = "neo_tree_window_before_open",
-                    handler = function()
-                        vim.w.neo_tree_before_open_visible_buffer = vim.api.nvim_get_current_buf()
-                    end,
-                },
-                {
-                    event = "file_opened",
-                    handler = function()
-                        vim.fn.setreg("#", vim.w.neo_tree_before_open_visible_buffer)
-                    end,
-                },
-            },
-
             window = {
                 width = 24,
                 mappings = {
