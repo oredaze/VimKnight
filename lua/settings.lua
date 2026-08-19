@@ -74,6 +74,7 @@ if vim.g.neovide then
     vim.g.neovide_text_contrast = 0.1
     vim.o.linespace = -1
     -- Other
+    vim.g.neovide_progress_bar_enabled = false
     -- vim.g.neovide_normal_opacity = 0.98
     vim.g.neovide_scroll_animation_length = 0.1
     vim.g.neovide_cursor_animation_length = 0.1

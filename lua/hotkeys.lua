@@ -5,7 +5,7 @@ local cmap = vim.api.nvim_create_user_command
 -- Neovim Hotkeys
 ------------------------
 vim.g.mapleader = " "
-vim.g.maplocalleader = "|"
+vim.g.maplocalleader = "\\"
 
 -- Misc
 map("n", "<C-q>", "q") -- Move macro to prepare q key
@@ -42,7 +42,7 @@ map({"n", "v" }, "gh", "0", { desc = "Start of line" })
 -- Commenting
 map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })
 map("n", "<leader>C", ":norm vipgc<CR>", { silent = true, desc = "Comment paragraph" })
-map("v", "<leader>", "gc", { silent = true, remap = true })
+map("v", "<leader>c", "gc", { silent = true, remap = true })
 
 -- Fix tab
 map("n", "<C-i>", "<C-i>")
@@ -303,7 +303,6 @@ cmap("T", "tabedit % | Neotree current", { nargs = "?" })
 -- Fzf-lua
 map("n", "<leader>f", ":FzfLua files<CR>", { silent = true, desc = "Files" })
 map("n", "<leader>g", ":FzfLua live_grep<CR>", { silent = true, desc = "Grep" })
-map("n", "<leader>w", ":FzfLua buffers<CR>", { silent = true, desc = "Buffers" })
 map("n", "<leader>j", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
 map("n", "<leader>s", ":FzfLua lsp_document_symbols<CR>", { silent = true, desc = "Symbols" })
 map("n", "<leader>S", ":FzfLua lsp_workspace_symbols<CR>", { silent = true, desc = "WS symbols" })
@@ -343,7 +342,7 @@ map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
-map({"n", "v", "i", "t"}, "<C-b>", "<C-\\><C-n><cmd>Neotree toggle buffers position=current<CR>")
+map({"n", "v", "i", "t"}, "<leader>w", "<C-\\><C-n><cmd>Neotree toggle buffers position=current<CR>")
 vim.cmd("cabbrev z Z")
 
 -- More at:

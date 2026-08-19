@@ -111,7 +111,7 @@ return {
                     }
                 },
                 menu = {
-                    auto_show = true,
+                    auto_show = false,
                     max_height = 10,
                     border = neovim_borders,
                     winhighlight = 'NormalFloat:Normal,FloatBorder:Whitespace,BlinkCmpKind:Comment,CursorLine:PmenuSel,Search:None',
