@@ -33,7 +33,7 @@ map("n", "dW", "diW", { desc = "Delete WORD" })
 map("n", "dp", "dap", { desc = "Delete paragraph" })
 map("n", "yw", "yiw", { desc = "Yank word" })
 map("n", "yW", "yiW", { desc = "Yank Word" })
-map("n", "yp", "yap", { desc = "Yank paragraph" })
+map("n", "yp", "yap}", { desc = "Yank paragraph" })
 
 -- Helix-like
 map({"n", "v" }, "gl", "$", { desc = "End of line" })
@@ -83,8 +83,7 @@ map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
 map("v", "<C-c>", '"+y')
 
 -- Insert and command mode
-map("i", "<C-backspace>", "<C-o>db")
-map("!", "<C-a>", "<Home>")
+map("!", "<C-a>", "<Hom>")
 map("!", "<C-e>", "<End>")
 
 -- Search literally
@@ -304,7 +303,6 @@ cmap("T", "tabedit % | Neotree current", { nargs = "?" })
 map("n", "<leader>f", ":FzfLua files<CR>", { silent = true, desc = "Files" })
 map("n", "<leader>g", ":FzfLua live_grep<CR>", { silent = true, desc = "Grep" })
 map("n", "<leader>j", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
-map("n", "<leader>w", ":FzfLua buffers<CR>", { silent = true, desc = "Buffers" })
 map("n", "<leader>s", ":FzfLua lsp_document_symbols<CR>", { silent = true, desc = "Symbols" })
 map("n", "<leader>S", ":FzfLua lsp_workspace_symbols<CR>", { silent = true, desc = "WS symbols" })
 map("n", "<leader>d", ":FzfLua lsp_document_diagnostics<CR>", { silent = true, desc = "Diagnostics" })
@@ -343,7 +341,7 @@ map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
-map({"n", "v", "i", "t"}, "<C-b>", "<C-\\><C-n><cmd>Neotree toggle buffers position=current<CR>")
+map("n", "<leader>w", "<cmd>Neotree toggle buffers position=current<CR>")
 vim.cmd("cabbrev z Z")
 
 -- More at:

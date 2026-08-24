@@ -5,7 +5,6 @@ return {
     require("plugins.heirline.init"),
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),
-    require("plugins.colorful-winsep"),
     require("plugins.fix-auto-scroll"),
     require("plugins.zen-mode"),
 
