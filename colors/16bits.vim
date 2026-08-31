@@ -21,12 +21,12 @@ if &t_Co == 8
 	hi NonText ctermfg=0 ctermbg=none cterm=bold
 	hi Whitespace ctermfg=0 ctermbg=0 cterm=bold
 	hi Conceal ctermfg=0 ctermbg=none cterm=bold
-	hi Folded ctermfg=0 ctermbg=0 cterm=bold
-	hi FoldColumn ctermfg=0 ctermbg=0 cterm=bold
 	hi TabLine ctermfg=0 ctermbg=0 cterm=bold
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
 	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
+	hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
+	hi Search ctermfg=3 ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
 	hi GreyLine ctermfg=8 ctermbg=none cterm=none,underline
@@ -34,14 +34,14 @@ else
 	hi SpecialComment ctermfg=8 ctermbg=none cterm=none
 	hi LineNr ctermfg=8 ctermbg=none cterm=none
 	hi NonText ctermfg=8 ctermbg=none cterm=none
-	hi Whitespace ctermfg=8 ctermbg=none cterm=none
+	hi Whitespace ctermfg=236 ctermbg=none cterm=none
 	hi Conceal ctermfg=8 ctermbg=none cterm=none
-	hi Folded ctermfg=8 ctermbg=0 cterm=none
-	hi FoldColumn ctermfg=8 ctermbg=0 cterm=none
 	hi TabLine ctermfg=8 ctermbg=0 cterm=none
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
 	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
+	hi StatusLineNC ctermfg=8 ctermbg=0 cterm=none
+	hi Search ctermfg=3 ctermbg=237 cterm=bold
 endif
 
 " Predefined Highlight Groups: {{{
@@ -65,7 +65,7 @@ hi BoldCyan ctermfg=6 ctermbg=none cterm=bold
 hi Normal ctermfg=7 ctermbg=none
 hi Constant ctermfg=4 ctermbg=none cterm=none
 hi String ctermfg=3 ctermbg=none cterm=none
-hi Character ctermfg=4 ctermbg=none
+hi Character ctermfg=4 ctermbg=none cterm=bold
 hi Number ctermfg=4 ctermbg=none cterm=bold
 hi Boolean ctermfg=4 ctermbg=none cterm=none
 hi Float ctermfg=4 ctermbg=none cterm=bold
@@ -118,9 +118,8 @@ hi DiffDelete ctermfg=0 ctermbg=0 cterm=bold
 hi DiffText ctermfg=5 ctermbg=0 cterm=underline
 hi Directory ctermfg=4 ctermbg=none cterm=bold
 hi MatchParen ctermfg=1 ctermbg=0 cterm=bold
-hi Search ctermfg=0 ctermbg=3
-hi IncSearch ctermfg=1 ctermbg=0 cterm=none,reverse
-hi CurSearch ctermfg=0 ctermbg=1 cterm=none
+hi IncSearch ctermfg=3 ctermbg=0 cterm=none,reverse
+hi CurSearch ctermfg=0 ctermbg=3 cterm=none
 hi CursorLineFold ctermfg=3 ctermbg=none
 hi CursorLineSign ctermfg=7 ctermbg=none
 hi SpellBad ctermfg=none ctermbg=none cterm=undercurl
@@ -136,11 +135,12 @@ hi Substitute ctermfg=0 ctermbg=2 cterm=none
 hi TabLineSel ctermfg=7 ctermbg=none cterm=none
 hi ToolbarLine ctermfg=none ctermbg=0 cterm=bold
 hi Title ctermfg=6 ctermbg=0 cterm=none
+hi Folded ctermfg=0 ctermbg=0 cterm=bold
 hi CursorLine ctermfg=none ctermbg=0 cterm=none
 hi CursorLineNr ctermfg=3 ctermbg=none cterm=bold
 hi CursorColumn ctermfg=none ctermbg=0
 hi SignColumn ctermfg=7 ctermbg=none
-hi FoldColumn ctermfg=7 ctermbg=0 cterm=none
+hi! link FoldColumn Folded
 hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
 hi Pmenu ctermfg=7 ctermbg=0
@@ -172,7 +172,7 @@ hi! link StatusLineTerm StatusLine
 hi! link StatusLineTermNC StatusLineNC
 " }}}
 
-" Markdown: {{{
+" Diagnostics: {{{
 hi DiagnosticError ctermfg=1 ctermbg=none
 hi DiagnosticWarn ctermfg=3 ctermbg=none
 hi DiagnosticInfo ctermfg=4 ctermbg=none
@@ -189,15 +189,18 @@ hi DiagnosticUnderlineHint ctermfg=none ctermbg=none cterm=none
 
 " Markdown: {{{
 hi markdownH1 ctermfg=1 ctermbg=none cterm=bold
-hi markdownH2 ctermfg=3 ctermbg=none cterm=bold
-hi markdownH3 ctermfg=6 ctermbg=none cterm=bold
-hi markdownH4 ctermfg=5 ctermbg=none cterm=bold
-hi markdownH5 ctermfg=2 ctermbg=none cterm=bold
-hi markdownH6 ctermfg=4 ctermbg=none cterm=bold
-hi! link markdownUrl GreyLine
-hi markdownItalic ctermfg=3 cterm=none
+hi markdownH2 ctermfg=6 ctermbg=none cterm=bold
+hi markdownH3 ctermfg=3 ctermbg=none cterm=bold
+hi markdownH4 ctermfg=3 ctermbg=none cterm=bold
+hi markdownH5 ctermfg=3 ctermbg=none cterm=bold
+hi markdownH6 ctermfg=3 ctermbg=none cterm=bold
+hi markdownUrl ctermfg=8 ctermbg=none cterm=none
+hi markdownItalic ctermfg=3 cterm=italic
 hi markdownItalicDelimiter ctermfg=0 ctermbg=none cterm=bold
 hi markdownBold ctermfg=none ctermbg=none cterm=bold
+hi markdownStrike ctermfg=none ctermbg=none cterm=strikethrough
+hi markdownError ctermfg=1 ctermbg=0 cterm=none
+hi! link markdownStrikeDelimiter Grey
 hi! link markdownBoldDelimiter Grey
 hi! link markdownCode Green
 hi! link markdownCodeBlock Green
@@ -211,13 +214,15 @@ hi! link markdownIdDeclaration Cyan
 hi! link markdownOrderedListMarker Purple
 hi! link markdownRule Grey
 hi! link markdownUrlDelimiter Grey
-hi! link markdownLinkText Cyan
+hi! link markdownLink Grey
+hi! link markdownLinkText Blue
 hi! link markdownLinkDelimiter Grey
 hi! link markdownLinkTextDelimiter Grey
 hi! link markdownUrlTitle Purple
 hi! link markdownUrlTitleDelimiter Yellow
 hi markdownAutomaticLink ctermfg=6
 " }}}
+
 " Html: {{{
 " builtin: https://notabug.org/jorgesumle/vim-html-syntax
 hi htmlH1 ctermfg=1 ctermbg=none

@@ -12,6 +12,8 @@ map("n", "<C-q>", "q") -- Move macro to prepare q key
 map("n", "q", ":q<CR>")
 map("n", "x", '"_x')
 map("v", "p", '"_dP')
+map("n", "F", "%")
+map("n", "S", "ci\"")
 map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
 map("n", "c%", "ggcG", { desc = "Change whole file" })
 map("n", "d%", "ggdG", { desc = "Delete whole file" })
@@ -52,8 +54,8 @@ map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
 map({"n", "v"}, "<Tab>", "<C-^>")
 map({"n", "v", "i", "t"}, "<C-Tab>", "<C-\\><C-n><C-^>")
 map({"n", "v", "i", "t"}, "<C-w>", "<C-\\><C-n><C-w>")
-map({"n", "v"}, "<C-w>,", "<cmd>bprev<CR>", { silent = true })
-map({"n", "v"}, "<C-w>.", "<cmd>bnext<CR>", { silent = true })
+map({"n", "v"}, "<C-w>,", "<cmd>tabp<CR>", { silent = true })
+map({"n", "v"}, "<C-w>.", "<cmd>tabn<CR>", { silent = true })
 map({"n", "v"}, "<C-w>q", "<cmd>bd!<CR>", { silent = true })
 map({"n", "v"}, "<C-w>z", "<C-w>_<C-w>|", { silent = true })
 map({"n", "v"}, "<C-w>d", "<C-w>T", { silent = true })
@@ -87,15 +89,16 @@ map("!", "<C-a>", "<Hom>")
 map("!", "<C-e>", "<End>")
 
 -- Search literally
-vim.cmd([[ vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR> ]]) -- * in visual mode
+vim.cmd([[ vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR> ]])
+vim.cmd([[ vnoremap <C-s> y/\V<C-R>=escape(@",'/\')<CR><CR> ]])
 map("n", "*", "", {
     callback = function()
         vim.fn.execute("normal! *N")
     end,
 })
-map("n", "#", "", {
+map("n", "<C-s>", "", {
     callback = function()
-        vim.fn.execute("normal! #N")
+        vim.fn.execute("normal! *N")
     end,
 })
 
@@ -291,6 +294,7 @@ map("n", "yb", "yib", { remap = true, desc = "Yank in brackets" })
 -- File explorers
 map("n", "<leader>t", "<cmd>Neotree toggle<CR>")
 map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
+map("n", "<leader>l", "<cmd>Lf<CR>")
 map("n", "<leader>v", "<cmd>Vifm<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
 map("n", "<leader>o", "<cmd>execute 'Oil' getcwd()<CR>", { desc = "Oil" })
@@ -326,9 +330,9 @@ map("n", "[`", "<Plug>(Marks-prev)zz", { desc = "Previous mark" })
 -- ~/.config/nvim/lua/plugins/marks.lua
 
 -- LSP
-map("n", "<leader>ld", "<cmd>lsp disable<CR>", { desc = "Disable the LSP" })
-map("n", "<leader>le", "<cmd>lsp enable<CR>", { desc = "Enable the LSP" })
-map("n", "<leader>lr", "<cmd>lsp restart<CR>", { desc = "Restart the LSP" })
+map("n", "<leader>Ld", "<cmd>lsp disable<CR>", { desc = "Disable the LSP" })
+map("n", "<leader>Le", "<cmd>lsp enable<CR>", { desc = "Enable the LSP" })
+map("n", "<leader>Lr", "<cmd>lsp restart<CR>", { desc = "Restart the LSP" })
 -- More at:
 -- ~/.config/nvim/lua/plugins/lsp.lua
 
