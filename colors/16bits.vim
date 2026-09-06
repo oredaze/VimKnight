@@ -558,11 +558,11 @@ hi! link MarkSignNumHL LineNr
 hi MarkVirtTextHL ctermfg=0 ctermbg=0 cterm=bold
 " }}}
 " pounce {{{
-hi PounceMatch ctermfg=4
+hi PounceMatch ctermfg=94
 hi PounceUnmatched ctermfg=8 ctermbg=none cterm=none
 hi PounceGap ctermfg=0 ctermbg=none cterm=bold,underline
-hi PounceAccept ctermfg=7 ctermbg=1
-hi PounceAcceptBest ctermfg=7 ctermbg=1
+hi PounceAccept ctermfg=208 ctermbg=16 cterm=bold
+hi PounceAcceptBest ctermfg=208 ctermbg=16 cterm=bold
 " }}}
 " whichkey {{{
 hi WhichKey ctermfg=1 ctermbg=none

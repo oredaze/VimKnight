@@ -346,7 +346,7 @@ map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
 map("n", "<leader>w", "<cmd>Neotree toggle buffers position=current<CR>")
-vim.cmd("cabbrev z Z")
+vim.cmd("cabbrev j Z")
 
 -- More at:
 -- ~/.config/nvim/lua/plugins/oil.lua

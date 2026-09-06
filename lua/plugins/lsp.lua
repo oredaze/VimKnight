@@ -184,10 +184,10 @@ return {
                     map("n", "<space>k", vim.lsp.buf.hover, opts)
 
                     opts.desc = "Signature Help"
-                    map('n', '<C-s>', vim.lsp.buf.signature_help, opts)
+                    map('n', '<space>h', vim.lsp.buf.signature_help, opts)
 
                     opts.desc = "Diagnostic info"
-                    map("n", "<C-e>", vim.diagnostic.open_float, opts)
+                    map("n", "<space>i", vim.diagnostic.open_float, opts)
 
                     opts.desc = "Move to prev diagnostic"
                     map("n", "[e", function() vim.diagnostic.jump({count = -1, float = true}) end, opts)
