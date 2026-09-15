@@ -114,7 +114,7 @@ return {
                     auto_show = false,
                     max_height = 10,
                     border = neovim_borders,
-                    winhighlight = 'NormalFloat:Normal,FloatBorder:Whitespace,BlinkCmpKind:Comment,CursorLine:PmenuSel,Search:None',
+                    winhighlight = 'NormalFloat:Normal,BlinkCmpKind:Comment,CursorLine:PmenuSel,Search:None',
                     scrolloff = 0,
                 },
                 list = { selection = { preselect = false } },

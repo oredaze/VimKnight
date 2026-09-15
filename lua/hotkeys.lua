@@ -14,6 +14,7 @@ map("n", "x", '"_x')
 map("v", "p", '"_dP')
 map("n", "F", "%")
 map("n", "S", "ci\"")
+map("n", "K", "s<cr><tab><esc>2W")
 map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
 map("n", "c%", "ggcG", { desc = "Change whole file" })
 map("n", "d%", "ggdG", { desc = "Delete whole file" })
@@ -318,7 +319,7 @@ map("n", "<leader>a", ":FzfLua lines<CR>", { silent = true, desc = "Full search"
 map("n", "<leader>m", ":FzfLua marks<CR>", { silent = true, desc = "Marks" })
 map("n", "<leader>r", ":FzfLua oldfiles<CR>", { silent = true, desc = "Recent" })
 -- -- More at:
--- -- ~/.config/nvim/lua/plugins/fzf-lua.lua
+-- ~/.config/nvim/lua/plugins/fzf-lua.lua
 
 -- Marks
 map("n", "-", ":BookmarksQFListAll<CR>", { desc = "Number marks list" })
@@ -347,7 +348,6 @@ map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
 map("n", "<leader>w", "<cmd>Neotree toggle buffers position=current<CR>")
 vim.cmd("cabbrev j Z")
-
 -- More at:
 -- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua

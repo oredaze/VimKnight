@@ -65,6 +65,7 @@ return {
                     "lua_ls",
                     -- "rust_analyzer",
                     "marksman",
+                    "cssls"
                 },
                 opts = {
                     diagnostics = {
@@ -79,7 +80,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            vim.lsp.enable({'lua_ls', 'marksman', 'gdscript'})
+            vim.lsp.enable({'lua_ls', 'marksman', 'gdscript', 'cssls'})
 
             vim.lsp.config("lua_ls", {
                 on_init = function(client)
@@ -130,11 +131,14 @@ return {
 
             vim.lsp.config("marksman", {
                 root_markers = { ".marksman.toml" },
+                filetype = { "markdown" },
             })
 
             vim.lsp.config("gdscript", {
                 root_markers = { "project.godot" },
             })
+
+            vim.lsp.config("tailwindcss", {})
 
             require("mason-null-ls").setup({
                 ensure_installed = {
@@ -214,13 +218,13 @@ return {
                     map("n", "gi", vim.lsp.buf.implementation, opts)
 
                     opts.desc = "Rename symbol"
-                    map("n", "gR", vim.lsp.buf.rename, opts)
+                    map("n", "<leader>R", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
                     map("n", "<leader>x", vim.lsp.buf.code_action, opts)
 
                     opts.desc = "Code lens"
-                    map("n", "gL", vim.lsp.codelens.run, opts)
+                    map("n", "<leader>I", vim.lsp.codelens.run, opts)
 
                     opts.desc = "Format Buffer"
                     map('n', '<F3>', function()
