@@ -26,7 +26,6 @@ if &t_Co == 8
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
 	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 	hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
-	hi Search ctermfg=3 ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
 	hi GreyLine ctermfg=8 ctermbg=none cterm=none,underline
@@ -41,7 +40,6 @@ else
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
 	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 	hi StatusLineNC ctermfg=8 ctermbg=0 cterm=none
-	hi Search ctermfg=3 ctermbg=237 cterm=bold
 endif
 
 " Predefined Highlight Groups: {{{
@@ -118,6 +116,7 @@ hi DiffDelete ctermfg=0 ctermbg=0 cterm=bold
 hi DiffText ctermfg=5 ctermbg=0 cterm=underline
 hi Directory ctermfg=4 ctermbg=none cterm=bold
 hi MatchParen ctermfg=1 ctermbg=0 cterm=bold
+hi Search ctermfg=3 ctermbg=0 cterm=bold
 hi IncSearch ctermfg=3 ctermbg=0 cterm=none,reverse
 hi CurSearch ctermfg=0 ctermbg=3 cterm=none
 hi CursorLineFold ctermfg=3 ctermbg=none

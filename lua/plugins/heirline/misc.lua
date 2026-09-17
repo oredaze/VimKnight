@@ -1,18 +1,18 @@
 local util = {}
 
 util.icons = {
-    -- ▐ ▌        ▒
+    -- ▐ ▌        ▒ 
     left_end = "▌",
     right_end = "▐",
     left_mode_sur = "▐",
     right_mode_sur = "",
-    left_overflow = "",
-    right_overflow = "",
+    left_overflow = "◀",
+    right_overflow = "▶",
     padlock = " r",
     buffers_icon = "",
     circle = "",
-    circle_small = "",
-    circle_o = "",
+    circle_small = "◆",
+    circle_o = "•",
     modified = " +",
     spellcheck = "  ",
     terminal = "  ",
