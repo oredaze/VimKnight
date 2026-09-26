@@ -295,9 +295,9 @@ local Tabpages = {
         end,
         provider = function(self)
             if self.is_active then
-                return icons.circle_small .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
+                return icons.circle_2 .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
             else
-                return icons.circle_o .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
+                return icons.circle .. " Tab" .. "%" .. self.tabnr .. "T " .. self.tabpage .. "%T"
             end
         end,
     }),
@@ -372,24 +372,6 @@ local Indicator
 do
     local VimMode
     do
-        local NormalModeIndicator = {
-            Space,
-            {
-                fallthrough = false,
-                -- ReadOnly,
-                {
-                    provider = icons.circle,
-                    hl = function()
-                        if bo.modified then
-                            return heircolor_magenta
-                        else
-                            return heircolor_grey
-                        end
-                    end,
-                },
-            },
-            Space,
-        }
 
         local ActiveModeIndicator = {
             condition = function(self)
@@ -403,12 +385,8 @@ do
                     return { fg = Mode[self.mode].bg }
                 end
             end,
-            utils.surround({ icons.left_mode_sur, icons.right_mode_sur }, nil, {
-                {
-                    fallthrough = false,
-                    -- ReadOnly,
-                    { provider = icons.circle },
-                },
+                Space,
+            utils.surround({ "", icons.right_mode_sur }, nil, {
                 Space,
                 {
                     provider = function(self)
@@ -431,7 +409,6 @@ do
             {
                 fallthrough = false,
                 ActiveModeIndicator,
-                NormalModeIndicator,
             },
         }
     end
@@ -478,7 +455,7 @@ local HelpFileName = {
     hl = heircolor_blue,
 }
 
-local FileNameBlock, CurrentPath, FileName
+local FileNameBlock, CurrentPath, FileName, Modified
 do
     local WorkDir = {
         condition = function(self)
@@ -529,8 +506,19 @@ do
         hl = heircolor_white,
     }
 
+    Modified = {
+        provider = function(self)
+            if bo.modified then
+                return " +++"
+            else
+                return ""
+            end
+        end,
+        hl = heircolor_red,
+    }
+
     FileNameBlock = {
-        { WorkDir, CurrentPath, FileName },
+        { WorkDir, CurrentPath, FileName, Modified },
         -- This means that the statusline is cut here when there's not enough space.
         { provider = "%<" },
     }
@@ -727,7 +715,7 @@ local Git = {
 local Lsp
 do
     local LspIndicator = {
-        provider = "  " .. icons.circle_small,
+        provider = "  " .. icons.circle_2,
         hl = heircolor_blue,
     }
     local LspServer = {
