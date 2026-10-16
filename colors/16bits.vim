@@ -134,7 +134,7 @@ hi Substitute ctermfg=0 ctermbg=2 cterm=none
 hi TabLineSel ctermfg=7 ctermbg=none cterm=none
 hi ToolbarLine ctermfg=none ctermbg=0 cterm=bold
 hi Title ctermfg=6 ctermbg=0 cterm=none
-hi Folded ctermfg=0 ctermbg=0 cterm=bold
+hi Folded ctermfg=3 ctermbg=0 cterm=none
 hi CursorLine ctermfg=none ctermbg=0 cterm=none
 hi CursorLineNr ctermfg=3 ctermbg=none cterm=bold
 hi CursorColumn ctermfg=none ctermbg=0
