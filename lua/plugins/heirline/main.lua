@@ -222,7 +222,7 @@ local TablineFileFlags = {
             return vim.api.nvim_get_option_value("modified", { buf = self.bufnr })
         end,
         provider = icons.modified,
-        hl = heircolor_magenta,
+        hl = heircolor_red,
     },
     {
         provider = function(self)

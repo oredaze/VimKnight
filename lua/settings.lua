@@ -49,6 +49,8 @@ o.tabstop = 4 -- default number of characters for indents
 o.shiftwidth = 0
 o.expandtab = true -- default indent type; true for spaces
 
+vim.g.markdown_folding = 1
+
 vim.diagnostic.config({
     -- signs = false,
     signs = { text = {
@@ -76,6 +78,6 @@ if vim.g.neovide then
     -- Other
     vim.g.neovide_progress_bar_enabled = false
     -- vim.g.neovide_normal_opacity = 0.98
-    vim.g.neovide_scroll_animation_length = 0.1
+    vim.g.neovide_scroll_animation_length = 0.05
     vim.g.neovide_cursor_animation_length = 0.1
 end

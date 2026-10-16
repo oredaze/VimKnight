@@ -9,7 +9,7 @@ return {
             columns = {
             --     -- "icon",
             --     { "permissions", highlight = "Normal" },
-            --     { "size", highlight = "Include" },
+                { "size", highlight = "Include" },
                 { "mtime", highlight = "Type" },
             },
             win_options = {
