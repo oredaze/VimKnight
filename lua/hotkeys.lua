@@ -307,7 +307,7 @@ cmap("T", "tabedit % | Neotree current", { nargs = "?" })
 -- Fzf-lua
 map("n", "<leader>f", ":FzfLua files<CR>", { silent = true, desc = "Files" })
 map("n", "<leader>g", ":FzfLua live_grep<CR>", { silent = true, desc = "Grep" })
-map("n", "<leader>j", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
+map("n", "<leader>`", ":FzfLua jumps<CR>", { silent = true, desc = "Jumps" })
 map("n", "<leader>s", ":FzfLua lsp_document_symbols<CR>", { silent = true, desc = "Symbols" })
 map("n", "<leader>S", ":FzfLua lsp_workspace_symbols<CR>", { silent = true, desc = "WS symbols" })
 map("n", "<leader>d", ":FzfLua lsp_document_diagnostics<CR>", { silent = true, desc = "Diagnostics" })
@@ -347,6 +347,7 @@ map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
 map("n", "<leader>w", "<cmd>Neotree toggle buffers position=current<CR>")
+map("n", "<leader>j", ":FzfLua zoxide<CR>", { desc = "Jump to dir" })
 vim.cmd("cabbrev j Z")
 -- More at:
 -- ~/.config/nvim/lua/plugins/oil.lua
