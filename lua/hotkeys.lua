@@ -12,8 +12,6 @@ map("n", "<C-q>", "q") -- Move macro to prepare q key
 map("n", "q", ":q<CR>")
 map("n", "x", '"_x')
 map("v", "p", '"_dP')
-map("n", "F", "%")
-map("n", "S", "ci\"")
 map("n", "K", "s<cr><tab><esc>2W")
 map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
 map("n", "c%", "ggcG", { desc = "Change whole file" })
@@ -24,6 +22,10 @@ map("n", "yip", "yip}k", { desc = "Yank in paragraph" })
 map("v", ".", ":norm.<CR>") -- Dot enhancement in visual mode
 map("n", "<Backspace>", ":noh<CR>", { silent = true })
 map("n", "cd", ":cd %:h<CR>", { silent = true, desc = "cd %:h" })
+map("n", "<C-h>", "B")
+map("n", "<C-l>", "W")
+map("n", "<C-k>", "{")
+map("n", "<C-j>", "}")
 map("n", "[d", "[c", { desc = "Prev diff" })
 map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
@@ -103,10 +105,10 @@ map("n", "<C-s>", "", {
     end,
 })
 
--- Open new spaced out lines
+-- Open new paragraph
 vim.cmd([[
-    nnoremap <silent> zo :call BigO()<CR>
-    function BigO ()
+    nnoremap <silent> zo :call OpenParagraph()<CR>
+    function OpenParagraph ()
         if getline('.')[col('.')-1] == ''
             execute "normal! o\<cr>\<Up>"
             star
@@ -286,11 +288,15 @@ map('n', 'g{', 'g[{', { remap = true })
 map('n', 'g}', 'g]}', { remap = true })
 map('n', 'g(', 'g[(', { remap = true })
 map('n', 'g)', 'g])', { remap = true })
+map("n", "S", "cib", { remap = true, desc = "Change in block" })
+map("n", "X", "dab", { remap = true, desc = "Delete a block" })
+map("n", "Q", "ciq", { remap = true, desc = "Change in quotes" })
+map("n", "F", "cif", { remap = true, desc = "Change in function" })
 map("n", "cq", "ciq", { remap = true, desc = "Change in quotes" })
-map('n', 'cb', 'cib', { remap = true, desc = "Change in brackets" })
+map('n', 'cb', 'cib', { remap = true, desc = "Change in block" })
 map("n", "dq", "diq", { remap = true, desc = "Delete in quotes" })
 map("n", "yq", "yiq", { remap = true, desc = "Yank in quotes" })
-map("n", "yb", "yib", { remap = true, desc = "Yank in brackets" })
+map("n", "yb", "yib", { remap = true, desc = "Yank in block" })
 
 -- File explorers
 map("n", "<leader>t", "<cmd>Neotree toggle<CR>")

@@ -155,8 +155,7 @@ return {
                     mappings = {
                         ["<bs>"] = "navigate_up",
                         ["u"] = "navigate_up",
-                        ["D"] = "buffer_delete",
-                        ["d"] = "set_root",
+                        ["d"] = "buffer_delete",
                         ["cd"] = "set_root",
                         ["i"] = "show_file_details",
                         ["<RightMouse>"] = "set_root",
