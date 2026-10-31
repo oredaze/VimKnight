@@ -68,9 +68,17 @@ vim.diagnostic.config({
 })
 
 if vim.g.neovide then
-    vim.keymap.set({ "n", "v" }, "<C-z>", "<cmd>echo 'Disabled in neovide'<cr>")
-    -- Font rendering, Hack: 12.6 - wayland, 11 - xorg
-    vim.o.guifont = "Code New Roman,NerdSymbola:h12.5:#h-slight:#e-subpixelantialias"
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-esc>", "<C-\\><C-n>")
+    vim.keymap.set({"n", "v"}, "<C-z>", "<cmd>term<cr>", { silent = true })
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-CR>", "<cmd>term<CR>", { silent = true })
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-Tab>", "<C-\\><C-n><C-^>")
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-q>", "<cmd>bd!<CR>", { silent = true })
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-w>", "<C-\\><C-n><C-w>")
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-h>", "<C-\\><C-n><C-w>h")
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-j>", "<C-\\><C-n><C-w>j")
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-k>", "<C-\\><C-n><C-w>k")
+    vim.keymap.set({"n", "v", "i", "t"}, "<A-l>", "<C-\\><C-n><C-w>l")
+    vim.o.guifont = "Code New Roman,NerdSymbola:h14:#h-slight:#e-subpixelantialias"
     vim.g.neovide_pixel_geometry = "RGBH" -- Check your monitor
     vim.g.neovide_text_gamma = 0.5
     vim.g.neovide_text_contrast = 0.1

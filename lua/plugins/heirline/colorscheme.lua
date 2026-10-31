@@ -60,7 +60,7 @@ else
     heircolor_tab_focus = { fg = get_hl("StatusLine").fg, bg = get_hl("Normal").bg }
     do
         local mode_colors = {
-            normal = get_hl("StatusLine").fg,
+            normal = get_hl("Comment").fg,
             insert = get_hl("Number").fg,
             visual = get_hl("Include").fg,
             visual_lines = get_hl("Include").fg,
@@ -77,7 +77,7 @@ else
             select = get_hl("Constant").fg,
         }
         Mode = setmetatable({
-            normal = { fg = get_hl("StatusLine").bg },
+            normal = { fg = get_hl("Comment").fg },
         }, {
             __index = function(_, mode)
                 return {

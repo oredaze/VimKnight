@@ -30,6 +30,7 @@ return {
                     folder_open = "",
                     folder_empty = "󰉖",
                     folder_empty_open = "󰷏",
+                    selected = "*",
                     default = "",
                 },
                 modified = {
@@ -79,7 +80,7 @@ return {
                     ["<Left>"] = "close_node",
                     ["<space>"] = { "toggle_node", nowait=true },
                     ["za"] = "toggle_node",
-                    ["<Tab>"] = "toggle_node",
+                    ["<Tab>"] = "select",
                     ["zM"] = "close_all_nodes",
                     ["zR"] = "expand_all_nodes",
                     ["v"] = {
