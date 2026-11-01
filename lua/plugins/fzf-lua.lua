@@ -46,7 +46,7 @@ return {
                     preview = {
                         border = neovim_borders,
                         wrap = false,
-                        hidden = true,
+                        hidden = false,
                         layout = "vertical",
                         -- horizontal = "right:60%",
                         vertical = "up:60%",
@@ -147,14 +147,14 @@ return {
                 lines = {
                     winopts = {
                         preview = {
-                            hidden = true
+                            hidden = false
                         }
                     },
                 },
                 blines = {
                     winopts = {
                         preview = {
-                            hidden = true
+                            hidden = false
                         }
                     }
                 },
