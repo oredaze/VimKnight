@@ -7,7 +7,6 @@ return {
     require("plugins.simpleindentguides"),
     require("plugins.fix-auto-scroll"),
     require("plugins.cmdline"),
-    require("plugins.foldsign"),
     require("plugins.zen-mode"),
 
     -- Functionality

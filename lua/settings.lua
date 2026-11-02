@@ -32,13 +32,14 @@ o.fillchars = { vert = "│", diff = "╱", fold = "-" }
 o.completeopt = "menuone,noselect"
 o.showmode = false
 o.showtabline = 0
-o.laststatus = 3
+o.laststatus = 1
 o.showbreak = "└→"
 o.list = true
-o.ruler = false
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
+o.ruler = true
+o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
 
 -- single, rounded, shadow, solid or a table
 -- neovim_borders = "rounded"
