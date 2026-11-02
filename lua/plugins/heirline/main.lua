@@ -333,11 +333,11 @@ vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufNew", "BufAdd", "BufDel
                 buflist_cache[i] = nil
             end
             -- check how many buffers we have and set showtabline accordingly
-            if #buflist_cache > 1 then
-                vim.o.showtabline = 2 -- always
-            elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
-                vim.o.showtabline = 1 -- only when #tabpages > 1
-            end
+            -- if #buflist_cache > 1 then
+            --     vim.o.showtabline = 2 -- always
+            -- elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+            --     vim.o.showtabline = 1 -- only when #tabpages > 1
+            -- end
         end)
     end,
 })
@@ -785,7 +785,7 @@ local Spell = {
 -- }}
 -- Combine Statusline ------------------------------------------------------- {{
 
-local StatusLineFinal = {
+local ActiveStatusLine = {
     init = function(self)
         local pwd = fn.getcwd(0) -- Present working directory.
         local current_path = api.nvim_buf_get_name(0)
@@ -844,6 +844,27 @@ local StatusLineFinal = {
         Space(1),
         -- RightCap,
     },
+}
+
+local InactiveStatusLine = {
+    condition = conditions.is_not_active,
+    hl = heircolor_grey,
+    init = function(self)
+        local bufnr = fn.winbufnr(self.winnr)
+        local name = bufnr > 0 and api.nvim_buf_get_name(bufnr) or ""
+        self.filename = name == "" and "[No Name]" or fn.fnamemodify(name, ":t")
+    end,
+    {
+        provider = function(self)
+            return " -> " .. self.filename
+        end,
+    },
+}
+
+local StatusLineFinal = {
+    fallthrough = false,
+    InactiveStatusLine,
+    ActiveStatusLine,
 }
 
 -- }}

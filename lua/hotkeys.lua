@@ -353,7 +353,7 @@ map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
 map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
-map("n", "<leader>w", "<cmd>Neotree toggle buffers position=current<CR>")
+map("n", "<leader>w", "<cmd>Neotree toggle buffers position=float<CR>")
 map("n", "<leader>j", ":FzfLua zoxide<CR>", { desc = "Jump to dir" })
 
 vim.keymap.set({ 'n', 'x' }, '<leader>R', function()

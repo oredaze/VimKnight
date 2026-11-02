@@ -6,7 +6,6 @@ return {
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),
     require("plugins.fix-auto-scroll"),
-    require("plugins.cmdline"),
     require("plugins.zen-mode"),
 
     -- Functionality

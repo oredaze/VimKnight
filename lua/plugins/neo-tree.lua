@@ -153,6 +153,10 @@ return {
 
             buffers = {
                 window = {
+                    popup = {
+                        size = { height = "28", width = "80" },
+                        position = { row = "0", col = "0" }
+                    },
                     mappings = {
                         ["<bs>"] = "navigate_up",
                         ["u"] = "navigate_up",

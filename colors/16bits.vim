@@ -165,7 +165,6 @@ hi PopupNotification ctermfg=3 ctermbg=none cterm=none
 hi ErrorMsg ctermfg=1 ctermbg=0 cterm=none
 " hi MsgArea ctermfg=none ctermbg=0
 hi StatusLine ctermfg=7 ctermbg=0 cterm=none
-hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
 hi User1 ctermfg=0 ctermbg=0 cterm=bold
 hi! link StatusLineTerm StatusLine
 hi! link StatusLineTermNC StatusLineNC

@@ -11,7 +11,7 @@ return {
     -- Autocomplete menu
     {
         "Saghen/blink.cmp",
-        event = { "InsertEnter" }, -- also "CmdlineEnter"
+        event = { "InsertEnter", "CmdlineEnter" },
         -- optional: provides snippets for the snippet source
 
         -- use a release tag to download pre-built binaries
@@ -120,22 +120,22 @@ return {
                 list = { selection = { preselect = false } },
             },
 
-            -- cmdline = {
-            --     keymap = {
-            --         preset = 'cmdline',
-            --         ['<Tab>'] = {
-            --             function(cmp)
-            --                 return cmp.show_and_insert_or_accept_single()
-            --             end,
-            --             'select_next',
-            --             'fallback',
-            --         },
-            --         ['<Up>'] = { 'select_prev', 'fallback' },
-            --         ['<Down>'] = { 'select_next', 'fallback' },
-            --         ['<CR>'] = { 'accept', 'fallback' },
-            --         ['<C-space>'] = { 'accept', 'fallback' },
-            --     },
-            -- },
+            cmdline = {
+                keymap = {
+                    preset = 'cmdline',
+                    ['<Tab>'] = {
+                        function(cmp)
+                            return cmp.show_and_insert_or_accept_single()
+                        end,
+                        'select_next',
+                        'fallback',
+                    },
+                    ['<Up>'] = { 'select_prev', 'fallback' },
+                    ['<Down>'] = { 'select_next', 'fallback' },
+                    ['<CR>'] = { 'accept', 'fallback' },
+                    ['<C-space>'] = { 'accept', 'fallback' },
+                },
+            },
 
             sources = {
                 default = { 'lsp', 'path', 'buffer' },

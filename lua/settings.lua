@@ -38,6 +38,7 @@ o.list = true
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
+o.shortmess:remove("F")
 o.ruler = true
 o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
 
