@@ -355,6 +355,11 @@ map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
 map("n", "<leader>w", "<cmd>Neotree toggle buffers position=current<CR>")
 map("n", "<leader>j", ":FzfLua zoxide<CR>", { desc = "Jump to dir" })
+
+vim.keymap.set({ 'n', 'x' }, '<leader>R', function()
+    require('grug-far').open({})
+end, { desc = 'Search & replace' })
+
 vim.cmd("cabbrev j Z")
 -- More at:
 -- ~/.config/nvim/lua/plugins/oil.lua

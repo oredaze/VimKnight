@@ -6,6 +6,8 @@ return {
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),
     require("plugins.fix-auto-scroll"),
+    require("plugins.cmdline"),
+    require("plugins.foldsign"),
     require("plugins.zen-mode"),
 
     -- Functionality
@@ -27,6 +29,7 @@ return {
     require("plugins.oil"),
     require("plugins.fm-nvim"),
     require("plugins.fzf-lua"),
+    require("plugins.grug-far"),
     require("plugins.bigfile"),
     require("plugins.vim-godot"),
     require("plugins.treesj"),

@@ -218,7 +218,7 @@ return {
                     map("n", "gi", vim.lsp.buf.implementation, opts)
 
                     opts.desc = "Rename symbol"
-                    map("n", "<leader>R", vim.lsp.buf.rename, opts)
+                    map("n", "<leader>.", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
                     map("n", "<leader>x", vim.lsp.buf.code_action, opts)
