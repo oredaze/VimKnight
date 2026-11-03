@@ -33,4 +33,5 @@ return {
     require("plugins.treesj"),
     require("plugins.lsp"),
     require("plugins.blink-cmp"),
+    require("plugins.neogit"),
 }

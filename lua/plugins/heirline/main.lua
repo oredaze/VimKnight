@@ -92,10 +92,10 @@ do
     -- }
 end
 
--- local LeftCap = {
---     provider = icons.left_end,
---     hl = heircolor_grey,
--- }
+local LeftCap = {
+    provider = icons.left_end,
+    hl = heircolor_green,
+}
 
 -- local RightCap = {
 --     provider = icons.right_end,
@@ -816,7 +816,7 @@ local ActiveStatusLine = {
     end,
     hl = heircolor_white,
     {
-        -- LeftCap,
+        LeftCap,
         Indicator,
         Space,
         MacroRec,

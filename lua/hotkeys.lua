@@ -83,7 +83,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
         tnoremap <esc> <esc>
     ]],
 })
--- ~/.config/nvim/lua/plugins/heirline/main.lua  1 at line 48
 
 -- External clipboard
 map("!", "<C-v>", "<cmd>set paste<CR><C-r>+<cmd>set nopaste<CR>")
@@ -350,12 +349,11 @@ map(
     { noremap = true, silent = true, desc = "Open link/file" }
 )
 map("n", "<C-p>", ":Gitsigns preview_hunk<CR>")
-map("n", "<leader>G", ":Lazygit<CR>", { desc = "Lazygit" })
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Zen mode", silent = true })
 map("n", "<leader>w", "<cmd>Neotree toggle buffers position=float<CR>")
 map("n", "<leader>j", ":FzfLua zoxide<CR>", { desc = "Jump to dir" })
-
+map("n", "<leader>G", "<cmd>Neogit<cr>", { desc = "Neogit" })
 vim.keymap.set({ 'n', 'x' }, '<leader>R', function()
     require('grug-far').open({})
 end, { desc = 'Search & replace' })

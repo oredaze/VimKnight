@@ -227,7 +227,7 @@ return {
                     map("n", "<leader>I", vim.lsp.codelens.run, opts)
 
                     opts.desc = "Format Buffer"
-                    map('n', '<F3>', function()
+                    map('n', '<leader>F', function()
                         vim.lsp.buf.format({
                             filter = function(client)
                                 return client.name == "null-ls"

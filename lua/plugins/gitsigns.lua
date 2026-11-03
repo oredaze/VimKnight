@@ -66,10 +66,10 @@ return {
                         vim.keymap.set(mode, lhs, rhs, opts)
                     end
 
-                    -- Navigate hunks
-                    map("n", "]h", function()
+                    -- Navigate git hunks
+                    map("n", "]g", function()
                         if vim.wo.diff then
-                            return "]h"
+                            return "]g"
                         end
                         vim.schedule(function()
                             gs.next_hunk()
@@ -77,9 +77,9 @@ return {
                         return "<Ignore>"
                     end, { expr = true, desc = "Next git hunk" })
 
-                    map("n", "[h", function()
+                    map("n", "[g", function()
                         if vim.wo.diff then
-                            return "[h"
+                            return "[g"
                         end
                         vim.schedule(function()
                             gs.prev_hunk()
