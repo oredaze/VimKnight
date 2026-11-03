@@ -31,16 +31,16 @@ o.shada = "%,\"35,'10,f1,<32,:30,/10,h"
 o.fillchars = { vert = "│", diff = "╱", fold = "-" }
 o.completeopt = "menuone,noselect"
 o.showmode = false
-o.showtabline = 0
-o.laststatus = 1
 o.showbreak = "└→"
 o.list = true
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
-o.shortmess:remove("F")
-o.ruler = true
-o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
+o.showtabline = 1
+o.laststatus = 2
+o.ruler = false
+-- o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
+-- o.shortmess:remove("F")
 
 -- single, rounded, shadow, solid or a table
 -- neovim_borders = "rounded"

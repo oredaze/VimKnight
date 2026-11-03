@@ -45,7 +45,7 @@ require("plugins.heirline.colorscheme")
 -- }}
 
 -- Buffer pick hotkey
-vim.keymap.set({"n", "v", "i", "t"}, "<C-f>", function()
+vim.keymap.set("n", "<leader><space>", function()
     if vim.o.showtabline < 2 then
         vim.cmd([[echo "Only 1 buffer"]])
         return
@@ -94,7 +94,14 @@ end
 
 local LeftCap = {
     provider = icons.left_end,
-    hl = heircolor_green,
+    hl = function(self)
+        if bo.modified then
+            return heircolor_red
+        else
+            return heircolor_green
+        end
+    end,
+    -- hl = heircolor_blue,
 }
 
 -- local RightCap = {
@@ -333,11 +340,11 @@ vim.api.nvim_create_autocmd({ "VimEnter", "UIEnter", "BufNew", "BufAdd", "BufDel
                 buflist_cache[i] = nil
             end
             -- check how many buffers we have and set showtabline accordingly
-            -- if #buflist_cache > 1 then
-            --     vim.o.showtabline = 2 -- always
-            -- elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
-            --     vim.o.showtabline = 1 -- only when #tabpages > 1
-            -- end
+            if #buflist_cache > 1 then
+                vim.o.showtabline = 2 -- always
+            elseif vim.o.showtabline ~= 1 then -- don't reset the option if it's already at default value
+                vim.o.showtabline = 1 -- only when #tabpages > 1
+            end
         end)
     end,
 })
