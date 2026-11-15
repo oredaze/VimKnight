@@ -185,10 +185,19 @@ return {
                     map("n", "J", ":TSJToggle<CR>", opts)
 
                     opts.desc = "Docs for item"
-                    map("n", "<space>k", vim.lsp.buf.hover, opts)
+                    map('n', '<space>k', function()
+                        vim.lsp.buf.hover({
+                            max_width = 80,
+                            border = neovim_borders,
+                        })
+                    end, opts)
 
                     opts.desc = "Signature Help"
-                    map('n', '<space>h', vim.lsp.buf.signature_help, opts)
+                    map('n', '<space>h', function()
+                        vim.lsp.buf.signature_help({
+                            border = neovim_borders,
+                        })
+                    end, opts)
 
                     opts.desc = "Diagnostic info"
                     map("n", "<space>i", vim.diagnostic.open_float, opts)
@@ -221,7 +230,7 @@ return {
                     map("n", "<leader>.", vim.lsp.buf.rename, opts)
 
                     opts.desc = "Code actions"
-                    map("n", "<leader>x", vim.lsp.buf.code_action, opts)
+                    map("n", "<leader>a", vim.lsp.buf.code_action, opts)
 
                     opts.desc = "Code lens"
                     map("n", "<leader>I", vim.lsp.codelens.run, opts)

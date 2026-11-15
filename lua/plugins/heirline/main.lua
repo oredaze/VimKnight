@@ -93,12 +93,12 @@ do
 end
 
 local LeftCap = {
-    provider = icons.left_end,
+    provider = icons.right_mode_sur,
     hl = function(self)
         if bo.modified then
             return heircolor_red
         else
-            return heircolor_green
+            return heircolor_cyan
         end
     end,
     -- hl = heircolor_blue,
@@ -112,6 +112,7 @@ local LeftCap = {
 -- }}
 -- Bufferline and Tabs ------------------------------------------------------ {{
 
+--[[
 -- Use this instead of the builtin function
 local function my_surround(delimiters, color, component)
     local function clone(block, with)
@@ -371,6 +372,7 @@ TabLineFinal = {
     TablineBlock,
     -- RightCap,
 }
+--]]
 
 -- }}
 -- Left Statusline Elements ------------------------------------------------- {{
@@ -393,8 +395,6 @@ do
                 end
             end,
                 Space,
-            utils.surround({ "", icons.right_mode_sur }, nil, {
-                Space,
                 {
                     provider = function(self)
                         return misc.mode_lable[self.mode]
@@ -403,7 +403,6 @@ do
                 hl = function(self)
                     return Mode[self.mode]
                 end,
-            }),
         }
 
         VimMode = {
@@ -880,7 +879,7 @@ local StatusLineFinal = {
 require("heirline").setup({
     statusline = StatusLineFinal,
     -- winbar = WinBars,
-    tabline = TabLineFinal,
+    -- tabline = TabLineFinal,
     -- statuscolumn = ...
 })
 

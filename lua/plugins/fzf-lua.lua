@@ -7,9 +7,9 @@ return {
             require("fzf-lua").setup({
                 hls = {
                     normal = "Normal",
-                    border = "Whitespace",
+                    border = "NonText",
                     title = "Comment",
-                    preview_border = "Whitespace",
+                    preview_border = "NonText",
                     preview_title = "Comment",
                     header_text = "Normal",
                     path_linenr = "Comment",
@@ -28,17 +28,17 @@ return {
                     fzf = {
                         prompt = "Normal",
                         cursorline = "PmenuSel",
-                        separator = "Whitespace",
+                        separator = "NonText",
                     },
                 },
                 winopts = {
-                    height = 0.85,
-                    width = 0.75,
-                    row = 0.9,
+                    border = neovim_borders,
+                    fullscreen = false,
+                    height = 1,
+                    width = 0.4,
+                    row = 0,
                     col = 0,
-                    fullscreen = true,
                     backdrop = 100,
-                    border = "none",
                     title_pos = "left",
                     treesitter = {
                         enabled = false,
@@ -46,15 +46,11 @@ return {
                     preview = {
                         border = neovim_borders,
                         wrap = false,
-                        hidden = false,
+                        hidden = true,
                         layout = "vertical",
-                        -- horizontal = "right:60%",
                         vertical = "up:60%",
-                        -- flip_columns = 100,
-                        title = true,
-                        title_pos = "left",
+                        title = false,
                         scrollbar = false,
-                        -- scrolloff = 0,
                         delay = 20,
                         winopts = {
                             number = false,
@@ -79,9 +75,7 @@ return {
                     },
                 },
                 fzf_opts = {
-                    -- ["--separator"] = "─",
                     ["--layout"] = "default",
-                    -- ["--unicode"] = true,
                 },
                 fzf_colors = {
                     false, -- inherit fzf colors that aren't specified below from
@@ -89,8 +83,8 @@ return {
                     ["fg"]      = { "fg", "Normal" },
                     ["bg"]      = { "bg", "Normal" },
                     ["hl"]      = { "fg", "Statement" },
-                    ["fg+"]     = { "fg", "StatusLine" },
-                    ["bg+"]     = { "bg", "CursorLine" },
+                    ["fg+"]     = { "fg", "PmenuSel" },
+                    ["bg+"]     = { "bg", "PmenuSel" },
                     ["hl+"]     = { "fg", "Statement" },
                     ["info"]    = { "fg", "Comment" },
                     ["prompt"]  = { "fg", "Comment" },
@@ -98,7 +92,7 @@ return {
                     ["marker"]  = { "fg", "Exception" },
                     ["spinner"] = { "fg", "Comment" },
                     ["header"]  = { "fg", "Comment" },
-                    ["border"]  = { "fg", "Whitespace" },
+                    ["border"]  = { "fg", "NonText" },
                     ["gutter"]  = { "bg", "Gutter" },
                 },
                 keymap = {
@@ -113,8 +107,8 @@ return {
                     },
                     fzf = {
                         ["ctrl-u"] = "unix-line-discard",
-                        ["ctrl-f"] = "half-page-down",
-                        ["ctrl-b"] = "half-page-up",
+                        ["ctrl-f"] = "page-down",
+                        ["ctrl-b"] = "page-up",
                         ["ctrl-a"] = "beginning-of-line",
                         ["ctrl-e"] = "end-of-line",
                         ["ctrl-w"] = "backward-kill-word",
@@ -134,6 +128,16 @@ return {
                 },
                 grep = {
                     hidden = false,
+                    winopts = {
+                        border = "none",
+                        fullscreen = true,
+                        width = 0.9,
+                        preview = {
+                            hidden = false,
+                            layout = "vertical",
+                            vertical = "up:60%",
+                        },
+                    },
                     RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
                     fzf_opts = {
                         ["--delimiter"] = ":",
@@ -146,6 +150,9 @@ return {
                 },
                 lines = {
                     winopts = {
+                        border = "none",
+                        fullscreen = true,
+                        width = 0.9,
                         preview = {
                             hidden = false
                         }
@@ -153,6 +160,9 @@ return {
                 },
                 blines = {
                     winopts = {
+                        border = "none",
+                        fullscreen = true,
+                        width = 0.9,
                         preview = {
                             hidden = false
                         }

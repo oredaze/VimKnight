@@ -47,4 +47,3 @@ Most of them are optional, except the first one
 - [broot](https://github.com/Canop/broot) innovative file manager
 - A terminal with fixed/fixable escape sequences (like foot, alacritty, st, etc.) to use `<Tab>` independently of `<C-i>` (and any other overlapping keys you decide to bind). GUIs also work
 - [nerd font](https://www.nerdfonts.com/#home) for the sparce glyphs that are present
-- [neovide](https://github.com/neovide/neovide) for a neovim GUI

@@ -154,7 +154,7 @@ return {
             buffers = {
                 window = {
                     popup = {
-                        size = { height = "28", width = "80" },
+                        size = { height = "25", width = "35" },
                         position = { row = "0", col = "0" }
                     },
                     mappings = {

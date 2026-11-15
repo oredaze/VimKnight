@@ -8,7 +8,7 @@ return {
             vim.cmd([[
                 :hi link WhichKeyNormal Normal
                 :hi link WhichKeyTitle Comment
-                :hi link WhichKeyBorder Whitespace
+                :hi link WhichKeyBorder NonText
             ]])
             local wk = require("which-key")
             wk.add({

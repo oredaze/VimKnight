@@ -2,7 +2,7 @@ return {
     -- Integrate external file managers into vim
     {
         "is0n/fm-nvim",
-        cmd = { "Vifm", "Lf", "Broot", "Lazygit", "Ranger" },
+        cmd = { "Vifm", "Lf", "Broot" },
         opts = {
             -- (Vim) Command used to open files
             edit_cmd = "edit",
@@ -13,16 +13,12 @@ return {
             ui = {
                 default = "float",
                 float = {
-                    border = "none",
+                    border = neovim_borders,
                     float_hl = "Normal",
-                    border_hl = "Whitespace",
+                    border_hl = "NonText",
                     blend = 0,
-                    -- Num from 0 - 1
                     height = 1.1,
-                    width = 1,
-                    -- height = 0.85,
-                    -- width = 0.5,
-                    -- window position
+                    width = 0.4,
                     x = 0,
                     y = 0,
                 },
@@ -34,11 +30,9 @@ return {
 
             -- Terminal commands used w/ file manager (have to be in your $PATH)
             cmds = {
-                vifm_cmd = "vifm",
-                lf_cmd = "lf", -- eg: lf_cmd = "lf -command 'set hidden'"
+                vifm_cmd = "vifm -c only",
+                lf_cmd = "lf -command \":set preview false; set ratios 1\"",
                 broot_cmd = "broot",
-                ranger_cmd = "ranger",
-                lazygit_cmd = "lazygit",
             },
 
             -- Mappings used with the plugin

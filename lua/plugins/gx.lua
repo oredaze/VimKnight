@@ -3,11 +3,13 @@ return {
     {
         "chrishrb/gx.nvim",
         cmd = { "Browse" },
-        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             handlers = {
                 plugin = false, -- open plugin links in lua (e.g. packer, lazy, ..)
                 package_json = false, -- open dependencies from package.json
+            },
+            handler_options = {
+                search_engine = "https://mirnir.com/search?q=",
             },
         },
     },

@@ -24,7 +24,6 @@ if &t_Co == 8
 	hi TabLine ctermfg=0 ctermbg=0 cterm=bold
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=0 ctermbg=6 cterm=bold
-	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 	hi StatusLineNC ctermfg=0 ctermbg=0 cterm=bold
 else
 	hi Grey ctermfg=8 ctermbg=none cterm=none
@@ -38,7 +37,6 @@ else
 	hi TabLine ctermfg=8 ctermbg=0 cterm=none
 	hi TabLineFill ctermfg=0 ctermbg=0 cterm=none
 	hi ToolbarButton ctermfg=8 ctermbg=6 cterm=none
-	hi PmenuSel ctermfg=none ctermbg=0 cterm=bold
 	hi StatusLineNC ctermfg=8 ctermbg=0 cterm=none
 endif
 
@@ -142,20 +140,23 @@ hi SignColumn ctermfg=7 ctermbg=none
 hi! link FoldColumn Folded
 hi WinSeparator ctermfg=0 ctermbg=0 cterm=bold
 hi VertSplit ctermfg=0 ctermbg=0 cterm=bold
-hi Pmenu ctermfg=7 ctermbg=0
+hi Pmenu ctermfg=7 ctermbg=none cterm=none
+hi PmenuSel ctermfg=3 ctermbg=0 cterm=bold
 hi PmenuThumb ctermfg=0 ctermbg=8
 hi PmenuSbar ctermfg=none ctermbg=none
-hi PmenuKind ctermfg=7 ctermbg=0
-hi PmenuKindSel ctermfg=0 ctermbg=7
-hi PmenuExtra ctermfg=7 ctermbg=0
-hi PmenuExtraSel ctermfg=0 ctermbg=7
+hi PmenuKind ctermfg=7 ctermbg=none ctermbg=none
+hi PmenuKindSel ctermfg=0 ctermbg=7 ctermbg=none
+hi PmenuExtra ctermfg=7 ctermbg=none ctermbg=none
+hi PmenuExtraSel ctermfg=0 ctermbg=7 ctermbg=none
+hi PmenuMatch ctermfg=0 ctermbg=7 ctermbg=none
+hi PmenuMatchSel ctermfg=0 ctermbg=7 ctermbg=none
 hi PopupSelected ctermfg=0 ctermbg=7
 hi NormalFloat ctermfg=7 ctermbg=none
 hi FloatBorder ctermfg=0 ctermbg=none cterm=bold
 hi FloatTitle ctermfg=0 ctermbg=none cterm=bold
 hi EndOfBuffer ctermfg=4 ctermbg=none cterm=none
 hi QuickFixLine ctermfg=none ctermbg=0
-hi WildMenu ctermfg=0 ctermbg=7
+hi WildMenu ctermfg=0 ctermbg=7 cterm=bold
 hi ModeMsg ctermfg=2 ctermbg=none cterm=bold
 hi MoreMsg ctermfg=5 ctermbg=none cterm=bold
 hi Question ctermfg=4 ctermbg=none
@@ -646,6 +647,7 @@ hi! link NeoTreeRootName Tag
 hi! link NeoTreeDimText Comment
 hi! link NeoTreeFilterTerm Purple
 hi! link NeoTreeFloatBorder Grey
+hi! link NeoTreeCursorLine PmenuSel
 hi NeoTreeFloatTitle ctermfg=6 ctermbg=none
 hi NeoTreeTitleBar ctermfg=6 ctermbg=none
 hi! link NeoTreeIgnored Comment

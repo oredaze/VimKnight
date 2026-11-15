@@ -38,9 +38,8 @@ if vim.opt.termguicolors._value == false then
         }, {
             __index = function(_, mode)
                 return {
-                    ctermfg = 234,
-                    ctermbg = mode_colors[mode],
-                    bold = true,
+                    ctermfg = mode_colors[mode],
+                    bold = false,
                 }
             end,
         })
@@ -81,9 +80,8 @@ else
         }, {
             __index = function(_, mode)
                 return {
-                    fg = get_hl("StatusLine").bg,
-                    bg = mode_colors[mode],
-                    bold = true,
+                    fg = mode_colors[mode],
+                    bold = false,
                 }
             end,
         })

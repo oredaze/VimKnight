@@ -7,7 +7,7 @@ return {
         config = function()
             vim.cmd([[
                 :hi link MiniFilesNormal Normal
-                :hi link MiniFilesBorder Whitespace
+                :hi link MiniFilesBorder NonText
                 :hi link MiniFilesTitle Comment
                 :hi link MiniFilesTitleFocused Include
                 :hi link MiniFilesBorderModified Number
@@ -38,9 +38,9 @@ return {
                     end,
                 }
             }
+            --- @diagnostic disable
             local go_in_plus = function()
                 for _ = 1, vim.v.count1 do
-                --- @diagnostic disable-next-line
                     MiniFiles.go_in({ close_on_file = true })
                 end
             end
@@ -53,9 +53,30 @@ return {
             local toggle_dotfiles = function()
                 show_dotfiles = not show_dotfiles
                 local new_filter = show_dotfiles and filter_show or filter_hide
-                --- @diagnostic disable-next-line
                 MiniFiles.refresh({ content = { filter = new_filter } })
             end
+
+            local toggle_preview = function()
+                local is_enabled = MiniFiles.config.windows.preview
+                local enable = not is_enabled
+                MiniFiles.config.windows.preview = enable
+                MiniFiles.trim_right()
+                MiniFiles.refresh({ windows = { preview = enable } })
+                MiniFiles.refresh()
+                if is_enabled then
+                    local branch = MiniFiles.get_explorer_state().branch
+                    table.remove(branch)
+                    MiniFiles.set_branch(branch)
+                end
+            end
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "MiniFilesBufferCreate",
+                group = vim.api.nvim_create_augroup("minifiles.keymaps", { clear = true }),
+                callback = function(args)
+                    local buf = args.data.buf_id
+                    vim.keymap.set("n", "<C-p>", toggle_preview, { buffer = buf, desc = "Toggle preview" })
+                end,
+            })
 
             -- Additional hotkeys
             vim.api.nvim_create_autocmd('User', {
@@ -67,7 +88,6 @@ return {
                     map_buf('<Right>', go_in_plus)
                     map_buf('<2-LeftMouse>', go_in_plus)
                     map_buf('<RightMouse>', go_in_plus)
-                --- @diagnostic disable-next-line
                     map_buf('<Left>', MiniFiles.go_out)
                     vim.keymap.set('n', '.', toggle_dotfiles, { buffer = buf_id })
                 end,

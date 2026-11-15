@@ -28,19 +28,19 @@ o.cursorlineopt = "number" -- number, both
 o.iskeyword:append("-")
 o.clipboard:append("unnamedplus")
 o.shada = "%,\"35,'10,f1,<32,:30,/10,h"
-o.fillchars = { vert = "│", diff = "╱", fold = "-" }
+o.fillchars = { vert = "|", diff = "╱", fold = "-" }
 o.completeopt = "menuone,noselect"
 o.showmode = false
-o.showbreak = "└→"
+o.showbreak = "└>"
 o.list = true
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
+o.shortmess = "itToOcCx"
 o.showtabline = 1
 o.laststatus = 2
 o.ruler = false
 -- o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
--- o.shortmess:remove("F")
 
 -- single, rounded, shadow, solid or a table
 -- neovim_borders = "rounded"
@@ -68,26 +68,3 @@ vim.diagnostic.config({
     -- },
     float = { border = neovim_borders },
 })
-
-if vim.g.neovide then
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-esc>", "<C-\\><C-n>")
-    vim.keymap.set({"n", "v"}, "<C-z>", "<cmd>term<cr>", { silent = true })
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-CR>", "<cmd>term<CR>", { silent = true })
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-Tab>", "<C-\\><C-n><C-^>")
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-q>", "<cmd>bd!<CR>", { silent = true })
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-w>", "<C-\\><C-n><C-w>")
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-h>", "<C-\\><C-n><C-w>h")
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-j>", "<C-\\><C-n><C-w>j")
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-k>", "<C-\\><C-n><C-w>k")
-    vim.keymap.set({"n", "v", "i", "t"}, "<A-l>", "<C-\\><C-n><C-w>l")
-    vim.o.guifont = "Code New Roman,NerdSymbola:h14:#h-slight:#e-subpixelantialias"
-    vim.g.neovide_pixel_geometry = "RGBH" -- Check your monitor
-    vim.g.neovide_text_gamma = 0.5
-    vim.g.neovide_text_contrast = 0.1
-    vim.o.linespace = -1
-    -- Other
-    vim.g.neovide_progress_bar_enabled = false
-    -- vim.g.neovide_normal_opacity = 0.98
-    vim.g.neovide_scroll_animation_length = 0.05
-    vim.g.neovide_cursor_animation_length = 0.1
-end

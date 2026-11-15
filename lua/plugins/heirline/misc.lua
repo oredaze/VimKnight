@@ -1,11 +1,9 @@
 local util = {}
 
 util.icons = {
-    -- ▐ ▌        ▒ 
     left_end = "▌",
     right_end = "▐",
-    left_mode_sur = "▐",
-    right_mode_sur = "",
+    right_mode_sur = " >>",
     left_overflow = "◀",
     right_overflow = "▶",
     padlock = " r",
@@ -61,23 +59,23 @@ util.mode = setmetatable({
 })
 
 util.mode_lable = {
-    normal = "NORMAL",
-    op = "OP",
-    visual = "VISUAL",
-    visual_lines = "V-LINES",
-    visual_block = "V-BLOCK",
-    select = "SELECT",
-    block = "BLOCK",
-    insert = "INSERT",
-    replace = "REPLACE",
-    v_replace = "V-REPLACE",
-    command = "COMMAND",
-    enter = "ENTER",
-    more = "MORE",
-    confirm = "CONFIRM",
-    shell = "SHELL",
-    terminal = "TERMINAL",
-    none = "NONE",
+    normal = "<NORMAL>",
+    op = "<OP>",
+    visual = "<VISUAL>",
+    visual_lines = "<V-LINES>",
+    visual_block = "<V-BLOCK>",
+    select = "<SELECT>",
+    block = "<BLOCK>",
+    insert = "<INSERT>",
+    replace = "<REPLACE>",
+    v_replace = "<V-REPLACE>",
+    command = "<COMMAND>",
+    enter = "<ENTER>",
+    more = "<MORE>",
+    confirm = "<CONFIRM>",
+    shell = "<SHELL>",
+    terminal = "<TERMINAL>",
+    none = "<NONE>",
 }
 
 return util
