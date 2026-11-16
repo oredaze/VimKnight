@@ -92,16 +92,21 @@ do
     -- }
 end
 
-local LeftCap = {
-    provider = icons.right_mode_sur,
+local Sigil = {
+    provider = icons.sigil,
     hl = function(self)
         if bo.modified then
             return heircolor_red
         else
-            return heircolor_cyan
+            return heircolor_grey
         end
     end,
     -- hl = heircolor_blue,
+}
+
+local LeftCap = {
+    provider = icons.left_end,
+    hl = heircolor_grey,
 }
 
 -- local RightCap = {
@@ -823,6 +828,7 @@ local ActiveStatusLine = {
     hl = heircolor_white,
     {
         LeftCap,
+        Sigil,
         Indicator,
         Space,
         MacroRec,

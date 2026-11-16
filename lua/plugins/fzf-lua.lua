@@ -34,9 +34,9 @@ return {
                 winopts = {
                     border = neovim_borders,
                     fullscreen = false,
-                    height = 1,
-                    width = 0.4,
-                    row = 0,
+                    height = 0.9,
+                    width = 0.9,
+                    row = 1,
                     col = 0,
                     backdrop = 100,
                     title_pos = "left",
@@ -76,6 +76,7 @@ return {
                 },
                 fzf_opts = {
                     ["--layout"] = "default",
+                    ["--unicode"] = true,
                 },
                 fzf_colors = {
                     false, -- inherit fzf colors that aren't specified below from
@@ -129,11 +130,7 @@ return {
                 grep = {
                     hidden = false,
                     winopts = {
-                        border = "none",
-                        fullscreen = true,
-                        width = 0.9,
                         preview = {
-                            hidden = false,
                             layout = "vertical",
                             vertical = "up:60%",
                         },
@@ -150,9 +147,6 @@ return {
                 },
                 lines = {
                     winopts = {
-                        border = "none",
-                        fullscreen = true,
-                        width = 0.9,
                         preview = {
                             hidden = false
                         }
@@ -160,9 +154,6 @@ return {
                 },
                 blines = {
                     winopts = {
-                        border = "none",
-                        fullscreen = true,
-                        width = 0.9,
                         preview = {
                             hidden = false
                         }

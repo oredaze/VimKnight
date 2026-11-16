@@ -17,10 +17,10 @@ return {
                     float_hl = "Normal",
                     border_hl = "NonText",
                     blend = 0,
-                    height = 1.1,
-                    width = 0.4,
+                    height = 0.9,
+                    width = 0.45,
                     x = 0,
-                    y = 0,
+                    y = 1,
                 },
                 split = {
                     direction = "topleft",

@@ -28,7 +28,7 @@ o.cursorlineopt = "number" -- number, both
 o.iskeyword:append("-")
 o.clipboard:append("unnamedplus")
 o.shada = "%,\"35,'10,f1,<32,:30,/10,h"
-o.fillchars = { vert = "|", diff = "╱", fold = "-" }
+o.fillchars = { vert = "│", diff = "╱", fold = "-" }
 o.completeopt = "menuone,noselect"
 o.showmode = false
 o.showbreak = "└>"
@@ -43,8 +43,8 @@ o.ruler = false
 -- o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
 
 -- single, rounded, shadow, solid or a table
--- neovim_borders = "rounded"
-neovim_borders = { "+", "-", "+", "|", "+", "-", "+", "|" }
+neovim_borders = "rounded"
+-- neovim_borders = { "+", "-", "+", "|", "+", "-", "+", "|" }
 
 -- Indents
 o.tabstop = 4 -- default number of characters for indents
