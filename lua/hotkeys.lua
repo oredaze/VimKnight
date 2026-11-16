@@ -65,10 +65,14 @@ map({"n", "v"}, "<C-w>3", "3gt", { silent = true })
 map({"n", "v"}, "<C-w>4", "4gt", { silent = true })
 map({"n", "v"}, "<C-w>5", "5gt", { silent = true })
 map({"n", "v"}, "<C-w>t", "<cmd>tabnew<CR>", { silent = true })
+map({"n", "v"}, "<C-w><CR>", "<cmd>term<CR>", { silent = true, desc = "Terminal" })
 vim.api.nvim_create_autocmd("TermOpen", {
     command = [[
         tnoremap <C-backspace> <C-w>
         tnoremap <esc> <esc>
+        tnoremap <C-Esc> <C-\><C-n>
+        tnoremap <C-w><Esc> <C-\><C-n>
+        tnoremap <C-w>n <C-\><C-n>
     ]],
 })
 
@@ -346,5 +350,4 @@ end, { desc = 'Search & replace' })
 
 vim.cmd("cabbrev j Z")
 -- More at:
--- ~/.config/nvim/lua/plugins/oil.lua
 -- ~/.config/nvim/lua/plugins/mini-files.lua

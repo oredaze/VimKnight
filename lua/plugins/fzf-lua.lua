@@ -76,7 +76,7 @@ return {
                 },
                 fzf_opts = {
                     ["--layout"] = "default",
-                    ["--unicode"] = true,
+                    -- ["--unicode"] = true,
                 },
                 fzf_colors = {
                     false, -- inherit fzf colors that aren't specified below from

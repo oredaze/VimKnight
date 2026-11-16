@@ -8,7 +8,7 @@ return {
                     add          = { text = '|' },
                     change       = { text = '|' },
                     delete       = { text = '_' },
-                    topdelete    = { text = '⁻' },
+                    topdelete    = { text = '^' },
                     changedelete = { text = '~' },
                     untracked    = { text = '┆' },
                 },
@@ -16,7 +16,7 @@ return {
                     add          = { text = '|' },
                     change       = { text = '|' },
                     delete       = { text = '_' },
-                    topdelete    = { text = '⁻' },
+                    topdelete    = { text = '^' },
                     changedelete = { text = '~' },
                     untracked    = { text = '┆' },
                 },
@@ -67,9 +67,9 @@ return {
                     end
 
                     -- Navigate git hunks
-                    map("n", "]g", function()
+                    map("n", "]h", function()
                         if vim.wo.diff then
-                            return "]g"
+                            return "]h"
                         end
                         vim.schedule(function()
                             gs.next_hunk()
@@ -77,9 +77,9 @@ return {
                         return "<Ignore>"
                     end, { expr = true, desc = "Next git hunk" })
 
-                    map("n", "[g", function()
+                    map("n", "[h", function()
                         if vim.wo.diff then
-                            return "[g"
+                            return "[h"
                         end
                         vim.schedule(function()
                             gs.prev_hunk()
