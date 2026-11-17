@@ -520,7 +520,7 @@ do
     Modified = {
         provider = function(self)
             if bo.modified then
-                return " +++"
+                return icons.modified
             else
                 return ""
             end

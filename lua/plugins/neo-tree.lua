@@ -30,11 +30,11 @@ return {
                     folder_open = "",
                     folder_empty = "󰉖",
                     folder_empty_open = "󰷏",
-                    selected = "*",
+                    selected = "◉",
                     default = "",
                 },
                 modified = {
-                    symbol = "+",
+                    symbol = "✚ ",
                     highlight = "Type",
                 },
                 name = {
@@ -78,9 +78,10 @@ return {
                     ["<C-t>"] = "open_tab_drop",
                     ["h"] = "close_node",
                     ["<Left>"] = "close_node",
-                    ["<space>"] = { "toggle_node", nowait=true },
+                    ["<Tab>"] = "toggle_node",
                     ["za"] = "toggle_node",
-                    ["<Tab>"] = "select",
+                    ["<space>"] = { "select", nowait=true },
+                    ["<C-a>"] = "invert_selection",
                     ["zM"] = "close_all_nodes",
                     ["zR"] = "expand_all_nodes",
                     ["v"] = {

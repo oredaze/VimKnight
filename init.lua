@@ -35,5 +35,11 @@ require("hotkeys")
 -- Autocmds
 require("autocmds")
 
-vim.opt.termguicolors = false
-vim.cmd "colorscheme 16bits"
+-- Colors early detection
+if vim.g.neovide then
+    vim.opt.termguicolors = true
+    vim.cmd([[colorscheme moksha]])
+else
+    vim.opt.termguicolors = false
+    vim.cmd([[colorscheme 16bits]])
+end

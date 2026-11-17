@@ -9,7 +9,6 @@ vim.g.maplocalleader = "\\"
 
 -- Misc
 map("n", "<C-q>", "q") -- Move macro to prepare q key
-map("n", "q", ":q<CR>")
 map("n", "x", '"_x')
 map("v", "p", '"_dP')
 map("n", "K", "s<cr><tab><esc>2W")
