@@ -864,7 +864,11 @@ local InactiveStatusLine = {
     init = function(self)
         local bufnr = fn.winbufnr(self.winnr)
         local name = bufnr > 0 and api.nvim_buf_get_name(bufnr) or ""
-        self.filename = name == "" and "[No Name]" or fn.fnamemodify(name, ":t")
+        if vim.bo[bufnr].filetype == "neo-tree" then
+            self.filename = "NEO-TREE"
+        else
+            self.filename = name == "" and "[No Name]" or fn.fnamemodify(name, ":t")
+        end
     end,
     {
         provider = function(self)
