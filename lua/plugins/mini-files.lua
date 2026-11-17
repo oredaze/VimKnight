@@ -75,6 +75,7 @@ return {
                 callback = function(args)
                     local buf = args.data.buf_id
                     vim.keymap.set("n", "<C-p>", toggle_preview, { buffer = buf, desc = "Toggle preview" })
+                    vim.keymap.set("n", "q", ":q<CR>", { buffer = buf })
                 end,
             })
 

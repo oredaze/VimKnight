@@ -16,7 +16,7 @@ autocmd("BufWinEnter", {
 })
 
 -- -- Sync pwd with the builtin terminal
--- vim.api.nvim_create_autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
+-- autocmd({ 'BufEnter', 'TermEnter', 'TermLeave' }, {
 --     desc = 'cd to terminal cwd on enter',
 --     pattern = 'term://*',
 --     callback = function()
@@ -128,12 +128,12 @@ local function add_virtual_dash_line()
         end
     end
 end
-vim.api.nvim_create_autocmd({ "BufReadPost", "TextChanged", "TextChangedI" }, {
+autocmd({ "BufReadPost", "TextChanged", "TextChangedI" }, {
     pattern = "*.md",
     callback = add_virtual_dash_line,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = "markdown",
     callback = function()
         -- Stop treesitter completely in markdown

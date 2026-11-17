@@ -3,6 +3,7 @@ return {
     -- UI
     require("plugins.colors.moksha"),
     require("plugins.heirline.init"),
+    require("plugins.dashboard"),
     require("plugins.which-key"),
     require("plugins.simpleindentguides"),
     require("plugins.fix-auto-scroll"),

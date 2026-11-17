@@ -34,10 +34,10 @@ return {
                 winopts = {
                     border = neovim_borders,
                     fullscreen = false,
-                    height = 0.9,
-                    width = 0.9,
-                    row = 1,
-                    col = 0,
+                    height = 0.99,
+                    width = 0.8,
+                    row = 0,
+                    col = 0.5,
                     backdrop = 100,
                     title_pos = "left",
                     treesitter = {
@@ -46,7 +46,7 @@ return {
                     preview = {
                         border = neovim_borders,
                         wrap = false,
-                        hidden = true,
+                        hidden = false,
                         layout = "vertical",
                         vertical = "up:60%",
                         title = false,

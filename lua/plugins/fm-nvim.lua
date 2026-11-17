@@ -17,10 +17,10 @@ return {
                     float_hl = "Normal",
                     border_hl = "NonText",
                     blend = 0,
-                    height = 0.9,
-                    width = 0.45,
-                    x = 0,
-                    y = 1,
+                    height = 1,
+                    width = 0.8,
+                    x = 0.5,
+                    y = 0,
                 },
                 split = {
                     direction = "topleft",
@@ -30,8 +30,8 @@ return {
 
             -- Terminal commands used w/ file manager (have to be in your $PATH)
             cmds = {
-                vifm_cmd = "vifm -c only",
-                lf_cmd = "lf -command \":set preview false; set ratios 1\"",
+                vifm_cmd = "vifm",
+                lf_cmd = "lf",
                 broot_cmd = "broot",
             },
 

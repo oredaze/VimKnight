@@ -66,6 +66,9 @@ return {
 
             window = {
                 width = 24,
+                popup = {
+                    size = { height = "90%", width = "75%" },
+                },
                 mappings = {
                     ["<2-LeftMouse>"] = "open_drop",
                     ["<cr>"] = "open_drop",
@@ -112,6 +115,7 @@ return {
                     children_inherit_highlights = false,
                 },
                 window = {
+                width = "80%",
                     mappings = {
                         ["s"] = { "show_help", nowait=false, config = {
                             title = "Sort",
@@ -155,8 +159,8 @@ return {
             buffers = {
                 window = {
                     popup = {
-                        size = { height = "25", width = "35" },
-                        position = { row = "0", col = "0" }
+                        size = { height = "25", width = "0.8" },
+                        position = { row = "0", col = "0.5" }
                     },
                     mappings = {
                         ["<bs>"] = "navigate_up",

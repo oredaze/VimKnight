@@ -49,8 +49,7 @@ map("n", "<C-i>", "<C-i>")
 
 -- Window management
 map("n", "gm", ":bm<CR>", { silent = true, desc = "Go to modified buffer" })
-map({"n", "v", "i", "t"}, "<C-^>", "<C-\\><C-n><C-^>")
-map({"n", "v", "i", "t"}, "<C-3>", "<C-\\><C-n><C-^>")
+map({"n", "v", "i", "t"}, "<C-6>", "<C-\\><C-n><C-^>")
 map({"n", "v"}, "<Tab>", "<C-^>")
 map({"n", "v"}, "<C-w>,", "<cmd>tabp<CR>", { silent = true })
 map({"n", "v"}, "<C-w>.", "<cmd>tabn<CR>", { silent = true })
@@ -67,6 +66,7 @@ map({"n", "v"}, "<C-w>t", "<cmd>tabnew<CR>", { silent = true })
 map({"n", "v"}, "<C-w><CR>", "<cmd>term<CR>", { silent = true, desc = "Terminal" })
 vim.api.nvim_create_autocmd("TermOpen", {
     command = [[
+        tnoremap <C-w> <C-\><C-n><C-w>
         tnoremap <C-backspace> <C-w>
         tnoremap <esc> <esc>
         tnoremap <C-Esc> <C-\><C-n>
