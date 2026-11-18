@@ -36,7 +36,7 @@ o.list = true
 o.foldopen:remove('hor')
 o.listchars:append("tab:│ ")
 o.listchars:append("trail:-")
-o.shortmess = "itToOcCx"
+o.shortmess = "itToOcCxF" -- F prevents the info on file open
 o.showtabline = 1
 o.laststatus = 2
 o.ruler = false
@@ -75,8 +75,7 @@ if vim.g.neovide then
     vim.g.neovide_pixel_geometry = "RGBH" -- Check your monitor
     vim.g.neovide_text_gamma = 0.5
     vim.g.neovide_text_contrast = 0.1
-    vim.o.linespace = -1
-    -- Other
+    -- vim.o.linespace = -1
     vim.g.neovide_progress_bar_enabled = false
     -- vim.g.neovide_normal_opacity = 0.98
     vim.g.neovide_scroll_animation_length = 0.05

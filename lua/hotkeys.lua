@@ -63,6 +63,8 @@ map({"n", "v"}, "<C-w>3", "3gt", { silent = true })
 map({"n", "v"}, "<C-w>4", "4gt", { silent = true })
 map({"n", "v"}, "<C-w>5", "5gt", { silent = true })
 map({"n", "v"}, "<C-w>t", "<cmd>tabnew<CR>", { silent = true })
+map({"n", "v"}, "<C-w>s", "<cmd>sp | term<CR>", { silent = true })
+map({"n", "v"}, "<C-w>v", "<cmd>vs | term<CR>", { silent = true })
 map({"n", "v"}, "<C-w><CR>", "<cmd>term<CR>", { silent = true, desc = "Terminal" })
 vim.api.nvim_create_autocmd("TermOpen", {
     command = [[
@@ -72,6 +74,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
         tnoremap <C-Esc> <C-\><C-n>
         tnoremap <C-w><Esc> <C-\><C-n>
         tnoremap <C-w>n <C-\><C-n>
+        tnoremap <C-w><C-n> <C-\><C-n>
     ]],
 })
 
@@ -290,8 +293,9 @@ map("n", "yq", "yiq", { remap = true, desc = "Yank in quotes" })
 map("n", "yb", "yib", { remap = true, desc = "Yank in block" })
 
 -- File explorers
-map("n", "<leader>t", "<cmd>Neotree toggle<CR>")
-map("n", "<leader>e", "<cmd>lua MiniFiles.open()<CR>")
+map("n", "<leader>t", "<cmd>Neotree left toggle<CR>")
+map("n", "<leader>e", "<cmd>Neotree float<CR>")
+map("n", "<leader>q", "<cmd>lua MiniFiles.open()<CR>")
 map("n", "<leader>l", "<cmd>Lf<CR>")
 map("n", "<leader>v", "<cmd>Vifm<CR>")
 map("n", "<leader>b", "<cmd>Broot<CR>")
