@@ -12,9 +12,6 @@ map("n", "<C-q>", "q") -- Move macro to prepare q key
 map("n", "x", '"_x')
 map("v", "p", '"_dP')
 map("n", "K", "s<cr><tab><esc>2W")
-map("n", "y%", "ggVGy<C-o>", { desc = "Yank whole file" })
-map("n", "c%", "ggcG", { desc = "Change whole file" })
-map("n", "d%", "ggdG", { desc = "Delete whole file" })
 map("v", "y", "ygv<Esc>") -- Do not move cursor after visual yanking
 map("n", "yap", "yap}", { desc = "Yank a paragraph" })
 map("n", "yip", "yip}k", { desc = "Yank in paragraph" })
@@ -25,19 +22,6 @@ map("n", "[d", "[c", { desc = "Prev diff" })
 map("n", "]d", "]c", { desc = "Next Diff" })
 map("n", "[c", "g;", { desc = "Older changes" })
 map("n", "]c", "g,", { desc = "Newer changes" })
-map("n", "cw", "ciw", { desc = "Change word" })
-map("n", "cW", "ciW", { desc = "Change WORD" })
-map("n", "cp", "cip", { desc = "Change paragraph" })
-map("n", "dw", "daw", { desc = "Delete word" })
-map("n", "dW", "diW", { desc = "Delete WORD" })
-map("n", "dp", "dap", { desc = "Delete paragraph" })
-map("n", "yw", "yiw", { desc = "Yank word" })
-map("n", "yW", "yiW", { desc = "Yank Word" })
-map("n", "yp", "yap}", { desc = "Yank paragraph" })
-
--- Helix-like
-map({"n", "v" }, "gl", "$", { desc = "End of line" })
-map({"n", "v" }, "gh", "0", { desc = "Start of line" })
 
 -- Commenting
 map("n", "<leader>c", ":norm gcc<CR>", { silent = true, desc = "Comment line" })

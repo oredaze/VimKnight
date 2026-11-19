@@ -38,8 +38,9 @@ if vim.opt.termguicolors._value == false then
         }, {
             __index = function(_, mode)
                 return {
-                    ctermfg = mode_colors[mode],
-                    bold = false,
+                    ctermfg = 235,
+                    ctermbg = mode_colors[mode],
+                    bold = true,
                 }
             end,
         })
@@ -76,12 +77,13 @@ else
             select = get_hl("Constant").fg,
         }
         Mode = setmetatable({
-            normal = { fg = get_hl("Comment").fg },
+            normal = { bg = get_hl("Comment").fg },
         }, {
             __index = function(_, mode)
                 return {
-                    fg = mode_colors[mode],
-                    bold = false,
+                    fg = get_hl("StatusLine").bg,
+                    bg = mode_colors[mode],
+                    bold = true,
                 }
             end,
         })

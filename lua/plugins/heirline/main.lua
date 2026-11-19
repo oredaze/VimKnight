@@ -92,17 +92,17 @@ do
     -- }
 end
 
-local Sigil = {
-    provider = icons.sigil,
-    hl = function(self)
-        if bo.modified then
-            return heircolor_red
-        else
-            return heircolor_grey
-        end
-    end,
-    -- hl = heircolor_blue,
-}
+-- local Sigil = {
+--     provider = icons.sigil,
+--     hl = function(self)
+--         if bo.modified then
+--             return heircolor_red
+--         else
+--             return heircolor_grey
+--         end
+--     end,
+--     -- hl = heircolor_blue,
+-- }
 
 local LeftCap = {
     provider = icons.left_end,
@@ -399,7 +399,7 @@ do
                     return { fg = Mode[self.mode].bg }
                 end
             end,
-                Space,
+            utils.surround({ icons.left_mode_sur, icons.right_mode_sur }, nil, {
                 {
                     provider = function(self)
                         return misc.mode_lable[self.mode]
@@ -408,6 +408,7 @@ do
                 hl = function(self)
                     return Mode[self.mode]
                 end,
+            }),
         }
 
         VimMode = {
@@ -828,7 +829,6 @@ local ActiveStatusLine = {
     hl = heircolor_white,
     {
         LeftCap,
-        Sigil,
         Indicator,
         Space,
         MacroRec,

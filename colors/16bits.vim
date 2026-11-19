@@ -639,7 +639,7 @@ hi MiniFilesTitleFocused ctermfg=6 ctermbg=none
 " neo-tree {{{
 hi! link NeoTreeBufferNumber Grey
 hi! link NeoTreeDotfile Comment
-hi! link NeoTreeFileNameOpened String
+hi NeoTreeFileNameOpened ctermfg=none ctermbg=none cterm=bold
 hi! link NeoTreeExpander Grey
 hi! link NeoTreeStats Grey
 hi! link NeoTreeEndOfBuffer Grey

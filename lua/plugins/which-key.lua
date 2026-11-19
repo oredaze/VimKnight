@@ -36,11 +36,14 @@ return {
                     mappings = false, -- devicons
                 },
                 show_help = false, -- show a help message in the command line for using WhichKey
-                preset = "helix",
+                preset = false,
                 win = {
-                    border = neovim_borders,
+                    border = { "", "─", "", "", "", "", "", "" },
                     no_overlap = false,
-                    width = { min = 30, max = 40 },
+                    title = false,
+                    width = math.huge,
+                    padding = { 0, 2 }, -- [top/bottom, right/left]
+                    height = { min = 4, max = 25 },
                 },
                 keys = {
                     scroll_down = "<c-d>",

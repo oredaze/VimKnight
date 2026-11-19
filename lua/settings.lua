@@ -43,7 +43,7 @@ o.ruler = false
 -- o.rulerformat = "%17(%#Statement#%{&modified?'+++':''}%*%=%l/%L  %P%)"
 
 -- single, rounded, shadow, solid or a table
-neovim_borders = "rounded"
+neovim_borders = "single"
 -- neovim_borders = { "+", "-", "+", "|", "+", "-", "+", "|" }
 
 -- Indents

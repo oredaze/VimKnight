@@ -12,7 +12,7 @@ return {
             enable_diagnostics = false,
             enable_git_status = false,
             close_if_last_window = true,
-            popup_border_style = neovim_borders,
+            popup_border_style = { "", "", "", "│", "", "", "", "" },
             sort_case_insensitive = true,
             use_default_mappings = false,
             open_files_do_not_replace_types = { "trouble", "qf" },
@@ -65,9 +65,10 @@ return {
             },
 
             window = {
-                width = 24,
+                width = 25,
                 popup = {
-                    size = { height = "85%", width = "70%" },
+                    size = { height = "100%", width = "28" },
+                    position = { row = "0", col = "0" }
                 },
                 mappings = {
                     ["<2-LeftMouse>"] = "open_drop",
@@ -158,8 +159,8 @@ return {
             buffers = {
                 window = {
                     popup = {
-                        size = { height = "25", width = "0.8" },
-                        position = { row = "0", col = "0.5" }
+                        size = { height = "100%", width = "28" },
+                        position = { row = "0", col = "0" }
                     },
                     mappings = {
                         ["<bs>"] = "navigate_up",

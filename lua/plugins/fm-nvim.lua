@@ -13,14 +13,14 @@ return {
             ui = {
                 default = "float",
                 float = {
-                    border = neovim_borders,
+                    border = { "", "─", "", "", "", "", "", "" },
                     float_hl = "Normal",
                     border_hl = "NonText",
                     blend = 0,
-                    height = 1,
-                    width = 0.8,
-                    x = 0.5,
-                    y = 0,
+                    height = 0.77,
+                    width = 1,
+                    x = 0,
+                    y = 1,
                 },
                 split = {
                     direction = "topleft",
